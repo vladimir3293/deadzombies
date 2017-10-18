@@ -184,9 +184,10 @@ display: inline-block;
 	height: 50px;
 }
 
-.game_edit_form, .files, .game_bottom {
+/*.game_edit_form, .files, .game_bottom {
 display:none;
 }
+*/
 
 .game_form span {
 	font-weight:700;

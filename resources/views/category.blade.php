@@ -1,5 +1,6 @@
 @extends('admin')
 @section('right_content')
+
     <form class="cat_edit_form" method="POST" action="/admin/category/{{ $category->cat_url }}">
         {{ method_field('PUT') }}
         {{ csrf_field() }}
@@ -23,6 +24,7 @@
                 <input name="cat_title" type="text" value="<?php //echo $cat_all['cat_title'];?>">
             </div>
             <div class="cat_rename">
+
                 <span>Мета описание</span>
                 <input name="cat_desc_meta" type="text" value="<?php //echo $cat_all['cat_desc_meta'];?>">
             </div>
@@ -44,7 +46,5 @@
         <span>Удалить</span>
         <input name="cat_delete" type="checkbox" value="1">
     </div>
-
-    </div>
-    @parent
-    @endsection
+@parent
+@endsection

@@ -7,5 +7,7 @@
 @endsection
 
 @section('right_content')
-    @include('gameCard')
+    @if(isset($games))
+        @include('gameCard')
+    @endif
 @endsection
