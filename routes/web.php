@@ -19,7 +19,8 @@ Route::get('/admin/', ['uses' => 'Admin\IndexController@getIndex', 'as' => 'admi
 
 
 Route::get('/admin/category/{Category}', 'Admin\CategoryController@getCategory')->name('admin.getCat');
-Route::put('/admin/category/{Category}', 'Admin\CategoryController@putCategory')->name('admin.getCat');
+Route::put('/admin/category/{Category}', 'Admin\CategoryController@putCategory');
+Route::delete('/admin/category/{Category}', 'Admin\CategoryController@deleteCategory');
 
 //todo check input
 
