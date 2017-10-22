@@ -6,7 +6,9 @@
     <h1>{{ $game->game_name }}</h1>
     <div class="game_edit">
         <div class="game_form">
-            <form class="game_edit_form" method="post" action="/admino4ka/editgame.php">
+            <form class="game_edit_form" method="post" action="/admin/game/{{ $game->game_url }}">
+                {{ method_field('PUT') }}
+                {{ csrf_field() }}
                 <div class="game_show">
                     <span> Отображение: </span>
                     @if($game->game_show)
