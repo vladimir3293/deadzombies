@@ -13,7 +13,7 @@ class CategoryController extends Controller
     {
         $games = $Category->game;
         foreach ($games as $game) {
-            $game->url = route('admin.getCat', $game->game_url);
+            $game->url = route('admin.getGame', $game->game_url);
             $game->img = file_exists(public_path() . '/img/' . $game->game_url . '.jpg') ?
                 '/img/' . $game->game_url . '.jpg' :
                 '/img/empty.jpg';

@@ -11,6 +11,12 @@ class Game extends Model
 
     public function category()
     {
-        return $this->belongsTo('Deadzombies\Model\Category','cat_id','game_cat');
-}
+        return $this->belongsTo('Deadzombies\Model\Category', 'game_cat','cat_id');
+    }
+
+    public function getRouteKeyName()
+    {
+        return 'game_url';
+    }
+
 }
