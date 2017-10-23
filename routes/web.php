@@ -19,11 +19,13 @@ Route::get('/admin/', ['uses' => 'Admin\IndexController@getIndex', 'as' => 'admi
 
 //todo admin one grpup
 Route::get('/admin/category/{Category}', 'Admin\CategoryController@getCategory')->name('admin.getCat');
-Route::put('/admin/category/{Category}', 'Admin\CategoryController@putCategory')->name('admin.getCat');
+Route::put('/admin/category/{Category}', 'Admin\CategoryController@putCategory');
+//Route::post('/admin/category/{Category}', 'Admin\CategoryController@deleteCategory');
+Route::delete('/admin/category/{Category}', 'Admin\CategoryController@deleteCategory');
+
 Route::get('/admin/game/{Game}', 'Admin\GameController@getGame')->name('admin.getGame');
 Route::put('/admin/game/{Game}','Admin\GameController@putGame');
-Route::put('/admin/category/{Category}', 'Admin\CategoryController@putCategory');
-Route::delete('/admin/category/{Category}', 'Admin\CategoryController@deleteCategory');
+//Route::put('/admin/category/{Category}', 'Admin\CategoryController@putCategory');
 
 //todo check input
 

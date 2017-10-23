@@ -55,6 +55,11 @@ class CategoryController extends Controller
         dd($Category);
     }
 
+    /**
+     * @TODO fix it
+     * @param $name
+     * @return mixed|string
+     */
     public function create_name($name)
     {
         $name = trim($name);    #обрезает пробелы в конце и начале, должна еще и спецсимволы, но что-то через один
@@ -64,6 +69,9 @@ class CategoryController extends Controller
         return $name;
     }
 
+    /**
+     * @TODO fix
+     */
     public function create_url($url)
     {
         var_dump($url);

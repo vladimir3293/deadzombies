@@ -19,20 +19,18 @@
                         <p><input name="game_show" type="radio" value="1">Отображать</p>
                     @endif
                 </div>
-
                 <div class="game_edit_other">
                     <div class="game_cat">
                         <span>Категория:</span>
                         <p class="game_cat_name">
-                            <p>{{ $game->category->cat_name }}</p>
-                            <!--$game_all['cat_name']):echo $game_all['cat_name']; else: echo 'НЕТ';endif;?></p>-->
-                            <select name="game_cat">
-                                <option value="">не изменять</option>
+                        <p>{{ $game->cat }}</p>
+                        <select name="game_cat">
+                            <option value="false" selected>не изменять</option>
+                            @foreach($categories as $category)
+                                <option value="{{ $category->cat_id }}">{{ $category->cat_url }}</option>
+                            @endforeach
 
-                                <option value=""
-                                </option>
-
-                            </select>
+                        </select>
                     </div>
                     <div class="game_rename">
                         <span>Тайтл:</span>
@@ -56,6 +54,7 @@
                     <input type="submit" value="Изменить">
                 </div>
             </form>
+
             <div class="files">
                 <div class="Imagine">
                     <span>Imagine:</span><input class="game_img"
