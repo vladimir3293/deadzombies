@@ -6,9 +6,14 @@
     <h1>{{ $game->game_name }}</h1>
     <div class="game_edit">
         <div class="game_form">
-            <form class="game_edit_form" method="post" action="/admin/game/{{ $game->game_url }}">
+            <form class="game_edit_form" method="post" action="/admin/game/{{ $game->game_url }}"
+                  enctype="multipart/form-data">
                 {{ method_field('PUT') }}
                 {{ csrf_field() }}
+                <div class="game_rename">
+                    <span>Переименовать</span>
+                    <input name="game_rename" type="text">
+                </div>
                 <div class="game_show">
                     <span> Отображение: </span>
                     @if($game->game_show)
@@ -25,12 +30,15 @@
                         <p class="game_cat_name">
                         <p>{{ $game->cat }}</p>
                         <select name="game_cat">
-                            <option value="false" selected>не изменять</option>
+                            <option value="0" selected>не изменять</option>
                             @foreach($categories as $category)
                                 <option value="{{ $category->cat_id }}">{{ $category->cat_url }}</option>
                             @endforeach
-
                         </select>
+                        <div class="game_delete">
+                            <span>Убрать категорию</span>
+                            <input name="del_cat" type="checkbox" value="1">
+                        </div>
                     </div>
                     <div class="game_rename">
                         <span>Тайтл:</span>
@@ -46,39 +54,29 @@
                     </div>
                     <div class="game_desc">
                         <span> Описание: </span>
-                        <textarea name="game_desc" class="game_desc">{{ $game->desc }}</textarea>
+                        <textarea name="game_desc" class="game_desc">{{ $game->game_desc }}</textarea>
 
                         <span> Управление: </span>
                         <textarea name="game_control" class="game_desc">{{ $game->game_control }}</textarea>
+                        <input type="file" name="image">
                     </div>
                     <input type="submit" value="Изменить">
                 </div>
             </form>
 
-            <div class="files">
-                <div class="Imagine">
-                    <span>Imagine:</span><input class="game_img"
-                                                data-url="/admino4ka/upload.php?game_id={{ $game->game_id }}"
-                                                name="game_img" type="file"></p>
+            <!--<div class="files">
+                <form method="post" action=""
+                /admin/game/{{ $game->game_url }}" enctype="multipart/form-data">
+                <input type="file" name="image">
+                <button type="submit">Отп</button>
+                </form>-->
+
+
+                <div class="game_delete">
+                    <span>Удалить</span>
+                    <input name="game_delete" type="checkbox" value="1">
                 </div>
-                <div class="flash">
-                    <span>Flash:</span><input class="game_flash"
-                                              data-url="/admino4ka/upload.php?game_id={{ $game->game_id }}"
-                                              name="game_flash" type="file"></p>
-                </div>
-            </div>
-            <div class="game_bottom">
-                <form class="game__rename_delete" method="post" action="/admino4ka/editgame2.php">
-                    <input name="game_id" type="hidden" value="{{ $game->game_id }}">
-                    <div class="game_rename">
-                        <span>Переименовать</span>
-                        <input name="game_rename" type="text">
-                    </div>
-                    <div class="game_delete">
-                        <span>Удалить</span>
-                        <input name="game_delete" type="checkbox" value="1">
-                    </div>
-                    <input type="submit" value="Изменить">
+                <input type="submit" value="Изменить">
                 </form>
             </div>
         </div>
