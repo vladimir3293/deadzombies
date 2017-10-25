@@ -18,7 +18,7 @@ class GameController extends Controller
         //dd($Game->category);
         //$Game->url = route('admin.getGame', $game->game_url);
         //dd($Game->Category);
-
+        //app();
         return view('game', ['game' => $Game, 'categories' => $categories]);
 
     }

@@ -10,7 +10,7 @@
                   enctype="multipart/form-data">
                 {{ method_field('PUT') }}
                 {{ csrf_field() }}
-                <div class="game_rename">
+                <div class=" game_rename">
                     <span>Переименовать</span>
                     <input name="game_rename" type="text">
                 </div>
@@ -64,7 +64,7 @@
                 </div>
             </form>
 
-            <!--<div class="files">
+        <!--<div class="files">
                 <form method="post" action=""
                 /admin/game/{{ $game->game_url }}" enctype="multipart/form-data">
                 <input type="file" name="image">
@@ -72,12 +72,12 @@
                 </form>-->
 
 
-                <div class="game_delete">
-                    <span>Удалить</span>
-                    <input name="game_delete" type="checkbox" value="1">
-                </div>
-                <input type="submit" value="Изменить">
-                </form>
+            <div class="game_delete">
+                <span>Удалить</span>
+                <input name="game_delete" type="checkbox" value="1">
             </div>
+            <input type="submit" value="Изменить">
+            </form>
         </div>
+    </div>
 @endsection
