@@ -12,27 +12,20 @@ class GameController extends Controller
     public function getGame(Game $Game, Category $category)
     {
         $categories = $category::all();
-        //if($game->category);
         $Game->cat = $Game->category ? $Game->category->cat_name : 'НЕТ';
-        //if()
-        //dd($Game->category);
-        //$Game->url = route('admin.getGame', $game->game_url);
-        //dd($Game->Category);
-        //app();
+        $Game->flash = file_exists(public_path("/games/$Game->game_url.swf")) ? 'ЕСТЬ' : 'НЕТ';
+        $Game->img = file_exists(public_path("/img/$Game->game_url-first.swf")) ? 'ЕСТЬ' : 'НЕТ';
+        $Game->img = file_exists(public_path("/games/$Game->game_url-second.swf")) ? 'ЕСТЬ' : 'НЕТ';
+        $Game->img = file_exists(public_path("/games/$Game->game_url-third.swf")) ? 'ЕСТЬ' : 'НЕТ';
         return view('game', ['game' => $Game, 'categories' => $categories]);
-
     }
 
     public function putGame(Game $Game, Request $request)
     {
         if ($request->game_rename) {
-//            dd($request);
             $Game->game_name = $request->game_rename;
             $Game->game_url = $this->create_url($Game->game_name);
-            //dd($Category);
         }
-        //dd($request->all());
-
         $Game->game_title = $request->game_title;
         $Game->game_desc_meta = $request->game_desc_meta;
         $Game->game_key_meta = $request->game_key_meta;
@@ -44,13 +37,12 @@ class GameController extends Controller
         if ($request->del_cat) {
             $Game->game_cat = null;
         }
-        //$Game->game_cat = null ?? '12314';
-        //dd($Game->game_cat);
-        //$Game->game_cat = $request->game_cat;
-        //dd($Game->game_show != $request->game_show);
         if ($Game->game_show != $request->game_show) {
             $Game->game_show = $request->game_show;
-            //dd($Game->game_show);
+        }
+//TODO  game size
+        if (null !== $request->file('flash')) {
+            $request->file('flash')->storeAs('/games', $Game->game_url . '.swf', 'pub');
         }
         $Game->save();
         return redirect()->route('admin.getGame', [$Game]);

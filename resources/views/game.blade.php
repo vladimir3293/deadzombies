@@ -58,7 +58,15 @@
 
                         <span> Управление: </span>
                         <textarea name="game_control" class="game_desc">{{ $game->game_control }}</textarea>
-                        <input type="file" name="image">
+                        <p>{{ $game->flash }}</p>
+                        <input type="file" name="flash">
+                        <p>{{ $game->img }}</p>
+                        <input type="file" name="flash">
+                        <p>{{ $game->flash }}</p>
+                        <input type="file" name="flash">
+                        <p>{{ $game->flash }}</p>
+                        <input type="file" name="flash">
+
                     </div>
                     <input type="submit" value="Изменить">
                 </div>
