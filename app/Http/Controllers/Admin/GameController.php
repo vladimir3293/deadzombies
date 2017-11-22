@@ -42,6 +42,7 @@ class GameController extends Controller
         }
 //TODO  game size
         if (null !== $request->file('flash')) {
+            //dd($request->file('flash'));
             $request->file('flash')->storeAs('/games', $Game->game_url . '.swf', 'pub');
         }
         $Game->save();
