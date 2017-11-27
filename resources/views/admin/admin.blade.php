@@ -3,7 +3,7 @@
 @section('title','Админка')
 
 @section('sidebar')
-    @include('menu')
+    @include('sidebar')
 @endsection
 
 @section('right_content')

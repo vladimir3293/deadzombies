@@ -8,17 +8,17 @@ use Deadzombies\Model\Category;
 
 class CategoryController extends Controller
 {
-    public function getMenuCategory()
+    public function getCategory(Category $Category)
     {
-        $category = new Category();
-        $cat = $category::orderBy('cat_order')->get();
-        $cats = $cat->each(function ($item) {
-            $result[] =['cat_name'=>$item->cat_name,
-            'cat_url'=>$item->cat_url];
-            //echo $item->cat_url;
-        });
-        echo '122122112';
-//svar_dump($cat);
-        return ['foo','bar','baz'];
+        //TODO pagination
+        $games = $Category->game;
+        foreach ($games as $game) {
+            $game->url = route('getGame', $game->game_url);
+            $game->img = file_exists(public_path() . '/img/' . $game->game_url . '.jpg') ?
+                '/img/' . $game->game_url . '.jpg' :
+                '/img/empty.jpg';
+            //dd($game->img);
+        }
+        return view('category', ['games' => $games, 'category' => $Category]);
     }
 }

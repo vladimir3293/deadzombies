@@ -16,7 +16,7 @@ Route::get('/', 'IndexController@getIndex');
 
 //todo admin one grpup
 //Route::middleware(['auth'])->group(function () {
-
+//admin
     Route::get('/admin/', ['uses' => 'Admin\IndexController@getIndex', 'as' => 'admin']);
     Route::get('/admin/category/{Category}', 'Admin\CategoryController@getCategory')->name('admin.getCat');
     Route::put('/admin/category/{Category}', 'Admin\CategoryController@putCategory');
@@ -27,7 +27,7 @@ Route::get('/', 'IndexController@getIndex');
     Route::get('/admin/game/{game}', [
         'uses' => 'Admin\GameController@getIndex',
         'as' => 'admin.getGame']);
-
+//home
 Route::get('/', ['uses' => 'IndexController@getIndex', 'as' => 'index']);
 Route::get('/category/{Category}', 'CategoryController@getCategory')->name('getCat');
 Route::put('/category/{Category}', 'CategoryController@putCategory');

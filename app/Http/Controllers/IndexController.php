@@ -17,6 +17,6 @@ class IndexController extends Controller
         });
 
         //dd($games);
-        return view('admin',['games'=>$games]);
+        return view('indexPage',['games'=>$games]);
     }
 }

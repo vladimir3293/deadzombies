@@ -15,7 +15,7 @@
 <body>
 <div class="wrap">
     <div class="sidebar">
-        @yield('sidebar')
+        @include('sidebar')
     </div>
     <div class="right_content">
         @yield('right_content')
