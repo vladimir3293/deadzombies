@@ -20,7 +20,7 @@ class GameController extends Controller
         $Game->img1 = Storage::disk('pub')->exists("/img/$Game->game_url-first.jpg") ? 'ЕСТЬ' : 'НЕТ';
         $Game->img2 = Storage::disk('pub')->exists("/img/$Game->game_url-second.jpg") ? 'ЕСТЬ' : 'НЕТ';
         $Game->img3 = Storage::disk('pub')->exists("/img/$Game->game_url-third.jpg") ? 'ЕСТЬ' : 'НЕТ';
-        return view('game', ['game' => $Game, 'categories' => $categories]);
+        return view('admin.game', ['game' => $Game, 'categories' => $categories]);
     }
 
     public function putGame(Game $Game, Request $request)
@@ -40,6 +40,7 @@ class GameController extends Controller
             $Game->game_show = $request->game_show;
         }
         if (null !== $request->file('flash')) {
+            //dd($request->file('flash'));
             $request->file('flash')->storeAs('/games', $Game->game_url . '.swf', 'pub');
             $size = getimagesize(public_path("/games/$Game->game_url.swf"));
             $size = $size[0] / $size[1];
@@ -113,7 +114,7 @@ class GameController extends Controller
         imagejpeg($large_size, public_path("/img/$url-$imgPrefix-large.jpg"));
     }
 
-//TODO wtf where,  must save it
+//TODO wtf, where must save it
 
     public function create_url($url)
     {

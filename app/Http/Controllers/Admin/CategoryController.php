@@ -19,7 +19,7 @@ class CategoryController extends Controller
                 '/img/empty.jpg';
             //dd($game->img);
         }
-        return view('category', ['games' => $games, 'category' => $Category]);
+        return view('admin.category', ['games' => $games, 'category' => $Category]);
     }
 
     /**

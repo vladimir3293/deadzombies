@@ -67,7 +67,7 @@ return [
     'providers' => [
         'users' => [
             'driver' => 'eloquent',
-            'model' => Deadzombies\User::class,
+            'model' => Deadzombies\Model\User::class,
         ],
 
         // 'users' => [

@@ -13,22 +13,35 @@
 
 Route::get('/', 'IndexController@getIndex');
 
-//Route::get('/admin/', ['uses' => 'Admin\IndexController@getIndex', 'as' => 'admin']);
-Route::get('/admin/', ['uses' => 'Admin\IndexController@getIndex', 'as' => 'admin']);
-
 
 //todo admin one grpup
-Route::get('/admin/category/{Category}', 'Admin\CategoryController@getCategory')->name('admin.getCat');
-Route::put('/admin/category/{Category}', 'Admin\CategoryController@putCategory');
+//Route::middleware(['auth'])->group(function () {
+
+    Route::get('/admin/', ['uses' => 'Admin\IndexController@getIndex', 'as' => 'admin']);
+    Route::get('/admin/category/{Category}', 'Admin\CategoryController@getCategory')->name('admin.getCat');
+    Route::put('/admin/category/{Category}', 'Admin\CategoryController@putCategory');
 //Route::post('/admin/category/{Category}', 'Admin\CategoryController@deleteCategory');
-Route::delete('/admin/category/{Category}', 'Admin\CategoryController@deleteCategory');
+    Route::delete('/admin/category/{Category}', 'Admin\CategoryController@deleteCategory');
+    Route::get('/admin/game/{Game}', 'Admin\GameController@getGame')->name('admin.getGame');
+    Route::put('/admin/game/{Game}', 'Admin\GameController@putGame');
+    Route::get('/admin/game/{game}', [
+        'uses' => 'Admin\GameController@getIndex',
+        'as' => 'admin.getGame']);
 
-Route::get('/admin/game/{Game}', 'Admin\GameController@getGame')->name('admin.getGame');
-Route::put('/admin/game/{Game}','Admin\GameController@putGame');
-//Route::put('/admin/category/{Category}', 'Admin\CategoryController@putCategory');
+Route::get('/', ['uses' => 'IndexController@getIndex', 'as' => 'index']);
+Route::get('/category/{Category}', 'CategoryController@getCategory')->name('getCat');
+Route::put('/category/{Category}', 'CategoryController@putCategory');
+//Route::post('/admin/category/{Category}', 'Admin\CategoryController@deleteCategory');
+Route::delete('/category/{Category}', 'CategoryController@deleteCategory');
+Route::get('/game/{Game}', 'GameController@getGame')->name('getGame');
+Route::put('/game/{Game}', 'GameController@putGame');
+Route::get('/game/{game}', [
+    'uses' => 'GameController@getIndex',
+    'as' => 'getGame']);
 
-//todo check input
 
-Route::get('/admin/game/{game}', [
-    'uses' => 'Admin\GameController@getIndex',
-    'as' => 'admin.getGame']);
+
+Route::get('login', 'Auth\LoginController@showLoginForm')->name('login');
+Route::post('login', 'Auth\LoginController@login');
+Route::post('logout', 'Auth\LoginController@logout')->name('logout');
+//Auth::routes();

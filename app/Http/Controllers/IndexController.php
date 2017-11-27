@@ -9,7 +9,14 @@ class IndexController extends Controller
 {
     public function getIndex(Game $game)
     {
-        //var_dump($game::all());
-        return view('welcome');
+        //TODO transfer to model
+        //TODO pagination
+        $games = $game->all();
+        $games->each(function ($games) {
+            $games->url = route('admin.getGame', $games->game_url);
+        });
+
+        //dd($games);
+        return view('admin',['games'=>$games]);
     }
 }
