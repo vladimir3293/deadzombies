@@ -19,9 +19,12 @@ class IndexController extends Controller
         $games = $game->all();
         $games->each(function ($games) {
             $games->url = route('admin.getGame', $games->game_url);
+            $games->img = file_exists(public_path() . '/img/' . $games->game_url . '.jpg') ?
+                '/img/' . $games->game_url . '.jpg' :
+                '/img/empty.jpg';
         });
 
-        //dd($games);
+     //   dd($games);
         return view('admin.index',['games'=>$games]);
     }
 }

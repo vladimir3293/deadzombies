@@ -97,9 +97,38 @@ class GameController extends Controller
 
     public function deleteGame(Game $Game)
     {
-        dd($Game);
+        if (Storage::disk('pub')->exists("/games/$Game->game_url.swf")) {
+            Storage::disk('pub')->delete("/games/$Game->game_url.swf");
+        }
+
+        if (Storage::disk('pub')->exists("/img/$Game->game_url.jpg")) {
+            Storage::disk('pub')->delete([
+                "/img/$Game->game_url.jpg",
+                "/img/$Game->game_url-small.jpg",
+                "/img/$Game->game_url-large.jpg"
+            ]);
+        }
+
+        if (Storage::disk('pub')->exists("/img/$Game->game_url-second.jpg")) {
+            Storage::disk('pub')->delete([
+                "/img/$Game->game_url-second.jpg",
+                "/img/$Game->game_url-second-small.jpg",
+                "/img/$Game->game_url-second-large.jpg"
+            ]);
+        }
+
+        if (Storage::disk('pub')->exists("/img/$Game->game_url-third.jpg")) {
+            Storage::disk('pub')->delete([
+                "/img/$Game->game_url-third-.jpg",
+                "/img/$Game->game_url-third-small.jpg",
+                "/img/$Game->game_url-third-large.jpg"
+            ]);
+        }
+
+        $Game->delete();
+        return redirect('admin');
     }
-    
+
     public function createImage(string $url, $img, string $imgPrefix = '')
     {
         $old_size = getimagesize($img);
@@ -123,9 +152,9 @@ class GameController extends Controller
 
     public function create_url($url)
     {
-        var_dump($url);
+        //var_dump($url);
         $url = mb_strtolower($url, 'UTF-8');    #переводит все буквы в нижний регистр
-        var_dump($url);
+        //var_dump($url);
         $rus = array('а', 'б', 'в', 'г', 'д', 'е', 'ё', 'ж', 'з', 'и', 'й', 'к', 'л', 'м', 'н', 'о', 'п', 'р', 'с', 'т', 'у', 'ф', 'х', 'ц', 'ч', 'ш', 'щ', 'ъ', 'ы', 'ь', 'э', 'ю', 'я');
         $eng = array('a', 'b', 'v', 'g', 'd', 'e', 'e', 'zh', 'z', 'i', 'i', 'k', 'l', 'm', 'n', 'o', 'p', 'r', 's', 't', 'u', 'f', 'kh', 'ts', 'ch', 'sh', 'shch', 'ie', 'y', '', 'e', 'iu', 'ia',);
         $url = str_replace($rus, $eng, $url);

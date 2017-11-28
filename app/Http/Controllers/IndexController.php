@@ -13,10 +13,14 @@ class IndexController extends Controller
         //TODO pagination
         $games = $game->all();
         $games->each(function ($games) {
-            $games->url = route('admin.getGame', $games->game_url);
+            $cat_url = $games->category()->get()[0]->cat_url;
+            $games->url = route('getGame', ['category' => $cat_url, 'game' => $games->game_url]);
+            $games->img = file_exists(public_path() . '/img/' . $games->game_url . '.jpg') ?
+                '/img/' . $games->game_url . '.jpg' :
+                '/img/empty.jpg';
         });
 
         //dd($games);
-        return view('indexPage',['games'=>$games]);
+        return view('indexPage', ['games' => $games]);
     }
 }

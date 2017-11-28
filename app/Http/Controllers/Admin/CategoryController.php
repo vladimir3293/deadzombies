@@ -52,6 +52,7 @@ class CategoryController extends Controller
 
     public function deleteCategory(Category $Category)
     {
+        //TODO delete category, and game category
         dd($Category);
     }
 
