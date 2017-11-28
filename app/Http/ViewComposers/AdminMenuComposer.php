@@ -6,7 +6,7 @@ namespace Deadzombies\Http\ViewComposers;
 use Deadzombies\Model\Category;
 use Illuminate\View\View;
 
-class MenuComposer
+class AdminMenuComposer
 {
     public $category;
 
@@ -21,6 +21,6 @@ class MenuComposer
         $categories->each(function ($value) {
             $value->url = route('admin.getCat', ['cat' => $value->cat_url]);
         });
-        $view->with('admin.menu', $categories);
+        $view->with('menu', $categories);
     }
 }

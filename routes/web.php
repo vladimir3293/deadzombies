@@ -22,22 +22,25 @@ Route::get('/', 'IndexController@getIndex');
     Route::put('/admin/category/{Category}', 'Admin\CategoryController@putCategory');
 //Route::post('/admin/category/{Category}', 'Admin\CategoryController@deleteCategory');
     Route::delete('/admin/category/{Category}', 'Admin\CategoryController@deleteCategory');
+    // wtf
     Route::get('/admin/game/{Game}', 'Admin\GameController@getGame')->name('admin.getGame');
     Route::put('/admin/game/{Game}', 'Admin\GameController@putGame');
     Route::get('/admin/game/{game}', [
         'uses' => 'Admin\GameController@getIndex',
         'as' => 'admin.getGame']);
+    Route::delete('/admin/game/{Game}','Admin\GameController@deleteGame');
 //home
 Route::get('/', ['uses' => 'IndexController@getIndex', 'as' => 'index']);
 Route::get('/category/{Category}', 'CategoryController@getCategory')->name('getCat');
 Route::put('/category/{Category}', 'CategoryController@putCategory');
 //Route::post('/admin/category/{Category}', 'Admin\CategoryController@deleteCategory');
 Route::delete('/category/{Category}', 'CategoryController@deleteCategory');
-Route::get('/game/{Game}', 'GameController@getGame')->name('getGame');
+Route::get('/{Category}/{Game}', 'GameController@getGame')->name('getGame');
 Route::put('/game/{Game}', 'GameController@putGame');
+
 Route::get('/game/{game}', [
     'uses' => 'GameController@getIndex',
-    'as' => 'getGame']);
+    'as' => 'getdGame']);
 
 
 

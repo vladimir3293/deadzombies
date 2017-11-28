@@ -1,9 +1,9 @@
-@extends('layouts.layout')
+@extends('layouts.adminLayout')
 
 @section('title','Админка')
 
 @section('sidebar')
-    @include('sidebar')
+    @include('admin.menu')
 @endsection
 
 @section('right_content')

@@ -17,7 +17,7 @@ class GameController extends Controller
         $categories = $category::all();
         $Game->cat = $Game->category ? $Game->category->cat_name : 'НЕТ';
         $Game->flash = Storage::disk('pub')->exists("/games/$Game->game_url.swf") ? 'ЕСТЬ' : 'НЕТ';
-        $Game->img1 = Storage::disk('pub')->exists("/img/$Game->game_url-first.jpg") ? 'ЕСТЬ' : 'НЕТ';
+        $Game->img1 = Storage::disk('pub')->exists("/img/$Game->game_url.jpg") ? 'ЕСТЬ' : 'НЕТ';
         $Game->img2 = Storage::disk('pub')->exists("/img/$Game->game_url-second.jpg") ? 'ЕСТЬ' : 'НЕТ';
         $Game->img3 = Storage::disk('pub')->exists("/img/$Game->game_url-third.jpg") ? 'ЕСТЬ' : 'НЕТ';
         return view('admin.game', ['game' => $Game, 'categories' => $categories]);
@@ -49,15 +49,15 @@ class GameController extends Controller
 
 
         if (null !== $request->file('img1')) {
-            $this->createImage($Game->game_url, $request->file('img1'), 'first');
+            $this->createImage($Game->game_url, $request->file('img1'));
         }
 
         if (null !== $request->file('img2')) {
-            $this->createImage($Game->game_url, $request->file('img2'), 'second');
+            $this->createImage($Game->game_url, $request->file('img2'), '-second');
         }
 
         if (null !== $request->file('img3')) {
-            $this->createImage($Game->game_url, $request->file('img3'), 'third');
+            $this->createImage($Game->game_url, $request->file('img3'), '-third');
         }
 
         //TODO rename flash and img
@@ -69,10 +69,10 @@ class GameController extends Controller
                 Storage::disk('pub')->move("/games/$Game->game_url.swf", "/games/$newUrl.swf");
             }
 
-            if (Storage::disk('pub')->exists("/img/$Game->game_url-first.jpg")) {
-                Storage::disk('pub')->move("/img/$Game->game_url-first.jpg", "/img/$newUrl-first.jpg");
-                Storage::disk('pub')->move("/img/$Game->game_url-first-small.jpg", "/img/$newUrl-first-small.jpg");
-                Storage::disk('pub')->move("/img/$Game->game_url-first-large.jpg", "/img/$newUrl-first-large.jpg");
+            if (Storage::disk('pub')->exists("/img/$Game->game_url.jpg")) {
+                Storage::disk('pub')->move("/img/$Game->game_url.jpg", "/img/$newUrl.jpg");
+                Storage::disk('pub')->move("/img/$Game->game_url-small.jpg", "/img/$newUrl-small.jpg");
+                Storage::disk('pub')->move("/img/$Game->game_url-large.jpg", "/img/$newUrl-large.jpg");
             }
 
             if (Storage::disk('pub')->exists("/img/$Game->game_url-second.jpg")) {
@@ -95,7 +95,12 @@ class GameController extends Controller
         return redirect()->route('admin.getGame', [$Game]);
     }
 
-    public function createImage(string $url, $img, string $imgPrefix)
+    public function deleteGame(Game $Game)
+    {
+        dd($Game);
+    }
+    
+    public function createImage(string $url, $img, string $imgPrefix = '')
     {
         $old_size = getimagesize($img);
 
@@ -109,9 +114,9 @@ class GameController extends Controller
         imagecopyresampled($medium_size, $original, 0, 0, 0, 0, 220, 153, $old_size[0], $old_size[1]);
         imagecopyresampled($large_size, $original, 0, 0, 0, 0, 385, 268, $old_size[0], $old_size[1]);
 
-        imagejpeg($small_size, public_path("/img/$url-$imgPrefix-small.jpg"));
-        imagejpeg($medium_size, public_path("/img/$url-$imgPrefix.jpg"));
-        imagejpeg($large_size, public_path("/img/$url-$imgPrefix-large.jpg"));
+        imagejpeg($small_size, public_path("/img/$url$imgPrefix-small.jpg"));
+        imagejpeg($medium_size, public_path("/img/$url$imgPrefix.jpg"));
+        imagejpeg($large_size, public_path("/img/$url$imgPrefix-large.jpg"));
     }
 
 //TODO wtf, where must save it

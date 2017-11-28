@@ -1,4 +1,4 @@
-@extends('admin.admin')
+@extends('admin.index')
 @section('right_content')
     <h1>{{ $category->cat_name }}</h1>
     <div class="cat_edit_other">

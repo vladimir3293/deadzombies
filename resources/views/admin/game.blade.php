@@ -1,4 +1,4 @@
-@extends('admin.admin')
+@extends('admin.index')
 
 @section('title','Аddddd')
 
@@ -74,20 +74,13 @@
                     <input type="submit" value="Изменить">
                 </div>
             </form>
-
-        <!--<div class="files">
-                <form method="post" action=""
-                /admin/game/{{ $game->game_url }}" enctype="multipart/form-data">
-                <input type="file" name="image">
-                <button type="submit">Отп</button>
-                </form>-->
-
-
-            <div class="game_delete">
-                <span>Удалить</span>
-                <input name="game_delete" type="checkbox" value="1">
-            </div>
-            <input type="submit" value="Изменить">
+            <form method="post" action="/admin/game/{{ $game->game_url }}">
+                {{ method_field('DELETE') }}
+                {{ csrf_field() }}
+                <div class="game_delete">
+                    <span>Удалить игру</span>
+                    <input type="submit" value="Удалить">
+                </div>
             </form>
         </div>
     </div>

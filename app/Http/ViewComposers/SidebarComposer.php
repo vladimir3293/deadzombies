@@ -27,25 +27,26 @@ class SidebarComposer
     {
 //dd($this->request->path());
 
-        if ($this->request->is('category/*')){
+        if ($this->request->is('category/*')) {
             //$this->game->
 
 
             echo '1221';
         }
-        if($this->request->is('/')){
-            $topGames = $this->game->orderBy('game_like','desc')->take(4)->get();
-            $topGames->each(function($value) {
-$cat_url = $value->category()->where('')
-               $value->url = route('getGame',['category'=>$cat_url,'game'=>$value->game_url])
-
+        if ($this->request->is('/')) {
+            $topGames = $this->game->orderBy('game_like', 'desc')->take(4)->get();
+            $topGames->each(function ($value) {
+                $cat_url = $value->category()->get()[0]->cat_url;
+                $value->url = route('getGame', ['category' => $cat_url, 'game' => $value->game_url]);
+                $value->img_url = "/img/$value->game_url-small.jpg";
+                //dd($value->url);
             });
             echo 'koren';
         }
-            $categories = $this->category::orderBy('cat_order')->get();
+        $categories = $this->category::orderBy('cat_order')->get();
         $categories->each(function ($value) {
             $value->url = route('getCat', ['cat' => $value->cat_url]);
         });
-        $view->with('menu', $categories);
+        $view->with(['menu'=>$categories,'topGames'=>$topGames]);
     }
 }
