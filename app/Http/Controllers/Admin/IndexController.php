@@ -23,8 +23,6 @@ class IndexController extends Controller
                 '/img/' . $games->game_url . '.jpg' :
                 '/img/empty.jpg';
         });
-
-     //   dd($games);
         return view('admin.index',['games'=>$games]);
     }
 }

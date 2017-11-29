@@ -71,7 +71,7 @@
                         <input type="file" name="img3">
 
                     </div>
-                    <input type="submit" value="Изменить">
+                    <input type="submit" value="Применить">
                 </div>
             </form>
             <form method="post" action="/admin/game/{{ $game->game_url }}">

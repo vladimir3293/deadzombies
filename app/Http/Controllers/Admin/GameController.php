@@ -25,6 +25,7 @@ class GameController extends Controller
 
     public function putGame(Game $Game, Request $request)
     {
+        //TODO if show check category, and if delete cat
         $Game->game_title = $request->game_title;
         $Game->game_desc_meta = $request->game_desc_meta;
         $Game->game_key_meta = $request->game_key_meta;

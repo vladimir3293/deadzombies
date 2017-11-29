@@ -41,18 +41,18 @@
         <span>NEW GAMES</span>
     </div>
     <div class="n_block">
-        @if(isset($new_games))
-            <?php foreach($new_games as $new_game_name=>$new_game_all):?>
-            <div class="line">
-                <a href="/<?php echo $new_game_all['cat_url'] . '/' . $new_game_all['game_url'] . '.html';?>"><img
-                            alt="<?php echo $new_game_name;?>"
-                            src="/img/<?php echo $new_game_all['game_url'] . '-first-small.jpg';?>"></a>
-                <div class="right">
-                    <a href="/<?php echo $new_game_all['cat_url'] . '/' . $new_game_all['game_url'] . '.html';?>"><?php echo $new_game_name;?></a>
-                    <div class="clr"></div>
+        @if(isset($newGames))
+            @foreach($newGames as $game)
+                <div class="line">
+                    <a href="{{ $game->url }}"><img
+                                alt="{{ $game->game_name }}"
+                                src="{{ $game->imgUrl }}"></a>
+                    <div class="right">
+                        <a href="{{ $game->url }}">{{ $game->game_name }}</a>
+                        <div class="clr"></div>
+                    </div>
                 </div>
-            </div>
-            <?php endforeach; ?>
+            @endforeach
         @endif
     </div>
 </div>

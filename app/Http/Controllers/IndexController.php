@@ -11,7 +11,7 @@ class IndexController extends Controller
     {
         //TODO transfer to model
         //TODO pagination
-        $games = $game->all();
+        $games = $game->where('game_show', true)->get();
         $games->each(function ($games) {
             $cat_url = $games->category()->get()[0]->cat_url;
             $games->url = route('getGame', ['category' => $cat_url, 'game' => $games->game_url]);
