@@ -3,24 +3,15 @@
 namespace Deadzombies\Http\Controllers;
 
 
+use Deadzombies\Model\Category;
 use Deadzombies\Model\Game;
+use Illuminate\Http\Request;
 
 class GameController
 {
-    public function getAllGames(Game $game)
+    public function getGame(Category $Category, Game $Game, Request $request)
     {
-        //var_dump($game);
-        var_dump($game::all());
-        //echo __METHOD__;
-    }
-
-    public function test()
-    {
-
-        $users = new \Deadzombies\Game();
-        $users->game_url = '123';
-        $users->save();
-        //var_dump($users = \Deadzombies\Game::all());
+        dd($Category, $Game);
 
     }
 }

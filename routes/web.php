@@ -29,19 +29,11 @@ Route::get('/', 'IndexController@getIndex');
         'uses' => 'Admin\GameController@getIndex',
         'as' => 'admin.getGame']);
     Route::delete('/admin/game/{Game}','Admin\GameController@deleteGame');
+
 //home
 Route::get('/', ['uses' => 'IndexController@getIndex', 'as' => 'index']);
 Route::get('/category/{Category}', 'CategoryController@getCategory')->name('getCat');
-Route::put('/category/{Category}', 'CategoryController@putCategory');
-//Route::post('/admin/category/{Category}', 'Admin\CategoryController@deleteCategory');
-Route::delete('/category/{Category}', 'CategoryController@deleteCategory');
 Route::get('/{Category}/{Game}', 'GameController@getGame')->name('getGame');
-Route::put('/game/{Game}', 'GameController@putGame');
-
-Route::get('/game/{game}', [
-    'uses' => 'GameController@getIndex',
-    'as' => 'getdGame']);
-
 
 
 Route::get('login', 'Auth\LoginController@showLoginForm')->name('login');
