@@ -13,6 +13,6 @@ class GameController
     {
         dd($Category, $Game);
         $Game->categoryUrl = route('getCat', $Category->cat_url);
-        return view('game','game'= $Game);
+        return view('game');
     }
 }
