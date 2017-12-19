@@ -8,6 +8,7 @@ class Game extends Model
 {
     public $timestamps = false;
     public $primaryKey = 'id';
+    public $guarded = [];
 
     public function category()
     {

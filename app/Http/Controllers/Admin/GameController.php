@@ -153,6 +153,7 @@ class GameController extends Controller
 
     public function create_url($url)
     {
+        $st = preg_replace ("/[^a-zA-ZА-Яа-я0-9\s]/","",$st);
         //var_dump($url);
         $url = mb_strtolower($url, 'UTF-8');    #переводит все буквы в нижний регистр
         //var_dump($url);
