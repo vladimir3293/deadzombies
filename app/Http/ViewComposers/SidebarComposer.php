@@ -17,19 +17,22 @@ class SidebarComposer
 
     public function __construct(Category $category, Request $request, Game $game)
     {
+        //dd($request->fullUrl(),$request->ip(),$request->segments());
         $this->category = $category;
         $this->request = $request;
         $this->game = $game;
 
     }
 
+//TODO regex
     public function compose(View $view)
     {
         $topGames = [];
         $newGames = [];
 
-        if($this->request->is('*/*')){
-            $catUrl = str_after($this->request->path(), '/');
+        if (preg_match('/^(.+)\/(.+)$/', $this->request->path())) {
+
+            $catUrl = $this->request->path();
             $category = $this->category->where('cat_url', $catUrl)->get()->first();
             $topGames = $category->game()->orderBy('game_like', 'desc')->take(4)->get();
             foreach ($topGames as $game) {
@@ -45,9 +48,11 @@ class SidebarComposer
 
         }
 
-        if ($this->request->is('category/*')) {
-            $catUrl = str_after($this->request->path(), '/');
+        if (preg_match('/^[^\/].+$/', $this->request->path())) {
+            $catUrl = $this->request->path();
+            //dd($catUrl);
             $category = $this->category->where('cat_url', $catUrl)->get()->first();
+            //dd($this->category->where('cat_url', $catUrl)->get());
             $topGames = $category->game()->orderBy('game_like', 'desc')->take(4)->get();
             foreach ($topGames as $game) {
                 $game->url = route('getGame', ['category' => $category->cat_url, 'game' => $game->game_url]);
@@ -61,7 +66,8 @@ class SidebarComposer
             }
         }
 
-        if ($this->request->is('/')) {
+        if (preg_match('/^\/$/', $this->request->path())) {
+
             $topGames = $this->game->orderBy('game_like', 'desc')->take(4)->get();
             $topGames->each(function ($game) {
                 $cat_url = $game->category()->get()->first()->cat_url;

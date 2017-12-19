@@ -32,7 +32,7 @@ Route::get('/', 'IndexController@getIndex');
 
 //home
 Route::get('/', ['uses' => 'IndexController@getIndex', 'as' => 'index']);
-Route::get('/category/{Category}', 'CategoryController@getCategory')->name('getCat');
+Route::get('/{Category}', 'CategoryController@getCategory')->name('getCat');
 Route::get('/{Category}/{Game}', 'GameController@getGame')->name('getGame');
 
 
