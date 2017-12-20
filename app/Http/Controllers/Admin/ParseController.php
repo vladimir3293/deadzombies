@@ -4,29 +4,27 @@ namespace Deadzombies\Http\Controllers\Admin;
 
 use Deadzombies\Model\Game;
 use Deadzombies\Parser\Parser;
+use Deadzombies\UrlGenerator\UrlGenerator;
 use Illuminate\Http\Request;
 use Deadzombies\Http\Controllers\Controller;
 
 class ParseController extends Controller
 {
-    public function getParser(Parser $parser, Game $game)
+    public function getParser(Parser $parser, Game $game, UrlGenerator $urlGenerator)
     {
-        //dd($game);
         $onePageURL = $parser->getGamesUrls(2);
         $oneGame = $onePageURL[0];
         $oneGameData = $parser->getGame($oneGame);
-        //dd($oneGameData);
+        //dd($urlGenerator->urlCreate('fsd'));
 
 //TODO tags, categories, img
-        //set_time_limit(0);
-phpinfo();
-dd('fsd');
+
+        dd('fsd');
         //foreach ($onePageURL as $url) {
-            $oneGameData = $parser->getGame($url);
+            $oneGameData = $parser->getGame($oneGame);
             $game->create([
                 'game_name' => $oneGameData['name'],
-              //TODO
-                'game_url'=>'',
+                'game_url'=>$urlGenerator->urlCreate($oneGameData['name']),
                 'game_desc' => $oneGameData['desc'],
                 'game_title' => $oneGameData['name'],
                 'game_desc_meta'=>$oneGameData['name'],
@@ -43,24 +41,6 @@ dd('fsd');
                 'category' => $oneGameData['cat']
             ]);
         //}
-
-        //dd($game);
-        /*
-         foreach ($onePageURL as $url) {
-             $oneGameData = $parser->getGame($url);
-
-             $game->name = $oneGameData['name'];
-             $game->source = $oneGameData['url'];
-             $game->img = $oneGameData['img'];
-             $game->width = $oneGameData['width'];
-             $game->height = $oneGameData['height'];
-             $game->desc = $oneGameData['desc'];
-             $game->category = $oneGameData['cat'];
-             $game->save();
-         }
-        */
-        //   dd($game);
-
 
         return view('admin.parser');
     }

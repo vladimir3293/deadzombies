@@ -148,22 +148,4 @@ class GameController extends Controller
         imagejpeg($medium_size, public_path("/img/$url$imgPrefix.jpg"));
         imagejpeg($large_size, public_path("/img/$url$imgPrefix-large.jpg"));
     }
-
-//TODO wtf, where must save it
-
-    public function create_url($url)
-    {
-        $st = preg_replace ("/[^a-zA-ZА-Яа-я0-9\s]/","",$st);
-        //var_dump($url);
-        $url = mb_strtolower($url, 'UTF-8');    #переводит все буквы в нижний регистр
-        //var_dump($url);
-        $rus = array('а', 'б', 'в', 'г', 'д', 'е', 'ё', 'ж', 'з', 'и', 'й', 'к', 'л', 'м', 'н', 'о', 'п', 'р', 'с', 'т', 'у', 'ф', 'х', 'ц', 'ч', 'ш', 'щ', 'ъ', 'ы', 'ь', 'э', 'ю', 'я');
-        $eng = array('a', 'b', 'v', 'g', 'd', 'e', 'e', 'zh', 'z', 'i', 'i', 'k', 'l', 'm', 'n', 'o', 'p', 'r', 's', 't', 'u', 'f', 'kh', 'ts', 'ch', 'sh', 'shch', 'ie', 'y', '', 'e', 'iu', 'ia',);
-        $url = str_replace($rus, $eng, $url);
-        $url = str_replace(' ', '-', $url);            #заменяет пробелы на дефис
-        #$createurl=stripcslashes($createurl);
-
-        return $url;
-    }
-
 }

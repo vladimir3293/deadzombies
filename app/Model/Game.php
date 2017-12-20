@@ -2,7 +2,9 @@
 
 namespace Deadzombies\Model;
 
+use Deadzombies\Model\Tag;
 use Illuminate\Database\Eloquent\Model;
+use Deadzombies\Model\Category;
 
 class Game extends Model
 {
@@ -12,7 +14,12 @@ class Game extends Model
 
     public function category()
     {
-        return $this->belongsTo('Deadzombies\Model\Category', 'game_cat','cat_id');
+        return $this->belongsTo(Category::class, 'game_cat','cat_id');
+    }
+
+    public function tag()
+    {
+        return $this->belongsToMany(Tag::class);
     }
 
     public function getRouteKeyName()

@@ -35,7 +35,7 @@ Route::get('/admin/parser', 'Admin\ParseController@getParser')->name('admin.getP
 //home
 Route::get('/', ['uses' => 'IndexController@getIndex', 'as' => 'index']);
 Route::get('/{Category}', 'CategoryController@getCategory')->name('getCat');
-//Route::get('/{Category}/{Game}', 'GameController@getGame')->name('getGame');
+Route::get('/{Category}/{Game}', 'GameController@getGame')->name('getGame');
 
 
 Route::get('login', 'Auth\LoginController@showLoginForm')->name('login');
