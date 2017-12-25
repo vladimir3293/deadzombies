@@ -17,7 +17,7 @@ class Parser
     {
         $games = [];
         $parserDOM = $this->parseLib->file_get_html("https://www.gamedistribution.com/gamelist/allcompanies/allcategories/html5?selectedPage=$page");
-        $a = $parserDOM->find('div.tiles a');
+        $a = $parserDOM->find('div.tiles')[3]->find('a');
         foreach ($a as $card) {
             $games[] = 'https://gamedistribution.com' . $card->href;
         }

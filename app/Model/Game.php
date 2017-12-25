@@ -9,7 +9,7 @@ use Deadzombies\Model\Category;
 class Game extends Model
 {
     public $timestamps = false;
-    public $primaryKey = 'id';
+    //public $primaryKey = 'gameid';
     public $guarded = [];
 
     public function category()
