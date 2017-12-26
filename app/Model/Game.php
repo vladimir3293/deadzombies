@@ -17,7 +17,7 @@ class Game extends Model
         return $this->belongsTo(Category::class, 'game_cat','cat_id');
     }
 
-    public function tag()
+    public function tags()
     {
         return $this->belongsToMany(Tag::class);
     }
