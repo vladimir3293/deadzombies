@@ -16,12 +16,19 @@ class ParseController extends Controller
     public function getParser(\Deadzombies\Model\Tag $tagModel, Parser $parser, Category $categoryModel,
                               Game $gameModel, UrlGenerator $urlGenerator, Filesystem $filesystem)
     {
+
         $onePageUrl = $parser->getGamesUrls(2);
-        $onePageUrlTest[] = $onePageUrl[0];
-        $onePageUrlTest[] = $onePageUrl[1];
-        $onePageUrlTest[] = $onePageUrl[2];
-        $onePageUrlTest[] = $onePageUrl[3];
+       /*
+        dd($onePageUrl[27]);
+        for ($i = 0;$i < 40; $i++) {
+            $onePageUrlTest[] = $onePageUrl[$i];
+         }
+       */
+
+         $onePageUrlTest[] = $onePageUrl[27];
+         //fastcgi_read_timeout 300;
         foreach ($onePageUrlTest as $oneGame) {
+            //dd($oneGame);
             $oneGameData = $parser->getGame($oneGame);
             $game = $gameModel->where('game_url', $urlGenerator->urlCreate($oneGameData['name']))->get();
             if ($game->isEmpty()) {
@@ -60,7 +67,7 @@ class ParseController extends Controller
                 $category = $categoryModel->firstOrCreate(
                     ['cat_url' => $urlGenerator->urlCreate($oneGameData['cat'])],
                     [
-                        'cat_name'=>$oneGameData['cat'],
+                        'cat_name' => $oneGameData['cat'],
                         'cat_url' => $urlGenerator->urlCreate($oneGameData['cat']),
                         'cat_desc' => 'standard',
                         'cat_h1' => 'standard',

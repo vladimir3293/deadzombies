@@ -26,8 +26,9 @@ class Parser
 
     public function getGame($gameURL)
     {
+        dd($gameURL);
         $rawData = $this->parseLib->file_get_html($gameURL);
-
+dd($rawData->find('h1'));
         $h1 = $rawData->find('h1')[0]->innertext;
         $imgUrl = $rawData->find('div.screenshots img')[0]->src;
         $gameUrl = $rawData->find('div[data-type="url"]')[0]->children(1)->onclick;
