@@ -8,10 +8,10 @@ class Category extends Model
 {
     public $timestamps = false;
     //public $primaryKey = 'cat_id';
-
+public $guarded = [];
     public function game()
     {
-        return $this->hasMany('Deadzombies\Model\Game','game_cat','cat_id');
+        return $this->hasMany('Deadzombies\Model\Game');
     }
 
     public function getRouteKeyName()

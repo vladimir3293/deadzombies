@@ -129,7 +129,7 @@ class GameController extends Controller
         $Game->delete();
         return redirect('admin');
     }
-
+//TODO WTFFFFF
     public function createImage(string $url, $img, string $imgPrefix = '')
     {
         $old_size = getimagesize($img);
