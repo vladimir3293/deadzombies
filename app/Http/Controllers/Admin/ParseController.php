@@ -4,6 +4,7 @@ namespace Deadzombies\Http\Controllers\Admin;
 
 use Deadzombies\Model\Category;
 use Deadzombies\Model\Game;
+use Deadzombies\Model\Tag;
 use Deadzombies\Parser\Parser;
 use Deadzombies\UrlGenerator\UrlGenerator;
 use Illuminate\Contracts\Filesystem\Filesystem;
@@ -13,20 +14,30 @@ use Illuminate\Support\Facades\Storage;
 
 class ParseController extends Controller
 {
-    public function getParser(\Deadzombies\Model\Tag $tagModel, Parser $parser, Category $categoryModel,
+    public function getParser(Tag $tagModel, Parser $parser, Category $categoryModel,
                               Game $gameModel, UrlGenerator $urlGenerator, Filesystem $filesystem)
     {
+//get urls from one page
+        $onePageUrl = collect($parser->getGamesUrls(4));
 
-        $onePageUrl = $parser->getGamesUrls(2);
-       /*
-        dd($onePageUrl[27]);
-        for ($i = 0;$i < 40; $i++) {
-            $onePageUrlTest[] = $onePageUrl[$i];
-         }
-       */
+        /*$pageUrls = [];
+        foreach ($onePageUrl as $value) {
+            //TODO WTF
+            $pageUrls[] = $urlGenerator->urlCreate(htmlspecialchars_decode(explode('.', explode('/', $value)[5])[0], ENT_QUOTES));
+        }*/
+        //$pageUrls = collect($pageUrls);
 
-         $onePageUrlTest[] = $onePageUrl[27];
-         //fastcgi_read_timeout 300;
+        $existUrls = $gameModel->pluck('original_url');
+
+        $onePageUrlTest = $onePageUrl->diff($existUrls);
+        /*
+                for ($i = 0; $i < 40; $i++) {
+                    $onePageUrlTest[] = $onePageUrl[$i];
+                }
+                //dd($_SERVER);
+        */
+        ini_set('default_socket_timeout', 900);
+        //  $onePageUrlTest[] = $onePageUrl[32];
         foreach ($onePageUrlTest as $oneGame) {
             //dd($oneGame);
             $oneGameData = $parser->getGame($oneGame);
@@ -51,6 +62,7 @@ class ParseController extends Controller
                     'img' => $oneGameData['img'],
                     'width' => $oneGameData['width'],
                     'height' => $oneGameData['height'],
+                    'original_url' => $oneGameData['original_url']
                     //'category' => $oneGameData['cat']
                 ]);
                 if (!empty($oneGameData['tags'])) {

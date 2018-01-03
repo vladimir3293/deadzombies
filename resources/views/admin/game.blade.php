@@ -83,5 +83,6 @@
                 </div>
             </form>
         </div>
+        <iframe src="{{ $game->source }}" width="{{ $game->width }}" height="{{ $game->height }}" scrolling="none" frameborder="0"></iframe>
     </div>
 @endsection

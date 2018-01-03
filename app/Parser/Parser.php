@@ -24,12 +24,14 @@ class Parser
         return $games;
     }
 
+    //parser from gamedistr
     public function getGame($gameURL)
     {
-        dd($gameURL);
+        $gameURL = htmlspecialchars_decode($gameURL,ENT_QUOTES);
         $rawData = $this->parseLib->file_get_html($gameURL);
-dd($rawData->find('h1'));
         $h1 = $rawData->find('h1')[0]->innertext;
+        //dd($gameURL,$h1);
+        $h1 = htmlspecialchars_decode($h1,ENT_QUOTES);
         $imgUrl = $rawData->find('div.screenshots img')[0]->src;
         $gameUrl = $rawData->find('div[data-type="url"]')[0]->children(1)->onclick;
         $gameUrl = explode('\'', $gameUrl)[1];
@@ -49,7 +51,9 @@ dd($rawData->find('h1'));
 
         $descRaw = $rawData->find('div#column1 p');
         $desc = $descRaw[0]->innertext;
+        $desc = htmlspecialchars_decode($desc,ENT_QUOTES);
         return [
+            'original_url'=> $gameURL,
             'name' => $h1,
             'img' => $imgUrl,
             'url' => $gameUrl,
