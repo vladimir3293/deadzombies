@@ -16,7 +16,8 @@ class IndexController extends Controller
     {
         //TODO transfer to model
         //TODO pagination
-        $games = $game->all();
+        $games = $game->simplePaginate(5);
+        //dd($games);
         $games->each(function ($games) {
             $games->url = route('admin.getGame', $games->game_url);
             $games->img = file_exists(public_path() . '/img/' . $games->game_url . '.jpg') ?
