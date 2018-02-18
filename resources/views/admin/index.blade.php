@@ -2,6 +2,8 @@
 
 @section('title','Админка')
 
+
+{{-- TODO wtf check layout --}}
 @section('sidebar')
     @include('admin.menu')
 @endsection

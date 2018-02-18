@@ -17,18 +17,19 @@ Route::get('/', 'IndexController@getIndex');
 //todo admin one grpup
 //Route::middleware(['auth'])->group(function () {
 //admin
-    Route::get('/admin/', ['uses' => 'Admin\IndexController@getIndex', 'as' => 'admin']);
-    Route::get('/admin/category/{Category}', 'Admin\CategoryController@getCategory')->name('admin.getCat');
-    Route::put('/admin/category/{Category}', 'Admin\CategoryController@putCategory');
+Route::get('learnjavascript', 'LearnJavaScriptController@getIndex');
+Route::get('/admin/', ['uses' => 'Admin\IndexController@getIndex', 'as' => 'admin']);
+Route::get('/admin/category/{Category}', 'Admin\CategoryController@getCategory')->name('admin.getCat');
+Route::put('/admin/category/{Category}', 'Admin\CategoryController@putCategory');
 //Route::post('/admin/category/{Category}', 'Admin\CategoryController@deleteCategory');
-    Route::delete('/admin/category/{Category}', 'Admin\CategoryController@deleteCategory');
-    // wtf
-    Route::get('/admin/game/{Game}', 'Admin\GameController@getGame')->name('admin.getGame');
-    Route::put('/admin/game/{Game}', 'Admin\GameController@putGame');
-    Route::get('/admin/game/{game}', [
-        'uses' => 'Admin\GameController@getIndex',
-        'as' => 'admin.getGame']);
-    Route::delete('/admin/game/{Game}','Admin\GameController@deleteGame');
+Route::delete('/admin/category/{Category}', 'Admin\CategoryController@deleteCategory');
+// wtf
+Route::get('/admin/game/{Game}', 'Admin\GameController@getGame')->name('admin.getGame');
+Route::put('/admin/game/{Game}', 'Admin\GameController@putGame');
+Route::get('/admin/game/{game}', [
+    'uses' => 'Admin\GameController@getIndex',
+    'as' => 'admin.getGame']);
+Route::delete('/admin/game/{Game}', 'Admin\GameController@deleteGame');
 
 
 Route::get('/admin/parser', 'Admin\ParseController@getParser')->name('admin.getParser');
