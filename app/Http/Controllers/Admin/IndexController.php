@@ -16,7 +16,7 @@ class IndexController extends Controller
     {
         //TODO transfer to model
         //TODO pagination
-        $games = $game->simplePaginate(5);
+        $games = $game->simplePaginate(12);
         //dd($games);
         $games->each(function ($games) {
             $games->url = route('admin.getGame', $games->game_url);

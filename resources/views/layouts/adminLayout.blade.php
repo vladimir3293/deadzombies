@@ -15,11 +15,8 @@
 <body>
 <div class="wrapper container">
     <div class="row">
-        <aside class="col-md-2">
-            <div class="sidebar">
+        <aside class="sidebar col-md-2">
                 @include('admin.menu')
-            </div>
-
         </aside>
         <section class="col-md-10">
             @yield('right_content')

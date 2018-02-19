@@ -3,14 +3,9 @@
 @section('title','Админка')
 
 
-{{-- TODO wtf check layout --}}
-@section('sidebar')
-    @include('admin.menu')
-@endsection
-
 @section('right_content')
     @if(isset($games))
         @include('gameCard')
+        {{ $games->links() }}
     @endif
-    {{ $games->links() }}
 @endsection

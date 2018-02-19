@@ -9,6 +9,7 @@ class Category extends Model
     public $timestamps = false;
     //public $primaryKey = 'cat_id';
 public $guarded = [];
+
     public function game()
     {
         return $this->hasMany('Deadzombies\Model\Game');
