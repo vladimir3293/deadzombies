@@ -21,6 +21,10 @@ Route::get('learnjavascript', 'LearnJavaScriptController@getIndex');
 Route::get('/admin/', ['uses' => 'Admin\IndexController@getIndex', 'as' => 'admin']);
 Route::get('/admin/category/{Category}', 'Admin\CategoryController@getCategory')->name('admin.getCat');
 Route::put('/admin/category/{Category}', 'Admin\CategoryController@putCategory');
+
+Route::get('/admin/', ['uses' => 'Admin\IndexController@getIndex', 'as' => 'admin']);
+Route::get('/admin/category/{Category}', 'Admin\CategoryController@getCategory')->name('admin.getCat');
+Route::put('/admin/category/{Category}', 'Admin\CategoryController@putCategory');
 //Route::post('/admin/category/{Category}', 'Admin\CategoryController@deleteCategory');
 Route::delete('/admin/category/{Category}', 'Admin\CategoryController@deleteCategory');
 // wtf
@@ -35,9 +39,11 @@ Route::delete('/admin/game/{Game}', 'Admin\GameController@deleteGame');
 Route::get('/admin/parser', 'Admin\ParseController@getParser')->name('admin.getParser');
 //home
 Route::get('/', ['uses' => 'IndexController@getIndex', 'as' => 'index']);
+Route::get('/javascript', 'LearnJsController@indexJs')->name('sd');
+
 Route::get('/{Category}', 'CategoryController@getCategory')->name('getCat');
 Route::get('/{Category}/{Game}', 'GameController@getGame')->name('getGame');
-
+Route::get('/javascript', 'LearnJsController@indexJs')->name('sd');
 
 Route::get('login', 'Auth\LoginController@showLoginForm')->name('login');
 Route::post('login', 'Auth\LoginController@login');

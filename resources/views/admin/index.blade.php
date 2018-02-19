@@ -12,4 +12,5 @@
     @if(isset($games))
         @include('gameCard')
     @endif
+    {{ $games->links() }}
 @endsection
