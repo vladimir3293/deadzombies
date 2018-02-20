@@ -9,11 +9,11 @@
 
     <link rel="icon" href="/favicon.ico" type="image/x-icon">
     <link rel="stylesheet" href="/css/app.css">
+    <link rel="stylesheet" href="/css/scss.css">
     <link rel="stylesheet" href="/css/test.css">
-
 </head>
 <body>
-<div class="wrapper container">
+<footer class="wrapper container">
     <div class="row">
         <aside class="sidebar col-md-2">
                 @include('admin.menu')
@@ -24,9 +24,9 @@
     </div>
 
     <div class="clr"></div>
-    <div class="footer">
+    <footer>
         @yield('footer')
-    </div>
+    </footer>
 </div>
 </body>
 </html>
