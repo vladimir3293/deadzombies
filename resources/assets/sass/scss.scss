@@ -1,0 +1,9 @@
+body {
+  .wrapper {
+    padding-top: 20px;
+    border: 1px solid #cccccc;
+    &__colored {
+      padding-top: 20px;
+    }
+  }
+}

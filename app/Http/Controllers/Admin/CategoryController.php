@@ -3,21 +3,21 @@
 namespace Deadzombies\Http\Controllers\Admin;
 
 use Deadzombies\Model\Category;
+use Deadzombies\Model\Game;
 use Illuminate\Http\Request;
 use Deadzombies\Http\Controllers\Controller;
 
 class CategoryController extends Controller
 {
     //todo only show games
-    public function getCategory(Category $Category)
+    public function getCategory(Category $Category, Game $game)
     {
-        $games = $Category->game;
+        $games = $game->where('category_id', $Category->id)->simplePaginate(3);
         foreach ($games as $game) {
             $game->url = route('admin.getGame', $game->game_url);
             $game->img = file_exists(public_path() . '/img/' . $game->game_url . '.jpg') ?
                 '/img/' . $game->game_url . '.jpg' :
                 '/img/empty.jpg';
-            //dd($game->img);
         }
         return view('admin.category', ['games' => $games, 'category' => $Category]);
     }

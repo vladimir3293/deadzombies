@@ -1,5 +1,5 @@
 <nav>
-<ul class="main_menu nav nav-pills nav-stacked">
+<ul class="main_menu">
     <li><a href="/">Home page</a></li>
     <li><a href="{{ route('admin') }}">Admin page</a></li>
     <li><a href="{{ route('admin.getParser') }}">Parser</a></li>
