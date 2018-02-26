@@ -1,17 +1,17 @@
-$border: 1px solid #cccccc;
-$color-card: #8c8d87;
 body {
   background-color: #ececec;
   font-family: Verdana, Arial, Tahoma, sans-serif;
   font-size: 10px;
   line-height: 1.5;
 }
+
 .wrapper {
   padding-top: 20px;
-  border: $border;
+  border: 1px solid #cccccc;
 }
 
-ol, ul {
+ol,
+ul {
   list-style: none;
   padding: 0px;
 }
@@ -20,13 +20,15 @@ ol, ul {
   padding: 1px 0 10px 0;
   background: #a8001c;
   border-radius: 3px;
-  border: $border
+  border: 1px solid #cccccc;
 }
 
 .main-nav {
-  background: rgb(253, 218, 95);
-  background: linear-gradient(to right, rgba(253, 218, 95, 1) 0%, rgba(252, 184, 32, 1) 100%);
-  box-shadow: 3px 3px 3px #a8001c;
+  background: #fdda5f;
+  background: -webkit-gradient(linear, left top, right top, from(#fdda5f), to(#fcb820));
+  background: linear-gradient(to right, #fdda5f 0%, #fcb820 100%);
+  -webkit-box-shadow: 3px 3px 3px #a8001c;
+          box-shadow: 3px 3px 3px #a8001c;
   margin: 15px 5px 5px 5px;
   border-radius: 4px;
   padding: 3px;
@@ -48,28 +50,29 @@ ol, ul {
 }
 
 .main-nav li a:hover {
-  background: rgb(255, 243, 191);
-  background: linear-gradient(to bottom, rgba(255, 243, 191, 1) 48%, rgba(253, 232, 157, 1) 49%);
+  background: #fff3bf;
+  background: -webkit-gradient(linear, left top, left bottom, color-stop(48%, #fff3bf), color-stop(49%, #fde89d));
+  background: linear-gradient(to bottom, #fff3bf 48%, #fde89d 49%);
   border-radius: 3px;
   border-bottom: 1px solid #f8be37;
 }
 
-
-
 .index-footer {
-  border: $border;
+  border: 1px solid #cccccc;
 }
 
 .game-card {
   display: inline-block;
   width: 100%;
-  background: $color-card;
+  background: #8c8d87;
   margin-bottom: 25px;
   border-radius: 6px;
-  box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
   position: relative;
   vertical-align: bottom;
-  box-shadow: 0 0 8px #F00;
+  -webkit-box-shadow: 0 0 8px #F00;
+          box-shadow: 0 0 8px #F00;
 }
 
 .game_img {
@@ -146,3 +149,4 @@ ol, ul {
   width: 18px;
   height: 17px;
 }
+

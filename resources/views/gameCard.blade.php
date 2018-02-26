@@ -1,6 +1,6 @@
 <div class="row">
     @foreach($games as $game)
-        <div class="col-sm-6 col-md-3">
+        <div class="col-sm-12 col-md-6">
             <div class="game-card">
                 <a class="game_link" href="{{ $game->url }}">{{ $game->game_name }}dssd</a>
                 <div class="game_img">

@@ -15,29 +15,30 @@
 <body>
 <div class="wrapper container">
     <div class="row">
-        <div class="sidebar col-md-3">
-            <header class="index-header">
-                {{-- todo layout composer for same parts --}}
-                <h1>Opisanie sayta h1</h1>
-                <img src="/img/logotype.png">
-            </header>
-            <nav class="main-nav">
-                <header>
-                    <h1>Navigasiya na sayte</h1>
+        <div class="col-md-5">
+            <div class="sidebar">
+                <header class="index-header">
+                    {{-- todo layout composer for same parts --}}
+                    <h1>Opisanie sayta h1</h1>
+                    <img src="/img/logotype.png">
                 </header>
-                @include('admin.menu')
-                <footer>
-                    <p>konec navigasii</p>
-                </footer>
-            </nav>
+                <nav class="main-nav">
+                    <header>
+                        <h1>Navigasiya na sayte</h1>
+                    </header>
+                    @include('admin.menu')
+                    <footer>
+                        <p>konec navigasii</p>
+                    </footer>
+                </nav>
+            </div>
         </div>
-
-        <section class="col-md-9">
+        <section class="col-md-19">
             @yield('right_content')
         </section>
     </div>
     <div class="row">
-        <footer class="index-footer col-md-12">
+        <footer class="index-footer col-md-24">
             <p> footer opisanie tam raznoe</p>
             @yield('footer')
         </footer>
