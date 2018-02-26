@@ -17,7 +17,7 @@ class IndexController extends Controller
     {
         //TODO transfer to model
         //TODO pagination
-        $pageIndex = $page->where('id',1)->get()->first();
+        $pageIndex = $page->where('name', 'index')->get()->first();
 
 
         $games = $game->simplePaginate(12);
@@ -28,6 +28,6 @@ class IndexController extends Controller
                 '/img/' . $games->game_url . '.jpg' :
                 '/img/empty.jpg';
         });
-        return view('admin.index',['games'=>$games, 'page'=>$pageIndex]);
+        return view('admin.index', ['games' => $games, 'page' => $pageIndex]);
     }
 }
