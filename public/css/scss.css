@@ -1,5 +1,9 @@
+@charset "UTF-8";
+
+/* Адрес цветовой схемы: https://colorscheme.ru/#2511.48wEle9- */
+
 body {
-  background-color: #ececec;
+  background-color: #f3f7d8;
   font-family: Verdana, Arial, Tahoma, sans-serif;
   font-size: 10px;
   line-height: 1.5;
@@ -18,15 +22,14 @@ ul {
 
 .sidebar {
   padding: 1px 0 10px 0;
-  background: #a8001c;
+  background: #cbceb8;
   border-radius: 3px;
   border: 1px solid #cccccc;
 }
 
 .main-nav {
-  background: #fdda5f;
-  background: -webkit-gradient(linear, left top, right top, from(#fdda5f), to(#fcb820));
-  background: linear-gradient(to right, #fdda5f 0%, #fcb820 100%);
+  background: -webkit-gradient(linear, left top, right top, from(#cbceb8), to(#b5b99a));
+  background: linear-gradient(to right, #cbceb8 0%, #b5b99a 100%);
   -webkit-box-shadow: 3px 3px 3px #a8001c;
           box-shadow: 3px 3px 3px #a8001c;
   margin: 15px 5px 5px 5px;
@@ -39,20 +42,17 @@ ul {
   padding: 14px 3px 4px 35px;
   text-decoration: none;
   font-size: 15px;
-  color: #7c0015;
-  text-shadow: 0 1px 1px #D5D5D5;
+  color: #f4f9db;
+  text-shadow: 0 1px 1px #9db71e;
   border-bottom: 1px solid #facb47;
   height: 50px;
+  background: -webkit-gradient(linear, left top, right top, from(#b2be6f), to(#7e893e));
+  background: linear-gradient(to right, #b2be6f, #7e893e);
 }
 
-.main-nav li {
-  vertical-align: middle;
-}
-
-.main-nav li a:hover {
-  background: #fff3bf;
-  background: -webkit-gradient(linear, left top, left bottom, color-stop(48%, #fff3bf), color-stop(49%, #fde89d));
-  background: linear-gradient(to bottom, #fff3bf 48%, #fde89d 49%);
+.main-nav a:hover {
+  background: -webkit-gradient(linear, left top, left bottom, color-stop(48%, #f4f9db), color-stop(49%, #d9ea84));
+  background: linear-gradient(to bottom, #f4f9db 48%, #d9ea84 49%);
   border-radius: 3px;
   border-bottom: 1px solid #f8be37;
 }
@@ -64,7 +64,7 @@ ul {
 .game-card {
   display: inline-block;
   width: 100%;
-  background: #8c8d87;
+  background: #cbceb8;
   margin-bottom: 25px;
   border-radius: 6px;
   -webkit-box-sizing: border-box;

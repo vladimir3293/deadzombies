@@ -1,11 +1,20 @@
+/* Адрес цветовой схемы: https://colorscheme.ru/#2511.48wEle9- */
+
+$color-primary-0: rgba(243, 247, 216, 1);
+$color-primary-1: rgba(203, 206, 184, 1);
+$color-primary-2: rgba(178, 190, 111, 1);
+$color-primary-3: rgba(244, 249, 219, 1);
+$color-primary-4: rgba(245, 249, 221, 1);
+
 $border: 1px solid #cccccc;
-$color-card: #8c8d87;
+
 body {
-  background-color: #ececec;
+  background-color: $color-primary-0;
   font-family: Verdana, Arial, Tahoma, sans-serif;
   font-size: 10px;
   line-height: 1.5;
 }
+
 .wrapper {
   padding-top: 20px;
   border: $border;
@@ -18,43 +27,34 @@ ol, ul {
 
 .sidebar {
   padding: 1px 0 10px 0;
-  background: #a8001c;
+  background: $color-primary-1;
   border-radius: 3px;
   border: $border
 }
 
 .main-nav {
-  background: rgb(253, 218, 95);
-  background: linear-gradient(to right, rgba(253, 218, 95, 1) 0%, rgba(252, 184, 32, 1) 100%);
+  background: linear-gradient(to right, $color-primary-1 0%, darken($color-primary-1, 10%) 100%);
   box-shadow: 3px 3px 3px #a8001c;
   margin: 15px 5px 5px 5px;
   border-radius: 4px;
   padding: 3px;
+  a {
+    display: block;
+    padding: 14px 3px 4px 35px;
+    text-decoration: none;
+    font-size: 15px;
+    color: $color-primary-3;
+    text-shadow: 0 1px 1px darken($color-primary-3,50%);
+    border-bottom: 1px solid #facb47;
+    height: 50px;
+    background: linear-gradient(to right, $color-primary-2, darken($color-primary-2, 20%));
+  }
+  a:hover {
+    background: linear-gradient(to bottom, $color-primary-3 48%, darken($color-primary-3, 20%) 49%);
+    border-radius: 3px;
+    border-bottom: 1px solid #f8be37;
+  }
 }
-
-.main-nav a {
-  display: block;
-  padding: 14px 3px 4px 35px;
-  text-decoration: none;
-  font-size: 15px;
-  color: #7c0015;
-  text-shadow: 0 1px 1px #D5D5D5;
-  border-bottom: 1px solid #facb47;
-  height: 50px;
-}
-
-.main-nav li {
-  vertical-align: middle;
-}
-
-.main-nav li a:hover {
-  background: rgb(255, 243, 191);
-  background: linear-gradient(to bottom, rgba(255, 243, 191, 1) 48%, rgba(253, 232, 157, 1) 49%);
-  border-radius: 3px;
-  border-bottom: 1px solid #f8be37;
-}
-
-
 
 .index-footer {
   border: $border;
@@ -63,7 +63,7 @@ ol, ul {
 .game-card {
   display: inline-block;
   width: 100%;
-  background: $color-card;
+  background: $color-primary-1;
   margin-bottom: 25px;
   border-radius: 6px;
   box-sizing: border-box;
