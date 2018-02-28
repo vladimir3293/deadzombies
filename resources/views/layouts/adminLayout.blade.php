@@ -22,7 +22,7 @@
                     <h1>Opisanie sayta h1</h1>
                     <img src="/img/logotype.png">
                 </header>
-                <nav class="main-nav">
+                <nav>
                     <header>
                         <h1>Navigasiya na sayte</h1>
                     </header>
@@ -33,9 +33,11 @@
                 </nav>
             </div>
         </div>
-        <section class="col-md-19">
-            @yield('right_content')
-        </section>
+        <div class="col-md-19">
+            <div class="right-content">
+                @yield('right_content')
+            </div>
+        </div>
     </div>
     <div class="row">
         <footer class="index-footer col-md-24">

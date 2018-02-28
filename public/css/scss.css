@@ -1,60 +1,79 @@
-@charset "UTF-8";
-
-/* Адрес цветовой схемы: https://colorscheme.ru/#2511.48wEle9- */
-
 body {
-  background-color: #f3f7d8;
+  background-color: #3c262a;
   font-family: Verdana, Arial, Tahoma, sans-serif;
   font-size: 10px;
   line-height: 1.5;
 }
 
 .wrapper {
-  padding-top: 20px;
-  border: 1px solid #cccccc;
-}
-
-ol,
-ul {
-  list-style: none;
-  padding: 0px;
+  -webkit-box-shadow: 0 0 8px #c66675;
+          box-shadow: 0 0 8px #c66675;
+  border-radius: 2px;
+  background: #461a21;
 }
 
 .sidebar {
-  padding: 1px 0 10px 0;
-  background: #cbceb8;
-  border-radius: 3px;
-  border: 1px solid #cccccc;
+  border-radius: 4px;
+  background-color: #a8001c;
 }
 
-.main-nav {
-  background: -webkit-gradient(linear, left top, right top, from(#cbceb8), to(#b5b99a));
-  background: linear-gradient(to right, #cbceb8 0%, #b5b99a 100%);
+nav {
   -webkit-box-shadow: 3px 3px 3px #a8001c;
           box-shadow: 3px 3px 3px #a8001c;
   margin: 15px 5px 5px 5px;
-  border-radius: 4px;
+  border-radius: 2px;
   padding: 3px;
 }
 
-.main-nav a {
+nav ul {
+  background: -webkit-gradient(linear, left top, right top, from(#fdd885), to(#fcb820));
+  background: linear-gradient(to right, #fdd885, #fcb820);
+  list-style: none;
+  border-radius: 4px;
+  padding: 0px;
+}
+
+nav a {
   display: block;
   padding: 14px 3px 4px 35px;
   text-decoration: none;
-  font-size: 15px;
-  color: #f4f9db;
-  text-shadow: 0 1px 1px #9db71e;
-  border-bottom: 1px solid #facb47;
+  font-size: 1.5em;
+  color: #7c0015;
+  text-shadow: 0 1px 0px #630011;
+  border-bottom: 1px solid #e6a003;
   height: 50px;
-  background: -webkit-gradient(linear, left top, right top, from(#b2be6f), to(#7e893e));
-  background: linear-gradient(to right, #b2be6f, #7e893e);
 }
 
-.main-nav a:hover {
-  background: -webkit-gradient(linear, left top, left bottom, color-stop(48%, #f4f9db), color-stop(49%, #d9ea84));
-  background: linear-gradient(to bottom, #f4f9db 48%, #d9ea84 49%);
+nav a:hover {
+  background: -webkit-gradient(linear, left top, left bottom, color-stop(48%, white), color-stop(49%, #fee09e));
+  background: linear-gradient(to bottom, white 48%, #fee09e 49%);
   border-radius: 3px;
   border-bottom: 1px solid #f8be37;
+}
+
+.right-content {
+  margin: 10px 10px 0 0;
+  background: #651E2A;
+  border-radius: 2px;
+  -webkit-box-shadow: 0 0 8px #F00;
+          box-shadow: 0 0 8px #F00;
+  padding: 0 15px 10px 15px;
+}
+
+.article-header h1 {
+  font-size: 24px;
+  margin: 5px 0 7px 4px;
+  color: #FCB820;
+}
+
+.box {
+  color: #000;
+  margin: 0px 0 15px 0;
+  text-align: justify;
+  background: #a8001c;
+  border-radius: 3px;
+  padding: 10px;
+  font-weight: 600;
 }
 
 .index-footer {
@@ -64,7 +83,7 @@ ul {
 .game-card {
   display: inline-block;
   width: 100%;
-  background: #cbceb8;
+  background: #b2be6f;
   margin-bottom: 25px;
   border-radius: 6px;
   -webkit-box-sizing: border-box;

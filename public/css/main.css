@@ -2,16 +2,24 @@ body,div,dl,dt,dd,ul,ol,li,h1,h2,h3,h4,h5,h6,pre,form,fieldset,input,textarea,p,
 body{background-color:#3c262a;font-family:Verdana,Arial,Tahoma,sans-serif;font-size:13px;line-height:1.5;}
 ol, ul{list-style:none;}
 h1{font-size:24px;margin:5px 0 7px 4px;color:#FCB820;}
+
 .wrap{box-shadow:0 0 8px #F00;position:relative;margin:15px auto 20px auto;border-radius:2px;background:#461a21;width:1000px;}
+.main_menu{background:rgb(253,218,95);background:linear-gradient(to right,rgba(253,218,95,1) 0%,rgba(252,184,32,1) 100%);box-shadow:3px 3px 3px #a8001c;margin:15px 5px 5px 5px;border-radius:4px;padding:3px;}
+.main_menu a{display:block;padding:4px 3px 4px 35px;text-decoration:none;font-size:15px;color:#7c0015;text-shadow:0 1px 1px #D5D5D5;border-bottom:1px solid #facb47;}
+.main_menu li a:hover{background:rgb(255,243,191);background:linear-gradient(to bottom,rgba(255,243,191,1) 48%,rgba(253,232,157,1) 49%);border-radius:3px;border-bottom:1px solid #f8be37;}
+
+
 .logo{height:75px;width:240px;}
 .sidebar{float:left;width:240px;border-radius:10px;box-sizing:border-box;margin:10px 10px 0 10px;}
 .sidebar_inner{padding:1px 0 10px 0;background:#a8001c;border-radius:3px;}
 .clr{clear:both!important;height:0;}
+
 .headline_others{margin-top:10px;padding-left:30px;}
 .headline_others img{vertical-align:middle;display:inline;height:40px;width:40px;}
 .headline_others span{color:#000;vertical-align:middle;display:inline;font-size:18px;padding:10px 0 5px 5px;margin:10px 0 5px 0;font-weight:600;}
 .right_content{width:730px;float:right;margin:10px 10px 0 0;background:#651E2A;border-radius:2px;box-sizing:border-box;box-shadow: 0 0 8px #F00;padding:0 15px 10px 15px;}
 .box{color:#000;margin:0px 0 15px 0;text-align:justify;background:#a8001c;border-radius:3px;padding:10px; font-weight: 600;}
+
 .game_card{display:inline-block;width:224px;background:#721c1c;margin-bottom:25px;margin-left:3px;margin-right:3px;border-radius:6px;box-sizing:border-box;position:relative;vertical-align:bottom; box-shadow: 0 0 8px #F00;}
 .game_img{height:153px;width:100%;text-align:center;}
 .game_img img{height:153px;width:220px;}
@@ -22,9 +30,6 @@ h1{font-size:24px;margin:5px 0 7px 4px;color:#FCB820;}
 .details:hover{color:white;background:rgba(254,5,12,0.43);}
 .likes{padding-top:3px;color:#FCB820;display:block;float:left;margin-left:10px;font-size:13px;line-height:16px;font-weight:600;}
 .det img{float:left;margin-left:10px;padding-top:3px;width:18px;height:17px;}
-.main_menu{background:rgb(253,218,95);background:linear-gradient(to right,rgba(253,218,95,1) 0%,rgba(252,184,32,1) 100%);box-shadow:3px 3px 3px #a8001c;margin:15px 5px 5px 5px;border-radius:4px;padding:3px;}
-.main_menu a{display:block;padding:4px 3px 4px 35px;text-decoration:none;font-size:15px;color:#7c0015;text-shadow:0 1px 1px #D5D5D5;border-bottom:1px solid #facb47;}
-.main_menu li a:hover{background:rgb(255,243,191);background:linear-gradient(to bottom,rgba(255,243,191,1) 48%,rgba(253,232,157,1) 49%);border-radius:3px;border-bottom:1px solid #f8be37;}
 .n_block{margin:10px 4px 10px 4px;}
 .line{padding:4px;margin:0 0 2px 0;border-radius:3px;background:#860a1f;border:1px solid #980019;}
 .line img{float:left;border-radius:3px;width:80px;height:56px;}
