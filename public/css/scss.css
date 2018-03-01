@@ -6,9 +6,11 @@ body {
 }
 
 .wrapper {
-  -webkit-box-shadow: 0 0 8px #c66675;
-          box-shadow: 0 0 8px #c66675;
+  -webkit-box-shadow: 0 0 8px #ff0f37;
+          box-shadow: 0 0 8px #ff0f37;
   border-radius: 2px;
+  margin-top: 20px;
+  margin-bottom: 15px;
   background: #461a21;
 }
 
@@ -18,8 +20,6 @@ body {
 }
 
 nav {
-  -webkit-box-shadow: 3px 3px 3px #a8001c;
-          box-shadow: 3px 3px 3px #a8001c;
   margin: 15px 5px 5px 5px;
   border-radius: 2px;
   padding: 3px;
@@ -30,7 +30,7 @@ nav ul {
   background: linear-gradient(to right, #fdd885, #fcb820);
   list-style: none;
   border-radius: 4px;
-  padding: 0px;
+  padding: 0;
 }
 
 nav a {
@@ -39,7 +39,7 @@ nav a {
   text-decoration: none;
   font-size: 1.5em;
   color: #7c0015;
-  text-shadow: 0 1px 0px #630011;
+  text-shadow: 0 1px 0 #630011;
   border-bottom: 1px solid #e6a003;
   height: 50px;
 }
@@ -53,7 +53,7 @@ nav a:hover {
 
 .right-content {
   margin: 10px 10px 0 0;
-  background: #651E2A;
+  background: #651e2a;
   border-radius: 2px;
   -webkit-box-shadow: 0 0 8px #F00;
           box-shadow: 0 0 8px #F00;
@@ -63,12 +63,12 @@ nav a:hover {
 .article-header h1 {
   font-size: 24px;
   margin: 5px 0 7px 4px;
-  color: #FCB820;
+  color: #fcb820;
 }
 
 .box {
-  color: #000;
-  margin: 0px 0 15px 0;
+  color: black;
+  margin: 0 0 15px 0;
   text-align: justify;
   background: #a8001c;
   border-radius: 3px;
@@ -83,54 +83,64 @@ nav a:hover {
 .game-card {
   display: inline-block;
   width: 100%;
-  background: #b2be6f;
+  background: #5d1c27;
   margin-bottom: 25px;
   border-radius: 6px;
   -webkit-box-sizing: border-box;
           box-sizing: border-box;
   position: relative;
   vertical-align: bottom;
-  -webkit-box-shadow: 0 0 8px #F00;
-          box-shadow: 0 0 8px #F00;
+  -webkit-box-shadow: 0 0 6px #ff0f37;
+          box-shadow: 0 0 6px #ff0f37;
 }
 
-.game_img {
-  height: 153px;
-  width: 100%;
+.game-card-img {
   text-align: center;
 }
 
-.game_img img {
+.game-card-img img {
   height: 153px;
+  max-width: 100%;
 }
 
-.game_link {
+.game-card-link {
   text-align: center;
   margin: 5px 0 5px 0;
   overflow: hidden;
   white-space: nowrap;
   text-transform: uppercase;
   display: block;
-  font-size: 13px;
+  font-size: 1.3em;
   text-decoration: none;
   color: #FCB820;
   font-weight: 600;
 }
 
-.game_link:hover {
+.game-card-link:hover {
   text-decoration: underline;
 }
 
-.det {
+.game-card-likes {
+  padding-top: 3px;
+  color: #FCB820;
+  display: block;
+  float: left;
+  margin-left: 10px;
+  font-size: 13px;
+  line-height: 16px;
+  font-weight: 600;
+}
+
+.game-card-desc {
   background: #860a1f;
-  padding: 6px 0px;
+  padding: 6px 0;
   width: 100%;
   border-radius: 0 0 6px 6px;
   height: 24px;
   margin-top: 3px;
 }
 
-.details {
+.game-card-desc a {
   display: block;
   float: right;
   width: 80px;
@@ -148,17 +158,6 @@ nav a:hover {
 .details:hover {
   color: white;
   background: rgba(254, 5, 12, 0.43);
-}
-
-.likes {
-  padding-top: 3px;
-  color: #FCB820;
-  display: block;
-  float: left;
-  margin-left: 10px;
-  font-size: 13px;
-  line-height: 16px;
-  font-weight: 600;
 }
 
 .det img {

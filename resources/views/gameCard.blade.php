@@ -2,15 +2,14 @@
     @foreach($games as $game)
         <div class="col-sm-12 col-md-6">
             <div class="game-card">
-                <a class="game_link" href="{{ $game->url }}">{{ $game->game_name }}dssd</a>
-                <div class="game_img">
+                <a class="game-card-link" href="{{ $game->url }}">{{ $game->game_name }}dssd</a>
+                <div class="game-card-img">
                     <a href="{{ $game->url }}"title="The flash game {{ $game->url }}"><img alt="image of the game {{ $game->name }}" src="{{ $game->img }}"></a>
                 </div>
-
-                <div class="det">
-                    <a class="details" href="{{ $game->url }}">PLAY</a>
+                <div class="game-card-desc">
+                    <a class="game-card-details" href="{{ $game->url }}">PLAY</a>
                     <img src="/img/like.png" alt="How many people like this game" title="like button">
-                    <span class="likes">32</span>
+                    <span class="game-card-likes">32</span>
                 </div>
 
             </div>

@@ -30,6 +30,7 @@ h1{font-size:24px;margin:5px 0 7px 4px;color:#FCB820;}
 .details:hover{color:white;background:rgba(254,5,12,0.43);}
 .likes{padding-top:3px;color:#FCB820;display:block;float:left;margin-left:10px;font-size:13px;line-height:16px;font-weight:600;}
 .det img{float:left;margin-left:10px;padding-top:3px;width:18px;height:17px;}
+
 .n_block{margin:10px 4px 10px 4px;}
 .line{padding:4px;margin:0 0 2px 0;border-radius:3px;background:#860a1f;border:1px solid #980019;}
 .line img{float:left;border-radius:3px;width:80px;height:56px;}
