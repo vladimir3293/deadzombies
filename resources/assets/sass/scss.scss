@@ -26,6 +26,7 @@ body {
   margin-top: 20px;
   margin-bottom: 15px;
   background: $wrap;
+  padding-bottom: 20px;
 }
 
 .sidebar {
@@ -61,7 +62,7 @@ nav {
 }
 
 .right-content {
-  margin: 10px 10px 0 0;
+  margin: 10px 0 0 0;
   background: $right-content;
   border-radius: 2px;
   box-shadow: 0 0 8px #F00;
@@ -82,10 +83,6 @@ nav {
   border-radius: 3px;
   padding: 10px;
   font-weight: 600;
-}
-
-.index-footer {
-  border: $border;
 }
 
 .game-card {
@@ -120,14 +117,13 @@ nav {
   &-link:hover {
     text-decoration: underline;
   }
-  &-likes {
+  &-desc span {
     padding-top: 3px;
     color: #FCB820;
     display: block;
     float: left;
     margin-left: 10px;
-    font-size: 13px;
-    line-height: 16px;
+    font-size: 1.5em;
     font-weight: 600;
   }
   &-desc {
@@ -135,35 +131,47 @@ nav {
     padding: 6px 0;
     width: 100%;
     border-radius: 0 0 6px 6px;
-    height: 24px;
+    height: 40px;
     margin-top: 3px;
+  }
+  &-desc a {
+    display: block;
+    float: right;
+    width: 40%;
+    padding: 3px 0;
+    background: #FCB820;
+    color: #000;
+    text-align: center;
+    text-decoration: none;
+    margin: 0 5px 0 0;
+    font-size: 1.4em;
+    border-radius: 3px;
+    font-weight: 600;
+    height: 28px;
+  }
+  &-desc a:hover {
+    color: white;
+    background: lighten($sidebar, 5%);
+  }
+  &-desc img {
+    float: left;
+    margin: 5px 0 0 10px;
+    width: 18px;
+    height: 17px;
   }
 }
 
-.game-card-desc a {
-  display: block;
-  float: right;
-  width: 80px;
-  padding: 3px 0;
-  background: #FCB820;
-  color: #000;
-  text-align: center;
-  text-decoration: none;
-  margin: 0 5px 0 0;
-  font-size: 12px;
-  border-radius: 3px;
-  font-weight: 600;
+.copy {
+  background: #fcb820;
+  color: #222;
+  padding: 10px;
+  border-radius: 4px;
+  border: 1px solid #ffdd78;
 }
 
-.details:hover {
-  color: white;
-  background: rgba(254, 5, 12, 0.43);
-}
-
-.det img {
+.footer img {
   float: left;
-  margin-left: 10px;
-  padding-top: 3px;
-  width: 18px;
-  height: 17px;
+  height: 80px;
+  width: 80px;
 }
+.clr{clear:both!important;height:0;}

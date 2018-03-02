@@ -17,9 +17,10 @@ h1{font-size:24px;margin:5px 0 7px 4px;color:#FCB820;}
 .headline_others{margin-top:10px;padding-left:30px;}
 .headline_others img{vertical-align:middle;display:inline;height:40px;width:40px;}
 .headline_others span{color:#000;vertical-align:middle;display:inline;font-size:18px;padding:10px 0 5px 5px;margin:10px 0 5px 0;font-weight:600;}
+
+
 .right_content{width:730px;float:right;margin:10px 10px 0 0;background:#651E2A;border-radius:2px;box-sizing:border-box;box-shadow: 0 0 8px #F00;padding:0 15px 10px 15px;}
 .box{color:#000;margin:0px 0 15px 0;text-align:justify;background:#a8001c;border-radius:3px;padding:10px; font-weight: 600;}
-
 .game_card{display:inline-block;width:224px;background:#721c1c;margin-bottom:25px;margin-left:3px;margin-right:3px;border-radius:6px;box-sizing:border-box;position:relative;vertical-align:bottom; box-shadow: 0 0 8px #F00;}
 .game_img{height:153px;width:100%;text-align:center;}
 .game_img img{height:153px;width:220px;}
@@ -39,9 +40,11 @@ h1{font-size:24px;margin:5px 0 7px 4px;color:#FCB820;}
 .likeSidebar{color:white;font-size:12px;}
 .right img{width:12px;height:12px;margin-top:4px;margin-right:3px;}
 .playSide{color: #b9ab8c;}
-.footer{padding:10px;}	
+
+.footer{padding:10px;}
 .copy{background:#fcb820;color:#222;padding:10px;border-radius:4px;border:1px solid #ffdd78;}
 .footer img{float:left;height:80px;width:80px;}
+
 .descr {margin:20px;}
 .breadcrumb span{margin-left:20px;font-weight: 600;}
 .breadcrumb{border-radius:5px;float:left;border:1px solid #461a21;background-color:#a8001c;margin-bottom:7px;}
@@ -61,3 +64,5 @@ h1{font-size:24px;margin:5px 0 7px 4px;color:#FCB820;}
 .flash-opis{display:block;padding:5px 10px 5px 10px;background: #a8001c;border-radius: 5px;border: 1px solid #461a21;}
 .flash-opis img{float:left;margin:4px 2px 0px 2px;border:1px solid #651e2a;border-radius:2px;height:153px;width:220px;}
 .flash-opis p{text-indent:1.5em;}
+
+.clr{clear:both!important;height:0;}

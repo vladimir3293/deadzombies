@@ -12,6 +12,7 @@ body {
   margin-top: 20px;
   margin-bottom: 15px;
   background: #461a21;
+  padding-bottom: 20px;
 }
 
 .sidebar {
@@ -52,7 +53,7 @@ nav a:hover {
 }
 
 .right-content {
-  margin: 10px 10px 0 0;
+  margin: 10px 0 0 0;
   background: #651e2a;
   border-radius: 2px;
   -webkit-box-shadow: 0 0 8px #F00;
@@ -74,10 +75,6 @@ nav a:hover {
   border-radius: 3px;
   padding: 10px;
   font-weight: 600;
-}
-
-.index-footer {
-  border: 1px solid #cccccc;
 }
 
 .game-card {
@@ -120,14 +117,13 @@ nav a:hover {
   text-decoration: underline;
 }
 
-.game-card-likes {
+.game-card-desc span {
   padding-top: 3px;
   color: #FCB820;
   display: block;
   float: left;
   margin-left: 10px;
-  font-size: 13px;
-  line-height: 16px;
+  font-size: 1.5em;
   font-weight: 600;
 }
 
@@ -136,35 +132,54 @@ nav a:hover {
   padding: 6px 0;
   width: 100%;
   border-radius: 0 0 6px 6px;
-  height: 24px;
+  height: 40px;
   margin-top: 3px;
 }
 
 .game-card-desc a {
   display: block;
   float: right;
-  width: 80px;
+  width: 40%;
   padding: 3px 0;
   background: #FCB820;
   color: #000;
   text-align: center;
   text-decoration: none;
   margin: 0 5px 0 0;
-  font-size: 12px;
+  font-size: 1.4em;
   border-radius: 3px;
   font-weight: 600;
+  height: 28px;
 }
 
-.details:hover {
+.game-card-desc a:hover {
   color: white;
-  background: rgba(254, 5, 12, 0.43);
+  background: #c20020;
 }
 
-.det img {
+.game-card-desc img {
   float: left;
-  margin-left: 10px;
-  padding-top: 3px;
+  margin: 5px 0 0 10px;
   width: 18px;
   height: 17px;
+}
+
+.copy {
+  background: #fcb820;
+  color: #222;
+  padding: 10px;
+  border-radius: 4px;
+  border: 1px solid #ffdd78;
+}
+
+.footer img {
+  float: left;
+  height: 80px;
+  width: 80px;
+}
+
+.clr {
+  clear: both !important;
+  height: 0;
 }
 
