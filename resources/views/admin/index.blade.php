@@ -12,8 +12,13 @@
             <p>{{ $page->desc1 }}</p>
         </div>
         @if(isset($games))
-            @include('gameCard')
-            {{ $games->links() }}
+            <div class="row">
+                @include('gameCard')
+            </div>
+            <div class="row">
+                <div class="col-md-24">
+                {{ $games->links() }}
+            </div>
         @endif
     </article>
 @endsection

@@ -172,7 +172,7 @@ nav a:hover {
   border: 1px solid #ffdd78;
 }
 
-.footer img {
+.index-footer img {
   float: left;
   height: 80px;
   width: 80px;
@@ -181,5 +181,24 @@ nav a:hover {
 .clr {
   clear: both !important;
   height: 0;
+}
+
+.pagination {
+  border-radius: 4px;
+}
+
+.pagination a {
+  display: inline-block;
+  height: 30px;
+  min-width: 10%;
+  border-radius: 4px;
+  background: #fcb820;
+  text-align: center;
+  color: black;
+}
+
+.pagination li {
+  height: 30px;
+  display: inline;
 }
 

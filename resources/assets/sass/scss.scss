@@ -169,9 +169,35 @@ nav {
   border: 1px solid #ffdd78;
 }
 
-.footer img {
+.index-footer img {
   float: left;
   height: 80px;
   width: 80px;
 }
-.clr{clear:both!important;height:0;}
+
+.clr {
+  clear: both !important;
+  height: 0;
+}
+
+.pagination {
+  //display: inline-block;
+  //width: 10%;
+  border-radius: 4px;
+  & a {
+    display: inline-block;
+    height: 30px;
+    min-width: 10%;
+    border-radius: 4px;
+    background: $nav-ul;
+    text-align: center;
+    color: black;
+
+  }
+}
+
+.pagination li {
+  //width: 30px;
+  height: 30px;
+  display: inline;
+}
