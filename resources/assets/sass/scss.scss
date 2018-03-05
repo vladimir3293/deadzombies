@@ -184,7 +184,7 @@ nav {
   //display: inline-block;
   //width: 10%;
   border-radius: 4px;
-  & a {
+  & a, span{
     display: inline-block;
     height: 30px;
     min-width: 10%;
@@ -192,7 +192,10 @@ nav {
     background: $nav-ul;
     text-align: center;
     color: black;
-
+    padding: 6px;
+    font-weight: 600;
+    font-size: 1.2em;
+    text-decoration: none;
   }
 }
 
