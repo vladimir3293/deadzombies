@@ -36,7 +36,7 @@ Route::get('/', ['uses' => 'IndexController@getIndex', 'as' => 'index']);
 //index category
 Route::get('/{Category}', 'CategoryController@getCategory')->name('getCat');
 //index game
-Route::get('/{Category}/{Game}', 'GameController@getGame')->name('getGame');
+Route::get('/game/{game}', 'GameController@getGame')->name('getGame');
 
 
 //authentication

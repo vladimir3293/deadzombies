@@ -37,7 +37,6 @@ nav ul {
 nav a {
   display: block;
   padding: 14px 3px 4px 35px;
-  text-decoration: none;
   font-size: 1.5em;
   color: #7c0015;
   text-shadow: 0 1px 0 #630011;
@@ -50,6 +49,7 @@ nav a:hover {
   background: linear-gradient(to bottom, white 48%, #fee09e 49%);
   border-radius: 3px;
   border-bottom: 1px solid #f8be37;
+  text-decoration: none;
 }
 
 .right-content {
@@ -109,11 +109,12 @@ nav a:hover {
   display: block;
   font-size: 1.3em;
   text-decoration: none;
-  color: #FCB820;
+  color: #fcb820;
   font-weight: 600;
 }
 
 .game-card-link:hover {
+  color: #fcb820;
   text-decoration: underline;
 }
 
@@ -200,6 +201,12 @@ nav a:hover {
   font-weight: 600;
   font-size: 1.2em;
   text-decoration: none;
+}
+
+.pagination a:hover,
+.pagination span:hover {
+  color: white;
+  background: #c20020;
 }
 
 .pagination li {

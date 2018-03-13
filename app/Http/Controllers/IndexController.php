@@ -4,24 +4,24 @@ namespace Deadzombies\Http\Controllers;
 
 
 use Deadzombies\Model\Game;
+use Deadzombies\Model\Page;
 
 class IndexController extends Controller
 {
-    public function getIndex(Game $game)
+    public function getIndex(Game $game, Page $page)
     {
         //TODO transfer to model
-        //TODO pagination
-        $games = $game->where('game_show', true)->get();
+        //TODO refactor img
+        $pageIndex = $page->where('name', 'index')->get()->first();
+
+        $games = $game->where('game_show',1)->simplePaginate(12);
+        //dd($games);
         $games->each(function ($games) {
-            $cat_url = $games->category()->get()[0]->cat_url;
-            $games->url = route('getGame', ['category' => $cat_url, 'game' => $games->game_url]);
+            $games->url = route('getGame', $games->game_url);
             $games->img = file_exists(public_path() . '/img/' . $games->game_url . '.jpg') ?
                 '/img/' . $games->game_url . '.jpg' :
                 '/img/empty.jpg';
         });
-//        $test = $this->getGamesUrls();
-
-        //dd($test);
-        return view('indexPage', ['games' => $games]);
+        return view('index', ['games' => $games, 'page' => $pageIndex]);
     }
 }

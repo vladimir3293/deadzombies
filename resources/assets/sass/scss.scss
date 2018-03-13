@@ -47,7 +47,7 @@ nav {
   a {
     display: block;
     padding: 14px 3px 4px 35px;
-    text-decoration: none;
+
     font-size: 1.5em;
     color: $nav-a;
     text-shadow: 0 1px 0 darken($nav-a, 5%);
@@ -58,6 +58,7 @@ nav {
     background: linear-gradient(to bottom, lighten($nav-ul, 75%) 48%, lighten($nav-ul, 25%) 49%);
     border-radius: 3px;
     border-bottom: 1px solid #f8be37;
+    text-decoration: none;
   }
 }
 
@@ -111,10 +112,11 @@ nav {
     display: block;
     font-size: 1.3em;
     text-decoration: none;
-    color: #FCB820;
+    color: $nav-ul;
     font-weight: 600;
   }
   &-link:hover {
+    color: $nav-ul;
     text-decoration: underline;
   }
   &-desc span {
@@ -184,7 +186,7 @@ nav {
   //display: inline-block;
   //width: 10%;
   border-radius: 4px;
-  & a, span{
+  & a, span {
     display: inline-block;
     height: 30px;
     min-width: 10%;
@@ -196,6 +198,10 @@ nav {
     font-weight: 600;
     font-size: 1.2em;
     text-decoration: none;
+  }
+  & a:hover, span:hover {
+    color: white;
+    background: lighten($sidebar, 5%);
   }
 }
 
