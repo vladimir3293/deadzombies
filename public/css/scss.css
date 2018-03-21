@@ -1,3 +1,30 @@
+body,
+div,
+dl,
+dt,
+dd,
+ul,
+ol,
+li,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+pre,
+form,
+fieldset,
+input,
+textarea,
+p,
+blockquote,
+th,
+td {
+  margin: 0;
+  padding: 0;
+}
+
 body {
   background-color: #3c262a;
   font-family: Verdana, Arial, Tahoma, sans-serif;
@@ -18,6 +45,7 @@ body {
 .sidebar {
   border-radius: 4px;
   background-color: #a8001c;
+  margin-top: 10px;
 }
 
 nav {
@@ -61,7 +89,7 @@ nav a:hover {
   padding: 0 15px 10px 15px;
 }
 
-.article-header h1 {
+.header-article h1 {
   font-size: 24px;
   margin: 5px 0 7px 4px;
   color: #fcb820;
@@ -75,6 +103,7 @@ nav a:hover {
   border-radius: 3px;
   padding: 10px;
   font-weight: 600;
+  font-size: 1.2em;
 }
 
 .game-card {
@@ -209,8 +238,148 @@ nav a:hover {
   background: #c20020;
 }
 
+.pagination span {
+  cursor: not-allowed;
+}
+
 .pagination li {
   height: 30px;
   display: inline;
+}
+
+.content p {
+  font-size: 1.3em;
+  font-style: normal;
+  text-align: justify;
+  color: #000;
+  font-weight: 600;
+  line-height: 1.5;
+}
+
+.breadcrumb {
+  border-radius: 5px;
+  float: left;
+  border: 1px solid #461a21;
+  background-color: #a8001c;
+  margin-bottom: 7px;
+}
+
+.breadcrumb a {
+  display: inline-block;
+  text-decoration: none;
+  margin-left: 10px;
+  padding: 5px 10px 5px 10px;
+  border-radius: 5px;
+  color: #fcb820;
+  font-size: 14px;
+  font-weight: 600;
+}
+
+.breadcrumb a:hover {
+  background-color: white;
+  border-radius: 5px;
+}
+
+.breadcrumb span {
+  margin-left: 20px;
+  font-weight: 600;
+  font-size: 1.2em;
+}
+
+.like {
+  float: right;
+  margin-right: 50px;
+  margin-top: 4px;
+}
+
+.like span {
+  font-size: 14px;
+  color: #fcb820;
+  vertical-align: middle;
+  font-weight: 600;
+}
+
+.like img {
+  width: 14px;
+  height: 14px;
+  vertical-align: middle;
+}
+
+#like {
+  cursor: pointer;
+  padding: 3px;
+  background: #FCB820;
+  color: #000;
+  text-align: center;
+  text-decoration: none;
+  font-size: 12px;
+  border-radius: 3px;
+  font-weight: 600;
+  border: 1px solid #461A21;
+  width: 75px;
+}
+
+#like:hover {
+  color: white;
+  background: rgba(254, 5, 12, 0.43);
+}
+
+#like:focus {
+  outline: none;
+}
+
+.upr {
+  background: #A8001C;
+  padding: 5px 10px 5px 10px;
+  border-radius: 5px;
+  margin-bottom: 7px;
+  border: 1px solid #461a21;
+  min-height: 53px;
+  display: table;
+  width: 100%;
+}
+
+.upr-text {
+  width: 100%;
+  vertical-align: middle;
+  display: table-cell;
+}
+
+.upr-img {
+  margin-right: 10px;
+  display: table-cell;
+  vertical-align: middle;
+}
+
+.upr img {
+  width: 50px;
+}
+
+.flash-opis {
+  display: block;
+  padding: 5px 10px 5px 10px;
+  background: #a8001c;
+  border-radius: 5px;
+  border: 1px solid #461a21;
+}
+
+.flash-opis img {
+  float: left;
+  margin: 4px 2px 0px 2px;
+  border: 1px solid #651e2a;
+  border-radius: 2px;
+  height: 153px;
+  width: 220px;
+}
+
+.flash-opis p {
+  text-indent: 1.5em;
+}
+
+.flash {
+  border: 1px solid #3c262a;
+  background: #3c262a;
+  margin-bottom: 7px;
+  border-radius: 0px 0px 5px 5px;
 }
 

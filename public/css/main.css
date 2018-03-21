@@ -50,12 +50,14 @@ h1{font-size:24px;margin:5px 0 7px 4px;color:#FCB820;}
 .breadcrumb{border-radius:5px;float:left;border:1px solid #461a21;background-color:#a8001c;margin-bottom:7px;}
 .breadcrumb a{display:inline-block;text-decoration:none;margin-left:10px;padding:5px 10px 5px 10px;border-radius:5px;color:#fcb820;font-size: 14px;font-weight: 600;}
 .breadcrumb a:hover{background-color:white;border-radius:5px;}
+
 .like{float:right;margin-right:50px;margin-top:4px;}
 .like span{font-size:14px;color: #fcb820;vertical-align:middle;font-weight:600;}
 .like img {width:14px;height:14px;vertical-align:middle;}
 #like{cursor:pointer;padding:3px;background: #FCB820;color:#000;text-align:center;text-decoration:none;font-size:12px;border-radius:3px;font-weight:600;border:1px solid #461A21;width:75px;}
 #like:hover{color:white;background:rgba(254,5,12,0.43);}
 #like:focus{outline:none;}
+
 .upr{background:#A8001C;padding:5px 10px 5px 10px;border-radius: 5px;margin-bottom: 7px;border: 1px solid #461a21;min-height:53px;}
 .upr img{float:left;width:40px;margin-top:6px;}
 .content{display:inline-block;}

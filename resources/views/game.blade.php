@@ -3,32 +3,49 @@
 @section('title',$game->game_title)
 
 @section('right_content')
-    <div class="content">
-        <h1>{{ $game->game_name }}</h1>
-        <div class="breadcrumb">
-            <span>BACK:</span>
-            <a href="/">Главная</a>
-            <a href="/{{ $game->cat_url }}">{{ $game->cat_name }}</a>
-        </div>
-        <div class="like">
-            <img src="/img/like.png" alt="How many people like this game" title="like button">
-            <span id="like_value">{{ $game->game_like }}</span>
-            <button id="like" data-id="{{ $game->game_id }}">LIKE</button>
-        </div>
-        <div class="upr">
-            <img src="/img/control.png" alt="Управление">
-            <p>{{ $game->game_control }}</p>
-        </div>
-        <div class="flash">
-
-            <iframe src="{{ $game->source }}" name="topFrame" scrolling="no" noresize>
-            </iframe>
-        </div>
-        <div class="flash-opis">
-            <img src="{{ $game->game_img }}">
-            <p>{{ $game->game_desc }}</p>
+    <article>
+        <div class="content">
+            <header class="header-article">
+                <h1>{{ $game->game_name }}</h1>
+            </header>
+            <div class="breadcrumb">
+                <span>ВЕРНУТЬСЯ:</span>
+                <a href="/">Главная</a>
+                <a href="/{{ $game->cat_url }}">{{ $game->cat_name }}</a>
+            </div>
+            <div class="like">
+                <img src="/img/site/like.png" alt="How many people like this game" title="like button">
+                <span id="like_value">{{ $game->game_like }}</span>
+                <button id="like" data-id="{{ $game->game_id }}">LIKE</button>
+            </div>
             <div class="clr"></div>
+            <div class="upr">
+                <div class="upr-img">
+                    <img src="/img/site/control.png" alt="Управление">
+                </div>
+                <div class="upr-text">
+                    <p>{{ $game->game_control }}</p>
+                    <p>{{ $game->game_control }}</p>
+                    <p>{{ $game->game_control }}</p>
+                    <p>{{ $game->game_control }}</p>
+                </div>
+            </div>
+            <div class="flash">
+
+
+                <iframe src="{{ $game->source }}"
+                        name="topFrame"
+                        scrolling="no"
+                        height="{{ $game->gameHeight }}"
+                        width="100%">
+                </iframe>
+
+            </div>
+            <div class="flash-opis">
+                <img src="{{ $game->img }}">
+                <p>{{ $game->game_desc }}</p>
+                <div class="clr"></div>
+            </div>
         </div>
-    </div>
-    </div>
+    </article>
 @endsection
