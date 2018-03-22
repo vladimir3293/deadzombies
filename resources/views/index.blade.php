@@ -8,10 +8,9 @@
 @section('keywords','Мета кейвердс первой страницы')
 
 
-
 @section('right_content')
     <article>
-        <header class="article-header">
+        <header class="header-article">
             <h1>{{ $page->h1 }}</h1>
         </header>
         <div class="box">
