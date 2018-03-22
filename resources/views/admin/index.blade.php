@@ -13,7 +13,7 @@
         </div>
         @if(isset($games))
             <div class="row">
-                @include('gameCard')
+                @include('admin.gameCard')
             </div>
             <div class="row">
                 <div class="col-md-24">
