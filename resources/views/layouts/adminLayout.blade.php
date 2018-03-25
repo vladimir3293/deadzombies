@@ -9,14 +9,16 @@
 
     <link rel="icon" href="/favicon.ico" type="image/x-icon">
     <link rel="stylesheet" href="/admin/css/app.css">
+    <link rel="stylesheet" href="/admin/css/admin.css">
+    <script src="/admin/js/app.js"></script>
 </head>
 <body>
 <div class="wrapper container">
-<div class="row">
-    <div class="col-md-12">
-        <h1>Админка</h1>
+    <div class="row">
+        <div class="col-md-12">
+            <h1>Админка</h1>
+        </div>
     </div>
-</div>
 
     <div class="row">
         <div class="col-md-3">

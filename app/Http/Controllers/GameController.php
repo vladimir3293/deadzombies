@@ -11,8 +11,7 @@ class GameController
 {
     public function getGame(Game $game, Request $request)
     {
-        //$test = Game::where('game_show',0)->update(['game_show'=>'1']);
-        //dd($test->update(['game_show'=>1]));
+
         //die('fs');
         /*   "game_name" => "Romantic Royal Couple"
        "game_url" => "romantic-royal-couple"

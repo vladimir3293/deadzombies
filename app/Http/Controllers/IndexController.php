@@ -12,6 +12,10 @@ class IndexController extends Controller
     {
         //TODO transfer to model
         //TODO refactor img
+        //$test = Game::where('game_show',0)->update(['game_show'=>'1']);
+        //dd($test);
+        //dd($test->update(['game_show'=>1]));
+
         $pageIndex = $page->where('name', 'index')->get()->first();
 
         $games = $game->where('game_show',1)->simplePaginate(12);
