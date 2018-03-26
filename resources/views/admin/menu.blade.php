@@ -14,7 +14,7 @@
     <li><a href="/" data-toggle="tab">Home page</a></li>
     <li><a href="{{ route('admin') }}" data-toggle="tab">Admin page</a></li>
     <li><a href="{{ route('admin.getParser') }}">Parser</a></li>
-    <li>
+    <li><a href="/admin" class="nav-categories">Категории</a>
         <ul>
             @foreach($menu as $category)
                 <li><a href="{!! $category->url !!}">{!! $category->cat_name !!}</a></li>
