@@ -29,6 +29,10 @@ Route::get('/admin/game/{game}', [
 Route::delete('/admin/game/{Game}', 'Admin\GameController@deleteGame');
 //admin parser
 Route::get('/admin/parser', 'Admin\ParseController@getParser')->name('admin.getParser');
+//admin pages
+//unpublished games
+Route::get('/admin/unpublished', 'Admin\GameController@getUnpublished')->name('admin.getUnpublished');
+
 
 
 //index

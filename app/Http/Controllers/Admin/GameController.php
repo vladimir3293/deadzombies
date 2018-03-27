@@ -12,6 +12,19 @@ use Illuminate\Support\Facades\Storage;
 
 class GameController extends Controller
 {
+    public function getUnpublished(Game $gameModel)
+    {
+        $games = $gameModel->where('game_show', 0)->simplePaginate(12);
+        //dd($games);
+        $games->each(function ($games) {
+            $games->url = route('getGame', $games->game_url);
+            $games->img = file_exists(public_path() . '/img/' . $games->game_url . '.jpg') ?
+                '/img/' . $games->game_url . '.jpg' :
+                '/img/empty.jpg';
+        });
+        return view('admin.unpublished', ['games' => $games]);
+    }
+
     public function getGame(Game $Game, Category $category)
     {
         $categories = $category::all();
@@ -129,6 +142,7 @@ class GameController extends Controller
         $Game->delete();
         return redirect('admin');
     }
+
 //TODO WTFFFFF
     public function createImage(string $url, $img, string $imgPrefix = '')
     {

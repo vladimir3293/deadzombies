@@ -1,6 +1,14 @@
-/*
-$(".cat_edit_name, .game_header").click(function () {
-    $(this).siblings().slideToggle("slow");
-});
-*/
-window.console.log('test');
+(function ($, undefined) {
+    $(function () {
+
+        $('.nav-categoriess > a').click(function (event) {
+            event.preventDefault();
+            $('.nav-categoriess ul').slideToggle("slow");
+        });
+
+        $('.nav-categories-link').click(function (event) {
+            event.preventDefault();
+            $('.nav-categories ul').slideToggle("slow");
+        });
+    });
+})(jQuery);

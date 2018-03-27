@@ -1,5 +1,5 @@
 .thumbnail a > img {
-  height: 200px;
+  height: 150px;
 }
 
 .game-card h4 {
@@ -9,5 +9,19 @@
 .game-card-button {
   width: 100%;
   margin: 10px 0 10px 0;
+}
+
+.nav-categories ul {
+  display: none;
+}
+
+.nav-categoriess ul {
+  display: none;
+}
+
+h4 a {
+  white-space: nowrap;
+  overflow: hidden;
+  display: block;
 }
 

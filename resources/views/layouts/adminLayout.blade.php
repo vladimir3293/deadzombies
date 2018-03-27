@@ -16,7 +16,7 @@
 <body>
 <div class="wrapper container">
     <div class="row">
-        <div class="col-md-12">
+        <div class="col-md-9">
             <h1>Админка</h1>
         </div>
     </div>
@@ -24,11 +24,6 @@
     <div class="row">
         <div class="col-md-3">
             <div class="sidebar">
-                <header class="index-header">
-                    {{-- todo layout composer for same parts --}}
-                    <h1>Opisanie sayta h1</h1>
-                    <img src="/img/logotype.png">
-                </header>
                 <nav>
                     @include('admin.menu')
                 </nav>
