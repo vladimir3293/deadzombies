@@ -17,6 +17,7 @@ class IndexController extends Controller
     {
         //TODO transfer to model
         //TODO pagination
+        //TODO problem with height
 
         $pageIndex = $page->where('name', 'index')->get()->first();
 

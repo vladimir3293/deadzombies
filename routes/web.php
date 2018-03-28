@@ -32,6 +32,8 @@ Route::get('/admin/parser', 'Admin\ParseController@getParser')->name('admin.getP
 //admin pages
 //unpublished games
 Route::get('/admin/unpublished', 'Admin\GameController@getUnpublished')->name('admin.getUnpublished');
+//published games
+Route::get('/admin/published', 'Admin\GameController@getPublished')->name('admin.getPublished');
 
 
 

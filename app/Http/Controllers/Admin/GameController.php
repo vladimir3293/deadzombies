@@ -25,6 +25,19 @@ class GameController extends Controller
         return view('admin.unpublished', ['games' => $games]);
     }
 
+    public function getPublished(Game $gameModel)
+    {
+        $games = $gameModel->where('game_show', 1)->simplePaginate(12);
+        //dd($games);
+        $games->each(function ($games) {
+            $games->url = route('getGame', $games->game_url);
+            $games->img = file_exists(public_path() . '/img/' . $games->game_url . '.jpg') ?
+                '/img/' . $games->game_url . '.jpg' :
+                '/img/empty.jpg';
+        });
+        return view('admin.published', ['games' => $games]);
+    }
+
     public function getGame(Game $Game, Category $category)
     {
         $categories = $category::all();
@@ -33,6 +46,9 @@ class GameController extends Controller
         $Game->img1 = Storage::disk('pub')->exists("/img/$Game->game_url.jpg") ? 'ЕСТЬ' : 'НЕТ';
         $Game->img2 = Storage::disk('pub')->exists("/img/$Game->game_url-second.jpg") ? 'ЕСТЬ' : 'НЕТ';
         $Game->img3 = Storage::disk('pub')->exists("/img/$Game->game_url-third.jpg") ? 'ЕСТЬ' : 'НЕТ';
+
+        $Game->gameHeight = 868*$Game->height/$Game->width;
+
         return view('admin.game', ['game' => $Game, 'categories' => $categories]);
     }
 
