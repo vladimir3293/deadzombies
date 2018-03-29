@@ -4,7 +4,7 @@ namespace Deadzombies\UrlGenerator;
 
 class UrlGenerator
 {
-    public function urlCreate(string $string)
+    public function createUrl(string $string)
     {
         $url = preg_replace("/[^a-zA-Zа-яА-Я0-9-\s]/", "", $string);
         $url = trim($url);

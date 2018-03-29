@@ -3,6 +3,7 @@
     <li><a href="{{ route('admin') }}" data-toggle="tab">Admin page</a></li>
     <li class="nav-categoriess"><a class="nav-categories-linkk href="#">Игры</a>
         <ul>
+            <li><a href="{{ route('admin.createGame') }}">Создать игру</a></li>
             <li><a href="{{ route('admin.getUnpublished') }}">Опубликованные</a></li>
             <li><a href="{{ route('admin.getPublished') }}">Не опубликованные</a></li>
         </ul>

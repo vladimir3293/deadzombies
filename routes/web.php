@@ -23,9 +23,13 @@ Route::delete('/admin/category/{Category}', 'Admin\CategoryController@deleteCate
 //admin game
 Route::get('/admin/game/{Game}', 'Admin\GameController@getGame')->name('admin.getGame');
 Route::put('/admin/game/{Game}', 'Admin\GameController@putGame');
+Route::post('/admin/game/', 'Admin\GameController@postGame');
 Route::get('/admin/game/{game}', [
     'uses' => 'Admin\GameController@getIndex',
     'as' => 'admin.getGame']);
+//create game
+Route::get('/admin/creategame', 'Admin\GameController@createGame')->name('admin.createGame');
+//delete game
 Route::delete('/admin/game/{Game}', 'Admin\GameController@deleteGame');
 //admin parser
 Route::get('/admin/parser', 'Admin\ParseController@getParser')->name('admin.getParser');
