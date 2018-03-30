@@ -74,6 +74,14 @@
                     <input class="form-control" type="text" name="source" id="source" value="{{ $game->source }}">
                 </div>
                 <div class="form-group">
+                    <label for="source">Высота:</label>
+                    <input class="form-control" type="text" name="height" id="source" value="{{ $game->height }}">
+                </div>
+                <div class="form-group">
+                    <label for="source">Ширина:</label>
+                    <input class="form-control" type="text" name="width" id="source" value="{{ $game->width }}">
+                </div>
+                <div class="form-group">
                     <p>Изображение {{ $game->imgExist }}</p>
                     <input class="form-control" type="file" name="img">
                 </div>
@@ -94,8 +102,8 @@
         <iframe src="{{ $game->source }}"
                 name="topFrame"
                 scrolling="no"
-                height="{{ $game->gameHeight }}"
-                width="100%">
+                height="{{ $game->height }}"
+                width="{{ $game->width }}">
         </iframe>
 
     </div>

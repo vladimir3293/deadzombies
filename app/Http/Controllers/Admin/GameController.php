@@ -23,6 +23,7 @@ class GameController extends Controller
         $Game->game_name = $request->create_game;
         $Game->game_url = $urlGenerator->createUrl($request->create_game);
         //dd($Game);
+        //dd($Game->game_url);
         $Game->save();
 
         return redirect()->route('admin.getGame', [$Game]);
@@ -62,9 +63,12 @@ class GameController extends Controller
         $Game->imgExist = Storage::disk('pub')->exists("/img/$Game->game_url.jpg") ? 'ЕСТЬ' : 'НЕТ';
         //$Game->img2 = Storage::disk('pub')->exists("/img/$Game->game_url-second.jpg") ? 'ЕСТЬ' : 'НЕТ';
         //$Game->img3 = Storage::disk('pub')->exists("/img/$Game->game_url-third.jpg") ? 'ЕСТЬ' : 'НЕТ';
-        if ($Game->gameHeight) {
+
+        if ($Game->height) {
             $Game->gameHeight = 868 * $Game->height / $Game->width;
         }
+        // dd($Game->height);
+        // dd($Game->gameHeight);
         return view('admin.game', ['game' => $Game, 'categories' => $categories]);
     }
 
@@ -77,6 +81,8 @@ class GameController extends Controller
         $Game->game_desc = $request->game_desc;
         $Game->game_control = $request->game_control;
         $Game->source = $request->source;
+        $Game->height = $request->height;
+        $Game->width = $request->width;
         //dd($request->game_cat);
         if ($request->game_cat) {
             $Game->category_id = $request->game_cat;
@@ -121,8 +127,8 @@ class GameController extends Controller
             */
             if (Storage::disk('pub')->exists("/img/$Game->game_url.jpg")) {
                 Storage::disk('pub')->move("/img/$Game->game_url.jpg", "/img/$newUrl.jpg");
-                Storage::disk('pub')->move("/img/$Game->game_url-small.jpg", "/img/$newUrl-small.jpg");
-                Storage::disk('pub')->move("/img/$Game->game_url-large.jpg", "/img/$newUrl-large.jpg");
+                //      Storage::disk('pub')->move("/img/$Game->game_url-small.jpg", "/img/$newUrl-small.jpg");
+                //    Storage::disk('pub')->move("/img/$Game->game_url-large.jpg", "/img/$newUrl-large.jpg");
             }
             /*
                         if (Storage::disk('pub')->exists("/img/$Game->game_url-second.jpg")) {
@@ -137,8 +143,8 @@ class GameController extends Controller
                             Storage::disk('pub')->move("/img/$Game->game_url-third-large.jpg", "/img/$newUrl-third-large.jpg");
                         }
             */
-            $Game->game_url = $urlGenerator->createUrl($Game->game_name);
-
+            $Game->game_url = $newUrl;
+            //dd($newUrl);
         }
 
         $Game->save();
@@ -147,6 +153,7 @@ class GameController extends Controller
 
     public function deleteGame(Game $Game)
     {
+        /*
         if (Storage::disk('pub')->exists("/games/$Game->game_url.swf")) {
             Storage::disk('pub')->delete("/games/$Game->game_url.swf");
         }
@@ -158,23 +165,27 @@ class GameController extends Controller
                 "/img/$Game->game_url-large.jpg"
             ]);
         }
-
-        if (Storage::disk('pub')->exists("/img/$Game->game_url-second.jpg")) {
-            Storage::disk('pub')->delete([
-                "/img/$Game->game_url-second.jpg",
-                "/img/$Game->game_url-second-small.jpg",
-                "/img/$Game->game_url-second-large.jpg"
-            ]);
+        */
+        if (Storage::disk('pub')->exists("/img/$Game->game_url.jpg")) {
+            Storage::disk('pub')->delete(["/img/$Game->game_url.jpg"]);
         }
+        /*
+                if (Storage::disk('pub')->exists("/img/$Game->game_url-second.jpg")) {
+                    Storage::disk('pub')->delete([
+                        "/img/$Game->game_url-second.jpg",
+                        "/img/$Game->game_url-second-small.jpg",
+                        "/img/$Game->game_url-second-large.jpg"
+                    ]);
+                }
 
-        if (Storage::disk('pub')->exists("/img/$Game->game_url-third.jpg")) {
-            Storage::disk('pub')->delete([
-                "/img/$Game->game_url-third-.jpg",
-                "/img/$Game->game_url-third-small.jpg",
-                "/img/$Game->game_url-third-large.jpg"
-            ]);
-        }
-
+                if (Storage::disk('pub')->exists("/img/$Game->game_url-third.jpg")) {
+                    Storage::disk('pub')->delete([
+                        "/img/$Game->game_url-third-.jpg",
+                        "/img/$Game->game_url-third-small.jpg",
+                        "/img/$Game->game_url-third-large.jpg"
+                    ]);
+                }
+        */
         $Game->delete();
         return redirect('admin');
     }
