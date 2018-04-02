@@ -14,6 +14,7 @@ use Illuminate\Support\Facades\Storage;
 
 class ParseController extends Controller
 {
+    //TODO img
     public function getParser(Tag $tagModel, Parser $parser, Category $categoryModel,
                               Game $gameModel, UrlGenerator $urlGenerator, Filesystem $filesystem)
     {
@@ -29,7 +30,7 @@ class ParseController extends Controller
 
         $existUrls = $gameModel->pluck('original_url');
 
-        $onePageUrlTest = $onePageUrl->diff($existUrls);
+        //$onePageUrlTest = $onePageUrl->diff($existUrls);
         /*
                 for ($i = 0; $i < 40; $i++) {
                     $onePageUrlTest[] = $onePageUrl[$i];
@@ -37,22 +38,24 @@ class ParseController extends Controller
                 //dd($_SERVER);
         */
         ini_set('default_socket_timeout', 900);
-        //  $onePageUrlTest[] = $onePageUrl[32];
-        foreach ($onePageUrlTest as $oneGame) {
+//dd($onePageUrl[1]);
+        $onePageUrlTest[] = $onePageUrl[2];
+//dd($onePageUrlTest);
+          foreach ($onePageUrlTest as $oneGame) {
             //dd($oneGame);
             $oneGameData = $parser->getGame($oneGame);
-            $game = $gameModel->where('game_url', $urlGenerator->urlCreate($oneGameData['name']))->get();
+            $game = $gameModel->where('game_url', $urlGenerator->createUrl($oneGameData['name']))->get();
             if ($game->isEmpty()) {
                 //dd(file_get_contents('https:' . $oneGameData['img']));
                 //TODO filesystem
                 Storage::disk('pub')->put(
-                    '/img/' . $urlGenerator->urlCreate($oneGameData['name']) . '.jpg',
-                    file_get_contents('https:' . $oneGameData['img'])
+                    '/img/' . $urlGenerator->createUrl($oneGameData['name']) . '.jpg',
+                    file_get_contents($oneGameData['img'])
                 );
                 //dd($filesystem->);
                 $createdGame = $gameModel->create([
                     'game_name' => $oneGameData['name'],
-                    'game_url' => $urlGenerator->urlCreate($oneGameData['name']),
+                    'game_url' => $urlGenerator->createUrl($oneGameData['name']),
                     'game_desc' => $oneGameData['desc'],
                     'game_title' => $oneGameData['name'],
                     'game_desc_meta' => $oneGameData['name'],
@@ -69,7 +72,7 @@ class ParseController extends Controller
                     $tagId = [];
                     foreach ($oneGameData['tags'] as $tag) {
                         $testTag = $tagModel->firstOrCreate(['name' => mb_strtolower($tag, "UTF-8")],
-                            ['name' => mb_strtolower($tag, "UTF-8"), 'url' => $urlGenerator->urlCreate($tag)]);
+                            ['name' => mb_strtolower($tag, "UTF-8"), 'url' => $urlGenerator->createUrl($tag)]);
                         $tagId[] = $testTag->id;
                     }
                     //    dd($tagId);
@@ -77,10 +80,10 @@ class ParseController extends Controller
                 $createdGame->tags()->attach($tagId);
 
                 $category = $categoryModel->firstOrCreate(
-                    ['cat_url' => $urlGenerator->urlCreate($oneGameData['cat'])],
+                    ['cat_url' => $urlGenerator->createUrl($oneGameData['cat'])],
                     [
                         'cat_name' => $oneGameData['cat'],
-                        'cat_url' => $urlGenerator->urlCreate($oneGameData['cat']),
+                        'cat_url' => $urlGenerator->createUrl($oneGameData['cat']),
                         'cat_desc' => 'standard',
                         'cat_h1' => 'standard',
                         'cat_title' => 'standart'
