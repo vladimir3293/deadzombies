@@ -90,9 +90,9 @@
             <form class="delete-form" method="post" action="/admin/game/{{ $game->game_url }}">
                 {{ method_field('DELETE') }}
                 {{ csrf_field() }}
-                <div class="game_delete">
+
                     <input class="btn btn-danger" type="submit" value="Удалить">
-                </div>
+
             </form>
         </div>
     </div>

@@ -23,4 +23,35 @@ class UrlGenerator
         #$createurl=stripcslashes($createurl);
         return $url;
     }
+
+    /**
+     * @TODO fix it
+     * @param $name
+     * @return mixed|string
+     */
+    public function create_name($name)
+    {
+        $name = trim($name);    #обрезает пробелы в конце и начале, должна еще и спецсимволы, но что-то через один
+        $name = preg_replace('/  +/', ' ', $name);
+        $del = array('~', '!', '@', '#', '%', '^', '&', '*', '(', ')', '_', '+', '=', '`', ',', '.', '/', '<', '>', '{', '}', '[', ']', ';', '\'', '\\', ':', '"', '|', '№', '$', '«', '»', '"');
+        $name = str_replace($del, '', $name);
+        return $name;
+    }
+
+    /**
+     * @TODO fix
+     */
+    public function create_url($url)
+    {
+        var_dump($url);
+        $url = mb_strtolower($url, 'UTF-8');    #переводит все буквы в нижний регистр
+        var_dump($url);
+        $rus = array('а', 'б', 'в', 'г', 'д', 'е', 'ё', 'ж', 'з', 'и', 'й', 'к', 'л', 'м', 'н', 'о', 'п', 'р', 'с', 'т', 'у', 'ф', 'х', 'ц', 'ч', 'ш', 'щ', 'ъ', 'ы', 'ь', 'э', 'ю', 'я');
+        $eng = array('a', 'b', 'v', 'g', 'd', 'e', 'e', 'zh', 'z', 'i', 'i', 'k', 'l', 'm', 'n', 'o', 'p', 'r', 's', 't', 'u', 'f', 'kh', 'ts', 'ch', 'sh', 'shch', 'ie', 'y', '', 'e', 'iu', 'ia',);
+        $url = str_replace($rus, $eng, $url);
+        $url = str_replace(' ', '-', $url);            #заменяет пробелы на дефис
+        #$createurl=stripcslashes($createurl);
+
+        return $url;
+    }
 }

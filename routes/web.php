@@ -29,6 +29,8 @@ Route::get('/admin/game/{game}', [
     'as' => 'admin.getGame']);
 //create game
 Route::get('/admin/creategame', 'Admin\GameController@createGame')->name('admin.createGame');
+//create category
+Route::get('/admin/createcategory', 'Admin\CategoryController@createCategory')->name('admin.createСategory');
 //delete game
 Route::delete('/admin/game/{Game}', 'Admin\GameController@deleteGame');
 //admin parser

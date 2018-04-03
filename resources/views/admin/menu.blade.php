@@ -10,6 +10,7 @@
     </li>
     <li class="nav-categories"><a href="/admin" class="nav-categories-link">Категории</a>
         <ul>
+            <li><a href="{{ route('admin.createСategory') }}">Создать категорию</a></li>
             @foreach($menu as $category)
                 <li><a href="{!! $category->url !!}">{!! $category->cat_name !!}</a></li>
             @endforeach
