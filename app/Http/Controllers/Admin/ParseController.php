@@ -19,41 +19,34 @@ class ParseController extends Controller
     {
         return view('admin.parser.gamedistribution');
     }
+
     //TODO img
     public function postGameDist(Request $request, Tag $tagModel, Parser $parser, Category $categoryModel,
-                              Game $gameModel, UrlGenerator $urlGenerator, Filesystem $filesystem)
+                                 Game $gameModel, UrlGenerator $urlGenerator, Filesystem $filesystem)
     {
         //get urls from one page
         $onePageRawUrl = collect($parser->getGamesUrls($request->page_number));
-
+        $countOfGames = $onePageRawUrl->count();
+        // dd($onePageRawUrl);
         //first verification for unique
-        $pageUrls = [];
-        foreach ($onePageRawUrl as $value) {
-            //TODO WTF
-            $pageUrls[] = $urlGenerator->createUrl(htmlspecialchars_decode(explode('.', explode('/', $value)[5])[0], ENT_QUOTES));
-        }
-        $pageUrls = collect($pageUrls);
         $existUrls = $gameModel->pluck('original_url');
-        $onePageUrlTest = $pageUrls->diff($existUrls);
-
-//        dd($onePageUrlTest);
-
-        /*
-                for ($i = 0; $i < 40; $i++) {
-                    $onePageUrlTest[] = $onePageUrl[$i];
-                }
-                //dd($_SERVER);
-        */
+        $onePageUrls = $onePageRawUrl->diff($existUrls);
         ini_set('default_socket_timeout', 900);
-//dd($onePageUrl[1]);
-        $onePageUrl[] = $onePageUrlTest[6];
-        dd($onePageUrlTest[6]);
-//dd($onePageUrlTest);
-          foreach ($onePageUrl as $oneGame) {
-            //dd($oneGame);
+
+        $countPages = 0;
+        //dd($onePageUrls);
+//$test = 'https://gamedistribution.com/games/multiplayer/rack&#39;em-8-ball-pool.html';
+        //dd(htmlspecialchars_decode($test,ENT_QUOTES));
+        $debug = 0;
+        foreach ($onePageUrls as $oneGame) {
+            $debug++;
+
             $oneGameData = $parser->getGame($oneGame);
             $game = $gameModel->where('game_url', $urlGenerator->createUrl($oneGameData['name']))->get();
+            //dd($oneGameData['original_url']);
+
             if ($game->isEmpty()) {
+                $countPages++;
                 //dd(file_get_contents('https:' . $oneGameData['img']));
                 //TODO filesystem
                 Storage::disk('pub')->put(
@@ -93,7 +86,6 @@ class ParseController extends Controller
                         'cat_name' => $oneGameData['cat'],
                         'cat_url' => $urlGenerator->createUrl($oneGameData['cat']),
                         'cat_desc' => 'standard',
-                        'cat_h1' => 'standard',
                         'cat_title' => 'standart'
                     ]);
 
@@ -101,6 +93,6 @@ class ParseController extends Controller
                 //dd($category,$createdGame);
             }
         }
-        return view('admin.gamedistribution',['message'=>'sdfsf']);
+        return view('admin.parser.gamedistribution', ['message' => $countPages, 'countOfGames' => $countOfGames, 'debug' => $debug]);
     }
 }
