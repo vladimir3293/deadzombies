@@ -14,23 +14,30 @@ use Illuminate\Support\Facades\Storage;
 
 class ParseController extends Controller
 {
+    //TODO another parser
+    public function getParser()
+    {
+        return view('admin.parser.gamedistribution');
+    }
     //TODO img
-    public function getParser(Tag $tagModel, Parser $parser, Category $categoryModel,
+    public function postGameDist(Request $request, Tag $tagModel, Parser $parser, Category $categoryModel,
                               Game $gameModel, UrlGenerator $urlGenerator, Filesystem $filesystem)
     {
-//get urls from one page
-        $onePageUrl = collect($parser->getGamesUrls(4));
+        //get urls from one page
+        $onePageRawUrl = collect($parser->getGamesUrls($request->page_number));
 
-        /*$pageUrls = [];
-        foreach ($onePageUrl as $value) {
+        //first verification for unique
+        $pageUrls = [];
+        foreach ($onePageRawUrl as $value) {
             //TODO WTF
-            $pageUrls[] = $urlGenerator->urlCreate(htmlspecialchars_decode(explode('.', explode('/', $value)[5])[0], ENT_QUOTES));
-        }*/
-        //$pageUrls = collect($pageUrls);
-
+            $pageUrls[] = $urlGenerator->createUrl(htmlspecialchars_decode(explode('.', explode('/', $value)[5])[0], ENT_QUOTES));
+        }
+        $pageUrls = collect($pageUrls);
         $existUrls = $gameModel->pluck('original_url');
+        $onePageUrlTest = $pageUrls->diff($existUrls);
 
-        //$onePageUrlTest = $onePageUrl->diff($existUrls);
+//        dd($onePageUrlTest);
+
         /*
                 for ($i = 0; $i < 40; $i++) {
                     $onePageUrlTest[] = $onePageUrl[$i];
@@ -39,9 +46,10 @@ class ParseController extends Controller
         */
         ini_set('default_socket_timeout', 900);
 //dd($onePageUrl[1]);
-        $onePageUrlTest[] = $onePageUrl[2];
+        $onePageUrl[] = $onePageUrlTest[6];
+        dd($onePageUrlTest[6]);
 //dd($onePageUrlTest);
-          foreach ($onePageUrlTest as $oneGame) {
+          foreach ($onePageUrl as $oneGame) {
             //dd($oneGame);
             $oneGameData = $parser->getGame($oneGame);
             $game = $gameModel->where('game_url', $urlGenerator->createUrl($oneGameData['name']))->get();
@@ -93,6 +101,6 @@ class ParseController extends Controller
                 //dd($category,$createdGame);
             }
         }
-        return view('admin.parser');
+        return view('admin.gamedistribution',['message'=>'sdfsf']);
     }
 }
