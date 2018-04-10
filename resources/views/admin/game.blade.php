@@ -62,7 +62,8 @@
 
                 <div class="form-group">
                     <label for="game_desc"> Описание: </label>
-                    <textarea class="form-control" id="game_desc" name="game_desc" class="game_desc" rows="4">{{ $game->game_desc }}</textarea>
+                    <textarea class="form-control" id="game_desc" name="game_desc" class="game_desc"
+                              rows="4">{{ $game->game_desc }}</textarea>
                 </div>
                 <div class="form-group">
                     <label for="game_control"> Управление: </label>
@@ -87,13 +88,43 @@
                 </div>
                 <input class="btn btn-primary" type="submit" value="Применить">
             </form>
-            <form class="delete-form" method="post" action="/admin/game/{{ $game->game_url }}">
-                {{ method_field('DELETE') }}
-                {{ csrf_field() }}
-                                    <input class="btn btn-danger" type="submit" value="Удалить">
 
-            </form>
         </div>
+        <h4>Теги:</h4>
+
+        <form method="post" action="/admin/game/tag/{{ $game->game_url }}">
+            {{ method_field('POST') }}
+            {{ csrf_field() }}
+
+            <div class="form-group">
+                <label for="game_cat">Добавить тег</label>
+                <select class="form-control" name="tagId">
+                    @foreach($tags as $tag)
+                        <option value="{{ $tag->id }}">{{ $tag->name }}</option>
+                    @endforeach
+                </select>
+            </div>
+            <input class="btn btn-primary" type="submit" value="Добвать тег">
+        </form>
+
+
+        @foreach($game->tags as $tag)
+            <form method="post" action="/admin/game/tag/{{ $game->game_url }}">
+                <div class="form-group">
+                    {{ method_field('DELETE') }}
+                    {{ csrf_field() }}
+                    <label>{{ $tag->name }}</label>
+                    <input name="tagId" type="hidden" value="{{ $tag->id }}">
+                    <input class="btn btn-danger" type="submit" value="Удалить">
+                </div>
+            </form>
+        @endforeach
+
+        <form class="delete-form" method="post" action="/admin/game/{{ $game->game_url }}">
+            {{ method_field('DELETE') }}
+            {{ csrf_field() }}
+            <input class="btn btn-danger" type="submit" value="Удалить">
+        </form>
     </div>
 
     <div class="flash">

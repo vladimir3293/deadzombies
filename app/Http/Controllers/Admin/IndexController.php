@@ -18,9 +18,9 @@ class IndexController extends Controller
         //TODO transfer to model
         //TODO pagination
         //TODO problem with height
+        //TODO tags unique
 
         $pageIndex = $page->where('name', 'index')->get()->first();
-
 
         $games = $game->simplePaginate(12);
         //dd($games);

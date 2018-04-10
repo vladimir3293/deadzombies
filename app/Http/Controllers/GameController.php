@@ -11,7 +11,7 @@ class GameController
 {
     public function getGame(Game $game, Request $request)
     {
-
+//dd($game);
         //die('fs');
         /*   "game_name" => "Romantic Royal Couple"
        "game_url" => "romantic-royal-couple"
@@ -32,8 +32,11 @@ class GameController
    */
         //dd($game);
         //dd($game->category);
-        $game->cat_url = $game->category->cat_url;
-        $game->cat_name = $game->category->cat_name;
+        if(isset($game->category->cat_url)) {
+            $game->cat_url = $game->category->cat_url;
+            $game->cat_name = $game->category->cat_name;
+        }
+
         $game->gameHeight = 868*$game->height/$game->width;
        // dd($game);
         //$Game->categoryUrl = route('getCat', $Category->cat_url);

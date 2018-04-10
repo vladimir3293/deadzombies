@@ -4,8 +4,8 @@
     <li class="nav-categoriess"><a class="nav-categories-linkk href="#">Игры</a>
         <ul>
             <li><a href="{{ route('admin.createGame') }}">Создать игру</a></li>
-            <li><a href="{{ route('admin.getUnpublished') }}">Опубликованные</a></li>
-            <li><a href="{{ route('admin.getPublished') }}">Не опубликованные</a></li>
+            <li><a href="{{ route('admin.getUnpublished') }}">Не опубликованные</a></li>
+            <li><a href="{{ route('admin.getPublished') }}">Опубликованные</a></li>
         </ul>
     </li>
     <li class="nav-categories"><a href="/admin" class="nav-categories-link">Категории</a>

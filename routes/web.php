@@ -31,6 +31,12 @@ Route::get('/admin/game/{game}', [
 Route::get('/admin/creategame', 'Admin\GameController@createGame')->name('admin.createGame');
 //delete game
 Route::delete('/admin/game/{Game}', 'Admin\GameController@deleteGame');
+//delete game tag
+Route::delete('/admin/game/tag/{Game}', 'Admin\GameController@deleteGameTag');
+//create game tag
+Route::post('/admin/game/tag/{Game}', 'Admin\GameController@postGameTag');
+
+
 //admin parser
 Route::get('/admin/parser', 'Admin\ParseController@getParser')->name('admin.getParser');
 Route::post('/admin/parser', 'Admin\ParseController@postGameDist')->name('admin.getParser');
@@ -40,6 +46,7 @@ Route::post('/admin/parser', 'Admin\ParseController@postGameDist')->name('admin.
 Route::get('/admin/unpublished', 'Admin\GameController@getUnpublished')->name('admin.getUnpublished');
 //published games
 Route::get('/admin/published', 'Admin\GameController@getPublished')->name('admin.getPublished');
+
 
 
 
