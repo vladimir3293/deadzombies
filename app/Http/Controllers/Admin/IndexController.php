@@ -20,9 +20,13 @@ class IndexController extends Controller
         //TODO problem with height
         //TODO tags unique
 
+        //TODO when delete category
+        //TODO tags
+        //TODO create name
         $pageIndex = $page->where('name', 'index')->get()->first();
 
-        $games = $game->simplePaginate(12);
+
+        $games = $game->paginate(24);
         //dd($games);
         $games->each(function ($games) {
             $games->url = route('admin.getGame', $games->game_url);

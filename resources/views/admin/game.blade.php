@@ -62,8 +62,7 @@
 
                 <div class="form-group">
                     <label for="game_desc"> Описание: </label>
-                    <textarea class="form-control" id="game_desc" name="game_desc" class="game_desc"
-                              rows="4">{{ $game->game_desc }}</textarea>
+                    <textarea class="form-control" id="game_desc" name="game_desc" class="game_desc" rows="4">{{ $game->game_desc }}</textarea>
                 </div>
                 <div class="form-group">
                     <label for="game_control"> Управление: </label>

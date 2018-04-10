@@ -11,7 +11,9 @@
             <div class="breadcrumb">
                 <span>ВЕРНУТЬСЯ:</span>
                 <a href="/">Главная</a>
-                <a href="/{{ $game->cat_url }}">{{ $game->cat_name }}</a>
+                @if(isset($game->cat_url))
+                    <a href="/{{ $game->cat_url }}">{{ $game->cat_name }}</a>
+                @endif
             </div>
             <div class="like">
                 <img src="/img/site/like.png" alt="How many people like this game" title="like button">

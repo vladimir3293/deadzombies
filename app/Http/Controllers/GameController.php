@@ -11,7 +11,7 @@ class GameController
 {
     public function getGame(Game $game, Request $request)
     {
-//dd($game);
+
         //die('fs');
         /*   "game_name" => "Romantic Royal Couple"
        "game_url" => "romantic-royal-couple"

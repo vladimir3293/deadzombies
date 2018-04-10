@@ -20,9 +20,8 @@ class Parser
 
         //dd($parserDOM->find('div.tiles'));
         $a = $parserDOM->find('div.tiles')[2]->find('a');
-
         foreach ($a as $card) {
-            $games[] = 'https://gamedistribution.com' . $card->href;
+            $games[] = 'https://gamedistribution.com' . htmlspecialchars_decode($card->href, ENT_QUOTES);
         }
         //dd($games);
         return $games;
