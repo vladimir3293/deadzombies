@@ -1,6 +1,6 @@
 <ul class="nav nav-pills nav-stacked">
-    <li><a href="/" data-toggle="tab">Home page</a></li>
-    <li><a href="{{ route('admin') }}" data-toggle="tab">Admin page</a></li>
+    <li><a href="/" data-toggle="tab" target="_blank">На главную</a></li>
+    <li><a href="{{ route('admin') }}" data-toggle="tab">Админка</a></li>
     <li class="nav-categoriess"><a class="nav-categories-linkk href="#">Игры</a>
         <ul>
             <li><a href="{{ route('admin.createGame') }}">Создать игру</a></li>
@@ -16,5 +16,6 @@
             @endforeach
         </ul>
     </li>
-    <li><a href="{{ route('admin.getParser') }}">Parser</a></li>
+    <li><a href="{{ route('admin.getTags') }}">Теги</a></li>
+    <li><a href="{{ route('admin.getParser') }}">Парсер</a></li>
 </ul>

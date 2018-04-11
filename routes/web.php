@@ -37,6 +37,8 @@ Route::delete('/admin/game/{Game}', 'Admin\GameController@deleteGame');
 Route::delete('/admin/game/tag/{Game}', 'Admin\GameController@deleteGameTag');
 //create game tag
 Route::post('/admin/game/tag/{Game}', 'Admin\GameController@postGameTag');
+//get tags page
+Route::get('/admin/tags', 'Admin\TagController@getTags')->name('admin.getTags');
 
 
 //admin parser

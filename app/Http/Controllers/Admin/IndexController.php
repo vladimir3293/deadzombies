@@ -23,6 +23,7 @@ class IndexController extends Controller
         //TODO when delete category
         //TODO tags
         //TODO create name
+        //TODO pblish and npblish to GET
         $pageIndex = $page->where('name', 'index')->get()->first();
 
 

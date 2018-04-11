@@ -6,7 +6,7 @@
 @section('right_content')
     <article>
         <header class="article-header">
-            <h1>Все игры</h1>
+            <h1>Сделать какую-то статистику, пока все игры</h1>
         </header>
         @if(isset($games))
             <div class="row">
