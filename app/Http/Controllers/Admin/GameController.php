@@ -4,6 +4,7 @@ namespace Deadzombies\Http\Controllers\Admin;
 
 use Deadzombies\Model\Category;
 use Deadzombies\Model\Game;
+use Deadzombies\Model\Tag;
 use Deadzombies\UrlGenerator\UrlGenerator;
 use Illuminate\Http\Request;
 use Deadzombies\Http\Controllers\Controller;
@@ -55,8 +56,9 @@ class GameController extends Controller
         return view('admin.published', ['games' => $games]);
     }
 
-    public function getGame(Game $Game, Category $category)
+    public function getGame(Game $Game, Category $category, Tag $tagModel)
     {
+        $tags = $tagModel->get();
         $categories = $category::all();
         $Game->cat = $Game->category ? $Game->category->cat_name : 'НЕТ';
         //$Game->flash = Storage::disk('pub')->exists("/games/$Game->game_url.swf") ? 'ЕСТЬ' : 'НЕТ';
@@ -67,9 +69,24 @@ class GameController extends Controller
         if ($Game->height) {
             $Game->gameHeight = 868 * $Game->height / $Game->width;
         }
+        //dd($Game->tags);
         // dd($Game->height);
         // dd($Game->gameHeight);
-        return view('admin.game', ['game' => $Game, 'categories' => $categories]);
+        return view('admin.game', ['game' => $Game, 'categories' => $categories,'tags'=>$tags]);
+    }
+
+    public function postGameTag(Game $Game, Request $request, Tag $tagModel)
+    {
+        $tag = $tagModel->where('id',$request->tagId)->get();
+        $tag = $tag->first();
+        //dd($Game, $request);
+        $Game->tags()->save($tag);
+        return redirect()->route('admin.getGame', [$Game]);
+    }
+
+    public function deleteGameTag(Game $Game, Request $request)
+    {
+        dd($Game);
     }
 
     public function putGame(Game $Game, Request $request, UrlGenerator $urlGenerator)

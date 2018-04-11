@@ -18,6 +18,8 @@ class IndexController extends Controller
         //TODO transfer to model
         //TODO pagination
         //TODO problem with height
+        //TODO tags unique
+
         //TODO when delete category
         //TODO tags
         //TODO create name
