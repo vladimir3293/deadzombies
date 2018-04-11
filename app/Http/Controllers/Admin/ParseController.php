@@ -7,6 +7,7 @@ use Deadzombies\Model\Game;
 use Deadzombies\Model\Tag;
 use Deadzombies\Parser\Parser;
 use Deadzombies\UrlGenerator\UrlGenerator;
+use Exception;
 use Illuminate\Contracts\Filesystem\Filesystem;
 use Illuminate\Http\Request;
 use Deadzombies\Http\Controllers\Controller;
@@ -37,11 +38,15 @@ class ParseController extends Controller
         //dd($onePageUrls);
 //$test = 'https://gamedistribution.com/games/multiplayer/rack&#39;em-8-ball-pool.html';
         //dd(htmlspecialchars_decode($test,ENT_QUOTES));
-        $debug = 0;
-        foreach ($onePageUrls as $oneGame) {
-            $debug++;
+        //$debug = 0;
+        //$forTest = [];
+        $forTest[] = $onePageUrls[2];
+
+        foreach ($forTest as $oneGame) {
+            //$debug++;
 
             $oneGameData = $parser->getGame($oneGame);
+            //dd($oneGameData);
             $game = $gameModel->where('game_url', $urlGenerator->createUrl($oneGameData['name']))->get();
             //dd($oneGameData['original_url']);
 
@@ -49,10 +54,16 @@ class ParseController extends Controller
                 $countPages++;
                 //dd(file_get_contents('https:' . $oneGameData['img']));
                 //TODO filesystem
+//                $this->createImage($urlGenerator->createUrl($oneGameData['name']),file_get_contents($oneGameData['img']));
+
+                $this->createImage($urlGenerator->createUrl($oneGameData['name']), $oneGameData['img']);
+
+                /*
                 Storage::disk('pub')->put(
                     '/img/' . $urlGenerator->createUrl($oneGameData['name']) . '.jpg',
                     file_get_contents($oneGameData['img'])
                 );
+                */
                 //dd($filesystem->);
                 $createdGame = $gameModel->create([
                     'game_name' => $oneGameData['name'],
@@ -93,6 +104,32 @@ class ParseController extends Controller
                 //dd($category,$createdGame);
             }
         }
-        return view('admin.parser.gamedistribution', ['message' => $countPages, 'countOfGames' => $countOfGames, 'debug' => $debug]);
+        return view('admin.parser.gamedistribution', ['message' => $countPages, 'countOfGames' => $countOfGames]);
+    }
+
+    //TODO WTFFFFF
+    public function createImage(string $url, $img, string $imgPrefix = '')
+    {
+        //dd(exif_imagetype($img));
+        $old_size = getimagesize($img);
+//dd($old_size);
+        $small_size = imagecreatetruecolor(80, 56);
+        $medium_size = imagecreatetruecolor(220, 153);
+        $large_size = imagecreatetruecolor(385, 268);
+
+        if (exif_imagetype($img) != 2) {
+            return;
+        }
+
+
+        $original = imagecreatefromjpeg($img);
+
+        imagecopyresampled($small_size, $original, 0, 0, 0, 0, 80, 56, $old_size[0], $old_size[1]);
+        imagecopyresampled($medium_size, $original, 0, 0, 0, 0, 220, 153, $old_size[0], $old_size[1]);
+        imagecopyresampled($large_size, $original, 0, 0, 0, 0, 385, 268, $old_size[0], $old_size[1]);
+
+        imagejpeg($small_size, public_path("/img/$url$imgPrefix-small.jpg"));
+        imagejpeg($medium_size, public_path("/img/$url$imgPrefix.jpg"));
+        imagejpeg($large_size, public_path("/img/$url$imgPrefix-large.jpg"));
     }
 }

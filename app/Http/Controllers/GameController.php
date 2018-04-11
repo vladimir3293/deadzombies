@@ -39,6 +39,7 @@ class GameController
             $game->cat_name = $game->category->cat_name;
         }
         $game->gameHeight = 868 * $game->height / $game->width;
+
         // dd($game);
         //$Game->categoryUrl = route('getCat', $Category->cat_url);
         return view('game', ['game' => $game]);

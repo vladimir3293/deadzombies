@@ -27,9 +27,7 @@
                 </div>
                 <div class="upr-text">
                     <p>{{ $game->game_control }}</p>
-                    <p>{{ $game->game_control }}</p>
-                    <p>{{ $game->game_control }}</p>
-                    <p>{{ $game->game_control }}</p>
+
                 </div>
             </div>
             <div class="flash">
@@ -44,7 +42,7 @@
 
             </div>
             <div class="flash-opis">
-                <img src="{{ $game->img }}">
+                <img src="/img/{{ $game->game_url }}.jpg">
                 <p>{{ $game->game_desc }}</p>
                 <div class="clr"></div>
             </div>

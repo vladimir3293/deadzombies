@@ -31,10 +31,10 @@ class GameController extends Controller
 
     public function getUnpublished(Game $gameModel)
     {
-        $games = $gameModel->where('game_show', 0)->simplePaginate(12);
+        $games = $gameModel->where('game_show', 0)->simplePaginate(48);
         //dd($games);
         $games->each(function ($games) {
-            $games->url = route('getGame', $games->game_url);
+            $games->url = route('admin.getGame', $games->game_url);
             $games->img = file_exists(public_path() . '/img/' . $games->game_url . '.jpg') ?
                 '/img/' . $games->game_url . '.jpg' :
                 '/img/empty.jpg';
@@ -44,10 +44,10 @@ class GameController extends Controller
 
     public function getPublished(Game $gameModel)
     {
-        $games = $gameModel->where('game_show', 1)->simplePaginate(12);
+        $games = $gameModel->where('game_show', 1)->simplePaginate(48);
         //dd($games);
         $games->each(function ($games) {
-            $games->url = route('getGame', $games->game_url);
+            $games->url = route('admin.getGame', $games->game_url);
             $games->img = file_exists(public_path() . '/img/' . $games->game_url . '.jpg') ?
                 '/img/' . $games->game_url . '.jpg' :
                 '/img/empty.jpg';
@@ -116,7 +116,7 @@ class GameController extends Controller
             $this->createImage($Game->game_url, $request->file('img3'), '-third');
         }
 */
-        //TODO rename flash and img
+        //TODO rename img
         if ($request->game_rename) {
             $Game->game_name = $request->game_rename;
             $newUrl = $urlGenerator->createUrl($Game->game_name);
@@ -127,8 +127,12 @@ class GameController extends Controller
             */
             if (Storage::disk('pub')->exists("/img/$Game->game_url.jpg")) {
                 Storage::disk('pub')->move("/img/$Game->game_url.jpg", "/img/$newUrl.jpg");
-                //      Storage::disk('pub')->move("/img/$Game->game_url-small.jpg", "/img/$newUrl-small.jpg");
-                //    Storage::disk('pub')->move("/img/$Game->game_url-large.jpg", "/img/$newUrl-large.jpg");
+           }
+            if (Storage::disk('pub')->exists("/img/$Game->game_url-small.jpg")) {
+                Storage::disk('pub')->move("/img/$Game->game_url-small.jpg", "/img/$newUrl.jpg");
+            }
+            if (Storage::disk('pub')->exists("/img/$Game->game_url-large.jpg")) {
+                Storage::disk('pub')->move("/img/$Game->game_url-large.jpg", "/img/$newUrl.jpg");
             }
             /*
                         if (Storage::disk('pub')->exists("/img/$Game->game_url-second.jpg")) {
@@ -168,6 +172,12 @@ class GameController extends Controller
         */
         if (Storage::disk('pub')->exists("/img/$Game->game_url.jpg")) {
             Storage::disk('pub')->delete(["/img/$Game->game_url.jpg"]);
+        }
+        if (Storage::disk('pub')->exists("/img/$Game->game_url-small.jpg")) {
+            Storage::disk('pub')->delete(["/img/$Game->game_url-small.jpg"]);
+        }
+        if (Storage::disk('pub')->exists("/img/$Game->game_url-large.jpg")) {
+            Storage::disk('pub')->delete(["/img/$Game->game_url-large.jpg"]);
         }
         /*
                 if (Storage::disk('pub')->exists("/img/$Game->game_url-second.jpg")) {

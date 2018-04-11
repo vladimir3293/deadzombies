@@ -9,7 +9,7 @@
             <h1>Gamedistribution parser</h1>
         </header>
         @if(isset($message))
-            <p>Добавлено: {{ $message }} из {{ $countOfGames }} пропущено {{ $debug }}</p>
+            <p>Добавлено: {{ $message }} из {{ $countOfGames }}</p>
         @endif
         <form method="post" enctype="multipart/form-data" role="form">
             {{ method_field('POST') }}

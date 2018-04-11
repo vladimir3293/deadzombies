@@ -15,6 +15,7 @@ class Parser
 
     public function getGamesUrls($page)
     {
+        //dd($this->translate('hello world'));
         $games = [];
         $parserDOM = $this->parseLib->file_get_html("https://www.gamedistribution.com/gamelist/allcompanies/allcategories/html5?selectedPage=$page");
 
@@ -51,7 +52,7 @@ class Parser
         $tagsRaw = $rawData->find('a.tag');
         $tags = [];
         foreach ($tagsRaw as $tag) {
-            $tags[] = strtolower($tag->innertext);
+            $tags[] = $this->translate(strtolower($tag->innertext));
         }
         //category
         $categoryRaw = $rawData->find('div#column2 p');
@@ -68,14 +69,31 @@ class Parser
         $desc = trim($desc);
         return [
             'original_url' => $gameURL,
-            'name' => $h1,
+            'name' => $this->translate($h1),
             'img' => $imgUrl,
-            'url' => $gameUrl,
+            'url' => $this->translate($gameUrl),
             'tags' => $tags,
-            'cat' => $category,
+            'cat' => $this->translate($category),
             'width' => $gameWidth,
             'height' => $gameHeight,
-            'desc' => $desc
+            'desc' => $this->translate($desc)
         ];
+    }
+//TODO wtf
+    public function translate(string $text)
+    {
+
+        $apiKey = 'AIzaSyBQU3PFax_Du60LhUX9smma_s_JJMFChvY';
+//        $text = 'Hello world! i like some';
+
+        $url = 'https://www.googleapis.com/language/translate/v2?key=' . $apiKey . '&q=' . rawurlencode($text) . '&source=en&target=ru';
+
+        $handle = curl_init($url);
+        curl_setopt($handle, CURLOPT_RETURNTRANSFER, true);
+        $response = curl_exec($handle);
+        $responseDecoded = json_decode($response, true);
+        curl_close($handle);
+
+        return $responseDecoded['data']['translations'][0]['translatedText'];
     }
 }
