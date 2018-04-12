@@ -72,21 +72,24 @@ class GameController extends Controller
         //dd($Game->tags);
         // dd($Game->height);
         // dd($Game->gameHeight);
-        return view('admin.game', ['game' => $Game, 'categories' => $categories,'tags'=>$tags]);
+        return view('admin.game', ['game' => $Game, 'categories' => $categories, 'tags' => $tags]);
     }
 
     public function postGameTag(Game $Game, Request $request, Tag $tagModel)
     {
-        $tag = $tagModel->where('id',$request->tagId)->get();
+        $tag = $tagModel->where('id', $request->tagId)->get();
         $tag = $tag->first();
         //dd($Game, $request);
         $Game->tags()->save($tag);
         return redirect()->route('admin.getGame', [$Game]);
     }
 
-    public function deleteGameTag(Game $Game, Request $request)
+    public function deleteGameTag(Game $Game, Request $request, Tag $tagModel)
     {
-        dd($Game);
+        $tag = $tagModel->where('id', $request->tagId)->get();
+        //dd($tag);
+        $Game->tags()->detach($tag);
+        return redirect()->route('admin.getGame', [$Game]);
     }
 
     public function putGame(Game $Game, Request $request, UrlGenerator $urlGenerator)
@@ -144,7 +147,7 @@ class GameController extends Controller
             */
             if (Storage::disk('pub')->exists("/img/$Game->game_url.jpg")) {
                 Storage::disk('pub')->move("/img/$Game->game_url.jpg", "/img/$newUrl.jpg");
-           }
+            }
             if (Storage::disk('pub')->exists("/img/$Game->game_url-small.jpg")) {
                 Storage::disk('pub')->move("/img/$Game->game_url-small.jpg", "/img/$newUrl.jpg");
             }

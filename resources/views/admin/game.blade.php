@@ -91,6 +91,18 @@
         </div>
         <h4>Теги:</h4>
 
+        @foreach($game->tags as $tag)
+            <form method="post" action="/admin/game/tag/{{ $game->game_url }}">
+                <div class="form-group">
+                    {{ method_field('DELETE') }}
+                    {{ csrf_field() }}
+
+                    <input name="tagId" type="hidden" value="{{ $tag->id }}">
+                    <input class="btn btn-danger" type="submit" value="Удалить тег">
+                    <label>{{ $tag->name }}</label>
+                </div>
+            </form>
+        @endforeach
         <form method="post" action="/admin/game/tag/{{ $game->game_url }}">
             {{ method_field('POST') }}
             {{ csrf_field() }}
@@ -105,25 +117,6 @@
             </div>
             <input class="btn btn-primary" type="submit" value="Добвать тег">
         </form>
-
-
-        @foreach($game->tags as $tag)
-            <form method="post" action="/admin/game/tag/{{ $game->game_url }}">
-                <div class="form-group">
-                    {{ method_field('DELETE') }}
-                    {{ csrf_field() }}
-                    <label>{{ $tag->name }}</label>
-                    <input name="tagId" type="hidden" value="{{ $tag->id }}">
-                    <input class="btn btn-danger" type="submit" value="Удалить">
-                </div>
-            </form>
-        @endforeach
-
-        <form class="delete-form" method="post" action="/admin/game/{{ $game->game_url }}">
-            {{ method_field('DELETE') }}
-            {{ csrf_field() }}
-            <input class="btn btn-danger" type="submit" value="Удалить">
-        </form>
     </div>
 
     <div class="flash">
@@ -136,5 +129,11 @@
         </iframe>
 
     </div>
+
+    <form method="post" action="/admin/game/{{ $game->game_url }}">
+        {{ method_field('DELETE') }}
+        {{ csrf_field() }}
+        <input class="btn btn-danger" type="submit" value="Удалить игру">
+    </form>
 
 @endsection

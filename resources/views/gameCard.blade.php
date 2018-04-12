@@ -8,7 +8,7 @@
             </div>
             <div class="game-card-desc">
                 <a href="{{ $game->url }}">PLAY</a>
-                <img src="/img/like.png" alt="How many people like this game" title="like button">
+                <img src="/img/site/like.png" alt="How many people like this game" title="like button">
                 <span>32</span>
             </div>
         </div>

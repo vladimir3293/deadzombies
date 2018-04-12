@@ -6,7 +6,9 @@
 @section('right_content')
     <article>
         <header class="article-header">
-            <h1>Не опубликованные игры</h1>
+            <h1>Не опубликованные игры
+                @if(isset($games)){{ $games->count() }}@else()0
+                @endif</h1>
         </header>
         @if(isset($games))
             <div class="row">

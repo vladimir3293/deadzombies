@@ -33,7 +33,7 @@ class IndexController extends Controller
             $games->url = route('admin.getGame', $games->game_url);
             $games->img = file_exists(public_path() . '/img/' . $games->game_url . '.jpg') ?
                 '/img/' . $games->game_url . '.jpg' :
-                '/img/empty.jpg';
+                '/img/site/empty.jpg';
         });
         return view('admin.index', ['games' => $games, 'page' => $pageIndex]);
     }

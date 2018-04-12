@@ -19,7 +19,7 @@
                 <header class="index-header">
                     {{-- todo layout composer for same parts --}}
                     <h1>Opisanie sayta h1</h1>
-                    <img src="/img/logotype.png">
+                    <img src="/img/site/logotype.png">
                 </header>
                 <nav>
                     <header>
@@ -42,7 +42,7 @@
         <footer class="index-footer col-md-24">
             <div class="footer">
                 <div class="copy">
-                    <img src="/img/footer.png">
+                    <img src="/img/site/footer.png">
                     <p class="descr">Все права на публикацию, принадлежат их владельцам. Весь материал расположенный на сайте, взят из открытых источников.</p>
                     <div class="clr"></div>
                 </div>
