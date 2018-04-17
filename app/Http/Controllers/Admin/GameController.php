@@ -18,7 +18,7 @@ class GameController extends Controller
     {
         return view('admin.createGame');
     }
-
+//TODO create name
     public function postGame(Request $request, Game $Game, UrlGenerator $urlGenerator)
     {
         $Game->game_name = $request->create_game;

@@ -41,6 +41,13 @@ Route::post('/admin/game/tag/{Game}', 'Admin\GameController@postGameTag');
 Route::get('/admin/tags', 'Admin\TagController@getTags')->name('admin.getTags');
 
 
+//one tag page
+Route::get('/admin/tag/{Tag}', 'Admin\TagController@getTag')->name('admin.getTag');
+//delete tag
+Route::delete('/admin/tag/{Tag}', 'Admin\TagController@deleteTag');
+//create tag
+Route::post('/admin/tag/', 'Admin\TagController@postTag');
+
 //admin parser
 Route::get('/admin/parser', 'Admin\ParseController@getParser')->name('admin.getParser');
 Route::post('/admin/parser', 'Admin\ParseController@postGameDist')->name('admin.getParser');

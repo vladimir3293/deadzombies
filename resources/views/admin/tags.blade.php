@@ -5,39 +5,28 @@
 
 @section('right_content')
     <article>
-        <header class="article-header">
-            <h1>Теги: {{ $tagsCount }}</h1>
-        </header>
-        <form method="post" enctype="multipart/form-data" role="form">
+        <form action="/admin/tag/" method="post" enctype="multipart/form-data" role="form">
             {{ method_field('POST') }}
             {{ csrf_field() }}
 
             <div class="form-group">
-                <label for="game_rename">Сохдать тег</label>
-                <input class="form-control" name="page_number" id="game_rename" type="number">
+                <label for="game_rename">Создать тег</label>
+                <input class="form-control" name="tagName" type="text">
             </div>
-            <input class="btn btn-primary" type="submit" value="Начать">
+            <input class="btn btn-primary" type="submit" value="Создать тег">
         </form>
+        <header class="article-header">
+            <h1>Теги: {{ $tagsCount }}</h1>
+        </header>
         @foreach($tags as $tag)
-            <form method="post" enctype="multipart/form-data" role="form">
-                {{ method_field('PUT') }}
-                {{ csrf_field() }}
-
-                <div class="form-group">
-                    <label for="game_rename">{{ $tag->name }}</label>
-                    <input class="form-control" name="page_number" id="game_rename" type="number">
-                </div>
-                <input class="btn btn-primary" type="submit" value="Изменить">
-            </form>
-            <form method="post" enctype="multipart/form-data" role="form">
+            <form action="/admin/tag/{{ $tag->url }}" class="form-inline" method="post" enctype="multipart/form-data"
+                  role="form">
                 {{ method_field('DELETE') }}
                 {{ csrf_field() }}
-
                 <div class="form-group">
-                    <label for="game_rename">{{ $tag->name }}</label>
-                    <input class="form-control" name="page_number" id="game_rename" type="number">
+                    <input class="btn btn-danger" type="submit" value="Удалить тег">
+                    <a href="{{ route('admin.getTag',[$tag->url]) }}">{{ $tag->name }}</a>
                 </div>
-                <input class="btn btn-primary" type="submit" value="Удалить">
             </form>
         @endforeach
     </article>

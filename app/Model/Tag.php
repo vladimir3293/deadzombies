@@ -9,8 +9,14 @@ class Tag extends Model
 {
     public $guarded = [];
     public $timestamps = false;
+
     public function game()
     {
         return $this->belongsToMany(Game::class);
+    }
+
+    public function getRouteKeyName()
+    {
+        return 'url';
     }
 }
