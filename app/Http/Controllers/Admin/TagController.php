@@ -9,10 +9,27 @@ use Deadzombies\Http\Controllers\Controller;
 
 class TagController extends Controller
 {
+    //TODO createName
+    public function putTag(Tag $Tag, Request $request, UrlGenerator $urlGenerator)
+    {
+        $Tag->title = $request->tagTitle;
+        $Tag->meta_desc = $request->tagMetaDesc;
+        $Tag->meta_key = $request->tagMetaKey;
+        $Tag->description = $request->tagDesc;
+        if ($request->tagRename) {
+            $Tag->name = $request->tagRename;
+            $newUrl = $urlGenerator->createUrl($request->tagRename);
+            $Tag->url = $newUrl;
+        }
+        $Tag->save();
+        //dd($Tag);
+        return redirect()->route('admin.getTag', [$Tag]);
+    }
+
     public function getTag(Tag $Tag)
     {
         //dd($Tag);
-        return view('admin.tag',['tag'=>$Tag]);
+        return view('admin.tag', ['tag' => $Tag]);
     }
 
     public function deleteTag(Tag $Tag)
@@ -33,8 +50,9 @@ class TagController extends Controller
 
     public function getTags(Tag $tagModel)
     {
-        $tagsAll = $tagModel->get();
-        $tagsCount = $tagsAll->count();
+        //$tagsAll = $tagModel->get();
+        $tagsAll = $tagModel->orderBy('id', 'desc')->simplePaginate(50);
+        $tagsCount = $tagModel->get()->count();
         return view('admin.tags', ['tags' => $tagsAll, 'tagsCount' => $tagsCount]);
     }
 }

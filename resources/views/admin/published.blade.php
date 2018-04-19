@@ -18,6 +18,7 @@
                 <div class="col-md-12">
                     {{ $games->links('vendor.pagination.simple-default') }}
                 </div>
+            </div>
         @endif
     </article>
 @endsection

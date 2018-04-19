@@ -29,5 +29,10 @@
                 </div>
             </form>
         @endforeach
+        <div class="row">
+            <div class="col-md-12">
+                {{ $tags->links('vendor.pagination.simple-default') }}
+            </div>
+        </div>
     </article>
 @endsection
