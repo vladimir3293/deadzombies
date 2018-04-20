@@ -28,7 +28,7 @@ class TagController extends Controller
 
     public function getTag(Tag $Tag)
     {
-        //dd($Tag);
+        dd($Tag->tag);
         return view('admin.tag', ['tag' => $Tag]);
     }
 

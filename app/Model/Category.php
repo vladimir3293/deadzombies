@@ -19,4 +19,9 @@ public $guarded = [];
     {
         return 'cat_url';
     }
+
+    public function tags()
+    {
+        return $this->belongsToMany(Tag::class);
+    }
 }

@@ -37,9 +37,15 @@
 
         <div class="form-group">
             <label for="game_desc"> Описание: </label>
-            <textarea class="form-control" id="game_desc" name="tagDesc" class="game_desc" rows="4">{{ $tag->description }}</textarea>
+            <textarea class="form-control" id="game_desc" name="tagDesc" class="game_desc"
+                      rows="4">{{ $tag->description }}</textarea>
         </div>
         <input class="btn btn-primary" type="submit" value="Изменить">
     </form>
-
+    <p>Игры:</p>
+    @if(!empty($tag->game))
+        @foreach($tag->game as $game)
+            <p><a href="{{ route('admin.getGame',[$game->game_url]) }}">{{ $game->game_name }}</a></p>
+        @endforeach
+    @endif
 @endsection
