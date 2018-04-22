@@ -40,9 +40,9 @@ class ParseController extends Controller
         //dd(htmlspecialchars_decode($test,ENT_QUOTES));
         //$debug = 0;
         //$forTest = [];
-        $forTest[] = $onePageUrls[2];
+        //$forTest[] = $onePageUrls[2];
 
-        foreach ($forTest as $oneGame) {
+        foreach ($onePageUrls as $oneGame) {
             //$debug++;
 
             $oneGameData = $parser->getGame($oneGame);

@@ -22,7 +22,12 @@ class Tag extends Model
 
     public function tag()
     {
-        return $this->belongsToMany(Tag::class,'tag_tag','tag_id','id');
+        return $this->belongsToMany(Tag::class,'tag_tag','tag_id','tag_id2');
+    }
+
+    public function belongTag()
+    {
+        return $this->belongsToMany(Tag::class,'tag_tag','tag_id2','tag_id');
     }
 
     public function getRouteKeyName()

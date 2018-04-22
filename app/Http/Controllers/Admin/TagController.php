@@ -6,9 +6,19 @@ use Deadzombies\Model\Tag;
 use Deadzombies\UrlGenerator\UrlGenerator;
 use Illuminate\Http\Request;
 use Deadzombies\Http\Controllers\Controller;
+use Illuminate\Support\Facades\DB;
 
 class TagController extends Controller
 {
+    public function addTag(Tag $Tag, Request $request)
+    {
+        //dd($Tag, $request);
+        $tag = $Tag->where('id', $request->tagId)->get()->first();
+        //dd($tag,$Game, $request);
+        $Tag->belongTag()->save($tag);
+        return redirect()->route('admin.getTag', [$Tag]);
+    }
+
     //TODO createName
     public function putTag(Tag $Tag, Request $request, UrlGenerator $urlGenerator)
     {
@@ -28,8 +38,21 @@ class TagController extends Controller
 
     public function getTag(Tag $Tag)
     {
-        dd($Tag->tag);
-        return view('admin.tag', ['tag' => $Tag]);
+        $categories = $Tag->category()->orderBy('id', 'desc')->get();
+        $tags = $Tag->tag()->orderBy('id', 'desc')->get();
+        $games = $Tag->game()->orderBy('id', 'desc')->get();
+        $belongTag = $Tag->belongTag()->orderBy('id', 'desc')->get();
+        $tagsAll = $Tag->orderBy('id', 'desc')->get();
+        //dd($Tag->belongTag);
+        return view('admin.tag', [
+            'tag' => $Tag,
+            'tags' => $tags,
+            'games' => $games,
+            'categories' => $categories,
+            'belongTag' => $belongTag,
+            'tagsAll' => $tagsAll
+
+        ]);
     }
 
     public function deleteTag(Tag $Tag)

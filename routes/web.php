@@ -58,6 +58,9 @@ Route::put('/admin/tag/{Tag}', 'Admin\TagController@putTag');
 Route::delete('/admin/tag/{Tag}', 'Admin\TagController@deleteTag');
 //create tag
 Route::post('/admin/tag/', 'Admin\TagController@postTag');
+//add tag to tag
+Route::post('/admin/tag/addtag/{Tag}', 'Admin\TagController@addTag');
+
 
 //parser pages
 

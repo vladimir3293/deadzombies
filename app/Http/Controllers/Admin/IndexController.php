@@ -25,6 +25,7 @@ class IndexController extends Controller
         //TODO create name
         //TODO publish and unpublish to GET
         //TODO search in select form
+        //TODO N + 1 query problem
 
         $pageIndex = $page->where('name', 'index')->get()->first();
 
