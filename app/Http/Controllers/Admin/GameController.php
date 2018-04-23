@@ -18,6 +18,7 @@ class GameController extends Controller
     {
         return view('admin.createGame');
     }
+
 //TODO create name
     public function postGame(Request $request, Game $Game, UrlGenerator $urlGenerator)
     {
@@ -58,7 +59,8 @@ class GameController extends Controller
 
     public function getGame(Game $Game, Category $category, Tag $tagModel)
     {
-        $tags = $tagModel->get();
+        $tagsAll = $tagModel->orderBy('id', 'desc')->get();
+        $tagsGame = $Game->tags()->orderBy('id', 'desc')->get();
         $categories = $category::all();
         $Game->cat = $Game->category ? $Game->category->cat_name : 'НЕТ';
         //$Game->flash = Storage::disk('pub')->exists("/games/$Game->game_url.swf") ? 'ЕСТЬ' : 'НЕТ';
@@ -69,10 +71,13 @@ class GameController extends Controller
         if ($Game->height) {
             $Game->gameHeight = 868 * $Game->height / $Game->width;
         }
-        //dd($Game->tags);
-        // dd($Game->height);
-        // dd($Game->gameHeight);
-        return view('admin.game', ['game' => $Game, 'categories' => $categories, 'tags' => $tags]);
+
+        return view('admin.game', [
+            'game' => $Game,
+            'categories' => $categories,
+            'tagsAll' => $tagsAll,
+            'tagsGame' => $tagsGame
+        ]);
     }
 
     public function postGameTag(Game $Game, Request $request, Tag $tagModel)

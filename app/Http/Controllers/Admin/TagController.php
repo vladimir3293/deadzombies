@@ -10,12 +10,21 @@ use Illuminate\Support\Facades\DB;
 
 class TagController extends Controller
 {
+    public function removeTag(Tag $Tag, Request $request)
+    {
+       //dd($Tag);
+        $tag = $Tag->where('id', $request->tagId)->get()->first();
+        //dd($tag);
+        $Tag->Tag()->detach($tag);
+        return redirect()->route('admin.getTag', [$Tag]);
+    }
+
     public function addTag(Tag $Tag, Request $request)
     {
         //dd($Tag, $request);
         $tag = $Tag->where('id', $request->tagId)->get()->first();
         //dd($tag,$Game, $request);
-        $Tag->belongTag()->save($tag);
+        $Tag->Tag()->save($tag);
         return redirect()->route('admin.getTag', [$Tag]);
     }
 
@@ -46,10 +55,10 @@ class TagController extends Controller
         //dd($Tag->belongTag);
         return view('admin.tag', [
             'tag' => $Tag,
-            'tags' => $tags,
+            'subTags' => $tags,
             'games' => $games,
             'categories' => $categories,
-            'belongTag' => $belongTag,
+            'belongTags' => $belongTag,
             'tagsAll' => $tagsAll
 
         ]);

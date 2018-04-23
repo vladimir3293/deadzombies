@@ -19,7 +19,7 @@ class MenuComposer
     {
         $categories = $this->category::orderBy('cat_order')->get();
         $categories->each(function ($value) {
-            $value->url = route('admin.getCat', ['cat' => $value->cat_url]);
+            $value->url = route('admin.getCategory', ['cat' => $value->cat_url]);
         });
         $view->with('menu', $categories);
     }

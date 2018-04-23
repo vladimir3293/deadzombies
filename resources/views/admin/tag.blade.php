@@ -44,28 +44,39 @@
             </form>
         </div>
         <div class="row">
-            <form method="post" action="/admin/tag/addtag/{{ $tag->url }}">
+            <h4>Подтеги:</h4>
+            @if(!empty($subTags))
+                @foreach($subTags as $subTag)
+                    <form method="post" action="/admin/tag/subtag/{{ $tag->url }}">
+                        <div class="form-group">
+                            {{ method_field('DELETE') }}
+                            {{ csrf_field() }}
+
+                            <input name="tagId" type="hidden" value="{{ $subTag->id }}">
+                            <input class="btn btn-danger" type="submit" value="Удалить подтег">
+                            <label><a href="{{ route('admin.getTag',[$subTag->url]) }}">{{ $subTag->name }}</a></label>
+                        </div>
+                    </form>
+                @endforeach
+            @endif
+            <form method="post" action="/admin/tag/subtag/{{ $tag->url }}">
                 {{ method_field('POST') }}
                 {{ csrf_field() }}
 
                 <div class="form-group">
                     <label for="game_cat">Добавить подтег</label>
                     <select class="form-control" name="tagId">
-                        @foreach($tagsAll as $tag)
-                            <option value="{{ $tag->id }}">{{ $tag->name }}</option>
+                        @foreach($tagsAll as $oneTag)
+                            <option value="{{ $oneTag->id }}">{{ $oneTag->name }}</option>
                         @endforeach
                     </select>
                 </div>
-                <input class="btn btn-primary" type="submit" value="Добвать тег">
+                <input class="btn btn-primary" type="submit" value="Добвать подтег">
             </form>
-            <p>Подтеги:</p>
-            @if(!empty($tags))
-                @foreach($tags as $tag)
-                    <p><a href="{{ route('admin.getTag',[$tag->url]) }}">{{ $tag->name }}</a></p>
-                @endforeach
-            @endif
+
         </div>
         <div class="row">
+            <h4>Принедлежит:</h4>
             <div class="col-md-4">
                 <p>Игры:</p>
                 @if(!empty($games))
@@ -76,9 +87,9 @@
             </div>
             <div class="col-md-4">
                 <p>Родительские теги:</p>
-                @if(!empty($belongTag))
-                    @foreach($belongTag as $tag)
-                        <p><a href="{{ route('admin.getTag',[$tag->url]) }}">{{ $tag->name }}</a></p>
+                @if(!empty($belongTags))
+                    @foreach($belongTags as $belongTag)
+                        <p><a href="{{ route('admin.getTag',[$belongTag->url]) }}">{{ $belongTag->name }}</a></p>
                     @endforeach
                 @endif
             </div>

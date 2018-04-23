@@ -4,12 +4,29 @@ namespace Deadzombies\Http\Controllers\Admin;
 
 use Deadzombies\Model\Category;
 use Deadzombies\Model\Game;
+use Deadzombies\Model\Tag;
 use Deadzombies\UrlGenerator\UrlGenerator;
 use Illuminate\Http\Request;
 use Deadzombies\Http\Controllers\Controller;
 
 class CategoryController extends Controller
 {
+    public function postCategoryTag(Category $Category, Request $request, Tag $tagModel)
+    {
+        $tag = $tagModel->where('id', $request->tagId)->get()->first();
+        //dd($Game, $request);
+        $Category->tags()->save($tag);
+        return redirect()->route('admin.getCategory', [$Category]);
+    }
+
+    public function deleteCategoryTag(Category $Category, Request $request, Tag $tagModel)
+    {
+        $tag = $tagModel->where('id', $request->tagId)->get();
+        //dd($tag);
+        $Category->tags()->detach($tag);
+        return redirect()->route('admin.getCategory', [$Category]);
+    }
+
     public function createCategory()
     {
         return view('admin.createCategory');
@@ -17,17 +34,20 @@ class CategoryController extends Controller
 
     public function postCategory(Request $request, Category $category, UrlGenerator $urlGenerator)
     {
-        $category->category_name = $request->create_category;
-        $category->category_url = $urlGenerator->createUrl($request->create_category);
+        $category->cat_name = $request->create_category;
+        $category->cat_url = $urlGenerator->createUrl($request->create_category);
         //dd($Game);
         //dd($Game->game_url);
         $category->save();
 
         return redirect()->route('admin.getCategory', [$category]);
     }
+
     //todo only show games
-    public function getCategory(Category $Category, Game $game)
+    public function getCategory(Category $Category, Game $game, Tag $tagModel)
     {
+        $tagsAll = $tagModel->orderBy('id', 'desc')->get();
+        $tagsCategory = $Category->tags()->orderBy('id', 'desc')->get();
         $games = $game->where('category_id', $Category->id)->paginate(12);
         foreach ($games as $game) {
             $game->url = route('admin.getGame', $game->game_url);
@@ -35,7 +55,12 @@ class CategoryController extends Controller
                 '/img/' . $game->game_url . '.jpg' :
                 '/img/empty.jpg';
         }
-        return view('admin.category', ['games' => $games, 'category' => $Category]);
+        return view('admin.category', [
+            'games' => $games,
+            'category' => $Category,
+            'tagsCategory' => $tagsCategory,
+            'tagsAll' => $tagsAll
+        ]);
     }
 
     /**

@@ -19,7 +19,7 @@ class IndexController extends Controller
         //TODO pagination
         //TODO problem with height
         //TODO tags unique
-
+        //TODO tag tag ubique
         //TODO when delete category
         //TODO tags
         //TODO create name

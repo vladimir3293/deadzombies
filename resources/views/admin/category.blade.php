@@ -37,6 +37,36 @@
             <input class="btn btn-danger" type="submit" value="Удалить">
         </form>
     </div>
+
+    <h4>Теги:</h4>
+
+    @foreach($tagsCategory as $tagCategory)
+        <form method="post" action="/admin/category/tag/{{ $category->cat_url }}">
+            <div class="form-group">
+                {{ method_field('DELETE') }}
+                {{ csrf_field() }}
+
+                <input name="tagId" type="hidden" value="{{ $tagCategory->id }}">
+                <input class="btn btn-danger" type="submit" value="Удалить тег">
+                <label><a href="{{ route('admin.getTag',[$tagCategory->url]) }}">{{ $tagCategory->name }}</a></label>
+            </div>
+        </form>
+    @endforeach
+    <form method="post" action="/admin/category/tag/{{ $category->cat_url }}">
+        {{ method_field('POST') }}
+        {{ csrf_field() }}
+
+        <div class="form-group">
+            <label for="game_cat">Добавить тег</label>
+            <select class="form-control" name="tagId">
+                @foreach($tagsAll as $tagAll)
+                    <option value="{{ $tagAll->id }}">{{ $tagAll->name }}</option>
+                @endforeach
+            </select>
+        </div>
+        <input class="btn btn-primary" type="submit" value="Добвать тег">
+    </form>
+
     <article>
         <header class="article-header">
             <h1>Игры в категории</h1>

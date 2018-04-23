@@ -14,7 +14,7 @@
             <h1>{{ $page->h1 }}</h1>
         </header>
         <div class="box">
-            <p>{{ $page->desc2 }}</p>
+            <p>{{ $page->desc1 }}</p>
         </div>
         @if(isset($games))
             <div class="row">

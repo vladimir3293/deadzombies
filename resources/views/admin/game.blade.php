@@ -92,15 +92,15 @@
         </div>
         <h4>Теги:</h4>
 
-        @foreach($game->tags as $tag)
+        @foreach($tagsGame as $tagGame)
             <form method="post" action="/admin/game/tag/{{ $game->game_url }}">
                 <div class="form-group">
                     {{ method_field('DELETE') }}
                     {{ csrf_field() }}
 
-                    <input name="tagId" type="hidden" value="{{ $tag->id }}">
+                    <input name="tagId" type="hidden" value="{{ $tagGame->id }}">
                     <input class="btn btn-danger" type="submit" value="Удалить тег">
-                    <label><a href="{{ route('admin.getTag',[$tag->url]) }}">{{ $tag->name }}</a> </label>
+                    <label><a href="{{ route('admin.getTag',[$tagGame->url]) }}">{{ $tagGame->name }}</a></label>
                 </div>
             </form>
         @endforeach
@@ -111,8 +111,8 @@
             <div class="form-group">
                 <label for="game_cat">Добавить тег</label>
                 <select class="form-control" name="tagId">
-                    @foreach($tags as $tag)
-                        <option value="{{ $tag->id }}">{{ $tag->name }}</option>
+                    @foreach($tagsAll as $tagAll)
+                        <option value="{{ $tagAll->id }}">{{ $tagAll->name }}</option>
                     @endforeach
                 </select>
             </div>
