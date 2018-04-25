@@ -33,7 +33,7 @@ class GameController
         //dd($game);
         //dd($game->category);
         if(isset($game->category->cat_url)) {
-            $game->cat_url = $game->category->cat_url;
+            $game->categoryUrl = route('getCategory',$game->category->cat_url,false);
             $game->cat_name = $game->category->cat_name;
         }
         $game->gameHeight = 868 * $game->height / $game->width;

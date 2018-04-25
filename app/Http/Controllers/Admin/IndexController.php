@@ -26,6 +26,7 @@ class IndexController extends Controller
         //TODO publish and unpublish to GET
         //TODO search in select form
         //TODO N + 1 query problem
+        //TODO load game after load
 
         $pageIndex = $page->where('name', 'index')->get()->first();
 

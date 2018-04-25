@@ -97,7 +97,7 @@
                 <p>Категории:</p>
                 @if(!empty($categories))
                     @foreach($categories as $cat)
-                        <p><a href="{{ route('admin.getTag',[$cat->cat_url]) }}">{{ $cat->cat_name }}</a></p>
+                        <p><a href="{{ route('admin.getCategory',[$cat->cat_url]) }}">{{ $cat->cat_name }}</a></p>
                     @endforeach
                 @endif
             </div>

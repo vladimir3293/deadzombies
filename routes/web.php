@@ -1,20 +1,18 @@
 <?php
-
-/*
-|--------------------------------------------------------------------------
-| Web Routes
-|--------------------------------------------------------------------------
-|
-| Here is where you can register web routes for your application. These
-| routes are loaded by the RouteServiceProvider within a group which
-| contains the "web" middleware group. Now create something great!
-|
-*/
-
 //TODO admin one group
 //Route::middleware(['auth'])->group(function () {
 
-//admin pages
+/***** INDEX PAGES *****/
+
+Route::get('/', ['uses' => 'IndexController@getIndex', 'as' => 'index']);
+//index category
+Route::get('/category/{Category}', 'CategoryController@getCategory')->name('getCategory');
+//index game
+Route::get('/game/{game}', 'GameController@getGame')->name('getGame');
+//index tag
+Route::get('/category/{Category}', 'CategoryController@getCategory')->name('getCategory');
+
+/***** ADMIN PAGES *****/
 
 //admin index
 Route::get('/admin/', ['uses' => 'Admin\IndexController@getIndex', 'as' => 'admin']);
@@ -35,7 +33,6 @@ Route::get('/admin/createcategory', 'Admin\CategoryController@createCategory')->
 Route::post('/admin/category/tag/{Category}', 'Admin\CategoryController@postCategoryTag');
 //delete game tag
 Route::delete('/admin/category/tag/{Category}', 'Admin\CategoryController@deleteCategoryTag');
-
 
 //admin game pages
 
@@ -83,15 +80,6 @@ Route::get('/admin/parser', 'Admin\ParseController@getParser')->name('admin.getP
 Route::post('/admin/parser', 'Admin\ParseController@postGameDist')->name('admin.getParser');
 
 
-
-
-
-//index
-Route::get('/', ['uses' => 'IndexController@getIndex', 'as' => 'index']);
-//index category
-Route::get('/{Category}', 'CategoryController@getCategory')->name('getCat');
-//index game
-Route::get('/game/{game}', 'GameController@getGame')->name('getGame');
 
 
 //authentication

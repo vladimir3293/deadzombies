@@ -11,8 +11,8 @@
             <div class="breadcrumb">
                 <span>ВЕРНУТЬСЯ:</span>
                 <a href="/">Главная</a>
-                @if(isset($game->cat_url))
-                    <a href="/{{ $game->cat_url }}">{{ $game->cat_name }}</a>
+                @if(isset($game->categoryUrl))
+                    <a href="{{ $game->categoryUrl }}">{{ $game->cat_name }}</a>
                 @endif
             </div>
             <div class="like">

@@ -16,7 +16,7 @@ class CategoryController extends Controller
         $tag = $tagModel->where('id', $request->tagId)->get()->first();
         //dd($Game, $request);
         $Category->tags()->save($tag);
-        return redirect()->route('admin.getCategory', [$Category]);
+        return redirect()->route('admin.getCategory', [$Category],false);
     }
 
     public function deleteCategoryTag(Category $Category, Request $request, Tag $tagModel)
@@ -24,7 +24,7 @@ class CategoryController extends Controller
         $tag = $tagModel->where('id', $request->tagId)->get();
         //dd($tag);
         $Category->tags()->detach($tag);
-        return redirect()->route('admin.getCategory', [$Category]);
+        return redirect()->route('admin.getCategory', [$Category],false);
     }
 
     public function createCategory()
@@ -40,7 +40,7 @@ class CategoryController extends Controller
         //dd($Game->game_url);
         $category->save();
 
-        return redirect()->route('admin.getCategory', [$category]);
+        return redirect()->route('admin.getCategory', [$category],false);
     }
 
     //todo only show games
@@ -50,7 +50,7 @@ class CategoryController extends Controller
         $tagsCategory = $Category->tags()->orderBy('id', 'desc')->get();
         $games = $game->where('category_id', $Category->id)->paginate(12);
         foreach ($games as $game) {
-            $game->url = route('admin.getGame', $game->game_url);
+            $game->url = route('admin.getGame', $game->game_url,false);
             $game->img = file_exists(public_path() . '/img/' . $game->game_url . '.jpg') ?
                 '/img/' . $game->game_url . '.jpg' :
                 '/img/empty.jpg';
@@ -84,7 +84,7 @@ class CategoryController extends Controller
         //dd($request->only('cat_order', 'cat_desc', 'cat_rename', 'cat_title', 'cat_desc_meta',
         //    'cat_key_meta', 'cat_h1', 'cat_desc'));
         //dd($Category, $request);
-        return redirect()->route('admin.getCat', [$Category]);
+        return redirect()->route('admin.getCategory', [$Category]);
     }
 
     public function deleteCategory(Category $Category)
