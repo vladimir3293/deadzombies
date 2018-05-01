@@ -6,9 +6,7 @@
 @section('right_content')
     <article>
         <header class="article-header">
-            <h1>Не опубликованные игры
-                @if(isset($games)){{ $games->count() }}@else()0
-                @endif</h1>
+            <h1>Все игры: {{ $gamesCount }}</h1>
         </header>
         @if(isset($games))
             <div class="row">
@@ -16,8 +14,7 @@
             </div>
             <div class="row">
                 <div class="col-md-12">
-                    {{ $games->links('vendor.pagination.simple-default') }}
-                </div>
+                {{ $games->links() }}
             </div>
         @endif
     </article>

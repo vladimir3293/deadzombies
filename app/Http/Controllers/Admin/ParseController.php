@@ -40,9 +40,10 @@ class ParseController extends Controller
         //dd(htmlspecialchars_decode($test,ENT_QUOTES));
         //$debug = 0;
         //$forTest = [];
-        //$forTest[] = $onePageUrls[2];
 
-        foreach ($onePageUrls as $oneGame) {
+        $forTest[] = $onePageUrls[2];
+
+        foreach ($forTest as $oneGame) {
             //$debug++;
 
             $oneGameData = $parser->getGame($oneGame);
@@ -83,8 +84,13 @@ class ParseController extends Controller
                 if (!empty($oneGameData['tags'])) {
                     $tagId = [];
                     foreach ($oneGameData['tags'] as $tag) {
-                        $testTag = $tagModel->firstOrCreate(['name' => mb_strtolower($tag, "UTF-8")],
-                            ['name' => mb_strtolower($tag, "UTF-8"), 'url' => $urlGenerator->createUrl($tag)]);
+                        $testTag = $tagModel->firstOrCreate(
+                            ['name' => mb_strtolower($tag, "UTF-8")],
+                            [
+                                'name' => mb_strtolower($tag, "UTF-8"),
+                                'url' => $urlGenerator->createUrl($tag),
+                                'display' => false
+                            ]);
                         $tagId[] = $testTag->id;
                     }
                     //    dd($tagId);
@@ -97,7 +103,8 @@ class ParseController extends Controller
                         'cat_name' => $oneGameData['cat'],
                         'cat_url' => $urlGenerator->createUrl($oneGameData['cat']),
                         'cat_desc' => 'standard',
-                        'cat_title' => 'standart'
+                        'cat_title' => 'standart',
+                        'display' => false
                     ]);
 
                 $category->game()->save($createdGame);

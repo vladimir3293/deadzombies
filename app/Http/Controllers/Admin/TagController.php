@@ -31,6 +31,7 @@ class TagController extends Controller
     //TODO createName
     public function putTag(Tag $Tag, Request $request, UrlGenerator $urlGenerator)
     {
+        //dd(request()->all());
         $Tag->title = $request->tagTitle;
         $Tag->meta_desc = $request->tagMetaDesc;
         $Tag->meta_key = $request->tagMetaKey;

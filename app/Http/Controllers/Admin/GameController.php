@@ -14,9 +14,23 @@ use Illuminate\Support\Facades\Storage;
 
 class GameController extends Controller
 {
+    public function getAll(Game $gameModel)
+    {
+        $gamesCount = $gameModel->get()->count();
+        $games = $gameModel->paginate(24);
+        //dd($games);
+        $games->each(function ($games) {
+            $games->url = route('admin.getGame', $games->game_url);
+            $games->img = file_exists(public_path() . '/img/' . $games->game_url . '.jpg') ?
+                '/img/' . $games->game_url . '.jpg' :
+                '/img/site/empty.jpg';
+        });
+        return view('admin.game.gameAll', ['games' => $games,'gamesCount'=>$gamesCount]);
+    }
+
     public function createGame()
     {
-        return view('admin.createGame');
+        return view('admin.game.createGame');
     }
 
 //TODO create name
@@ -33,35 +47,38 @@ class GameController extends Controller
 
     public function getUnpublished(Game $gameModel)
     {
-        $games = $gameModel->where('game_show', 0)->simplePaginate(48);
+        $gamesCount = $gameModel->get()->count();
+        $games = $gameModel->where('game_show', 0)->orderBy('id', 'desc')->simplePaginate(12);
         //dd($games);
         $games->each(function ($games) {
             $games->url = route('admin.getGame', $games->game_url);
             $games->img = file_exists(public_path() . '/img/' . $games->game_url . '.jpg') ?
                 '/img/' . $games->game_url . '.jpg' :
-                '/img/empty.jpg';
+                '/img/site/empty.jpg';
         });
-        return view('admin.unpublished', ['games' => $games]);
+        return view('admin.game.unpublished', ['games' => $games,'gamesCount'=>$gamesCount]);
     }
 
     public function getPublished(Game $gameModel)
     {
-        $games = $gameModel->where('game_show', 1)->simplePaginate(48);
+        $gamesCount = $gameModel->get()->count();
+        $games = $gameModel->where('game_show', 1)->orderBy('id', 'desc')->simplePaginate(48);
         //dd($games);
         $games->each(function ($games) {
             $games->url = route('admin.getGame', $games->game_url);
             $games->img = file_exists(public_path() . '/img/' . $games->game_url . '.jpg') ?
                 '/img/' . $games->game_url . '.jpg' :
-                '/img/empty.jpg';
+                '/img/site/empty.jpg';
         });
-        return view('admin.published', ['games' => $games]);
+        return view('admin.game.published', ['games' => $games]);
     }
 
     public function getGame(Game $Game, Category $category, Tag $tagModel)
     {
         $tagsAll = $tagModel->orderBy('id', 'desc')->get();
         $tagsGame = $Game->tags()->orderBy('id', 'desc')->get();
-        $categories = $category::all();
+        $categories = $category->orderBy('id', 'desc')->get();
+
         $Game->cat = $Game->category ? $Game->category->cat_name : 'НЕТ';
         //$Game->flash = Storage::disk('pub')->exists("/games/$Game->game_url.swf") ? 'ЕСТЬ' : 'НЕТ';
         $Game->imgExist = Storage::disk('pub')->exists("/img/$Game->game_url.jpg") ? 'ЕСТЬ' : 'НЕТ';
@@ -72,7 +89,7 @@ class GameController extends Controller
             $Game->gameHeight = 868 * $Game->height / $Game->width;
         }
 
-        return view('admin.game', [
+        return view('admin.game.game', [
             'game' => $Game,
             'categories' => $categories,
             'tagsAll' => $tagsAll,

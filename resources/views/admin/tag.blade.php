@@ -13,6 +13,19 @@
                 {{ method_field('PUT') }}
                 {{ csrf_field() }}
                 <div class="form-group">
+                    <div class="radio">
+                        @if($tag->display)
+                            <label><input class="radio" name="game_show" type="radio" value="0">Не отображать</label>
+                            <label><input class="radio" name="game_show" type="radio" value="1" checked="checked">Отображать
+                            </label>
+                        @else
+                            <label><input class="radio" name="game_show" type="radio" value="0" checked="checked">Не
+                                отображать</label>
+                            <label><input class="radio" name="game_show" type="radio" value="1">Отображать</label>
+                        @endif
+                    </div>
+                </div>
+                <div class="form-group">
                     <label for="game_rename">Переименовать</label>
                     <input class="form-control" name="tagRename" id="game_rename" type="text">
                 </div>
@@ -102,5 +115,6 @@
                 @endif
             </div>
         </div>
+        span
     </article>
 @endsection

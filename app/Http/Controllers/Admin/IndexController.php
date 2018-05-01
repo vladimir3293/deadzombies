@@ -27,6 +27,10 @@ class IndexController extends Controller
         //TODO search in select form
         //TODO N + 1 query problem
         //TODO load game after load
+        //TODO lazy load Post => post
+        //TODO validation
+        //TODO migration
+        //TODO refactoring routes
 
         $pageIndex = $page->where('name', 'index')->get()->first();
 
