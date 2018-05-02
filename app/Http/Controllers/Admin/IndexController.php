@@ -7,6 +7,7 @@ use Deadzombies\Http\Controllers\Controller;
 use Deadzombies\Model\Category;
 use Deadzombies\Model\Game;
 use Deadzombies\Model\Page;
+
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\URL;
 use Illuminate\View\View;
@@ -43,6 +44,7 @@ class IndexController extends Controller
                 '/img/' . $games->game_url . '.jpg' :
                 '/img/site/empty.jpg';
         });
+
         return view('admin.index', ['games' => $games, 'page' => $pageIndex]);
     }
 }

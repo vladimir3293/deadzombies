@@ -18,38 +18,38 @@ Route::get('/category/{Category}', 'CategoryController@getCategory')->name('getC
 Route::get('/admin/', ['uses' => 'Admin\IndexController@getIndex', 'as' => 'admin']);
 
 //admin category pages
-
+Route::middleware(['auth'])->group(function () {
 //page get all categories
-Route::get('/admin/category/all','Admin\CategoryController@getAll')->name('admin.category.getAll');
+    Route::get('/admin/category/all', 'Admin\CategoryController@getAll')->name('admin.category.getAll');
 //page create category
-Route::get('/admin/category/create', 'Admin\CategoryController@createCategory')->name('admin.category.create');
+    Route::get('/admin/category/create', 'Admin\CategoryController@createCategory')->name('admin.category.create');
 //page unpublished games
-Route::get('/admin/category/unpublished', 'Admin\CategoryController@getUnpublished')->name('admin.category.getUnpublished');
+    Route::get('/admin/category/unpublished', 'Admin\CategoryController@getUnpublished')->name('admin.category.getUnpublished');
 //page published games
-Route::get('/admin/category/published', 'Admin\CategoryController@getPublished')->name('admin.category.getPublished');
+    Route::get('/admin/category/published', 'Admin\CategoryController@getPublished')->name('admin.category.getPublished');
 //page one get category
-Route::get('/admin/category/{category}', 'Admin\CategoryController@getCategory')->name('admin.getCategory');
+    Route::get('/admin/category/{category}', 'Admin\CategoryController@getCategory')->name('admin.getCategory');
 //put category
-Route::put('/admin/category/{category}', 'Admin\CategoryController@putCategory');
+    Route::put('/admin/category/{category}', 'Admin\CategoryController@putCategory');
 //delete category
-Route::delete('/admin/category/{Category}', 'Admin\CategoryController@deleteCategory');
+    Route::delete('/admin/category/{Category}', 'Admin\CategoryController@deleteCategory');
 //post category
-Route::post('/admin/category/', 'Admin\CategoryController@postCategory');
+    Route::post('/admin/category/', 'Admin\CategoryController@postCategory');
 //add category tag
-Route::post('/admin/category/tag/{Category}', 'Admin\CategoryController@postCategoryTag');
+    Route::post('/admin/category/tag/{Category}', 'Admin\CategoryController@postCategoryTag');
 //delete game tag
-Route::delete('/admin/category/tag/{Category}', 'Admin\CategoryController@deleteCategoryTag');
-
+    Route::delete('/admin/category/tag/{Category}', 'Admin\CategoryController@deleteCategoryTag');
+});
 //admin game pages
 
 //page get all games
-Route::get('/admin/game/all','Admin\GameController@getAll')->name('admin.getAllGames');
+Route::get('/admin/game/all', 'Admin\GameController@getAll')->name('admin.game.getAll');
 //page create game
-Route::get('/admin/game/create', 'Admin\GameController@createGame')->name('admin.createGame');
+Route::get('/admin/game/create', 'Admin\GameController@createGame')->name('admin.game.create');
 //page unpublished games
-Route::get('/admin/game/unpublished', 'Admin\GameController@getUnpublished')->name('admin.getUnpublished');
+Route::get('/admin/game/unpublished', 'Admin\GameController@getUnpublished')->name('admin.game.getUnpublished');
 //page published games
-Route::get('/admin/game/published', 'Admin\GameController@getPublished')->name('admin.getPublished');
+Route::get('/admin/game/published', 'Admin\GameController@getPublished')->name('admin.game.getPublished');
 //page get one game
 Route::get('/admin/game/{Game}', 'Admin\GameController@getGame')->name('admin.getGame');
 //put game
@@ -66,11 +66,18 @@ Route::post('/admin/game/tag/{Game}', 'Admin\GameController@postGameTag');
 //admin tag pages
 
 //get tags page
-Route::get('/admin/tags', 'Admin\TagController@getTags')->name('admin.getTags');
+Route::get('/admin/tag/all', 'Admin\TagController@getAll')->name('admin.tag.getAll');
+//page create tag
+Route::get('/admin/tag/create', 'Admin\TagController@createTag')->name('admin.tag.create');
+//page unpublished games
+Route::get('/admin/tag/unpublished', 'Admin\TagController@getUnpublished')->name('admin.tag.getUnpublished');
+//page published games
+Route::get('/admin/tag/published', 'Admin\TagController@getPublished')->name('admin.tag.getPublished');
+
 //get one tag page
 Route::get('/admin/tag/{Tag}', 'Admin\TagController@getTag')->name('admin.getTag');
 //put tag
-Route::put('/admin/tag/{Tag}', 'Admin\TagController@putTag');
+Route::put('/admin/tag/{tag}', 'Admin\TagController@putTag');
 //delete tag
 Route::delete('/admin/tag/{Tag}', 'Admin\TagController@deleteTag');
 //create tag
@@ -88,10 +95,8 @@ Route::get('/admin/parser', 'Admin\ParseController@getParser')->name('admin.getP
 Route::post('/admin/parser', 'Admin\ParseController@postGameDist')->name('admin.getParser');
 
 
-
-
 //authentication
 Route::get('login', 'Auth\LoginController@showLoginForm')->name('login');
 Route::post('login', 'Auth\LoginController@login');
 Route::post('logout', 'Auth\LoginController@logout')->name('logout');
-//Auth::routes();
+Auth::routes();

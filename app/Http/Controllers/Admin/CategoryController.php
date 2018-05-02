@@ -24,7 +24,7 @@ class CategoryController extends Controller
 
     public function getUnpublished(Category $categoryModel)
     {
-        $categoriesCount = $categoryModel->get()->count();
+        $categoriesCount = $categoryModel->where('display', 0)->get()->count();
         $categories = $categoryModel->where('display', 0)->orderBy('id', 'desc')->simplePaginate(100);
         //dd($categories);
         $categories->each(function ($category) {

@@ -10,6 +10,32 @@ use Illuminate\Support\Facades\DB;
 
 class TagController extends Controller
 {
+    public function createTag()
+    {
+        return view('admin.tag.create');
+    }
+    public function getUnpublished(Tag $tagModel)
+    {
+        $tagsCount = $tagModel->where('display', 0)->get()->count();
+        $tags = $tagModel->where('display', 0)->orderBy('id', 'desc')->simplePaginate(100);
+        //dd($tags);
+        $tags->each(function ($tag) {
+            $tag->url = route('admin.getCategory', $tag->url);
+        });
+        return view('admin.tag.unpublished', ['tags' => $tags, 'tagsCount' => $tagsCount]);
+    }
+
+    public function getPublished(Tag $tagModel)
+    {
+        $tagsCount = $tagModel->where('display', 1)->get()->count();
+        $tags = $tagModel->where('display', 1)->orderBy('id', 'desc')->simplePaginate(100);
+        //dd($tags);
+        $tags->each(function ($tag) {
+            $tag->url = route('admin.getCategory', $tag->url);
+        });
+        return view('admin.tag.published', ['tags' => $tags, 'tagsCount' => $tagsCount]);
+    }
+
     public function removeTag(Tag $Tag, Request $request)
     {
        //dd($Tag);
@@ -29,21 +55,24 @@ class TagController extends Controller
     }
 
     //TODO createName
-    public function putTag(Tag $Tag, Request $request, UrlGenerator $urlGenerator)
+    public function putTag(Tag $tag, Request $request, UrlGenerator $urlGenerator)
     {
         //dd(request()->all());
-        $Tag->title = $request->tagTitle;
-        $Tag->meta_desc = $request->tagMetaDesc;
-        $Tag->meta_key = $request->tagMetaKey;
-        $Tag->description = $request->tagDesc;
+        $tag->title = $request->tagTitle;
+        $tag->meta_desc = $request->tagMetaDesc;
+        $tag->meta_key = $request->tagMetaKey;
+        $tag->description = $request->tagDesc;
         if ($request->tagRename) {
-            $Tag->name = $request->tagRename;
+            $tag->name = $request->tagRename;
             $newUrl = $urlGenerator->createUrl($request->tagRename);
-            $Tag->url = $newUrl;
+            $tag->url = $newUrl;
         }
-        $Tag->save();
+        if ($tag->display != $request->display) {
+            $tag->display = $request->display;
+        }
+        $tag->save();
         //dd($Tag);
-        return redirect()->route('admin.getTag', [$Tag]);
+        return redirect()->route('admin.getTag', [$tag]);
     }
 
     public function getTag(Tag $Tag)
@@ -54,7 +83,7 @@ class TagController extends Controller
         $belongTag = $Tag->belongTag()->orderBy('id', 'desc')->get();
         $tagsAll = $Tag->orderBy('id', 'desc')->get();
         //dd($Tag->belongTag);
-        return view('admin.tag', [
+        return view('admin.tag.tag', [
             'tag' => $Tag,
             'subTags' => $tags,
             'games' => $games,
@@ -68,7 +97,7 @@ class TagController extends Controller
     public function deleteTag(Tag $Tag)
     {
         $Tag->delete();
-        return redirect('/admin/tags');
+        return redirect('/admin/tag/all');
     }
 
     public function postTag(Request $request, UrlGenerator $urlGenerator, Tag $tag)
@@ -78,14 +107,14 @@ class TagController extends Controller
             $tag->url = $urlGenerator->createUrl($request->tagName);
             $tag->save();
         }
-        return redirect('/admin/tags');
+        return redirect(route('admin.getTag',[$tag]));
     }
 
-    public function getTags(Tag $tagModel)
+    public function getAll(Tag $tagModel)
     {
         //$tagsAll = $tagModel->get();
-        $tagsAll = $tagModel->orderBy('id', 'desc')->simplePaginate(50);
+        $tagsAll = $tagModel->orderBy('id', 'desc')->simplePaginate(100);
         $tagsCount = $tagModel->get()->count();
-        return view('admin.tags', ['tags' => $tagsAll, 'tagsCount' => $tagsCount]);
+        return view('admin.tag.all', ['tags' => $tagsAll, 'tagsCount' => $tagsCount]);
     }
 }

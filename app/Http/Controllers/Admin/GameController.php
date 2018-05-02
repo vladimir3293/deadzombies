@@ -17,7 +17,7 @@ class GameController extends Controller
     public function getAll(Game $gameModel)
     {
         $gamesCount = $gameModel->get()->count();
-        $games = $gameModel->paginate(24);
+        $games = $gameModel->orderBy('id', 'desc')->paginate(24);
         //dd($games);
         $games->each(function ($games) {
             $games->url = route('admin.getGame', $games->game_url);
@@ -47,7 +47,7 @@ class GameController extends Controller
 
     public function getUnpublished(Game $gameModel)
     {
-        $gamesCount = $gameModel->get()->count();
+        $gamesCount = $gameModel->where('game_show', 0)->get()->count();
         $games = $gameModel->where('game_show', 0)->orderBy('id', 'desc')->simplePaginate(12);
         //dd($games);
         $games->each(function ($games) {
@@ -61,7 +61,7 @@ class GameController extends Controller
 
     public function getPublished(Game $gameModel)
     {
-        $gamesCount = $gameModel->get()->count();
+        $gamesCount = $gameModel->where('game_show', 1)->get()->count();
         $games = $gameModel->where('game_show', 1)->orderBy('id', 'desc')->simplePaginate(48);
         //dd($games);
         $games->each(function ($games) {
