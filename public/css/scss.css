@@ -149,7 +149,7 @@ nav a:hover {
 
 .game-card-desc span {
   padding-top: 3px;
-  color: #FCB820;
+  color: #fcb820;
   display: block;
   float: left;
   margin-left: 10px;
@@ -171,8 +171,8 @@ nav a:hover {
   float: right;
   width: 40%;
   padding: 3px 0;
-  background: #FCB820;
-  color: #000;
+  background: #fcb820;
+  color: black;
   text-align: center;
   text-decoration: none;
   margin: 0 5px 0 0;
@@ -284,6 +284,41 @@ nav a:hover {
   margin-left: 20px;
   font-weight: 600;
   font-size: 1.2em;
+  color: black;
+}
+
+.tags {
+  background-color: #a8001c;
+  border-radius: 5px;
+  margin-bottom: 7px;
+  padding-right: 10px;
+  padding-left: 10px;
+  display: inline-block;
+}
+
+.tags a {
+  display: inline-block;
+  text-decoration: none;
+  margin: 5px 0px 5px 5px;
+  padding: 5px 10px 5px 10px;
+  border-radius: 5px;
+  color: black;
+  font-size: 14px;
+  font-weight: 600;
+  background-color: #fcb820;
+}
+
+.tags a:hover {
+  background-color: white;
+  border-radius: 5px;
+}
+
+.tags span {
+  color: black;
+  padding: 5px 10px 5px 10px;
+  display: inline-block;
+  font-weight: 600;
+  font-size: 1.2em;
 }
 
 .like {
@@ -308,8 +343,8 @@ nav a:hover {
 #like {
   cursor: pointer;
   padding: 3px;
-  background: #FCB820;
-  color: #000;
+  background: #fcb820;
+  color: black;
   text-align: center;
   text-decoration: none;
   font-size: 12px;

@@ -5,6 +5,7 @@ $nav-a: rgb(124, 0, 21);
 $nav-ul: rgb(252, 184, 32);
 $content-color: black;
 $right-content: rgb(101, 30, 42);
+$link-hover: white;
 
 $color-primary-2: rgba(178, 190, 111, 1);
 $color-primary-3: rgba(244, 249, 219, 1);
@@ -127,7 +128,7 @@ nav {
   }
   &-desc span {
     padding-top: 3px;
-    color: #FCB820;
+    color: $nav-ul;
     display: block;
     float: left;
     margin-left: 10px;
@@ -147,8 +148,8 @@ nav {
     float: right;
     width: 40%;
     padding: 3px 0;
-    background: #FCB820;
-    color: #000;
+    background: $nav-ul;
+    color: $content-color;
     text-align: center;
     text-decoration: none;
     margin: 0 5px 0 0;
@@ -158,7 +159,7 @@ nav {
     height: 28px;
   }
   &-desc a:hover {
-    color: white;
+    color: $link-hover;
     background: lighten($sidebar, 5%);
   }
   &-desc img {
@@ -206,7 +207,7 @@ nav {
     text-decoration: none;
   }
   & a:hover, span:hover {
-    color: white;
+    color: $link-hover;
     background: lighten($sidebar, 5%);
   }
   & span {
@@ -241,16 +242,48 @@ nav {
     margin-left: 10px;
     padding: 5px 10px 5px 10px;
     border-radius: 5px;
-    color: #fcb820;
+    color: $nav-ul;
     font-size: 14px;
     font-weight: 600;
   }
   & a:hover {
-    background-color: white;
+    background-color: $link-hover;
     border-radius: 5px;
   }
   & span {
     margin-left: 20px;
+    font-weight: 600;
+    font-size: 1.2em;
+    color: $content-color;
+  }
+}
+//TODO if many counts margin from left
+.tags {
+  background-color: $sidebar;
+  border-radius: 5px;
+  margin-bottom: 7px;
+  padding-right: 10px;
+  padding-left: 10px;
+  display: inline-block;
+  & a {
+    display: inline-block;
+    text-decoration: none;
+    margin: 5px 0px 5px 5px;
+    padding: 5px 10px 5px 10px;
+    border-radius: 5px;
+    color: $content-color;
+    font-size: 14px;
+    font-weight: 600;
+    background-color: $nav-ul;
+  }
+  & a:hover {
+    background-color: $link-hover;
+    border-radius: 5px;
+  }
+  & span {
+    color: $content-color;
+    padding: 5px 10px 5px 10px;
+    display: inline-block;
     font-weight: 600;
     font-size: 1.2em;
   }
@@ -262,7 +295,7 @@ nav {
   margin-top: 4px;
   & span {
     font-size: 14px;
-    color: #fcb820;
+    color: $nav-ul;
     vertical-align: middle;
     font-weight: 600;
   }
@@ -276,8 +309,8 @@ nav {
 #like {
   cursor: pointer;
   padding: 3px;
-  background: #FCB820;
-  color: #000;
+  background: $nav-ul;
+  color: $content-color;
   text-align: center;
   text-decoration: none;
   font-size: 12px;
@@ -288,7 +321,7 @@ nav {
 }
 
 #like:hover {
-  color: white;
+  color: $link-hover;
   background: rgba(254, 5, 12, 0.43);
 }
 
