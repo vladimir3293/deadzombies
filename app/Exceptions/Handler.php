@@ -50,6 +50,11 @@ class Handler extends ExceptionHandler
             return response()->view('errors.403', ['error' => 'nelzy'], 401);
         }
 
+        if ($exception instanceof TagDuplicateException) {
+            //dd($exception->getMessage());
+            return back()->with(['error'=>$exception->getMessage()]);
+        }
+
         return parent::render($request, $exception);
     }
 

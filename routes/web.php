@@ -10,7 +10,7 @@ Route::get('/category/{category}', 'CategoryController@getCategory')->name('getC
 //index game
 Route::get('/game/{game}', 'GameController@getGame')->name('getGame');
 //index tag
-Route::get('/category/{Category}', 'CategoryController@getCategory')->name('getCategory');
+Route::get('/tag/{tag}', 'CategoryController@getCategory')->name('getTag');
 
 /***** ADMIN PAGES *****/
 
@@ -61,7 +61,7 @@ Route::middleware(['auth', 'can:isAdmin'])->group(function () {
 //delete game tag
     Route::delete('/admin/game/tag/{Game}', 'Admin\GameController@deleteGameTag');
 //add game tag
-    Route::post('/admin/game/tag/{Game}', 'Admin\GameController@postGameTag');
+    Route::post('/admin/game/tag/{game}', 'Admin\GameController@postGameTag');
 
 //admin tag pages
 

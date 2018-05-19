@@ -2,6 +2,7 @@
 
 namespace Deadzombies\Http\Controllers\Admin;
 
+use Deadzombies\Exceptions\TagDuplicateException;
 use Deadzombies\Model\Category;
 use Deadzombies\Model\Game;
 use Deadzombies\Model\Tag;
@@ -97,13 +98,16 @@ class GameController extends Controller
         ]);
     }
 
-    public function postGameTag(Game $Game, Request $request, Tag $tagModel)
+    public function postGameTag(Game $game, Request $request, Tag $tagModel)
     {
         $tag = $tagModel->where('id', $request->tagId)->get();
         $tag = $tag->first();
+        if($game)
+        throw new TagDuplicateException('Такой тег уже присвоен игре');
+
         //dd($Game, $request);
-        $Game->tags()->save($tag);
-        return redirect()->route('admin.getGame', [$Game]);
+        $game->tags()->save($tag);
+        return redirect()->route('admin.getGame', [$game]);
     }
 
     public function deleteGameTag(Game $Game, Request $request, Tag $tagModel)

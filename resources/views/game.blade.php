@@ -20,7 +20,16 @@
                 <span id="like_value">{{ $game->game_like }}</span>
                 <button id="like" data-id="{{ $game->game_id }}">LIKE</button>
             </div>
+
             <div class="clr"></div>
+            <div class="tags">
+                <span>ТЕГИ:</span>
+                @if(isset($game->tags))
+                    @foreach($game->tags as $tag)
+                        <a href="{{ route('getTag',[$tag->url],false) }}">{{ $tag->name }}</a>
+                    @endforeach
+                @endif
+            </div>
             <div class="upr">
                 <div class="upr-img">
                     <img src="/img/site/control.png" alt="Управление">
