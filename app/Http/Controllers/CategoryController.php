@@ -8,19 +8,17 @@ use Deadzombies\Model\Category;
 
 class CategoryController extends Controller
 {
-    public function getCategory(Category $Category)
+    public function getCategory(Category $category)
     {
         //TODO pagination
-        $games = $Category->game()->where('game_show', true)->get();
-        //dd($games);
-
+        $games = $category->game()->where('game_show', true)->get();
         foreach ($games as $game){
-            $game->url = route('getGame', ['Category' => $Category->cat_url, 'Game' => $game->game_url]);
+            $game->url = route('getGame', ['Category' => $category->cat_url, 'Game' => $game->game_url]);
             $game->img = file_exists(public_path() . '/img/' . $game->game_url . '.jpg') ?
                 '/img/' . $game->game_url . '.jpg' :
                 '/img/site/empty.jpg';
         }
-       // dd($games);
-        return view('category', ['games' => $games, 'category' => $Category]);
+       //dd($category);
+        return view('category', ['games' => $games, 'category' => $category]);
     }
 }

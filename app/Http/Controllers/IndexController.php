@@ -18,10 +18,10 @@ class IndexController extends Controller
 
         $pageIndex = $page->where('name', 'index')->get()->first();
 
-        $games = $game->where('game_show',1)->simplePaginate(12);
+        $games = $game->where('game_show', 1)->simplePaginate(12);
         //dd($games);
         $games->each(function ($games) {
-            $games->url = route('getGame', $games->game_url);
+            $games->url = route('getGame', $games->game_url, false);
             $games->img = file_exists(public_path() . '/img/' . $games->game_url . '.jpg') ?
                 '/img/' . $games->game_url . '.jpg' :
                 '/img/site/empty.jpg';

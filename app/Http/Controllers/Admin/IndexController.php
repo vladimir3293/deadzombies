@@ -34,7 +34,7 @@ class IndexController extends Controller
         //TODO refactoring routes
 //TODO compact helper
 
-        $pageIndex = $page->where('name', 'index')->get()->first();
+        //$pageIndex = $page->where('name', 'index')->get()->first();
 
 
         $games = $game->paginate(24);
@@ -46,6 +46,6 @@ class IndexController extends Controller
                 '/img/site/empty.jpg';
         });
 
-        return view('admin.index', ['games' => $games, 'page' => $pageIndex]);
+        return view('admin.index', ['games' => $games]);
     }
 }

@@ -11,23 +11,24 @@
     <link rel="stylesheet" href="/css/bootstrap/css/bootstrap.css">
     <link rel="stylesheet" href="/css/scss.css">
 </head>
+{{-- TODO contrast ratio
+                    --}}
 <body>
 <div class="wrapper container">
     <div class="row">
         <div class="col-md-5">
             <div class="sidebar">
                 <header class="index-header">
-                    {{-- todo layout composer for same parts --}}
-                    <h1>Opisanie sayta h1</h1>
-                    <img src="/img/site/logotype.png">
+                    <h1>Html5 игры на</h1>
+                    <a href="/"><img src="/img/site/logotype.png"></a>
                 </header>
                 <nav>
                     <header>
-                        <h1>Navigasiya na sayte</h1>
+                        <h1>Категории на сайте</h1>
                     </header>
                     @include('menu')
                     <footer>
-                        <p>konec navigasii</p>
+                        <h1>удачной игры</h1>
                     </footer>
                 </nav>
             </div>

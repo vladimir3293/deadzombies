@@ -17,10 +17,9 @@ class MenuComposer
 
     public function compose(View $view)
     {
-        $categories = $this->category->orderBy('cat_order')->get();
-//dd($categories);
+        $categories = $this->category->where('display', 1)->orderBy('cat_order')->get();
         $categories->each(function ($value) {
-            $value->url = route('getCategory', ['cat' => $value->cat_url],false);
+            $value->url = route('getCategory', ['cat' => $value->cat_url], false);
         });
         $view->with('menu', $categories);
     }

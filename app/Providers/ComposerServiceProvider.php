@@ -16,7 +16,7 @@ class ComposerServiceProvider extends ServiceProvider
     {
         View::composer('menu', 'Deadzombies\Http\ViewComposers\MenuComposer');
         View::composer('admin.menu', 'Deadzombies\Http\ViewComposers\AdminMenuComposer');
-        View::composer('sidebar', 'Deadzombies\Http\ViewComposers\SidebarComposer');
+        //View::composer('sidebar', 'Deadzombies\Http\ViewComposers\SidebarComposer');
         //View::composer('gameCard', 'Deadzombies\Http\ViewComposers\GameCardComposer');
     }
 

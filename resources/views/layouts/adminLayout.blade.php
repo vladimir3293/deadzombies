@@ -11,14 +11,34 @@
     <link rel="stylesheet" href="/admin/css/app.css">
     <link rel="stylesheet" href="/admin/css/admin.css">
     {{--<script src="/admin/js/app.js"></script>--}}
-    </head>
+</head>
 <body>
-<div class="wrapper container">
-    <div class="row">
-        <div class="col-md-9">
-            <h1>Админка</h1>
+<nav class="navbar navbar-default navbar-static-top">
+    <div class="container">
+        <div class="navbar-header">
+
+
+            <!-- Branding Image -->
+            <a class="navbar-brand" href="{{ route('admin') }}">
+                Админка
+            </a>
         </div>
+
+        <!-- Right Side Of Navbar -->
+        <ul class="nav navbar-nav navbar-right">
+            <p class="navbar-text">{{ Auth::user()->name }}</p>
+
+            <form class="navbar-form navbar-left" method="post" action="{{ route('logout') }}">
+                {{ method_field('POST') }}
+                {{ csrf_field() }}
+                <input class="btn btn-default" type="submit" value="Выйти">
+            </form>
+        </ul>
+
     </div>
+</nav>
+
+<div class="wrapper container">
 
     <div class="row">
         <div class="col-md-3">
@@ -29,25 +49,42 @@
             </div>
         </div>
         <div class="col-md-9">
-            <div class="right-content">
-                @yield('right_content')
-            </div>
+
+            @yield('right_content')
+
         </div>
     </div>
-    <div class="row">
-        <footer class="index-footer col-md-12">
-            <div class="footer">
-                <div class="copy">
-                    <img src="/img/footer.png">
-                    <p class="descr">Все права на публикацию, принадлежат их владельцам. Весь материал расположенный на
-                        сайте, взят из открытых источников.</p>
-                    <div class="clr"></div>
-                </div>
-            </div>
-            <div class="clr"></div>
-        </footer>
-    </div>
 </div>
+<div class="footer-bottom">
 
+    <div class="container">
+
+        <div class="row">
+
+            <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
+
+                <div class="copyright">
+
+                    © 2018, Deadzombies, All rights reserved
+
+                </div>
+
+            </div>
+
+            <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
+
+                <div class="design">
+
+                    <span> Web Design &amp; Development by zombie</span>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
 </body>
 </html>

@@ -1,3 +1,8 @@
+.sidebar h1 {
+  text-align: center;
+  color: black;
+}
+
 body,
 div,
 dl,
@@ -87,6 +92,7 @@ nav a:hover {
   -webkit-box-shadow: 0 0 8px #F00;
           box-shadow: 0 0 8px #F00;
   padding: 0 15px 10px 15px;
+  min-height: 800px;
 }
 
 .header-article h1 {

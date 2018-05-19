@@ -20,7 +20,7 @@ class TagController extends Controller
         $tags = $tagModel->where('display', 0)->orderBy('id', 'desc')->simplePaginate(100);
         //dd($tags);
         $tags->each(function ($tag) {
-            $tag->url = route('admin.getCategory', $tag->url);
+            $tag->url = route('admin.getTag', $tag->url);
         });
         return view('admin.tag.unpublished', ['tags' => $tags, 'tagsCount' => $tagsCount]);
     }
@@ -31,7 +31,7 @@ class TagController extends Controller
         $tags = $tagModel->where('display', 1)->orderBy('id', 'desc')->simplePaginate(100);
         //dd($tags);
         $tags->each(function ($tag) {
-            $tag->url = route('admin.getCategory', $tag->url);
+            $tag->url = route('admin.getTag', $tag->url);
         });
         return view('admin.tag.published', ['tags' => $tags, 'tagsCount' => $tagsCount]);
     }
