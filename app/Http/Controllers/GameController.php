@@ -32,12 +32,12 @@ class GameController
    */
         //dd($game);
         //dd($game->category);
-        if(isset($game->category->cat_url)) {
-            $game->categoryUrl = route('getCategory',$game->category->cat_url,false);
+        if (isset($game->category->cat_url)) {
+            $game->categoryUrl = route('getCategory', $game->category->cat_url, false);
             $game->cat_name = $game->category->cat_name;
         }
         $game->gameHeight = 868 * $game->height / $game->width;
-
+        $game->tagsDisplayed = $game->tags()->where('display', true)->get();
         //dd($game->tags);
         //$Game->categoryUrl = route('getCat', $Category->cat_url);
         return view('game', ['game' => $game]);

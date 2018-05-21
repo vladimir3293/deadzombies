@@ -14,6 +14,15 @@
         <div class="box">
             <p>{{ $category->cat_desc }}</p>
         </div>
+        <div class="tags">
+            <span>Подкатегории:</span>
+            @if(isset($category->tagsDisplayed))
+                @foreach($category->tagsDisplayed as $tag)
+                    <a href="{{ route('getTag',[$tag->url],false) }}">{{ $tag->name }}</a>
+                @endforeach
+            @endif
+        </div>
+        <div class="clr"></div>
         @if(isset($games))
             @include('gameCard')
         @endif

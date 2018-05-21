@@ -384,6 +384,7 @@ nav a:hover {
   width: 100%;
   vertical-align: middle;
   display: table-cell;
+  padding: 20px;
 }
 
 .upr-img {

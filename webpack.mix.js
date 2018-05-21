@@ -19,4 +19,4 @@ mix.sass('resources/assets/sass/scss.scss', 'public/css');
 
 //mix.js('resources/assets/js/app.js', 'public/admin/js');
 //mix.js('resources/assets/js/admin.js', 'public/admin/js');
-//mix.sass('resources/assets/sass/admin.scss', 'public/admin/css');
+mix.sass('resources/assets/sass/admin.scss', 'public/admin/css');

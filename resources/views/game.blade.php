@@ -24,8 +24,8 @@
             <div class="clr"></div>
             <div class="tags">
                 <span>ТЕГИ:</span>
-                @if(isset($game->tags))
-                    @foreach($game->tags as $tag)
+                @if(isset($game->tagsDisplayed))
+                    @foreach($game->tagsDisplayed as $tag)
                         <a href="{{ route('getTag',[$tag->url],false) }}">{{ $tag->name }}</a>
                     @endforeach
                 @endif
