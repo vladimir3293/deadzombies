@@ -26,13 +26,13 @@ class RouteServiceProvider extends ServiceProvider
         //
 
         parent::boot();
-
+/*
         Route::bind('game', function ($value) {
             return \Deadzombies\Model\Game::where(
                 [['game_url', $value],['game_show',1]])
                 ->first();
         });
-
+*/
     }
 
     /**

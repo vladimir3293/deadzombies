@@ -10,7 +10,7 @@ Route::get('/category/{category}', 'CategoryController@getCategory')->name('getC
 //index game
 Route::get('/game/{game}', 'GameController@getGame')->name('getGame');
 //index tag
-Route::get('/tag/{tag}', 'CategoryController@getCategory')->name('getTag');
+Route::get('/tag/{tag}', 'TagController@getTag')->name('getTag');
 
 /***** ADMIN PAGES *****/
 

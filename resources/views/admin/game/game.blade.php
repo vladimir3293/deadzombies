@@ -3,11 +3,7 @@
 @section('title',$game->game_name)
 
 @section('right_content')
-    @if (session('error'))
-        <div class="alert alert-success">
-            {{ session('error') }}
-        </div>
-    @endif
+
     <h1>{{ $game->game_name }}</h1>
     <div class="game_edit">
         <div class="game_form">

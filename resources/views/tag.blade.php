@@ -9,15 +9,15 @@
 @section('right_content')
     <article>
         <header class="header-article">
-            <h1>{{ $category->cat_name }}</h1>
+            <h1>{{ $tag->name }}</h1>
         </header>
         <div class="box">
-            <p>{!! $category->descWithP !!}</p>
+            <p>{!! $tag->descWithP !!}</p>
         </div>
         <div class="tags">
             <span>Подкатегории:</span>
-            @if(isset($category->tagsDisplayed))
-                @foreach($category->tagsDisplayed as $tag)
+            @if(isset($tag->tagsDisplayed))
+                @foreach($tag->tagsDisplayed as $tag)
                     <a href="{{ route('getTag',[$tag->url],false) }}">{{ $tag->name }}</a>
                 @endforeach
             @endif

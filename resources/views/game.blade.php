@@ -35,7 +35,7 @@
                     <img src="/img/site/control.png" alt="Управление">
                 </div>
                 <div class="upr-text">
-                    <p>{{ $game->game_control }}</p>
+                    <p>{!! $game->gameControlWithP !!}</p>
 
                 </div>
             </div>
@@ -52,7 +52,7 @@
             </div>
             <div class="flash-opis">
                 <img src="/img/{{ $game->game_url }}.jpg">
-                <p>{{ $game->game_desc }}</p>
+                {!! $game->descWithP !!}
                 <div class="clr"></div>
             </div>
         </div>

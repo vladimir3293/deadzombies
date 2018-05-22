@@ -26,7 +26,7 @@ class GameController extends Controller
                 '/img/' . $games->game_url . '.jpg' :
                 '/img/site/empty.jpg';
         });
-        return view('admin.game.gameAll', ['games' => $games,'gamesCount'=>$gamesCount]);
+        return view('admin.game.gameAll', ['games' => $games, 'gamesCount' => $gamesCount]);
     }
 
     public function createGame()
@@ -57,7 +57,7 @@ class GameController extends Controller
                 '/img/' . $games->game_url . '.jpg' :
                 '/img/site/empty.jpg';
         });
-        return view('admin.game.unpublished', ['games' => $games,'gamesCount'=>$gamesCount]);
+        return view('admin.game.unpublished', ['games' => $games, 'gamesCount' => $gamesCount]);
     }
 
     public function getPublished(Game $gameModel)
@@ -100,11 +100,12 @@ class GameController extends Controller
 
     public function postGameTag(Game $game, Request $request, Tag $tagModel)
     {
+        if ($game->tags()->where('tags.id', $request->tagId)->get()->isNotEmpty()) {
+            throw new TagDuplicateException('Такой тег уже присвоен игре');
+        }
+
         $tag = $tagModel->where('id', $request->tagId)->get();
         $tag = $tag->first();
-        if($game)
-        throw new TagDuplicateException('Такой тег уже присвоен игре');
-
         //dd($Game, $request);
         $game->tags()->save($tag);
         return redirect()->route('admin.getGame', [$game]);

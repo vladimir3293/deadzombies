@@ -115,6 +115,5 @@
                 @endif
             </div>
         </div>
-        span
     </article>
 @endsection

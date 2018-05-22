@@ -49,7 +49,11 @@
             </div>
         </div>
         <div class="col-md-9">
-
+            @if (session('error'))
+                <div class="alert alert-danger">
+                    {{ session('error') }}
+                </div>
+            @endif
             @yield('right_content')
 
         </div>

@@ -2,6 +2,7 @@
 
 namespace Deadzombies\Http\Controllers\Admin;
 
+use Deadzombies\Exceptions\TagDuplicateException;
 use Deadzombies\Model\Tag;
 use Deadzombies\UrlGenerator\UrlGenerator;
 use Illuminate\Http\Request;
@@ -48,9 +49,13 @@ class TagController extends Controller
     public function addTag(Tag $Tag, Request $request)
     {
         //dd($Tag, $request);
-        $tag = $Tag->where('id', $request->tagId)->get()->first();
+        if($Tag->id == $request->tagId){
+            throw new TagDuplicateException('Нельзя привязать тег сам себе');
+        }
+        $tagAdd = $Tag->where('id', $request->tagId)->get()->first();
+
         //dd($tag,$Game, $request);
-        $Tag->Tag()->save($tag);
+        $Tag->Tag()->save($tagAdd);
         return redirect()->route('admin.getTag', [$Tag]);
     }
 
