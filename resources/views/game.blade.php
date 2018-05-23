@@ -3,7 +3,7 @@
 @section('title',$game->game_title)
 
 @section('right_content')
-    <article>
+    <article xmlns:width="http://www.w3.org/1999/xhtml" xmlns:height="http://www.w3.org/1999/xhtml">
         <div class="content">
             <header class="header-article">
                 <h1>{{ $game->game_name }}</h1>
@@ -41,14 +41,16 @@
             </div>
             <div class="flash">
 
-
-                <iframe src="{{ $game->source }}"
-                        name="topFrame"
-                        scrolling="no"
-                        height="{{ $game->gameHeight }}"
-                        width="100%">
-                </iframe>
-
+                <div class="video">
+                    <iframe src="{{ $game->source }}"
+                            name="topFrame"
+                            scrolling="no"
+                            {{--allowfullscreen--}}
+                            {{-- style="margin: 50px;">--}}
+                            height="{{ $game->gameHeight }}"
+                            width="{{ $game->gameWidth }}"
+                    </iframe>
+                </div>
             </div>
             <div class="flash-opis">
                 <img src="/img/{{ $game->game_url }}.jpg">
