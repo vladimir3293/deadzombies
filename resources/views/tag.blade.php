@@ -1,10 +1,10 @@
 @extends('layouts.layout')
 
-@section('title','Тайтл индекс страницы')
+@section('title', $tag->title)
 
-@section('description','Мета писание первой страницы')
+@section('description', $tag->meta_desc)
 
-@section('keywords','Мета кейвердс первой страницы')
+@section('keywords', $tag->meta_key)
 
 @section('right_content')
     <article>

@@ -377,7 +377,6 @@ nav a:hover {
   border: 1px solid #461a21;
   min-height: 53px;
   display: table;
-  width: 100%;
 }
 
 .upr-text {
@@ -423,5 +422,23 @@ nav a:hover {
   background: #3c262a;
   margin-bottom: 7px;
   border-radius: 0px 0px 5px 5px;
+}
+
+.fucking_css {
+  margin: auto;
+}
+
+.video {
+  height: 0;
+  overflow: hidden;
+  position: relative;
+}
+
+.video iframe {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
 }
 

@@ -1,10 +1,10 @@
 @extends('layouts.layout')
 
-@section('title','Тайтл индекс страницы')
+@section('title',$category->cat_title)
 
-@section('description','Мета писание первой страницы')
+@section('description', $category->cat_desc_meta)
 
-@section('keywords','Мета кейвердс первой страницы')
+@section('keywords',$category->cat_key_meta)
 
 @section('right_content')
     <article>

@@ -3,7 +3,7 @@
 @section('title',$game->game_title)
 
 @section('right_content')
-    <article xmlns:width="http://www.w3.org/1999/xhtml" xmlns:height="http://www.w3.org/1999/xhtml">
+    <article>
         <div class="content">
             <header class="header-article">
                 <h1>{{ $game->game_name }}</h1>
@@ -39,19 +39,30 @@
 
                 </div>
             </div>
-            <div class="flash">
+            {{--<div class="flash">--}}
+            <div class="fucking_css" style="max-width: {{ $game->maxWidth }}vh;">
+                <div class="video" style="padding-bottom: {{ $game->maxHeight }}%;">
 
-                <div class="video">
+                    {{--max-height: {{ $game->gameHeight }}px;--}}
+                    {{--max-width: {{ $game->gameWidth }}px;--}}
+                    {{--width: {{ $game->number }}vh;--}}
+                    {{--height: 100vh"--}}
+
+
                     <iframe src="{{ $game->source }}"
                             name="topFrame"
-                            scrolling="no"
+                            scrolling="yes"
                             {{--allowfullscreen--}}
-                            {{-- style="margin: 50px;">--}}
-                            height="{{ $game->gameHeight }}"
-                            width="{{ $game->gameWidth }}"
+                            {{--style="margin: 50px;"--}}
+                            {{--height="100vh" ;--}}
+                            {{--width="{{ $game->number }}vh"--}}
+                            {{--height="{{ $game->gameHeight }}"--}}
+                            {{--width="{{ $game->gameWidth }}"--}}
+                    >
                     </iframe>
                 </div>
             </div>
+            {{--</div>--}}
             <div class="flash-opis">
                 <img src="/img/{{ $game->game_url }}.jpg">
                 {!! $game->descWithP !!}
