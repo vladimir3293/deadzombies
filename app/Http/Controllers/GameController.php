@@ -17,13 +17,11 @@ class GameController
             $game->categoryUrl = route('getCategory', $game->category->cat_url, false);
             $game->cat_name = $game->category->cat_name;
         }
-        //$game->gameHeight = 600;
 
+        //coefficient of relationship heght to width;
         $game->maxHeight = intval(100 * ($game->height / $game->width));
-
         //for max width from display height in vh
-        $game->maxWidth = intval(100 * $game->width / $game->height);
-
+        $game->maxWidth = intval(85 * ($game->width / $game->height));
 
         $game->tagsDisplayed = $game->tags()->where('display', true)->get();
         $game->descWithP = '<p>' . str_replace(array("\r\n", "\r", "\n"), '</p><p>', $game->game_desc) . '</p>';
