@@ -22,23 +22,7 @@
             </div>
 
             <div class="clr"></div>
-            <div class="tags">
-                <span>ТЕГИ:</span>
-                @if(isset($game->tagsDisplayed))
-                    @foreach($game->tagsDisplayed as $tag)
-                        <a href="{{ route('getTag',[$tag->url],false) }}">{{ $tag->name }}</a>
-                    @endforeach
-                @endif
-            </div>
-            <div class="upr">
-                <div class="upr-img">
-                    <img src="/img/site/control.png" alt="Управление">
-                </div>
-                <div class="upr-text">
-                    <p>{!! $game->gameControlWithP !!}</p>
 
-                </div>
-            </div>
             {{--<div class="flash">--}}
             <div class="fucking_css" style="max-width: {{ $game->maxWidth }}vh;">
                 <div class="video" style="padding-bottom: {{ $game->maxHeight }}%;">
@@ -60,6 +44,23 @@
                             {{--width="{{ $game->gameWidth }}"--}}
                     >
                     </iframe>
+                </div>
+            </div>
+            <div class="tags">
+                <span>ТЕГИ:</span>
+                @if(isset($game->tagsDisplayed))
+                    @foreach($game->tagsDisplayed as $tag)
+                        <a href="{{ route('getTag',[$tag->url],false) }}">{{ $tag->name }}</a>
+                    @endforeach
+                @endif
+            </div>
+            <div class="upr">
+                <div class="upr-img">
+                    <img src="/img/site/control.png" alt="Управление">
+                </div>
+                <div class="upr-text">
+                    <p>{!! $game->gameControlWithP !!}</p>
+
                 </div>
             </div>
             {{--</div>--}}

@@ -443,3 +443,29 @@ body {
   line-height: 1.5;
 }
 
+.hidden-block {
+  display: none !important;
+}
+
+/* Large desktop */
+
+#menu {
+  display: none;
+}
+
+/* Portrait tablet to landscape and desktop */
+
+/* Landscape phone to portrait tablet */
+
+/* Landscape phones and down */
+
+@media (max-width: 480px) {
+  #menu {
+    display: block;
+  }
+
+  .menu-row {
+    display: none;
+  }
+}
+
