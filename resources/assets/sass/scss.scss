@@ -7,27 +7,23 @@ $content-color: black;
 $right-content: rgb(101, 30, 42);
 $link-hover: white;
 
-
 $color-primary-2: rgba(178, 190, 111, 1);
 $color-primary-3: rgba(244, 249, 219, 1);
 $color-primary-4: rgba(245, 249, 221, 1);
 $color-primary-1: rgba(178, 190, 111, 1);
 
-
 $body: #f1f2f6;
 
-$wrap: darken(#f1f2f6,10%);
+$wrap: darken(#f1f2f6, 10%);
 
-$sidebar: darken(#f1f2f6,18%);
+$sidebar: darken(#f1f2f6, 18%);
 $nav-ul: rgb(252, 184, 32);
 
-$right-content: darken(#f1f2f6,10%);
+$right-content: darken(#f1f2f6, 10%);
 
-$nav-a: darken(#003eff,10%); //text link text
+$nav-a: darken(#f1f2f6, 90%); //text link text
 $link-hover: white;
 $content-color: black;
-
-
 
 $border: 1px solid #cccccc;
 
@@ -102,4 +98,34 @@ body {
   color: $content-color;
   font-weight: 600;
   line-height: 1.5;
+}
+
+.hidden-block {
+  display: none !important;
+}
+
+/* Large desktop */
+@media (min-width: 1200px) {
+}
+
+#menu {
+  display: none;
+}
+
+/* Portrait tablet to landscape and desktop */
+@media (min-width: 768px) and (max-width: 979px) {
+}
+
+/* Landscape phone to portrait tablet */
+@media (max-width: 767px) {
+}
+
+/* Landscape phones and down */
+@media (max-width: 480px) {
+  #menu {
+    display: block;
+  }
+  .menu-row{
+    display: none;
+  }
 }

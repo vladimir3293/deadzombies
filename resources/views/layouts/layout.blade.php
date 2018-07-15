@@ -8,6 +8,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
     <link rel="icon" href="/favicon.ico" type="image/x-icon">
+    <script src="/js/deadzombies.js"></script>
     <link rel="stylesheet" href="/css/bootstrap/css/bootstrap.css">
     <link rel="stylesheet" href="/css/scss.css">
 </head>
@@ -51,6 +52,6 @@
             <div class="clr"></div>
         </footer>
     </div>
-</div>
+</div><a id="gotop" class="scrollTop" href="#" onclick="top.goTop(); return false;" style="display: block; opacity: 1;"></a>
 </body>
 </html>

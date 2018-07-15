@@ -35,8 +35,6 @@ class IndexController extends Controller
 //TODO compact helper
 
         //$pageIndex = $page->where('name', 'index')->get()->first();
-
-
         $games = $game->paginate(24);
         //dd($games);
         $games->each(function ($games) {
