@@ -27,8 +27,8 @@ nav a {
   display: block;
   padding: 14px 3px 4px 35px;
   font-size: 1.5em;
-  color: #0b0c11;
-  text-shadow: 0 1px 0 #010102;
+  color: #0032cc;
+  text-shadow: 0 1px 0 #002bb3;
   border-bottom: 1px solid #e6a003;
   height: 50px;
 }
@@ -45,8 +45,9 @@ nav a:hover {
   margin: 10px 0 10px 0;
   background: #d2d5e2;
   border-radius: 2px;
-  -webkit-box-shadow: 0 0 8px white;
-          box-shadow: 0 0 8px white;
+  -webkit-box-shadow: 0 0 8px #c2c7d8;
+          box-shadow: 0 0 8px #c2c7d8;
+  border: 1px solid #c2c7d8;
   padding: 0 15px 10px 15px;
   min-height: 800px;
 }
@@ -66,7 +67,9 @@ nav a:hover {
   padding: 10px;
   font-weight: 600;
   font-size: 1.2em;
-  border: 1px solid #7b84aa;
+  border: 1px solid #aab0c8;
+  -webkit-box-shadow: 0 0 8px #aab0c8;
+          box-shadow: 0 0 8px #aab0c8;
 }
 
 .tags {
@@ -76,6 +79,9 @@ nav a:hover {
   padding-right: 10px;
   padding-left: 10px;
   display: inline-block;
+  border: 1px solid #aab0c8;
+  -webkit-box-shadow: 0 0 8px #aab0c8;
+          box-shadow: 0 0 8px #aab0c8;
 }
 
 .tags a {
@@ -194,9 +200,11 @@ nav a:hover {
 .breadcrumb {
   border-radius: 5px;
   float: left;
-  border: 1px solid #d2d5e2;
   background-color: #b9bed2;
   margin-bottom: 7px;
+  border: 1px solid #aab0c8;
+  -webkit-box-shadow: 0 0 8px #aab0c8;
+          box-shadow: 0 0 8px #aab0c8;
 }
 
 .breadcrumb a {
@@ -269,7 +277,9 @@ nav a:hover {
   padding: 5px 10px 5px 10px;
   border-radius: 5px;
   margin-bottom: 7px;
-  border: 1px solid #9aa1be;
+  border: 1px solid #aab0c8;
+  -webkit-box-shadow: 0 0 8px #aab0c8;
+          box-shadow: 0 0 8px #aab0c8;
   min-height: 53px;
   display: table;
 }
@@ -296,13 +306,13 @@ nav a:hover {
   padding: 5px 10px 5px 10px;
   background: #b9bed2;
   border-radius: 5px;
-  border: 1px solid #9aa1be;
+  border: 1px solid #aab0c8;
 }
 
 .flash-opis img {
   float: left;
   margin: 4px 2px 0px 2px;
-  border: 1px solid #9aa1be;
+  border: 1px solid #aab0c8;
   border-radius: 2px;
   height: 153px;
   width: 220px;
