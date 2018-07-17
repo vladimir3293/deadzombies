@@ -15,30 +15,32 @@ class Parser
 
     public function getGamesUrls($page)
     {
-        //dd($this->translate('hello world'));
-        $games = [];
         $parserDOM = $this->parseLib->file_get_html("https://www.gamedistribution.com/gamelist/allcompanies/allcategories/html5?selectedPage=$page");
+        $gamesCards = $parserDOM->find('div.games-container')[0]->children();
 
-        //dd($parserDOM->find('div.tiles'));
-        $a = $parserDOM->find('div.tiles')[2]->find('a');
-        foreach ($a as $card) {
-            $games[] = 'https://gamedistribution.com' . htmlspecialchars_decode($card->href, ENT_QUOTES);
+        $gamesUrls = [];
+        foreach ($gamesCards as $card) {
+            $gameRawUrl = $card->find('a')[0]->href;
+            $gamesUrls[] = 'https://gamedistribution.com' . htmlspecialchars_decode($gameRawUrl, ENT_QUOTES);
         }
-        //dd($games);
-        return $games;
+        return $gamesUrls;
     }
+
 
     //parser from gamedistr
     public function getGame($gameURL)
     {
         $gameURL = htmlspecialchars_decode($gameURL, ENT_QUOTES);
         $rawData = $this->parseLib->file_get_html($gameURL);
+        //h1
         $h1 = $rawData->find('h1')[0]->innertext;
-
         $h1 = htmlspecialchars_decode($h1, ENT_QUOTES);
+        //dd($h1);
         //img
-        $imgUrl = $rawData->find('div.screenshots img')[0]->src;
+        $imgUrl = $rawData->find('div.thumbnails');
+        dd($imgUrl);
         $imgUrl = 'https:' . $imgUrl;
+
         //game source
         //<script>
         //window.embedUrl = "https://html5.gamedistribution.com/dfe314edf3fc4986a76d555eb01dfbaf/";
@@ -79,6 +81,7 @@ class Parser
             'desc' => $this->translate($desc)
         ];
     }
+
 //TODO wtf
     public function translate(string $text)
     {

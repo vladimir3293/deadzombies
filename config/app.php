@@ -177,6 +177,7 @@ return [
         Deadzombies\Providers\EventServiceProvider::class,
         Deadzombies\Providers\RouteServiceProvider::class,
         Deadzombies\Providers\ComposerServiceProvider::class,
+
         Barryvdh\Debugbar\ServiceProvider::class,
 
     ],

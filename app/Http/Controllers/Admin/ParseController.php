@@ -22,32 +22,28 @@ class ParseController extends Controller
     }
 
     //TODO img
+//TODO WTFFFF
     public function postGameDist(Request $request, Tag $tagModel, Parser $parser, Category $categoryModel,
                                  Game $gameModel, UrlGenerator $urlGenerator, Filesystem $filesystem)
     {
         //get urls from one page
         $onePageRawUrl = collect($parser->getGamesUrls($request->page_number));
         $countOfGames = $onePageRawUrl->count();
-        // dd($onePageRawUrl);
+
         //first verification for unique
         $existUrls = $gameModel->pluck('original_url');
         $onePageUrls = $onePageRawUrl->diff($existUrls);
         ini_set('default_socket_timeout', 900);
 
-        $countPages = 0;
-        //dd($onePageUrls);
-//$test = 'https://gamedistribution.com/games/multiplayer/rack&#39;em-8-ball-pool.html';
-        //dd(htmlspecialchars_decode($test,ENT_QUOTES));
-        //$debug = 0;
-        //$forTest = [];
 
         $forTest[] = $onePageUrls[2];
 
+        $countPages = 0;
         foreach ($forTest as $oneGame) {
-            //$debug++;
 
             $oneGameData = $parser->getGame($oneGame);
-            //dd($oneGameData);
+            dd($oneGameData);
+//TODO WTF WTF refactoring
             $game = $gameModel->where('game_url', $urlGenerator->createUrl($oneGameData['name']))->get();
             //dd($oneGameData['original_url']);
 
