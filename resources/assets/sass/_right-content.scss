@@ -2,7 +2,8 @@
   margin: 10px 0 10px 0;
   background: $right-content;
   border-radius: 2px;
-  box-shadow: 0 0 8px lighten($sidebar, 40%);
+  box-shadow: 0 0 8px darken($right-content, 5%);
+  border: 1px solid darken($right-content, 5%);
   padding: 0 15px 10px 15px;
   min-height: 800px;
 }
@@ -22,7 +23,8 @@
   padding: 10px;
   font-weight: 600;
   font-size: 1.2em;
-  border: 1px solid darken($sidebar, 20%);
+  border: 1px solid darken($sidebar, 5%);
+  box-shadow: 0 0 8px darken($sidebar, 5%);
 }
 
 //TODO if many counts margin from left
@@ -33,6 +35,9 @@
   padding-right: 10px;
   padding-left: 10px;
   display: inline-block;
+  border: 1px solid darken($sidebar, 5%);
+  box-shadow: 0 0 8px darken($sidebar, 5%);
+
   & a {
     display: inline-block;
     text-decoration: none;

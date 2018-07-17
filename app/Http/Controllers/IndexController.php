@@ -12,7 +12,7 @@ class IndexController extends Controller
     {
         //TODO transfer to model
         //TODO refactor img
-        //$test = Game::where('game_show',0)->update(['game_show'=>'1']);
+        //TODO googleof googleoff
         //dd($test);
         //dd($test->update(['game_show'=>1]));
 
