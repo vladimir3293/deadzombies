@@ -54,7 +54,7 @@ class Handler extends ExceptionHandler
             //dd($exception->getMessage());
             return back()->with(['error'=>$exception->getMessage()]);
         }
-
+        //return redirect('/');
         return parent::render($request, $exception);
     }
 

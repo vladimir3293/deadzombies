@@ -32,30 +32,27 @@ class Parser
     {
         $gameURL = htmlspecialchars_decode($gameURL, ENT_QUOTES);
         $rawData = $this->parseLib->file_get_html($gameURL);
+
         //h1
         $h1 = $rawData->find('h1')[0]->innertext;
         $h1 = htmlspecialchars_decode($h1, ENT_QUOTES);
-        //dd($h1);
+
         //img
-        $imgUrl = $rawData->find('div.thumbnails');
-        dd($imgUrl);
-        $imgUrl = 'https:' . $imgUrl;
+        $imgContainer = $rawData->find('div.thumbnails');
+        $imgOne = $imgContainer[0]->children(0)->find('img')[0];
+        $imgUrl = $imgOne->attr['src'];
 
         //game source
-        //<script>
-        //window.embedUrl = "https://html5.gamedistribution.com/dfe314edf3fc4986a76d555eb01dfbaf/";
-        //</script>
-        $gameUrl = $rawData->find('script');
-        $gameUrl = $gameUrl[7]->innertext();
-        $gameUrl = explode('=', $gameUrl)[1];
-        $gameUrl = trim($gameUrl);
-        $gameUrl = substr($gameUrl, 1, strlen($gameUrl) - 3);
+        $gameUrlContainer = $rawData->find('div.input-container')[0];
+        $gameUrl = $gameUrlContainer->find('input')[0]->attr['value'];
+
         //tags
         $tagsRaw = $rawData->find('a.tag');
         $tags = [];
         foreach ($tagsRaw as $tag) {
             $tags[] = $this->translate(strtolower($tag->innertext));
         }
+        dd($tags);
         //category
         $categoryRaw = $rawData->find('div#column2 p');
         $category = strtolower($categoryRaw[1]->innertext);
