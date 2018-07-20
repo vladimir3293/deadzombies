@@ -16,7 +16,7 @@
         </div>
         <div class="tags">
             <span>Подкатегории:</span>
-            @if(isset($tag->tagsDisplayed))
+            @if($tag->tagsDisplayed->isNotEmpty())
                 @foreach($tag->tagsDisplayed as $tag)
                     <a href="{{ route('getTag',[$tag->url],false) }}">{{ $tag->name }}</a>
                 @endforeach
@@ -35,4 +35,3 @@
         @endif
     </article>
 @endsection
-

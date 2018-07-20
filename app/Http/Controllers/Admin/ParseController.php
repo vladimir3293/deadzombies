@@ -36,13 +36,12 @@ class ParseController extends Controller
         ini_set('default_socket_timeout', 900);
 
 
-        $forTest[] = $onePageUrls[2];
+//        $forTest[] = $onePageUrls[2];
 
         $countPages = 0;
-        foreach ($forTest as $oneGame) {
+        foreach ($onePageUrls as $oneGame) {
 
             $oneGameData = $parser->getGame($oneGame);
-            dd($oneGameData);
 //TODO WTF WTF refactoring
             $game = $gameModel->where('game_url', $urlGenerator->createUrl($oneGameData['name']))->get();
             //dd($oneGameData['original_url']);

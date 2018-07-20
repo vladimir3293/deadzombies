@@ -47,25 +47,27 @@ class Parser
         $gameUrl = $gameUrlContainer->find('input')[0]->attr['value'];
 
         //tags
-        $tagsRaw = $rawData->find('a.tag');
+        $tagsRaw = $rawData->find('div.tag-list a');
         $tags = [];
         foreach ($tagsRaw as $tag) {
             $tags[] = $this->translate(strtolower($tag->innertext));
         }
-        dd($tags);
+
         //category
-        $categoryRaw = $rawData->find('div#column2 p');
-        $category = strtolower($categoryRaw[1]->innertext);
+        $categoryRaw = $rawData->find('div.column')[3]->children(6)->children(1)->children(0)->innertext();
+        $category = strtolower($categoryRaw);
+
         //size
-        $sizeRaw = $categoryRaw[3]->innertext;
-        $size = explode(' ', $sizeRaw);
+        $sizeRaw = $rawData->find('div.column')[3]->children(4)->children(1)->innertext();
+        $size = str_replace(' ','',explode('x', $sizeRaw));
         $gameWidth = $size[0];
-        $gameHeight = $size[2];
+        $gameHeight = $size[1];
+
         //description
-        $descRaw = $rawData->find('div#column1 p');
-        $desc = $descRaw[0]->innertext;
-        $desc = htmlspecialchars_decode($desc, ENT_QUOTES);
+        $descRaw = $sizeRaw = $rawData->find('div.column')[3]->children(8)->children(1)->innertext();
+        $desc = htmlspecialchars_decode($descRaw, ENT_QUOTES);
         $desc = trim($desc);
+
         return [
             'original_url' => $gameURL,
             'name' => $this->translate($h1),

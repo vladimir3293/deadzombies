@@ -46,14 +46,15 @@
                     </iframe>
                 </div>
             </div>
+            @if($game->tagsDisplayed->isNotEmpty())
+                {{--@php(dd(empty($game->tagsDisplayed)))--}}
             <div class="tags">
                 <span>ТЕГИ:</span>
-                @if(isset($game->tagsDisplayed))
                     @foreach($game->tagsDisplayed as $tag)
                         <a href="{{ route('getTag',[$tag->url],false) }}">{{ $tag->name }}</a>
                     @endforeach
-                @endif
             </div>
+            @endif
             <div class="upr">
                 <div class="upr-img">
                     <img src="/img/site/control.png" alt="Управление">
