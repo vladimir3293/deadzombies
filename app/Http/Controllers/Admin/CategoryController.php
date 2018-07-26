@@ -17,6 +17,7 @@ class CategoryController extends Controller
         $categories = $categoryModel->orderBy('id', 'desc')->simplePaginate(100);
         $categories->each(function ($category) {
             $category->url = route('admin.getCategory', $category->cat_url);
+            $category->gamesCount = $category->game()->count();
         });
 
         return view('admin.category.all', ['categories' => $categories, 'categoriesCount' => $categoriesCount]);
@@ -29,6 +30,7 @@ class CategoryController extends Controller
         //dd($categories);
         $categories->each(function ($category) {
             $category->url = route('admin.getCategory', $category->cat_url);
+            $category->gamesCount = $category->game()->count();
         });
         return view('admin.category.unpublished', ['categories' => $categories, 'categoriesCount' => $categoriesCount]);
     }
@@ -39,7 +41,7 @@ class CategoryController extends Controller
         $categories = $categoryModel->where('display', 1)->orderBy('id', 'desc')->simplePaginate(100);
         $categories->each(function ($category) {
             $category->url = route('admin.getCategory', $category->cat_url);
-
+            $category->gamesCount = $category->game()->count();
         });
         return view('admin.category.published', ['categories' => $categories, 'categoriesCount' => $categoriesCount]);
     }
@@ -85,22 +87,35 @@ class CategoryController extends Controller
         $tagsCategory = $category->tags()->orderBy('id', 'desc')->get();
         $tagsCount = $tagsCategory->count();
         $gamesCount = $category->game()->count();
+        $gamesUnpublishCount = $category->game()->where('game_show', false)->count();
+        $gamesPublishCount = $category->game()->where('game_show', true)->count();
         //dd($gamesCount);
         //$games = $game->where('category_id', $category->id)->paginate(12);
-        $games = $category->game()->orderBy('id', 'desc')->simplePaginate(50);
-        foreach ($games as $game) {
+
+        $gamesPublish = $category->game()->where('game_show', true)->orderBy('id', 'desc')->paginate(1);
+        $gamesUnpublish = $category->game()->where('game_show', false)->orderBy('id', 'desc')->paginate(1);
+        foreach ($gamesPublish as $game) {
+            $game->url = route('admin.getGame', $game->game_url, false);
+            $game->img = file_exists(public_path() . '/img/' . $game->game_url . '.jpg') ?
+                '/img/' . $game->game_url . '.jpg' :
+                '/img/site/empty.jpg';
+        }
+        foreach ($gamesUnpublish as $game) {
             $game->url = route('admin.getGame', $game->game_url, false);
             $game->img = file_exists(public_path() . '/img/' . $game->game_url . '.jpg') ?
                 '/img/' . $game->game_url . '.jpg' :
                 '/img/site/empty.jpg';
         }
         return view('admin.category.category', [
-            'games' => $games,
+            'gamesPublish' => $gamesPublish,
+            'gamesUnpublish' => $gamesUnpublish,
             'category' => $category,
             'tagsCategory' => $tagsCategory,
             'tagsAll' => $tagsAll,
-            'gamesCount'=> $gamesCount,
-            'tagsCount'=> $tagsCount
+            'gamesCount' => $gamesCount,
+            'gamesPublishCount' => $gamesPublishCount,
+            'gamesUnpublishCount' => $gamesUnpublishCount,
+            'tagsCount' => $tagsCount,
         ]);
     }
 

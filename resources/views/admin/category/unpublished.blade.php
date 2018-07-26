@@ -13,7 +13,7 @@
         @if(isset($categories))
             @foreach($categories as $category)
                 <div class="row">
-                    <a href="{{ $category->url }}">{{ $category->cat_name }}</a>
+                    <a href="{{ $category->url }}">{{ $category->cat_name }}</a><span>({{ $category->gamesCount }})</span>
                 </div>
             @endforeach
         @endif

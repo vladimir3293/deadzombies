@@ -14,14 +14,14 @@
         <div class="box">
             <p>{!! $category->descWithP !!}</p>
         </div>
-        <div class="tags">
-            <span>Подкатегории:</span>
-            @if(isset($category->tagsDisplayed))
+        @if($category->tagsDisplayed->isNotEmpty())
+            <div class="tags">
+                <span>Подкатегории:</span>
                 @foreach($category->tagsDisplayed as $tag)
                     <a href="{{ route('getTag',[$tag->url],false) }}">{{ $tag->name }}</a>
                 @endforeach
-            @endif
-        </div>
+            </div>
+        @endif
         <div class="clr"></div>
         @if(isset($games))
             <div class="row">

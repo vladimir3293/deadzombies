@@ -67,6 +67,7 @@
                 <input name="tagId" type="hidden" value="{{ $tagCategory->id }}">
                 <input class="btn btn-danger" type="submit" value="Удалить тег">
                 <label><a href="{{ route('admin.getTag',[$tagCategory->url]) }}">{{ $tagCategory->name }}</a></label>
+                <span>@if($tagCategory->display)Отображается@elseНЕ отображается@endif</span>
             </div>
         </form>
     @endforeach
@@ -89,14 +90,31 @@
         <header class="article-header">
             <h1>Игры в категории: {{ $gamesCount }}</h1>
         </header>
-        @if(isset($games))
+        <header class="article-header">
+            <h1>Опубликованые игры: {{ $gamesPublishCount }}</h1>
+        </header>
+        @if($gamesPublish->isNotEmpty())
             <div class="row">
-                @include('admin.gameCard')
+                @include('admin.gameCard',['games'=>$gamesPublish])
             </div>
             <div class="row">
                 <div class="col-md-12">
-                    {{ $games->links('vendor.pagination.simple-default') }}
+                    {{ $gamesPublish->links('vendor.pagination.default') }}
                 </div>
+            </div>
+        @endif
+        <header class="article-header">
+            <h1>Не опубликованые игры: {{ $gamesUnpublishCount }}</h1>
+        </header>
+        @if($gamesUnpublish->isNotEmpty())
+            <div class="row">
+                @include('admin.gameCard',['games'=>$gamesUnpublish])
+            </div>
+            <div class="row">
+                <div class="col-md-12">
+                    {{ $gamesUnpublish->links('vendor.pagination.default') }}
+                </div>
+            </div>
         @endif
     </article>
 @endsection

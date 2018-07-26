@@ -68,6 +68,7 @@
                             <input name="tagId" type="hidden" value="{{ $subTag->id }}">
                             <input class="btn btn-danger" type="submit" value="Удалить подтег">
                             <label><a href="{{ route('admin.getTag',[$subTag->url]) }}">{{ $subTag->name }}</a></label>
+                            <span>@if($subTag->display)Отображается@elseНЕ отображается@endif</span>
                         </div>
                     </form>
                 @endforeach

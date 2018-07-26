@@ -102,6 +102,7 @@
                     <input name="tagId" type="hidden" value="{{ $tagGame->id }}">
                     <input class="btn btn-danger" type="submit" value="Удалить тег">
                     <label><a href="{{ route('admin.getTag',[$tagGame->url]) }}">{{ $tagGame->name }}</a></label>
+                    <span>@if($tagGame->display)Отображается@elseНЕ отображается@endif</span>
                 </div>
             </form>
         @endforeach
