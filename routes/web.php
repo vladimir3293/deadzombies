@@ -32,7 +32,7 @@ Route::middleware(['auth', 'can:isAdmin'])->group(function () {
 //put category
     Route::put('/admin/category/{category}', 'Admin\CategoryController@putCategory');
 //delete category
-    Route::delete('/admin/category/{Category}', 'Admin\CategoryController@deleteCategory');
+    Route::delete('/admin/category/{category}', 'Admin\CategoryController@deleteCategory');
 //post category
     Route::post('/admin/category/', 'Admin\CategoryController@postCategory');
 //add category tag

@@ -2,6 +2,7 @@
 
 namespace Deadzombies\Http\Controllers\Admin;
 
+use Deadzombies\Exceptions\GameUpdateException;
 use Deadzombies\Exceptions\TagDuplicateException;
 use Deadzombies\Model\Category;
 use Deadzombies\Model\Game;
@@ -80,7 +81,7 @@ class GameController extends Controller
         $tagsGame = $Game->tags()->orderBy('id', 'desc')->get();
         $categories = $category->orderBy('id', 'desc')->get();
 
-        $Game->cat = $Game->category ? $Game->category->cat_name : 'НЕТ';
+        $Game->cat = $Game->category ? '<a href="' . route('admin.getCategory', [$Game->category->cat_url]) . '">' . $Game->category->cat_name . '</a>' : 'НЕТ';
         //$Game->flash = Storage::disk('pub')->exists("/games/$Game->game_url.swf") ? 'ЕСТЬ' : 'НЕТ';
         $Game->imgExist = Storage::disk('pub')->exists("/img/$Game->game_url.jpg") ? 'ЕСТЬ' : 'НЕТ';
         //$Game->img2 = Storage::disk('pub')->exists("/img/$Game->game_url-second.jpg") ? 'ЕСТЬ' : 'НЕТ';
@@ -119,7 +120,7 @@ class GameController extends Controller
         return redirect()->route('admin.getGame', [$Game]);
     }
 
-    public function putGame(Game $Game, Request $request, UrlGenerator $urlGenerator)
+    public function putGame(Game $Game, Category $category, Request $request, UrlGenerator $urlGenerator)
     {
         //TODO if show check category, and if delete cat
         $Game->game_title = $request->game_title;
@@ -130,15 +131,19 @@ class GameController extends Controller
         $Game->source = $request->source;
         $Game->height = $request->height;
         $Game->width = $request->width;
-        //dd($request->game_cat);
+        if ($Game->game_show != $request->game_show) {
+            $Game->game_show = $request->game_show;
+        }
+        if ($request->game_cat) {
+            $newCategory = $category->where(['id' => $request->game_cat])->get()->first();
+            if (!$newCategory->display && $Game->game_show)
+                throw new GameUpdateException('Нельзя присвоить отображаемую игру к неотоброжаемой категории');
+        }
         if ($request->game_cat) {
             $Game->category_id = $request->game_cat;
         }
         if ($request->del_cat) {
             $Game->category_id = null;
-        }
-        if ($Game->game_show != $request->game_show) {
-            $Game->game_show = $request->game_show;
         }
         /*
                 if (null !== $request->file('flash')) {

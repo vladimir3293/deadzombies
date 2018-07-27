@@ -6,7 +6,7 @@
 @section('right_content')
     <article>
         <header class="article-header">
-            <h1>{{ $tag->name }}</h1>
+            <h1><a href="{{ route('getTag',[$tag->url])}}" target="_blank">{{ $tag->name }}</a></h1>
         </header>
         <div class="row">
             <form method="post" action="/admin/tag/{{ $tag->url }}" enctype="multipart/form-data" role="form">

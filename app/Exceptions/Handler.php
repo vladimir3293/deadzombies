@@ -51,10 +51,16 @@ class Handler extends ExceptionHandler
         }
 
         if ($exception instanceof TagDuplicateException) {
-            //dd($exception->getMessage());
             return back()->with(['error'=>$exception->getMessage()]);
         }
-        //return redirect('/');
+        if ($exception instanceof CategoryUpdateException) {
+            return back()->with(['error'=>$exception->getMessage()]);
+        }
+        if ($exception instanceof GameUpdateException) {
+            return back()->with(['error'=>$exception->getMessage()]);
+        }
+
+
         return parent::render($request, $exception);
     }
 

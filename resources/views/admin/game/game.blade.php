@@ -4,7 +4,7 @@
 
 @section('right_content')
 
-    <h1>{{ $game->game_name }}</h1>
+    <h1><a href="{{ route('getGame',[$game->game_url])}}" target="_blank">{{$game->game_name }}</a></h1>
     <div class="game_edit">
         <div class="game_form">
             <form method="post" action="/admin/game/{{ $game->game_url }}" enctype="multipart/form-data" role="form">
@@ -28,11 +28,11 @@
                     <input class="form-control" name="game_rename" id="game_rename" type="text">
                 </div>
                 <div class="form-group">
-                    <label for="game_cat">Категория: {{ $game->cat }}</label>
+                    <label for="game_cat">Категория: {!! $game->cat !!}</label>
                     <select class="form-control" id="game_cat" name="game_cat">
                         <option value="0" selected>не изменять</option>
                         @foreach($categories as $category)
-                            <option value="{{ $category->id }}">{{ $category->cat_url }}</option>
+                            <option value="{{ $category->id }}">{{ $category->cat_name }}</option>
                         @endforeach
                     </select>
                 </div>

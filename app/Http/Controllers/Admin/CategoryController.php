@@ -2,6 +2,7 @@
 
 namespace Deadzombies\Http\Controllers\Admin;
 
+use Deadzombies\Exceptions\CategoryUpdateException;
 use Deadzombies\Model\Category;
 use Deadzombies\Model\Game;
 use Deadzombies\Model\Tag;
@@ -92,8 +93,8 @@ class CategoryController extends Controller
         //dd($gamesCount);
         //$games = $game->where('category_id', $category->id)->paginate(12);
 
-        $gamesPublish = $category->game()->where('game_show', true)->orderBy('id', 'desc')->paginate(1);
-        $gamesUnpublish = $category->game()->where('game_show', false)->orderBy('id', 'desc')->paginate(1);
+        $gamesPublish = $category->game()->where('game_show', true)->orderBy('id', 'desc')->paginate(20);
+        $gamesUnpublish = $category->game()->where('game_show', false)->orderBy('id', 'desc')->paginate(20);
         foreach ($gamesPublish as $game) {
             $game->url = route('admin.getGame', $game->game_url, false);
             $game->img = file_exists(public_path() . '/img/' . $game->game_url . '.jpg') ?
@@ -127,6 +128,12 @@ class CategoryController extends Controller
      */
     public function putCategory(Category $category, Request $request, UrlGenerator $urlGenerator)
     {
+        //if category has displayed games
+        $displayedGames = $category->game()->where('game_show', true)->get()->isNotEmpty();
+        if ($category->display != $request->display && $request->display == false && $displayedGames) {
+            throw new CategoryUpdateException('Нельзя сделать категорию не отображаемой когда в ней есть отображаемые игры');
+        }
+
         if ($request->cat_rename) {
             $category->cat_name = $request->cat_rename;
             $category->cat_url = $urlGenerator->createUrl($category->cat_name);
@@ -136,6 +143,7 @@ class CategoryController extends Controller
         $category->cat_title = $request->cat_title;
         $category->cat_desc_meta = $request->cat_desc_meta;
         $category->cat_key_meta = $request->cat_key_meta;
+
         if ($category->display != $request->display) {
             $category->display = $request->display;
         }
@@ -146,10 +154,15 @@ class CategoryController extends Controller
         return redirect()->route('admin.getCategory', [$category]);
     }
 
-    public function deleteCategory(Category $Category)
+    //TODO delete category, and game category
+    public function deleteCategory(Category $category)
     {
-        //TODO delete category, and game category
-        $Category->delete();
+        $displayedGames = $category->game()->where('game_show', true)->get()->isNotEmpty();
+        if ($displayedGames) {
+            throw new CategoryUpdateException('Нельзя удалить категорию когда в ней есть отображаемые игры');
+        }
+        $category->game()->update(['category_id' => false]);
+        $category->delete();
         return redirect('admin');
 
     }

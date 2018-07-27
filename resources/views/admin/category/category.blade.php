@@ -1,6 +1,6 @@
 @extends('layouts.adminLayout')
 @section('right_content')
-    <h1>{{ $category->cat_name }}</h1>
+    <h1><a href="{{ route('getCategory',[$category->cat_url]) }}" target="_blank">{{ $category->cat_name }}</a></h1>
     <div class="cat_edit_other">
         <form class="cat_edit_form" method="POST" action="/admin/category/{{ $category->cat_url }}">
             {{ method_field('PUT') }}
