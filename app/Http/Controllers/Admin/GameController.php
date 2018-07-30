@@ -122,7 +122,6 @@ class GameController extends Controller
 
     public function putGame(Game $Game, Category $category, Request $request, UrlGenerator $urlGenerator)
     {
-        //TODO if show check category, and if delete cat
         $Game->game_title = $request->game_title;
         $Game->game_desc_meta = $request->game_desc_meta;
         $Game->game_key_meta = $request->game_key_meta;
@@ -131,16 +130,37 @@ class GameController extends Controller
         $Game->source = $request->source;
         $Game->height = $request->height;
         $Game->width = $request->width;
+        $Game->save();
+        //TODO exception
+
         if ($Game->game_show != $request->game_show) {
+            if ($request->game_cat && $request->game_show) {
+                $newCategory = $category->where(['id' => $request->game_cat])->get()->first();
+                if (!$newCategory->display && $request->game_show) {
+                    throw new GameUpdateException('Нельзя отобразить игру в неотображаемой категории');
+                }
+                $Game->category_id = $request->game_cat;
+            }
+            if (!$Game->category && $request->game_show) {
+                throw new GameUpdateException('Нельзя отобразить игру без категории');
+            } else {
+                if (!$Game->category->display && $request->game_show) {
+                    throw new GameUpdateException('Нельзя отобразить игру в неотображаемой категории');
+                }
+            }
             $Game->game_show = $request->game_show;
         }
+
         if ($request->game_cat) {
             $newCategory = $category->where(['id' => $request->game_cat])->get()->first();
-            if (!$newCategory->display && $Game->game_show)
-                throw new GameUpdateException('Нельзя присвоить отображаемую игру к неотоброжаемой категории');
-        }
-        if ($request->game_cat) {
+            if (!$newCategory->display && $Game->game_show) {
+                throw new GameUpdateException('Нельзя присвоить неотоброжаемой категорию к отображаемой игре');
+            }
             $Game->category_id = $request->game_cat;
+        }
+
+        if ($request->del_cat && $Game->game_show == true) {
+            throw new GameUpdateException('Нельзя удалить категорию у отображаемой игры');
         }
         if ($request->del_cat) {
             $Game->category_id = null;

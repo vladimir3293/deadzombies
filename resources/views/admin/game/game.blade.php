@@ -124,12 +124,12 @@
 
     <div class="flash">
 
-        <iframe src="{{ $game->source }}"
-                name="topFrame"
-                scrolling="no"
-                height="{{ $game->height }}"
-                width="{{ $game->width }}">
-        </iframe>
+        {{--<iframe src="{{ $game->source }}"--}}
+                {{--name="topFrame"--}}
+                {{--scrolling="no"--}}
+                {{--height="{{ $game->height }}"--}}
+                {{--width="{{ $game->width }}">--}}
+        {{--</iframe>--}}
 
     </div>
 
