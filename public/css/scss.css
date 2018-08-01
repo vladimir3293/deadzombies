@@ -27,8 +27,8 @@ nav a {
   display: block;
   padding: 14px 3px 4px 35px;
   font-size: 1.5em;
-  color: #0032cc;
-  text-shadow: 0 1px 0 #002bb3;
+  color: #0b0c11;
+  text-shadow: 0 1px 0 #010102;
   border-bottom: 1px solid #e6a003;
   height: 50px;
 }
@@ -455,6 +455,39 @@ body {
 
 .hidden-block {
   display: none !important;
+}
+
+.top-block {
+  position: fixed;
+  z-index: 100;
+  width: 100vw;
+  height: 52px;
+  background: #009cff;
+  top: 0px;
+  left: 0px;
+}
+
+.top-block svg {
+  display: block;
+  width: 30px;
+  height: 30px;
+  fill: #fff;
+}
+
+.top-block button {
+  height: 52px;
+  border: 0;
+  background: 0;
+  padding: 0 15px;
+}
+
+.top-block-content {
+  position: relative;
+}
+
+.top-block a {
+  height: 52px;
+  width: 100%;
 }
 
 /* Large desktop */

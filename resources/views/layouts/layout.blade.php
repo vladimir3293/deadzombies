@@ -16,6 +16,20 @@
                     --}}
 <body>
 <div class="wrapper container">
+    <header class="top-block">
+        <div class="top-block-content">
+            <button>
+                <svg viewBox="0 0 30 30" data-reactid="14">
+                    <rect x="0" y="5" width="30" height="4" data-reactid="15"></rect>
+                    <rect x="0" y="13" width="30" height="4" data-reactid="16"></rect>
+                    <rect x="0" y="13" width="30" height="4" data-reactid="17"></rect>
+                    <rect x="0" y="21" width="30" height="4" data-reactid="18"></rect>
+                </svg>
+            </button>
+            <a href="/">Deadzombies</a>
+        </div>
+    </header>
+
     <div class="row">
         <div class="col-md-5">
             <div class="sidebar">
@@ -45,13 +59,15 @@
             <div class="footer">
                 <div class="copy">
                     <img src="/img/site/footer.png">
-                    <p class="descr">Все права на публикацию, принадлежат их владельцам. Весь материал расположенный на сайте, взят из открытых источников.</p>
+                    <p class="descr">Все права на публикацию, принадлежат их владельцам. Весь материал расположенный на
+                        сайте, взят из открытых источников.</p>
                     <div class="clr"></div>
                 </div>
             </div>
             <div class="clr"></div>
         </footer>
     </div>
-</div><a id="gotop" class="scrollTop" href="#" onclick="top.goTop(); return false;" style="display: block; opacity: 1;"></a>
+</div>
+<a id="gotop" class="scrollTop" href="#" onclick="top.goTop(); return false;" style="display: block; opacity: 1;"></a>
 </body>
 </html>

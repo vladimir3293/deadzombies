@@ -104,6 +104,37 @@ body {
   display: none !important;
 }
 
+.top-block {
+  position: fixed;
+  z-index: 100;
+  width: 100vw;
+  height: 52px;
+  background: #009cff;
+  top: 0px;
+  left: 0px;
+}
+
+.top-block svg {
+  display: block;
+  width: 30px;
+  height: 30px;
+  fill: #fff;
+}
+
+.top-block button {
+  height: 52px;
+  border: 0;
+  background: 0;
+  padding: 0 15px;
+}
+.top-block-content{
+  position: relative;
+}
+.top-block a {
+  height: 52px;
+  width: 100%;
+}
+
 /* Large desktop */
 @media (min-width: 1200px) {
 }
@@ -125,7 +156,7 @@ body {
   #menu {
     display: block;
   }
-  .menu-row{
+  .menu-row {
     display: none;
   }
 }
