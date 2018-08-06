@@ -1,6 +1,14 @@
 .game-card-bottom {
   display: block;
-  max-width: 100%;
+}
+
+.game-card span {
+  overflow: hidden;
+  margin: 0;
+  padding: 0 6px;
+  font-size: 13px;
+  text-overflow: ellipsis;
+  white-space: nowrap;
 }
 
 .game-card-bottom p {
@@ -17,7 +25,16 @@
   -webkit-box-shadow: 0 0 6px #f7f8fa;
           box-shadow: 0 0 6px #f7f8fa;
   position: relative;
-  width: 100%;
+}
+
+.game-card a {
+  display: block;
+  border-radius: 5px;
+  background: #fff;
+  color: #002b50;
+  text-decoration: none;
+  -webkit-transition: color .15s ease-out,background-color .15s ease-out;
+  transition: color .15s ease-out,background-color .15s ease-out;
 }
 
 .game-card-img {
@@ -64,15 +81,9 @@ body {
 
 .game-conainer {
   display: grid;
-  grid-gap: 15px;
-  padding: 15px;
-  overflow: auto;
-  grid-template-columns: 1fr 1fr;
-  grid-template-rows: 1fr 1fr;
-  justify-items: stretch;
-  -webkit-box-align: stretch;
-      -ms-flex-align: stretch;
-          align-items: stretch;
+  grid-gap: 10px;
+  padding: 10px;
+  grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
 }
 
 .container {
