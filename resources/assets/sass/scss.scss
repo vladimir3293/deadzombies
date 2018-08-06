@@ -27,11 +27,12 @@ $content-color: black;
 
 $border: 1px solid #cccccc;
 
-@import "sidebar";
-@import "right-content";
-@import "game-card";
-@import "gamePage";
-@import "footer";
+//@import "sidebar";
+//@import "right-content";
+//@import "game-card";
+@import "game-card2";
+//@import "gamePage";
+//@import "footer";
 
 body, div, dl, dt, dd, ul, ol, li, h1, h2, h3, h4, h5, h6, pre, form, fieldset, input, textarea, p, blockquote, th, td {
   margin: 0;
@@ -44,20 +45,32 @@ body {
   font-size: 10px;
   line-height: 1.5;
 }
+.game-conainer{
+  display: grid;
+  grid-gap: 15px;
+  padding: 15px;
+  overflow: auto;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: 1fr 1fr;
+  justify-items: stretch;
+  align-items: stretch;
+}
+
+.container{
+  display: grid;
+  grid-template-columns: 1fr;
+  //grid-auto-rows: auto 1fr 1fr;
+}
 
 .wrapper {
   box-shadow: 0 0 8px lighten($sidebar, 20%);
   border-radius: 2px;
-  margin-top: 20px;
+  //margin-top: 20px;
   margin-bottom: 15px;
   background: $wrap;
   padding-bottom: 20px;
 }
 
-.clr {
-  clear: both !important;
-  height: 0;
-}
 
 .pagination {
   //display: inline-block;
@@ -100,40 +113,35 @@ body {
   line-height: 1.5;
 }
 
-.hidden-block {
-  display: none !important;
-}
+//.hidden-block {
+//  display: none !important;
+//}
 
 .top-block {
-  position: fixed;
-  z-index: 100;
-  width: 100vw;
   height: 52px;
   background: #009cff;
-  top: 0px;
-  left: 0px;
-}
-
-.top-block svg {
-  display: block;
-  width: 30px;
-  height: 30px;
-  fill: #fff;
-}
-
-.top-block button {
-  height: 52px;
-  border: 0;
-  background: 0;
-  padding: 0 15px;
-}
-.top-block-content{
-  position: relative;
-}
-.top-block a {
-  height: 52px;
-  width: 100%;
-}
+ }
+//
+//.top-block svg {
+//  display: block;
+//  width: 30px;
+//  height: 30px;
+//  fill: #fff;
+//}
+//
+//.top-block button {
+//  height: 52px;
+//  border: 0;
+//  background: 0;
+//  padding: 0 15px;
+//}
+//.top-block-content{
+//  position: relative;
+//}
+//.top-block a {
+//  height: 52px;
+//  width: 100%;
+//}
 
 /* Large desktop */
 @media (min-width: 1200px) {
@@ -153,6 +161,9 @@ body {
 
 /* Landscape phones and down */
 @media (max-width: 480px) {
+  .sidebar{
+    display: none;
+  }
   #menu {
     display: block;
   }
