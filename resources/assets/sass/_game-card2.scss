@@ -1,45 +1,33 @@
-.game-card-bottom{
-  display: block;
-  //width: 50px;
-  //max-width: 100%;
-}
-
-.game-card span {
-  overflow: hidden;
-  margin: 0;
-  padding: 0 6px;
-  font-size: 13px;
-  text-overflow: ellipsis;
-  white-space: nowrap;
-}
-
-.game-card-bottom p {
-  overflow: hidden;
-  margin: 0;
-  padding: 0 6px;
-  font-size: 13px;
-  text-overflow: ellipsis;
-  white-space: nowrap;
-}
 .game-card {
   background: darken($right-content, 2%);
   box-shadow: 0 0 6px lighten($sidebar, 20%);
-  position: relative;
-  //height: 50px;
-  //width: 100%;
-  & a{
-      display: block;
-      border-radius: 5px;
-      background: #fff;
-      color: #002b50;
-      text-decoration: none;
-      transition: color .15s ease-out,background-color .15s ease-out;
+  transition: color 0.5s ease-out, background-color 0.5s ease-out;
+  border-radius: 5px;
+  & span {
+    padding: 0 7px;
+    font-size: 13px;
+    white-space: nowrap;
   }
-  &-img {
+  & a {
+    display: block;
+    color: #002b50;
+    text-decoration: none;
     text-align: center;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    border-radius: 5px;
+    background-color: white;
+    &:hover {
+      background-color: #0f9af9;
+      color: #fff;
+    }
+    &:hover img {
+      opacity: .25;
+      background-color: #0f9af9;
+      color: #fff;
+    }
   }
   & img {
-    //height: 100%;
     width: 100%;
   }
 }

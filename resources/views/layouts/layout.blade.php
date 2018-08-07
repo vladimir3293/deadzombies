@@ -26,7 +26,9 @@
                     <rect x="0" y="21" width="30" height="4" data-reactid="18"></rect>
                 </svg>
             </button>
-            <a href="/">Deadzombies</a>
+            <div class="top-block-link">
+                <a href="/">Deadzombies</a>
+            </div>
         </div>
     </header>
     <div class="sidebar">

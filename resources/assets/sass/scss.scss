@@ -74,6 +74,9 @@ body {
   padding-bottom: 20px;
 }
 
+.header-article{
+  text-align: center;
+}
 
 .pagination {
   //display: inline-block;
@@ -123,28 +126,52 @@ body {
 .top-block {
   height: 52px;
   background: #009cff;
+  position: sticky;
+  top: 0px;
+  z-index: 100;
+  width: 100vw;
  }
-//
-//.top-block svg {
-//  display: block;
-//  width: 30px;
-//  height: 30px;
-//  fill: #fff;
-//}
-//
-//.top-block button {
-//  height: 52px;
-//  border: 0;
-//  background: 0;
-//  padding: 0 15px;
-//}
-//.top-block-content{
-//  position: relative;
-//}
-//.top-block a {
-//  height: 52px;
-//  width: 100%;
-//}
+
+.top-block svg {
+  display: block;
+  width: 30px;
+  height: 30px;
+  fill: #fff;
+}
+.top-block-link{
+  text-align: center;
+  flex-grow: 1;
+}
+.top-block button {
+  height: 52px;
+  border: 0;
+  background: 0;
+  padding: 0 15px;
+}
+.top-block-content{
+  display: inline-flex;
+  flex-direction: row;
+  align-items: center;
+  width: 100%;
+}
+
+.box {
+  color: $content-color;
+  margin: 0 0 15px 0;
+  text-align: justify;
+  background: $sidebar;
+  border-radius: 3px;
+  padding: 10px;
+  font-weight: 600;
+  font-size: 1.2em;
+  border: 1px solid darken($sidebar, 5%);
+  box-shadow: 0 0 8px darken($sidebar, 5%);
+}
+
+.top-block a {
+  height: 52px;
+  width: 100%;
+}
 
 /* Large desktop */
 @media (min-width: 1200px) {

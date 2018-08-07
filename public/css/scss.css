@@ -1,44 +1,38 @@
-.game-card-bottom {
-  display: block;
-}
-
-.game-card span {
-  overflow: hidden;
-  margin: 0;
-  padding: 0 6px;
-  font-size: 13px;
-  text-overflow: ellipsis;
-  white-space: nowrap;
-}
-
-.game-card-bottom p {
-  overflow: hidden;
-  margin: 0;
-  padding: 0 6px;
-  font-size: 13px;
-  text-overflow: ellipsis;
-  white-space: nowrap;
-}
-
 .game-card {
   background: #cccfde;
   -webkit-box-shadow: 0 0 6px #f7f8fa;
           box-shadow: 0 0 6px #f7f8fa;
-  position: relative;
+  -webkit-transition: color 0.5s ease-out, background-color 0.5s ease-out;
+  transition: color 0.5s ease-out, background-color 0.5s ease-out;
+  border-radius: 5px;
+}
+
+.game-card span {
+  padding: 0 7px;
+  font-size: 13px;
+  white-space: nowrap;
 }
 
 .game-card a {
   display: block;
-  border-radius: 5px;
-  background: #fff;
   color: #002b50;
   text-decoration: none;
-  -webkit-transition: color .15s ease-out,background-color .15s ease-out;
-  transition: color .15s ease-out,background-color .15s ease-out;
+  text-align: center;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  border-radius: 5px;
+  background-color: white;
 }
 
-.game-card-img {
-  text-align: center;
+.game-card a:hover {
+  background-color: #0f9af9;
+  color: #fff;
+}
+
+.game-card a:hover img {
+  opacity: .25;
+  background-color: #0f9af9;
+  color: #fff;
 }
 
 .game-card img {
@@ -100,6 +94,10 @@ body {
   padding-bottom: 20px;
 }
 
+.header-article {
+  text-align: center;
+}
+
 .pagination {
   border-radius: 4px;
 }
@@ -146,6 +144,65 @@ body {
 .top-block {
   height: 52px;
   background: #009cff;
+  position: -webkit-sticky;
+  position: sticky;
+  top: 0px;
+  z-index: 100;
+  width: 100vw;
+}
+
+.top-block svg {
+  display: block;
+  width: 30px;
+  height: 30px;
+  fill: #fff;
+}
+
+.top-block-link {
+  text-align: center;
+  -webkit-box-flex: 1;
+      -ms-flex-positive: 1;
+          flex-grow: 1;
+}
+
+.top-block button {
+  height: 52px;
+  border: 0;
+  background: 0;
+  padding: 0 15px;
+}
+
+.top-block-content {
+  display: -webkit-inline-box;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  width: 100%;
+}
+
+.box {
+  color: black;
+  margin: 0 0 15px 0;
+  text-align: justify;
+  background: #b9bed2;
+  border-radius: 3px;
+  padding: 10px;
+  font-weight: 600;
+  font-size: 1.2em;
+  border: 1px solid #aab0c8;
+  -webkit-box-shadow: 0 0 8px #aab0c8;
+          box-shadow: 0 0 8px #aab0c8;
+}
+
+.top-block a {
+  height: 52px;
+  width: 100%;
 }
 
 /* Large desktop */
