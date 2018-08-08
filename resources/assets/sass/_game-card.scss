@@ -1,76 +1,34 @@
 .game-card {
-  display: inline-block;
-  width: 100%;
   background: darken($right-content, 2%);
-  margin-bottom: 25px;
-  border-radius: 6px;
-  box-sizing: border-box;
-  position: relative;
-  vertical-align: bottom;
   box-shadow: 0 0 6px lighten($sidebar, 20%);
-  &-img {
-    text-align: center;
-  }
-  &-img img {
-    height: 153px;
-    max-width: 100%;
-  }
-  &-link {
-    text-align: center;
-    margin: 5px 0 5px 0;
-    overflow: hidden;
+  transition: color 0.5s ease-out, background-color 0.5s ease-out;
+  max-width: 250px;
+  border-radius: 5px;
+  & span {
+    padding: 0 7px;
+    font-size: 13px;
     white-space: nowrap;
-    text-transform: uppercase;
+  }
+  & a {
     display: block;
-    font-size: 1.3em;
+    color: #002b50;
     text-decoration: none;
-    color: $nav-ul;
-    font-weight: 600;
-  }
-  &-link:hover {
-    color: $nav-ul;
-    text-decoration: underline;
-  }
-  &-desc span {
-    padding-top: 3px;
-    color: $nav-ul;
-    display: block;
-    float: left;
-    margin-left: 10px;
-    font-size: 1.5em;
-    font-weight: 600;
-  }
-  &-desc {
-    background: $right-content;
-    padding: 6px 0;
-    width: 100%;
-    border-radius: 0 0 6px 6px;
-    height: 40px;
-    margin-top: 3px;
-  }
-  &-desc a {
-    display: block;
-    float: right;
-    width: 40%;
-    padding: 3px 0;
-    background: $nav-ul;
-    color: $content-color;
     text-align: center;
-    text-decoration: none;
-    margin: 0 5px 0 0;
-    font-size: 1.4em;
-    border-radius: 3px;
-    font-weight: 600;
-    height: 28px;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    border-radius: 5px;
+    background-color: white;
+    &:hover {
+      background-color: #0f9af9;
+      color: #fff;
+    }
+    &:hover img {
+      opacity: .25;
+      background-color: #0f9af9;
+      color: #fff;
+    }
   }
-  &-desc a:hover {
-    color: $link-hover;
-    background: lighten($sidebar, 5%);
-  }
-  &-desc img {
-    float: left;
-    margin: 5px 0 0 10px;
-    width: 18px;
-    height: 17px;
+  & img {
+    width: 100%;
   }
 }

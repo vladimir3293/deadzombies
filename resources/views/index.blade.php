@@ -11,21 +11,18 @@
 @section('right_content')
     <article>
         <header class="header-article">
-            <h1>Главная страница</h1>
+            <h1>Лучшие игры</h1>
         </header>
         @if(isset($games))
             <div class="game-conainer">
                 @include('gameCard')
             </div>
-
-            <div class="row">
-                <div class="col-md-24">
-                    {{ $games->links('vendor.pagination.simple-default') }}
-                </div>
-            </div>
+            {{ $games->links('vendor.pagination.simpleIndexPage') }}
         @endif
-        <div class="box">
-            <p> Описание главной страницы</p>
+        <div class="text-block">
+            <p>Описание главной страницыОписание главной страницы Описание главной страницы Описание главной страницы
+                Описание главной страницы Описание главной страницы Описание главной страницы Описание главной
+                страницы</p>
         </div>
     </article>
 @endsection

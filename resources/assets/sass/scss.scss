@@ -17,7 +17,7 @@ $body: #f1f2f6;
 $wrap: darken(#f1f2f6, 10%);
 
 $sidebar: darken(#f1f2f6, 18%);
-$nav-ul: rgb(252, 184, 32);
+$nav-ul: #009cff;
 
 $right-content: darken(#f1f2f6, 10%);
 
@@ -30,9 +30,11 @@ $border: 1px solid #cccccc;
 //@import "sidebar";
 //@import "right-content";
 //@import "game-card";
-@import "game-card2";
+@import "game-card";
+@import "pagination";
+@import "topBlock";
 //@import "gamePage";
-//@import "footer";
+@import "footer";
 
 body, div, dl, dt, dd, ul, ol, li, h1, h2, h3, h4, h5, h6, pre, form, fieldset, input, textarea, p, blockquote, th, td {
   margin: 0;
@@ -66,49 +68,17 @@ body {
 }
 
 .wrapper {
-  box-shadow: 0 0 8px lighten($sidebar, 20%);
+  box-shadow: 0 0 8px lighten($sidebar, 10%);
   border-radius: 2px;
   //margin-top: 20px;
-  margin-bottom: 15px;
+  //margin-bottom: 15px;
   background: $wrap;
-  padding-bottom: 20px;
+  //padding-bottom: 20px;
 }
 
 .header-article{
   text-align: center;
 }
-
-.pagination {
-  //display: inline-block;
-  //width: 10%;
-  border-radius: 4px;
-  & a, span {
-    display: inline-block;
-    height: 30px;
-    min-width: 10%;
-    border-radius: 4px;
-    background: $nav-ul;
-    text-align: center;
-    color: black;
-    padding: 6px;
-    font-weight: 600;
-    font-size: 1.2em;
-    text-decoration: none;
-  }
-  & a:hover, span:hover {
-    color: $link-hover;
-    background: lighten($sidebar, 5%);
-  }
-  & span {
-    cursor: not-allowed;
-  }
-  & li {
-    //width: 30px;
-    height: 30px;
-    display: inline;
-  }
-}
-
 .content p {
   font-size: 1.3em;
   //margin: 5px 0 5px 0;
@@ -123,55 +93,7 @@ body {
 //  display: none !important;
 //}
 
-.top-block {
-  height: 52px;
-  background: #009cff;
-  position: sticky;
-  top: 0px;
-  z-index: 100;
-  width: 100vw;
- }
 
-.top-block svg {
-  display: block;
-  width: 30px;
-  height: 30px;
-  fill: #fff;
-}
-.top-block-link{
-  text-align: center;
-  flex-grow: 1;
-}
-.top-block button {
-  height: 52px;
-  border: 0;
-  background: 0;
-  padding: 0 15px;
-}
-.top-block-content{
-  display: inline-flex;
-  flex-direction: row;
-  align-items: center;
-  width: 100%;
-}
-
-.box {
-  color: $content-color;
-  margin: 0 0 15px 0;
-  text-align: justify;
-  background: $sidebar;
-  border-radius: 3px;
-  padding: 10px;
-  font-weight: 600;
-  font-size: 1.2em;
-  border: 1px solid darken($sidebar, 5%);
-  box-shadow: 0 0 8px darken($sidebar, 5%);
-}
-
-.top-block a {
-  height: 52px;
-  width: 100%;
-}
 
 /* Large desktop */
 @media (min-width: 1200px) {
@@ -200,4 +122,17 @@ body {
   .menu-row {
     display: none;
   }
+}
+
+.text-block {
+  color: $content-color;
+  margin: 0 0 15px 0;
+  text-align: justify;
+  background: $sidebar;
+  border-radius: 3px;
+  padding: 10px;
+  font-weight: 600;
+  font-size: 0.8rem;
+  border: 1px solid darken($sidebar, 5%);
+  box-shadow: 0 0 8px darken($sidebar, 5%);
 }

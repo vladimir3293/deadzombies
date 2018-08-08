@@ -50,14 +50,8 @@
         @yield('right_content')
     </div>
     <footer class="index-footer">
-        <div class="footer">
-            <div class="copy">
                 <img src="/img/site/footer.png">
-                <p class="descr">Все права на публикацию, принадлежат их владельцам. Весь материал расположенный на
-                    сайте, взят из открытых источников.</p>
-                <div class="clr"></div>
-            </div>
-        </div>
+                <p class="index-footer-desc">WE BRING AWESOME GAMES TO ALL SCREENS</p>
     </footer>
 </div>
 <a id="gotop" class="scrollTop" href="#" onclick="top.goTop(); return false;" style="display: block; opacity: 1;"></a>

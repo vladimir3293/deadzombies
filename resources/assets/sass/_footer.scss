@@ -1,13 +1,18 @@
-.copy {
+.index-footer {
   background: $nav-ul;
   color: $content-color;
   padding: 10px;
   border-radius: 4px;
-  border: 1px solid lighten($nav-ul,20%);
+  border: 1px solid lighten($nav-ul, 20%);
+  display: flex;
+  align-items: center;
+  & p {
+    font-size: 0.8rem;
+    font-weight: 600;
+  }
 }
 
 .index-footer img {
-  float: left;
   height: 80px;
   width: 80px;
 }
