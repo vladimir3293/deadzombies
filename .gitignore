@@ -1,5 +1,7 @@
 /storage/debugbar
-/public/img
+!/public/img/site
+/public/img/*
+
 /public/games
 /node_modules
 /public/hot
