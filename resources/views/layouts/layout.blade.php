@@ -17,6 +17,7 @@
 <body>
 <div class="wrapper container">
     <header class="top-block">
+
         <div class="top-block-content">
             <button>
                 <svg viewBox="0 0 30 30" data-reactid="14">
@@ -26,11 +27,13 @@
                     <rect x="0" y="21" width="30" height="4" data-reactid="18"></rect>
                 </svg>
             </button>
-            <div class="top-block-link">
-                <a href="/">Deadzombies</a>
-            </div>
+            <a href="/"></a>
         </div>
     </header>
+    <div class="top-block-slider">
+
+    </div>
+
     <div class="sidebar">
         <header class="index-header">
             <h1>Html5 игры на</h1>
@@ -50,8 +53,8 @@
         @yield('right_content')
     </div>
     <footer class="index-footer">
-                <img src="/img/site/footer.png">
-                <p class="index-footer-desc">WE BRING AWESOME GAMES TO ALL SCREENS</p>
+        <img src="/img/site/footer.png">
+        <p class="index-footer-desc">WE BRING AWESOME GAMES TO ALL SCREENS</p>
     </footer>
 </div>
 <a id="gotop" class="scrollTop" href="#" onclick="top.goTop(); return false;" style="display: block; opacity: 1;"></a>

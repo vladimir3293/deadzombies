@@ -89,12 +89,10 @@
 }
 
 .top-block {
-  height: 52px;
   background: #009cff;
   position: -webkit-sticky;
   position: sticky;
   top: 0px;
-  z-index: 100;
 }
 
 .top-block svg {
@@ -104,11 +102,16 @@
   fill: #fff;
 }
 
-.top-block-link {
+.top-block a {
+  display: block;
   text-align: center;
-  -webkit-box-flex: 1;
-      -ms-flex-positive: 1;
-          flex-grow: 1;
+  background-image: url("/img/site/brend.png");
+  background-size: 180px 50px;
+  background-repeat: no-repeat;
+  margin-right: auto;
+  margin-left: auto;
+  width: 180px;
+  height: 50px;
 }
 
 .top-block button {
@@ -116,27 +119,25 @@
   border: 0;
   background: 0;
   padding: 0 15px;
-  background-image: url("/img/site/brend.png");
   z-index: 200;
 }
 
 .top-block-content {
-  display: -webkit-inline-box;
-  display: -ms-inline-flexbox;
-  display: inline-flex;
-  -webkit-box-orient: horizontal;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: row;
-          flex-direction: row;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
   width: 100%;
+  -webkit-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: flex-start;
 }
 
-.top-block a {
-  height: 52px;
-  width: 100%;
+.top-block-slider {
+  width: 100px;
+  height: 100px;
 }
 
 .index-footer {
@@ -209,11 +210,22 @@ body {
   grid-template-columns: 1fr;
 }
 
+html,
+body {
+  overflow-x: hidden;
+}
+
 .wrapper {
   -webkit-box-shadow: 0 0 8px #d8dbe6;
           box-shadow: 0 0 8px #d8dbe6;
   border-radius: 2px;
   background: #d2d5e2;
+  -webkit-transition: -webkit-transform 4s 1s;
+  transition: -webkit-transform 4s 1s;
+  transition: transform 4s 1s;
+  transition: transform 4s 1s, -webkit-transform 4s 1s;
+  -webkit-transform: translateX(250px);
+          transform: translateX(250px);
 }
 
 .header-article {

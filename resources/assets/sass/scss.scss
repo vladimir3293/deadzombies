@@ -66,6 +66,10 @@ body {
   grid-template-columns: 1fr;
   //grid-auto-rows: auto 1fr 1fr;
 }
+html{
+  //overflow: hidden;
+}
+html,body {overflow-x: hidden}
 
 .wrapper {
   box-shadow: 0 0 8px lighten($sidebar, 10%);
@@ -74,6 +78,9 @@ body {
   //margin-bottom: 15px;
   background: $wrap;
   //padding-bottom: 20px;
+  transition: transform 4s 1s;
+  transform: translateX(250px);
+  //overflow: hidden;
 }
 
 .header-article{
