@@ -1,5 +1,5 @@
 /storage/debugbar
-
+/public/img/*
 !/public/img/site
 
 /public/games
@@ -10,8 +10,6 @@
 /vendor
 /.idea
 /.vagrant
-/public/img
-/public/games
 Homestead.json
 Homestead.yaml
 npm-debug.log
