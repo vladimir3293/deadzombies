@@ -1,6 +1,5 @@
 /storage/debugbar
 
-/public/img/*
 !/public/img/site
 
 /public/games
