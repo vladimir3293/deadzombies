@@ -1,20 +1,27 @@
-try {
-    window.$ = window.jQuery = require('jquery');
 
-    //require('bootstrap-sass');
-} catch (e) {}
 
 (function ($, undefined) {
-    $(function () {
 
-        $('#menu').click(function (event) {
-            event.preventDefault();
-            $('#menu').siblings().slideToggle(150);
+    $(document).ready(function () {
+        // alert('12');
+        // console.debug($('#top-block-button'));
+
+        $('#top-block-button').click(function (event) {
+            $('.top-block').toggleClass('top-block-clicked');
+            $('.right-content').toggleClass('top-block-clicked');
+            // $('.wrapper').css('transform', 'translateX(0px)').css('background', 'red');
+         // alert('12');
         });
 
-        $('.nav-categories-link').click(function (event) {
-            event.preventDefault();
-            $('.nav-categories ul').slideToggle("slow");
-        });
+
+        // $('#menu').click(function (event) {
+        //     event.preventDefault();
+        //     $('#menu').siblings().slideToggle(150);
+        // });
+        //
+        // $('.nav-categories-link').click(function (event) {
+        //     event.preventDefault();
+        //     $('.nav-categories ul').slideToggle("slow");
+        // });
     });
 })(jQuery);

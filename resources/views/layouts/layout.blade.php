@@ -8,6 +8,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
     <link rel="icon" href="/favicon.ico" type="image/x-icon">
+    <script src="/js/app.js"></script>
+
     <script src="/js/deadzombies.js"></script>
     {{--<link rel="stylesheet" href="/css/bootstrap/css/bootstrap.css">--}}
     <link rel="stylesheet" href="/css/scss.css">
@@ -17,9 +19,12 @@
 <body>
 <div class="wrapper container">
     <header class="top-block">
+        <div class="top-block-slider">
+
+        </div>
 
         <div class="top-block-content">
-            <button>
+            <button id="top-block-button">
                 <svg viewBox="0 0 30 30" data-reactid="14">
                     <rect x="0" y="5" width="30" height="4" data-reactid="15"></rect>
                     <rect x="0" y="13" width="30" height="4" data-reactid="16"></rect>
@@ -30,10 +35,6 @@
             <a href="/"></a>
         </div>
     </header>
-    <div class="top-block-slider">
-
-    </div>
-
     <div class="sidebar">
         <header class="index-header">
             <h1>Html5 игры на</h1>

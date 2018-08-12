@@ -1,11 +1,23 @@
+.top-block-clicked{
+ // margin-left: 250px;
+  transform: translateX(250px);
+}
+.top-block-slider {
+  height: 100px;
+  background: yellow;
+  position: absolute;
+  width: 250px;
+  left: -250px;
+  //display: ;
+}
+
 .top-block {
   //height: 52px;
   background: #009cff;
-  position: sticky;
   top: 0px;
-  //z-index: 100;
-
-  //width: 100vw;
+  z-index: 10;
+position: fixed;
+  width: 100vw;
 }
 
 .top-block svg {
@@ -14,7 +26,8 @@
   height: 30px;
   fill: #fff;
 }
-.top-block a{
+
+.top-block a {
   display: block;
   text-align: center;
   //flex-grow: 1;
@@ -28,15 +41,19 @@
   width: 180px;
   height: 50px;
 }
+
 .top-block button {
   height: 52px;
   border: 0;
   background: 0;
   padding: 0 15px;
   z-index: 200;
-
+  &:focus {
+    outline: none;
+  }
 }
-.top-block-content{
+
+.top-block-content {
   display: flex;
   //flex-direction: row;
   align-items: center;
@@ -46,9 +63,4 @@
 
 .top-block a {
   //width: 100%;
-}
-
-.top-block-slider{
-  width: 100px;
-  height: 100px;
 }

@@ -78,8 +78,8 @@ html,body {overflow-x: hidden}
   //margin-bottom: 15px;
   background: $wrap;
   //padding-bottom: 20px;
-  transition: transform 4s 1s;
-  transform: translateX(250px);
+  transition: transform 1s 0s;
+
   //overflow: hidden;
 }
 
@@ -95,7 +95,9 @@ html,body {overflow-x: hidden}
   font-weight: 600;
   line-height: 1.5;
 }
-
+.right-content{
+  margin-top: 52px;
+}
 //.hidden-block {
 //  display: none !important;
 //}
