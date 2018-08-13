@@ -89,19 +89,57 @@
 }
 
 .top-block-clicked {
-  -webkit-transform: translateX(250px);
-          transform: translateX(250px);
+  -webkit-transform: translateX(80vw);
+          transform: translateX(80vw);
+}
+
+#top-block-button svg rect {
+  -webkit-transition: opacity 0.5s 0s, -webkit-transform 0.5s 0s;
+  transition: opacity 0.5s 0s, -webkit-transform 0.5s 0s;
+  transition: transform 0.5s 0s, opacity 0.5s 0s;
+  transition: transform 0.5s 0s, opacity 0.5s 0s, -webkit-transform 0.5s 0s;
+  -webkit-transform-origin: 50%;
+          transform-origin: 50%;
+}
+
+.top-block-click-svg rect {
+  -webkit-transition: -webkit-transform 0.5s 0s;
+  transition: -webkit-transform 0.5s 0s;
+  transition: transform 0.5s 0s;
+  transition: transform 0.5s 0s, -webkit-transform 0.5s 0s;
+}
+
+.top-block-click-svg rect:first-child {
+  opacity: 0;
+}
+
+.top-block-click-svg rect:nth-child(2) {
+  -webkit-transform: rotate(45deg);
+          transform: rotate(45deg);
+}
+
+.top-block-click-svg rect:nth-child(3) {
+  -webkit-transform: rotate(-45deg);
+          transform: rotate(-45deg);
+}
+
+.top-block-click-svg rect:nth-child(4) {
+  opacity: 0;
 }
 
 .top-block-slider {
   height: 100px;
   background: yellow;
   position: absolute;
-  width: 250px;
-  left: -250px;
+  width: 80vw;
+  left: -80vw;
 }
 
 .top-block {
+  -webkit-transition: -webkit-transform 0.5s 0s;
+  transition: -webkit-transform 0.5s 0s;
+  transition: transform 0.5s 0s;
+  transition: transform 0.5s 0s, -webkit-transform 0.5s 0s;
   background: #009cff;
   top: 0px;
   z-index: 10;
@@ -254,6 +292,10 @@ body {
 
 .right-content {
   margin-top: 52px;
+  -webkit-transition: -webkit-transform 0.5s 0s;
+  transition: -webkit-transform 0.5s 0s;
+  transition: transform 0.5s 0s;
+  transition: transform 0.5s 0s, -webkit-transform 0.5s 0s;
 }
 
 /* Large desktop */

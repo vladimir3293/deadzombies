@@ -1,22 +1,47 @@
-.top-block-clicked{
- // margin-left: 250px;
-  transform: translateX(250px);
+.top-block-clicked {
+
+  transform: translateX(80vw);
 }
+
+#top-block-button svg rect {
+  transition: transform 0.5s 0s, opacity 0.5s 0s;
+  transform-origin: 50%;
+}
+
+.top-block-click-svg {
+  & rect {
+    transition: transform 0.5s 0s;
+  }
+  & rect:first-child {
+    opacity: 0;
+  }
+  & rect:nth-child(2) {
+    transform: rotate(45deg);
+  }
+  & rect:nth-child(3) {
+    transform: rotate(-45deg);
+  }
+  & rect:nth-child(4) {
+    opacity: 0;
+  }
+
+}
+
 .top-block-slider {
   height: 100px;
   background: yellow;
   position: absolute;
-  width: 250px;
-  left: -250px;
+  width: 80vw;
+  left: -80vw;
   //display: ;
 }
 
 .top-block {
-  //height: 52px;
+  transition: transform 0.5s 0s;
   background: #009cff;
   top: 0px;
   z-index: 10;
-position: fixed;
+  position: fixed;
   width: 100vw;
 }
 
