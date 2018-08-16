@@ -24,7 +24,10 @@ class SidebarComposer
 
     }
 
-//TODO regex
+    /**
+     * top and new games block
+     * @param View $view
+     */
     public function compose(View $view)
     {
         $topGames = [];

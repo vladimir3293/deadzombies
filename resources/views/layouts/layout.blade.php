@@ -14,27 +14,13 @@
     {{--<link rel="stylesheet" href="/css/bootstrap/css/bootstrap.css">--}}
     <link rel="stylesheet" href="/css/scss.css">
 </head>
-{{-- TODO contrast ratio
-                    --}}
+{{-- TODO contrast ratio check google recomendation
+     TODO sidebar and top block view composer ask one infrormation
+--}}
 <body>
 <div class="wrapper container">
-    <header class="top-block">
-        <div class="top-block-slider">
+    @include('topBlock')
 
-        </div>
-
-        <div class="top-block-content">
-            <button id="top-block-button">
-                <svg viewBox="0 0 30 30" data-reactid="14">
-                    <rect x="0" y="5" width="30" height="4" data-reactid="15"></rect>
-                    <rect x="0" y="13" width="30" height="4" data-reactid="16"></rect>
-                    <rect x="0" y="13" width="30" height="4" data-reactid="17"></rect>
-                    <rect x="0" y="21" width="30" height="4" data-reactid="18"></rect>
-                </svg>
-            </button>
-            <a href="/"></a>
-        </div>
-    </header>
     <div class="sidebar">
         <header class="index-header">
             <h1>Html5 игры на</h1>

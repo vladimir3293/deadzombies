@@ -128,11 +128,44 @@
 }
 
 .top-block-slider {
-  height: 100px;
-  background: yellow;
+  margin-top: 52px;
+  background: #d8dbe6;
   position: absolute;
   width: 80vw;
   left: -80vw;
+  max-height: 100vh;
+  overflow: scroll;
+}
+
+.top-block-slider ul {
+  margin: 10px;
+}
+
+.top-block-slider li {
+  list-style-type: none;
+}
+
+.top-block-slider a {
+  font-size: 1rem;
+  margin: 5px;
+  padding: 10px;
+  display: block;
+  color: #002b50;
+  text-decoration: none;
+  text-align: left;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  border-radius: 5px;
+  background-color: white;
+  padding-left: 35px;
+}
+
+.top-block-slider-header {
+  height: 52px;
+  background: #009cff;
+  width: 80vw;
+  position: fixed;
+  top: 0px;
 }
 
 .top-block {
@@ -154,7 +187,7 @@
   fill: #fff;
 }
 
-.top-block a {
+.top-block-logo {
   display: block;
   text-align: center;
   background-image: url("/img/site/brend.png");
@@ -261,11 +294,6 @@ body {
   grid-template-columns: 1fr;
 }
 
-html,
-body {
-  overflow-x: hidden;
-}
-
 .wrapper {
   -webkit-box-shadow: 0 0 8px #d8dbe6;
           box-shadow: 0 0 8px #d8dbe6;
@@ -317,10 +345,6 @@ body {
 
   #menu {
     display: block;
-  }
-
-  .menu-row {
-    display: none;
   }
 }
 

@@ -68,8 +68,6 @@
 /***/ "./resources/assets/js/deadzombies.js":
 /***/ (function(module, exports) {
 
-
-
 (function ($, undefined) {
 
     $(document).ready(function () {
@@ -79,9 +77,12 @@
         $('#top-block-button').click(function (event) {
             $('.top-block').toggleClass('top-block-clicked');
             $('.right-content').toggleClass('top-block-clicked');
-            $('.index-footer').toggleClass('top-block-clicked');
+            // $('.index-footer').toggleClass('top-block-clicked');
             $('.top-block svg').toggleClass('top-block-click-svg');
-
+            // $('body').css('overflow', 'hidden');
+            $('body').toggle(function () {
+                $("body").css({ overflow: "hidden" });
+            });
             // $('.wrapper').css('transform', 'translateX(0px)').css('background', 'red');
             // alert('12');
         });

@@ -28,17 +28,45 @@
 }
 
 .top-block-slider {
-  height: 100px;
-  background: yellow;
+  margin-top: 52px;
+  background: lighten($sidebar, 10%);
   position: absolute;
   width: 80vw;
-  left: -80vw;
-  //display: ;
+  left: - 80vw;
+  max-height: 100vh;
+  overflow: scroll;
+  & ul {
+    margin: 10px;
+  }
+  & li {
+    list-style-type: none;
+  }
+  & a {
+    font-size: 1rem;
+    margin: 5px;
+    padding: 10px;
+    display: block;
+    color: #002b50;
+    text-decoration: none;
+    text-align: left;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    border-radius: 5px;
+    background-color: white;
+    padding-left: 35px;
+  }
+  &-header {
+    height: 52px;
+    background: $top-block;
+    width: 80vw;
+    position: fixed;
+    top: 0px;
+  }
 }
 
 .top-block {
   transition: transform 0.5s 0s;
-  background: #009cff;
+  background: $top-block;
   top: 0px;
   z-index: 10;
   position: fixed;
@@ -52,7 +80,7 @@
   fill: #fff;
 }
 
-.top-block a {
+.top-block-logo {
   display: block;
   text-align: center;
   //flex-grow: 1;
