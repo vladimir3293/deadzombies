@@ -77,6 +77,9 @@ html, body {
   //overflow: hidden;
 }
 
+.overflow-hidden {
+  overflow: hidden;
+}
 .wrapper {
   box-shadow: 0 0 8px lighten($sidebar, 10%);
   border-radius: 2px;

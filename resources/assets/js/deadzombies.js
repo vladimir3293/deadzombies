@@ -3,16 +3,14 @@
     $(document).ready(function () {
         // alert('12');
         // console.debug($('#top-block-button'));
-
-        $('#top-block-button').click(function (event) {
+         $('#top-block-button').click(function (event) {
             $('.top-block').toggleClass('top-block-clicked');
             $('.right-content').toggleClass('top-block-clicked');
             // $('.index-footer').toggleClass('top-block-clicked');
             $('.top-block svg').toggleClass('top-block-click-svg');
-            // $('body').css('overflow', 'hidden');
-            $('body').toggle(function () {
-                $("body").css({overflow: "hidden"});
-            });
+            $('body').toggleClass('overflow-hidden');
+
+
             // $('.wrapper').css('transform', 'translateX(0px)').css('background', 'red');
             // alert('12');
         });

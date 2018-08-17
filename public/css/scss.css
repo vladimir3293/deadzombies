@@ -168,6 +168,14 @@
   top: 0px;
 }
 
+.top-block-slider-footer {
+  height: 52px;
+  background: red;
+  width: 80vw;
+  position: fixed;
+  bottom: 0px;
+}
+
 .top-block {
   -webkit-transition: -webkit-transform 0.5s 0s;
   transition: -webkit-transform 0.5s 0s;
@@ -292,6 +300,10 @@ body {
 .container {
   display: grid;
   grid-template-columns: 1fr;
+}
+
+.overflow-hidden {
+  overflow: hidden;
 }
 
 .wrapper {

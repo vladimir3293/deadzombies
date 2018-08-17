@@ -9,8 +9,9 @@
                 <li><a href="{!! $category->url !!}">{!! $category->cat_name !!}</a></li>
             @endforeach
         </ul>
-    </div>
-    <div class="top-block-slider-footer">
+        <div class="top-block-slider-footer">
+
+        </div>
 
     </div>
     <div class="top-block-content">
