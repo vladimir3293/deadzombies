@@ -89,19 +89,98 @@
 }
 
 .top-block-clicked {
-  -webkit-transform: translateX(250px);
-          transform: translateX(250px);
+  -webkit-transform: translateX(80vw);
+          transform: translateX(80vw);
+}
+
+#top-block-button svg rect {
+  -webkit-transition: opacity 0.5s 0s, -webkit-transform 0.5s 0s;
+  transition: opacity 0.5s 0s, -webkit-transform 0.5s 0s;
+  transition: transform 0.5s 0s, opacity 0.5s 0s;
+  transition: transform 0.5s 0s, opacity 0.5s 0s, -webkit-transform 0.5s 0s;
+  -webkit-transform-origin: 50%;
+          transform-origin: 50%;
+}
+
+.top-block-click-svg rect {
+  -webkit-transition: -webkit-transform 0.5s 0s;
+  transition: -webkit-transform 0.5s 0s;
+  transition: transform 0.5s 0s;
+  transition: transform 0.5s 0s, -webkit-transform 0.5s 0s;
+}
+
+.top-block-click-svg rect:first-child {
+  opacity: 0;
+}
+
+.top-block-click-svg rect:nth-child(2) {
+  -webkit-transform: rotate(45deg);
+          transform: rotate(45deg);
+}
+
+.top-block-click-svg rect:nth-child(3) {
+  -webkit-transform: rotate(-45deg);
+          transform: rotate(-45deg);
+}
+
+.top-block-click-svg rect:nth-child(4) {
+  opacity: 0;
 }
 
 .top-block-slider {
-  height: 100px;
-  background: yellow;
+  margin-top: 52px;
+  background: #d8dbe6;
   position: absolute;
-  width: 250px;
-  left: -250px;
+  width: 80vw;
+  left: -80vw;
+  max-height: 100vh;
+  overflow: scroll;
+}
+
+.top-block-slider ul {
+  margin: 10px;
+}
+
+.top-block-slider li {
+  list-style-type: none;
+}
+
+.top-block-slider a {
+  font-size: 1rem;
+  margin: 5px;
+  padding: 10px;
+  display: block;
+  color: #002b50;
+  text-decoration: none;
+  text-align: left;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  border-radius: 5px;
+  background-color: white;
+  padding-left: 35px;
+}
+
+.top-block-slider-header {
+  height: 52px;
+  background: #009cff;
+  width: 80vw;
+  position: fixed;
+  top: 0px;
+}
+
+.top-block-slider-footer {
+  height: 52px;
+  background: red;
+  width: 80vw;
+  position: fixed;
+  bottom: 0px;
 }
 
 .top-block {
+  -webkit-transition: -webkit-transform 0.5s 0s;
+  transition: -webkit-transform 0.5s 0s;
+  transition: transform 0.5s 0s;
+  transition: transform 0.5s 0s, -webkit-transform 0.5s 0s;
   background: #009cff;
   top: 0px;
   z-index: 10;
@@ -116,7 +195,7 @@
   fill: #fff;
 }
 
-.top-block a {
+.top-block-logo {
   display: block;
   text-align: center;
   background-image: url("/img/site/brend.png");
@@ -223,9 +302,8 @@ body {
   grid-template-columns: 1fr;
 }
 
-html,
-body {
-  overflow-x: hidden;
+.overflow-hidden {
+  overflow: hidden;
 }
 
 .wrapper {
@@ -254,6 +332,10 @@ body {
 
 .right-content {
   margin-top: 52px;
+  -webkit-transition: -webkit-transform 0.5s 0s;
+  transition: -webkit-transform 0.5s 0s;
+  transition: transform 0.5s 0s;
+  transition: transform 0.5s 0s, -webkit-transform 0.5s 0s;
 }
 
 /* Large desktop */
@@ -275,10 +357,6 @@ body {
 
   #menu {
     display: block;
-  }
-
-  .menu-row {
-    display: none;
   }
 }
 
