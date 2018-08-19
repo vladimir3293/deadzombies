@@ -20,7 +20,7 @@
 <body>
 <div class="wrapper container">
     @include('topBlock')
-
+    {{--<div class="test-container">--}}
     <div class="sidebar">
         <header class="index-header">
             <h1>Html5 игры на</h1>
@@ -43,7 +43,10 @@
         <img src="/img/site/footer.png">
         <p class="index-footer-desc">WE BRING AWESOME GAMES TO ALL SCREENS</p>
     </footer>
+    {{--<div class="test"></div>--}}
+
 </div>
-<a id="gotop" class="scrollTop" href="#" onclick="top.goTop(); return false;" style="display: block; opacity: 1;"></a>
+{{--</div>--}}
+{{--<a id="gotop" class="scrollTop" href="#" onclick="top.goTop(); return false;" style="display: block; opacity: 1;"></a>--}}
 </body>
 </html>

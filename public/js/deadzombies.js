@@ -71,13 +71,18 @@
 (function ($, undefined) {
 
     $(document).ready(function () {
+
         // alert('12');
         // console.debug($('#top-block-button'));
         $('#top-block-button').click(function (event) {
+
+            $('.index-footer').toggleClass('top-block-clicked');
+
             $('.top-block').toggleClass('top-block-clicked');
             $('.right-content').toggleClass('top-block-clicked');
-            // $('.index-footer').toggleClass('top-block-clicked');
+            $('.test').toggleClass('top-block-clicked');
             $('.top-block svg').toggleClass('top-block-click-svg');
+            $('html').toggleClass('overflow-hidden');
             $('body').toggleClass('overflow-hidden');
 
             // $('.wrapper').css('transform', 'translateX(0px)').css('background', 'red');

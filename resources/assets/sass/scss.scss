@@ -47,6 +47,7 @@ body {
   font-family: Verdana, Arial, Tahoma, sans-serif;
   font-size: 10px;
   line-height: 1.5;
+  //position: relative;
 }
 
 .game-conainer {
@@ -64,7 +65,7 @@ body {
 }
 
 .container {
-  display: grid;
+  //display: grid;
   grid-template-columns: 1fr;
   //grid-auto-rows: auto 1fr 1fr;
 }
@@ -79,6 +80,8 @@ html, body {
 
 .overflow-hidden {
   overflow: hidden;
+  position: relative;
+  //height: 100%;
 }
 .wrapper {
   box-shadow: 0 0 8px lighten($sidebar, 10%);
@@ -152,4 +155,9 @@ html, body {
   font-size: 0.8rem;
   border: 1px solid darken($sidebar, 5%);
   box-shadow: 0 0 8px darken($sidebar, 5%);
+}
+.test {
+  height: 100px;
+  color: red;
+  background-color: red;
 }

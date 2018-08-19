@@ -18,7 +18,7 @@ class IndexController extends Controller
 
         //$pageIndex = $page->where('name', 'index')->get()->first();
 
-        $games = $game->where('game_show', true)->simplePaginate(9);
+        $games = $game->where('game_show', true)->simplePaginate(5);
         //dd($games);
         $games->each(function ($games) {
             $games->url = route('getGame', $games->game_url, false);

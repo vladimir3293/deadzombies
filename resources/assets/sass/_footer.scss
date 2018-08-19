@@ -6,6 +6,8 @@
   border: 1px solid lighten($nav-ul, 20%);
   display: flex;
   align-items: center;
+  transition: transform 0.5s 0s;
+
   & p {
     font-size: 0.8rem;
     font-weight: 600;
