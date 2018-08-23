@@ -18,7 +18,7 @@ class TopBlockComposer
 
     public function compose(View $view)
     {
-        $categories = $this->category->orderBy('cat_order')->get();
+        $categories = $this->category->where('display',true)->orderBy('cat_order')->get();
         $categories->each(function ($value) {
             $value->url = route('getCategory', ['cat' => $value->cat_url], false);
         });

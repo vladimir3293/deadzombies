@@ -5,20 +5,36 @@
         // alert('12');
         // console.debug($('#top-block-button'));
         $('#top-block-button').click(function (event) {
-
-            $('.index-footer').toggleClass('top-block-clicked');
-
-            $('.top-block').toggleClass('top-block-clicked');
-            $('.right-content').toggleClass('top-block-clicked');
-            $('.test').toggleClass('top-block-clicked');
+            $('.top-block, .right-content, .index-footer').toggleClass('top-block-clicked');
             $('.top-block svg').toggleClass('top-block-click-svg');
-            $('html').toggleClass('overflow-hidden');
-            $('body').toggleClass('overflow-hidden');
-
-
-            // $('.wrapper').css('transform', 'translateX(0px)').css('background', 'red');
-            // alert('12');
+            $('body, html').toggleClass('overflow-hidden');
         });
+
+            $(function () {
+                /* set variables locally for increased performance */
+                var scroll_timer;
+                var displayed = false;
+                var $message = $('#message a');
+                var $window = $(window);
+                var top = $(document.body).children(0).position().top;
+                /* react to scroll event on window */
+                $window.scroll(function () {
+                    window.clearTimeout(scroll_timer);
+                    scroll_timer = window.setTimeout(function () {
+                        if($window.scrollTop() <= top)
+                        {
+                            displayed = false;
+                            $message.fadeOut(500);
+                        }
+                        else if(displayed == false)
+                        {
+                            displayed = true;
+                            $message.stop(true, true).show().click(function () { $message.fadeOut(500); });
+                        }
+                    }, 100);
+                });
+            });
+
 
 
         // $('#menu').click(function (event) {

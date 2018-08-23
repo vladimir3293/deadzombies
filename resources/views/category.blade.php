@@ -11,9 +11,12 @@
         <header class="header-article">
             <h1>{{ $category->cat_name }}</h1>
         </header>
-        <div class="box">
-            <p>{!! $category->descWithP !!}</p>
-        </div>
+        @if(isset($games))
+            <div class="game-container">
+                @include('gameCard')
+            </div>
+            {{ $games->links('vendor.pagination.simpleIndexPage') }}
+        @endif
         @if($category->tagsDisplayed->isNotEmpty())
             <div class="tags">
                 <span>Подкатегории:</span>
@@ -22,17 +25,13 @@
                 @endforeach
             </div>
         @endif
-        <div class="clr"></div>
-        @if(isset($games))
-            <div class="row">
-                @include('gameCard')
-            </div>
-            <div class="row">
-                <div class="col-md-24">
-                    {{ $games->links('vendor.pagination.simple-default') }}
-                </div>
-            </div>
-        @endif
+
+        <div class="text-block">
+            <p>{!! $category->descWithP !!}</p>
+        </div>
+        <div class="go-top">
+<a href="#">наверх</a>
+        </div>
     </article>
 @endsection
 

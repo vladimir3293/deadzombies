@@ -18,6 +18,8 @@
      TODO sidebar and top block view composer ask one infrormation
 --}}
 <body>
+<div id="top"></div>
+
 <div class="wrapper container">
     @include('topBlock')
     {{--<div class="test-container">--}}
@@ -43,10 +45,7 @@
         <img src="/img/site/footer.png">
         <p class="index-footer-desc">WE BRING AWESOME GAMES TO ALL SCREENS</p>
     </footer>
-    {{--<div class="test"></div>--}}
-
 </div>
-{{--</div>--}}
-{{--<a id="gotop" class="scrollTop" href="#" onclick="top.goTop(); return false;" style="display: block; opacity: 1;"></a>--}}
+<div id="message"><a href="#top">Scroll to top</a></div>
 </body>
 </html>

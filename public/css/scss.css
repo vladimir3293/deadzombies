@@ -1,3 +1,83 @@
+.right-content {
+  margin: 52px 0 10px 0;
+  min-height: 800px;
+  -webkit-transition: -webkit-transform 0.5s 0s;
+  transition: -webkit-transform 0.5s 0s;
+  transition: transform 0.5s 0s;
+  transition: transform 0.5s 0s, -webkit-transform 0.5s 0s;
+}
+
+.header-article h1 {
+  font-size: 24px;
+  margin: 5px 0 7px 4px;
+}
+
+.go-top a {
+  display: block;
+  padding: 7px;
+}
+
+.go-top a:after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  right: 18px;
+  margin-top: -10px;
+  border: 8px solid red;
+  border-bottom-color: #009cff;
+}
+
+.box {
+  color: black;
+  margin: 0 0 15px 0;
+  text-align: justify;
+  background: #b9bed2;
+  border-radius: 3px;
+  padding: 10px;
+  font-weight: 600;
+  font-size: 1.2em;
+  border: 1px solid #aab0c8;
+  -webkit-box-shadow: 0 0 8px #aab0c8;
+          box-shadow: 0 0 8px #aab0c8;
+}
+
+.tags {
+  background-color: #b9bed2;
+  border-radius: 5px;
+  margin: 0px 10px 7px 10px;
+  padding-right: 10px;
+  padding-left: 10px;
+  display: inline-block;
+  border: 1px solid #aab0c8;
+  -webkit-box-shadow: 0 0 8px #aab0c8;
+          box-shadow: 0 0 8px #aab0c8;
+}
+
+.tags a {
+  display: inline-block;
+  text-decoration: none;
+  margin: 5px 0px 5px 5px;
+  padding: 5px 10px 5px 10px;
+  border-radius: 5px;
+  color: black;
+  font-size: 14px;
+  font-weight: 600;
+  background-color: #009cff;
+}
+
+.tags a:hover {
+  background-color: white;
+  border-radius: 5px;
+}
+
+.tags span {
+  color: black;
+  padding: 5px 10px 5px 10px;
+  display: inline-block;
+  font-weight: 600;
+  font-size: 1.2em;
+}
+
 .game-card {
   background: #cccfde;
   -webkit-box-shadow: 0 0 6px #f7f8fa;
@@ -180,7 +260,7 @@
 
 .top-block-slider-footer {
   height: 52px;
-  background: red;
+  background: #009cff;
   width: 80vw;
   -ms-flex-negative: 0;
       flex-shrink: 0;
@@ -305,7 +385,7 @@ body {
   line-height: 1.5;
 }
 
-.game-conainer {
+.game-container {
   display: grid;
   grid-gap: 10px;
   padding: 10px;
@@ -313,6 +393,7 @@ body {
 }
 
 .container {
+  display: grid;
   grid-template-columns: 1fr;
 }
 
@@ -345,14 +426,6 @@ body {
   line-height: 1.5;
 }
 
-.right-content {
-  margin-top: 52px;
-  -webkit-transition: -webkit-transform 0.5s 0s;
-  transition: -webkit-transform 0.5s 0s;
-  transition: transform 0.5s 0s;
-  transition: transform 0.5s 0s, -webkit-transform 0.5s 0s;
-}
-
 /* Large desktop */
 
 #menu {
@@ -377,7 +450,7 @@ body {
 
 .text-block {
   color: black;
-  margin: 0 0 15px 0;
+  margin: 5px 10px 15px 10px;
   text-align: justify;
   background: #b9bed2;
   border-radius: 3px;
@@ -393,5 +466,37 @@ body {
   height: 100px;
   color: red;
   background-color: red;
+}
+
+#message a {
+  /* display: block before hiding */
+  display: block;
+  display: none;
+  /* link is above all other elements */
+  z-index: 999;
+  /* link doesn't hide text behind it */
+  opacity: 0.7;
+  /* link stays at same place on page */
+  position: fixed;
+  /* link goes at the bottom of the page */
+  top: 100%;
+  margin-top: -80px;
+  /* = height + preferred bottom margin */
+  /* link is centered */
+  left: 50%;
+  margin-left: -160px;
+  /* = half of width */
+  /* round the corners (to your preference) */
+  -moz-border-radius: 24px;
+  -webkit-border-radius: 24px;
+  /* make it big and easy to see (size, style to preferences) */
+  width: 300px;
+  line-height: 48px;
+  height: 48px;
+  padding: 10px;
+  background-color: #000;
+  font-size: 24px;
+  text-align: center;
+  color: #fff;
 }
 

@@ -1,17 +1,34 @@
 .right-content {
-  margin: 10px 0 10px 0;
-  background: $right-content;
-  border-radius: 2px;
-  box-shadow: 0 0 8px darken($right-content, 5%);
-  border: 1px solid darken($right-content, 5%);
-  padding: 0 15px 10px 15px;
+  margin: 52px 0 10px 0;
+  //background: $right-content;
+  //border-radius: 2px;
+  //box-shadow: 0 0 8px darken($right-content, 5%);
+  //border: 1px solid darken($right-content, 5%);
+  //padding: 0 15px 10px 15px;
   min-height: 800px;
+  transition: transform 0.5s 0s;
+
 }
 
 .header-article h1 {
   font-size: 24px;
   margin: 5px 0 7px 4px;
-  color: $nav-ul;
+  //color: $nav-ul;
+
+}
+
+.go-top a{
+  display: block;
+  padding: 7px;
+  &:after {
+    content: "";
+    position: absolute;
+    top: 50%;
+    right: 18px;
+    margin-top: -10px;
+    border: 8px solid red;
+    border-bottom-color: #009cff;
+  }
 }
 
 .box {
@@ -31,7 +48,7 @@
 .tags {
   background-color: $sidebar;
   border-radius: 5px;
-  margin-bottom: 7px;
+  margin: 0px 10px 7px 10px;
   padding-right: 10px;
   padding-left: 10px;
   display: inline-block;

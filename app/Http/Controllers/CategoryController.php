@@ -15,7 +15,7 @@ class CategoryController extends Controller
 
         abort_unless($category->display, 404);
 
-        $games = $category->game()->where('game_show', true)->simplePaginate(12);
+        $games = $category->game()->where('game_show', true)->simplePaginate(6);
         foreach ($games as $game) {
             $game->url = route('getGame', ['Game' => $game->game_url], false);
             $game->img = file_exists(public_path() . '/img/' . $game->game_url . '.jpg') ?

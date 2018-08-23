@@ -14,7 +14,7 @@
             <h1>Лучшие игры</h1>
         </header>
         @if(isset($games))
-            <div class="game-conainer">
+            <div class="game-container">
                 @include('gameCard')
             </div>
             {{ $games->links('vendor.pagination.simpleIndexPage') }}
