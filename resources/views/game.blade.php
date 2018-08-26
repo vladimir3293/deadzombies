@@ -33,17 +33,17 @@
                     {{--height: 100vh"--}}
 
 
-                    <iframe src="{{ $game->source }}"
-                            name="topFrame"
-                            scrolling="yes"
+                    {{--<iframe src="{{ $game->source }}"--}}
+                            {{--name="topFrame"--}}
+                            {{--scrolling="yes"--}}
                             {{--allowfullscreen--}}
                             {{--style="margin: 50px;"--}}
                             {{--height="100vh" ;--}}
                             {{--width="{{ $game->number }}vh"--}}
                             {{--height="{{ $game->gameHeight }}"--}}
                             {{--width="{{ $game->gameWidth }}"--}}
-                    >
-                    </iframe>
+                    {{-->--}}
+                    {{--</iframe>--}}
                 </div>
             </div>
             @if($game->tagsDisplayed->isNotEmpty())

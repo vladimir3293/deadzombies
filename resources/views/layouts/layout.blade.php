@@ -18,7 +18,7 @@
      TODO sidebar and top block view composer ask one infrormation
 --}}
 <body>
-<div id="top"></div>
+{{--<div id="top"></div>--}}
 
 <div class="wrapper container">
     @include('topBlock')
@@ -46,6 +46,6 @@
         <p class="index-footer-desc">WE BRING AWESOME GAMES TO ALL SCREENS</p>
     </footer>
 </div>
-<div id="message"><a href="#top">Scroll to top</a></div>
+{{--<div id="message"><a href="#top">Scroll to top</a></div>--}}
 </body>
 </html>
