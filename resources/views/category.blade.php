@@ -29,9 +29,6 @@
         <div class="text-block">
             <p>{!! $category->descWithP !!}</p>
         </div>
-        <div class="go-top">
-<a href="#">наверх</a>
-        </div>
     </article>
 @endsection
 

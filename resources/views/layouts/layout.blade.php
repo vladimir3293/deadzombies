@@ -41,6 +41,9 @@
     <div class="right-content">
         @yield('right_content')
     </div>
+    <div class="go-top">
+        <a href="#">наверх</a>
+    </div>
     <footer class="index-footer">
         <img src="/img/site/footer.png">
         <p class="index-footer-desc">WE BRING AWESOME GAMES TO ALL SCREENS</p>

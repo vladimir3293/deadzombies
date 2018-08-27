@@ -1,12 +1,42 @@
+.game {
+  display: flex;
+  flex-direction: column;
+}
+
+.game-img img {
+  width: 100%;
+}
+
+.game-img {
+  padding: 10px;
+}
+
+.game-play-button{
+  margin: 0 auto 10px auto;
+  width: 50%;
+  text-align: center;
+}
+.game-play-button a {
+  //width: 70%;
+  display: block;
+  //width: 60px;
+  text-decoration: none;
+  padding: 10px;
+  color: white;
+  background: red;
+  border-radius: 5px;
+  font-weight: 600;
+  font-size: 1.2rem;
+}
+
 .breadcrumb {
   border-radius: 5px;
-  float: left;
   background-color: $sidebar;
-  margin-bottom: 7px;
   border: 1px solid darken($sidebar, 5%);
   box-shadow: 0 0 8px darken($sidebar, 5%);
+  padding: 10px 0px 10px 0px;
+  margin: 5px 10px 5px 10px;
   & a {
-    display: inline-block;
     text-decoration: none;
     margin-left: 10px;
     padding: 5px 10px 5px 10px;
@@ -28,9 +58,7 @@
 }
 
 .like {
-  float: right;
-  margin-right: 50px;
-  margin-top: 4px;
+  margin-left: 10px;
   & span {
     font-size: 14px;
     color: $nav-ul;
@@ -56,6 +84,7 @@
   font-weight: 600;
   border: 1px solid $wrap;
   width: 75px;
+  margin-left: 5px;
 }
 
 #like:hover {
@@ -67,50 +96,27 @@
   outline: none;
 }
 
-.upr {
+.game-control {
   background: $sidebar;
   padding: 5px 10px 5px 10px;
   border-radius: 5px;
-  margin-bottom: 7px;
+  margin: 5px 10px 5px 10px;
   border: 1px solid darken($sidebar, 5%);
   box-shadow: 0 0 8px darken($sidebar, 5%);
   min-height: 53px;
-  display: table;
+  display: flex;
   &-text {
-    width: 100%;
-    vertical-align: middle;
-    display: table-cell;
+    text-align: justify;
+    font-weight: 600;
+    font-size: 0.8rem;
     padding: 20px;
   }
   &-img {
     margin-right: 10px;
-    display: table-cell;
-    vertical-align: middle;
   }
   & img {
     width: 50px;
   }
-}
-
-.flash-opis {
-  display: block;
-  padding: 5px 10px 5px 10px;
-  background: $sidebar;
-  border-radius: 5px;
-  border: 1px solid darken($sidebar, 5%);
-}
-
-.flash-opis img {
-  float: left;
-  margin: 4px 2px 0px 2px;
-  border: 1px solid darken($sidebar, 5%);
-  border-radius: 2px;
-  height: 153px;
-  width: 220px;
-}
-
-.flash-opis p {
-  text-indent: 1.5em;
 }
 
 .flash {

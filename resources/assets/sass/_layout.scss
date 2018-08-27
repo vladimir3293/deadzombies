@@ -1,0 +1,24 @@
+.go-top a{
+  display: block;
+  padding: 5px 10px 5px 10px;
+  //align-self: flex-start;
+  position: relative;
+  margin: 15px auto 15px;
+  border: 0;
+  border-radius: 5px;
+  background: #fff;
+  color: #009cff;
+  font-size: 1.2rem;
+  width: 80px;
+  text-decoration: none;
+  &:after {
+    content: "";
+    position: absolute;
+    top: 45%;
+    right: 5px;
+    //top: 2px;
+    margin-top: -10px;
+    border: 8px solid transparent;
+    border-bottom-color: #009cff;
+  }
+}

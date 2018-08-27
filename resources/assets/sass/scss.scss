@@ -29,6 +29,7 @@ $content-color: black;
 $border: 1px solid #cccccc;
 
 //@import "sidebar";
+@import "layout";
 @import "right-content";
 @import "game-card";
 @import "pagination";
@@ -64,8 +65,8 @@ body {
 }
 
 .container {
-  display: grid;
-  grid-template-columns: 1fr;
+  //display: grid;
+  //grid-template-columns: 1fr;
   //grid-auto-rows: auto 1fr 1fr;
   //min-height: 100vh;
 }
@@ -91,6 +92,7 @@ html, body {
   background: $wrap;
   //padding-bottom: 20px;
   transition: transform 1s 0s;
+  min-height: 100vh;
 
   //overflow: hidden;
 }
@@ -133,8 +135,15 @@ html, body {
 
 /* Landscape phones and down */
 @media (max-width: 480px) {
-  .sidebar {
+  .sidebar header{
     display: none;
+  }
+  .top-block-slider{
+    position: absolute;
+    width: 80vw;
+    left: - 80vw;
+    height: 100vh;
+    max-height: 100vh;
   }
   #menu {
     display: block;
@@ -143,7 +152,7 @@ html, body {
 
 .text-block {
   color: $content-color;
-  margin: 5px 10px 15px 10px;
+  margin: 5px 10px 5px 10px;
   text-align: justify;
   background: $sidebar;
   border-radius: 3px;

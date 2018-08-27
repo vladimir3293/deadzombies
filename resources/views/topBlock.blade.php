@@ -1,19 +1,19 @@
 <header class="top-block">
-    <div class="top-block-slider">
-        <div class="top-block-slider-header">
+    {{--<div class="top-block-slider">--}}
+        {{--<div class="top-block-slider-header">--}}
 
-        </div>
-        <ul>
-            <li><a href="/">Главная</a></li>
-            @foreach($categories as $category)
-                <li><a href="{!! $category->url !!}">{!! $category->cat_name !!}</a></li>
-            @endforeach
-        </ul>
-        <div class="top-block-slider-footer">
+        {{--</div>--}}
+        {{--<ul>--}}
+            {{--<li><a href="/">Главная</a></li>--}}
+            {{--@foreach($categories as $category)--}}
+                {{--<li><a href="{!! $category->url !!}">{!! $category->cat_name !!}</a></li>--}}
+            {{--@endforeach--}}
+        {{--</ul>--}}
+        {{--<div class="top-block-slider-footer">--}}
 
-        </div>
+        {{--</div>--}}
 
-    </div>
+    {{--</div>--}}
     <div class="top-block-content">
         <button id="top-block-button">
             <svg viewBox="0 0 30 30" data-reactid="14">

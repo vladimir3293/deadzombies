@@ -1,22 +1,8 @@
-.right-content {
-  margin: 52px 0 10px 0;
-  min-height: 800px;
-  -webkit-transition: -webkit-transform 0.5s 0s;
-  transition: -webkit-transform 0.5s 0s;
-  transition: transform 0.5s 0s;
-  transition: transform 0.5s 0s, -webkit-transform 0.5s 0s;
-}
-
-.header-article h1 {
-  font-size: 24px;
-  margin: 5px 0 7px 4px;
-}
-
 .go-top a {
   display: block;
   padding: 5px 10px 5px 10px;
   position: relative;
-  margin: 15px auto 0;
+  margin: 15px auto 15px;
   border: 0;
   border-radius: 5px;
   background: #fff;
@@ -36,6 +22,20 @@
   border-bottom-color: #009cff;
 }
 
+.right-content {
+  margin: 52px 0 0 0;
+  -webkit-transition: -webkit-transform 0.5s 0s;
+  transition: -webkit-transform 0.5s 0s;
+  transition: transform 0.5s 0s;
+  transition: transform 0.5s 0s, -webkit-transform 0.5s 0s;
+  min-height: 90vh;
+}
+
+.header-article h1 {
+  font-size: 24px;
+  margin: 5px 0 7px 4px;
+}
+
 .box {
   color: black;
   margin: 0 0 15px 0;
@@ -53,7 +53,7 @@
 .tags {
   background-color: #b9bed2;
   border-radius: 5px;
-  margin: 0px 10px 7px 10px;
+  margin: 5px 10px 5px 10px;
   padding-right: 10px;
   padding-left: 10px;
   display: inline-block;
@@ -225,11 +225,6 @@
   -webkit-box-direction: normal;
       -ms-flex-direction: column;
           flex-direction: column;
-  position: absolute;
-  width: 80vw;
-  left: -80vw;
-  height: 100vh;
-  max-height: 100vh;
 }
 
 .top-block-slider ul {
@@ -332,18 +327,52 @@
           justify-content: flex-start;
 }
 
+.game {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+}
+
+.game-img img {
+  width: 100%;
+}
+
+.game-img {
+  padding: 10px;
+}
+
+.game-play-button {
+  margin: 0 auto 10px auto;
+  width: 50%;
+  text-align: center;
+}
+
+.game-play-button a {
+  display: block;
+  text-decoration: none;
+  padding: 10px;
+  color: white;
+  background: red;
+  border-radius: 5px;
+  font-weight: 600;
+  font-size: 1.2rem;
+}
+
 .breadcrumb {
   border-radius: 5px;
-  float: left;
   background-color: #b9bed2;
-  margin-bottom: 7px;
   border: 1px solid #aab0c8;
   -webkit-box-shadow: 0 0 8px #aab0c8;
           box-shadow: 0 0 8px #aab0c8;
+  padding: 10px 0px 10px 0px;
+  margin: 5px 10px 5px 10px;
 }
 
 .breadcrumb a {
-  display: inline-block;
   text-decoration: none;
   margin-left: 10px;
   padding: 5px 10px 5px 10px;
@@ -366,9 +395,7 @@
 }
 
 .like {
-  float: right;
-  margin-right: 50px;
-  margin-top: 4px;
+  margin-left: 10px;
 }
 
 .like span {
@@ -396,6 +423,7 @@
   font-weight: 600;
   border: 1px solid #d2d5e2;
   width: 75px;
+  margin-left: 5px;
 }
 
 #like:hover {
@@ -407,54 +435,33 @@
   outline: none;
 }
 
-.upr {
+.game-control {
   background: #b9bed2;
   padding: 5px 10px 5px 10px;
   border-radius: 5px;
-  margin-bottom: 7px;
+  margin: 5px 10px 5px 10px;
   border: 1px solid #aab0c8;
   -webkit-box-shadow: 0 0 8px #aab0c8;
           box-shadow: 0 0 8px #aab0c8;
   min-height: 53px;
-  display: table;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
 }
 
-.upr-text {
-  width: 100%;
-  vertical-align: middle;
-  display: table-cell;
+.game-control-text {
+  text-align: justify;
+  font-weight: 600;
+  font-size: 0.8rem;
   padding: 20px;
 }
 
-.upr-img {
+.game-control-img {
   margin-right: 10px;
-  display: table-cell;
-  vertical-align: middle;
 }
 
-.upr img {
+.game-control img {
   width: 50px;
-}
-
-.flash-opis {
-  display: block;
-  padding: 5px 10px 5px 10px;
-  background: #b9bed2;
-  border-radius: 5px;
-  border: 1px solid #aab0c8;
-}
-
-.flash-opis img {
-  float: left;
-  margin: 4px 2px 0px 2px;
-  border: 1px solid #aab0c8;
-  border-radius: 2px;
-  height: 153px;
-  width: 220px;
-}
-
-.flash-opis p {
-  text-indent: 1.5em;
 }
 
 .flash {
@@ -551,11 +558,6 @@ body {
   grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
 }
 
-.container {
-  display: grid;
-  grid-template-columns: 1fr;
-}
-
 .overflow-hidden {
   overflow: hidden;
   position: relative;
@@ -570,6 +572,7 @@ body {
   transition: -webkit-transform 1s 0s;
   transition: transform 1s 0s;
   transition: transform 1s 0s, -webkit-transform 1s 0s;
+  min-height: 100vh;
 }
 
 .header-article {
@@ -598,8 +601,16 @@ body {
 /* Landscape phones and down */
 
 @media (max-width: 480px) {
-  .sidebar {
+  .sidebar header {
     display: none;
+  }
+
+  .top-block-slider {
+    position: absolute;
+    width: 80vw;
+    left: -80vw;
+    height: 100vh;
+    max-height: 100vh;
   }
 
   #menu {
@@ -609,7 +620,7 @@ body {
 
 .text-block {
   color: black;
-  margin: 5px 10px 15px 10px;
+  margin: 5px 10px 5px 10px;
   text-align: justify;
   background: #b9bed2;
   border-radius: 3px;
