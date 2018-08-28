@@ -20,29 +20,29 @@
 <body>
 {{--<div id="top"></div>--}}
 
-<div class="wrapper container">
+<div class="wrapper">
     @include('topBlock')
     {{--<div class="test-container">--}}
     <div class="sidebar">
-        <header class="index-header">
+        <header class="sidebar-header">
             <h1>Html5 игры на</h1>
             <a href="/"><img src="/img/site/logotype.png"></a>
         </header>
         <nav>
-            <header>
+            <header class="sidebat-nav-header">
                 <h1>Категории на сайте</h1>
             </header>
             @include('menu')
-            <footer>
+            <footer class="sidebar-nav-footer">
                 <h1>удачной игры</h1>
             </footer>
         </nav>
     </div>
     <div class="right-content">
         @yield('right_content')
-    </div>
-    <div class="go-top">
-        <a href="#">наверх</a>
+        <div class="go-top">
+            <a href="#">наверх</a>
+        </div>
     </div>
     <footer class="index-footer">
         <img src="/img/site/footer.png">
