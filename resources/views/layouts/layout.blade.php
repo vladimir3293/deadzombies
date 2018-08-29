@@ -44,7 +44,7 @@
             <a href="#">наверх</a>
         </div>
     </div>
-    <footer class="index-footer">
+    <footer class="footer">
         <img src="/img/site/footer.png">
         <p class="index-footer-desc">WE BRING AWESOME GAMES TO ALL SCREENS</p>
     </footer>
