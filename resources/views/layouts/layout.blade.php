@@ -21,16 +21,18 @@
 {{--<div id="top"></div>--}}
 
 <div class="wrapper">
-    @include('topBlock')
+    <div class="top-block-wrapper">
+        @include('topBlock')
+    </div>
     {{--<div class="test-container">--}}
     <div class="sidebar">
         <header class="sidebar-header">
-            <h1>Html5 игры на</h1>
+            <h1>Html5 игры на сайте</h1>
             <a href="/"><img src="/img/site/logotype.png"></a>
         </header>
         <nav>
             <header class="sidebat-nav-header">
-                <h1>Категории на сайте</h1>
+                <h1>навигация на сайте</h1>
             </header>
             @include('menu')
             <footer class="sidebar-nav-footer">

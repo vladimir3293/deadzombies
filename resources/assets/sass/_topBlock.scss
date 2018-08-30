@@ -1,14 +1,24 @@
+.top-block-wrapper{
+  background: $top-block;
+}
 .top-block {
   @media(min-width: 480px){
-    display: none;
+    //display: none;
+
   }
+  max-width: 1250px;
   transition: transform 0.5s 0s;
   background: $top-block;
   top: 0px;
   z-index: 10;
-  position: fixed;
-  width: 100vw;
-  max-height: 80vh;
+  margin: 0 auto;
+  @media(max-width: 480px){
+    //display: none;
+    position: fixed;
+  }
+
+  //width: 100vw;
+  //max-height: 80vh;
   &-clicked {
     //margin-left: 80vw;
     transform: translateX(80vw);

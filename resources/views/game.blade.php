@@ -2,6 +2,10 @@
 
 @section('title',$game->game_title)
 
+@section('description', $category->cat_desc_meta)
+
+@section('keywords',$category->cat_key_meta)
+
 @section('right_content')
     <article>
         <div class="game">

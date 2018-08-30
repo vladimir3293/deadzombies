@@ -1,4 +1,4 @@
-<header class="top-block">
+<div class="top-block">
     {{--<div class="top-block-slider">--}}
         {{--<div class="top-block-slider-header">--}}
 
@@ -25,5 +25,5 @@
         </button>
         <a class="top-block-logo" href="/"></a>
     </div>
-</header>
+</div>
 

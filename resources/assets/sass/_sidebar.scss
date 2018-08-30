@@ -2,7 +2,7 @@
   background: $sidebar;
   margin: 10px;
   box-shadow: 0 0 8px darken($sidebar, 20%);
-  grid-area: sidebar;
+  //grid-area: sidebar;
   transition: transform 0.5s 0s;
   @media (max-width: 480px) {
     position: fixed;
@@ -11,6 +11,9 @@
     top: 0px;
     height: 100vh;
     max-height: 100vh;
+  }
+  & nav{
+    //background: $wrap;
   }
   &-nav-header {
     @media (max-width: 480px) {
@@ -35,7 +38,7 @@
   }
   &-slider {
     //margin-top: 52px;
-    background: lighten($sidebar, 10%);
+    //background: lighten($sidebar, 10%);
     display: flex;
     flex-direction: column;
 
@@ -43,30 +46,37 @@
       @media (max-width: 480px) {
         overflow: scroll;
       }
-      margin: 10px;
       flex-shrink: 2;
 
       //max-height: 300px;
       margin-bottom: auto;
 
     }
+    &:last-child a{
+        border: 0px;
+    }
     & li {
       list-style-type: none;
+
     }
     & a {
+      color: #002b50;
+      background-color: white;
+
+      border-bottom: 1px solid #dfdfdf;
       font-size: 1rem;
-      margin: 5px;
+      //margin: 5px;
       padding: 10px;
       display: block;
-      color: #002b50;
       text-decoration: none;
       text-align: left;
       text-overflow: ellipsis;
       overflow: hidden;
-      border-radius: 5px;
-      background-color: white;
+      //border-radius: 5px;
+
       padding-left: 35px;
     }
+
     &-header {
       @media (min-width: 480px) {
         display: none;
