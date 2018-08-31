@@ -1,4 +1,5 @@
 .sidebar {
+  display: none;
   background: #d7d4cb;
   margin: 10px;
   -webkit-box-shadow: 0 0 8px #aaa592;

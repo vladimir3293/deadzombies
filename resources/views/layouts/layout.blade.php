@@ -21,25 +21,10 @@
 {{--<div id="top"></div>--}}
 
 <div class="wrapper">
-    <div class="top-block-wrapper">
+    <header class="top-block-wrapper">
         @include('topBlock')
-    </div>
-    {{--<div class="test-container">--}}
-    <div class="sidebar">
-        <header class="sidebar-header">
-            <h1>Html5 игры на сайте</h1>
-            <a href="/"><img src="/img/site/logotype.png"></a>
-        </header>
-        <nav>
-            <header class="sidebat-nav-header">
-                <h1>навигация на сайте</h1>
-            </header>
-            @include('menu')
-            <footer class="sidebar-nav-footer">
-                <h1>удачной игры</h1>
-            </footer>
-        </nav>
-    </div>
+
+    </header>
     <div class="right-content">
         @yield('right_content')
         <div class="go-top">
