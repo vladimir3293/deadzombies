@@ -10,13 +10,13 @@
 @section('right_content')
     <div class="top-games">
         <header class="header-article">
-            <h1>Лучшие игры</h1>
+            <h1>Популярные игры</h1>
         </header>
-        @if(isset($games))
+        @if($popularGames->isNotEmpty())
             <div class="game-container">
-                @include('gameCard')
+                @include('gameCard',['games'=>$popularGames])
             </div>
-            {{ $games->links('vendor.pagination.simpleIndexPage') }}
+            {{ $popularGames->links('vendor.pagination.simpleIndexPage') }}
         @endif
 
     </div>

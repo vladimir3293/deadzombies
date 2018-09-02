@@ -31,10 +31,12 @@
             <a href="#">наверх</a>
         </div>
     </div>
-    <footer class="footer">
-        <img src="/img/site/footer.png">
-        <p class="index-footer-desc">WE BRING AWESOME GAMES TO ALL SCREENS</p>
-    </footer>
+    <div class="footer-wrapper">
+        <footer class="footer">
+            <img src="/img/site/footer.png">
+            <p class="index-footer-desc">WE BRING AWESOME GAMES TO ALL SCREENS</p>
+        </footer>
+    </div>
 </div>
 {{--<div id="message"><a href="#top">Scroll to top</a></div>--}}
 </body>

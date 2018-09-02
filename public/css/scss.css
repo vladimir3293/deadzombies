@@ -576,8 +576,13 @@
   height: 100%;
 }
 
-.footer {
+.footer-wrapper {
   background: #009cff;
+}
+
+.footer {
+  max-width: 1250px;
+  margin: 0 auto;
   color: black;
   padding: 10px;
   border-radius: 4px;

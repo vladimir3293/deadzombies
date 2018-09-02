@@ -18,14 +18,16 @@ class IndexController extends Controller
 
         //$pageIndex = $page->where('name', 'index')->get()->first();
 
-        $games = $game->where('game_show', true)->simplePaginate(5);
+        $popularGames = $game->where('game_show', true)->orderBy('game_like')->simplePaginate(5);
         //dd($games);
-        $games->each(function ($games) {
+        $popularGames->each(function ($games) {
             $games->url = route('getGame', $games->game_url, false);
             $games->img = file_exists(public_path() . '/img/' . $games->game_url . '.jpg') ?
                 '/img/' . $games->game_url . '.jpg' :
                 '/img/site/empty.jpg';
         });
-        return view('index', ['games' => $games]);
+        $newGames = $game->where('game_show', true)->simplePaginate(5);
+        return view('index', ['popularGames' => $popularGames,
+            'newGames' => $newGames]);
     }
 }

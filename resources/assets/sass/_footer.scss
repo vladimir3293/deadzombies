@@ -1,6 +1,12 @@
+.footer-wrapper {
+  background: $nav-ul;
+
+}
+
 .footer {
   //grid-area: footer;
-  background: $nav-ul;
+  max-width: 1250px;
+  margin: 0 auto;
   color: $content-color;
   padding: 10px;
   border-radius: 4px;
