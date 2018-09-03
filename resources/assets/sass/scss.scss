@@ -30,6 +30,7 @@ $nav-ul: #009cff;
 $nav-a: darken(#f1f2f6, 90%); //text link text
 
 $border: 1px solid #cccccc;
+$content-width: 1250px;
 
 @import "sidebar";
 @import "layout";
@@ -100,7 +101,7 @@ body {
   padding: 10px;
   //overflow: auto;
   //grid-template-columns: minmax(30px 30px) minmax(30px 30px);
-  grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
 
   //grid-template-columns: minmax(50px, 50%) minmax(50px, 50%);
   //grid-template-rows: 1fr 1fr;

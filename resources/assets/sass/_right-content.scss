@@ -1,3 +1,26 @@
+.top-games {
+  max-width: $content-width;
+  margin: 0 auto;
+  &-container {
+
+  }
+}
+
+.best-games {
+  max-width: $content-width;
+  margin: 0 auto;
+  &-container {
+
+  }
+}
+.popular-games{
+  max-width: $content-width;
+  margin: 0 auto;
+  &-container{
+
+  }
+}
+
 .right-content {
   margin: 10px 10px 10px 10px;
   //box-shadow: 0 0 8px darken($right-content, 20%);
@@ -20,8 +43,6 @@
   //color: $nav-ul;
 
 }
-
-
 
 .box {
   color: $content-color;
@@ -55,7 +76,7 @@
     color: $content-color;
     font-size: 14px;
     font-weight: 600;
-    background-color: lighten($top-block,10%);
+    background-color: lighten($top-block, 10%);
   }
   & a:hover {
     background-color: $link-hover;

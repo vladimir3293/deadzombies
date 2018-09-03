@@ -6,7 +6,7 @@
     //display: none;
 
   }
-  max-width: 1250px;
+  max-width: $content-width;
   transition: transform 0.5s 0s;
   background: $top-block;
   top: 0px;
