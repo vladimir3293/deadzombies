@@ -75,7 +75,7 @@
         // alert('12');
         // console.debug($('#top-block-button'));
         $('#top-block-button').click(function (event) {
-            $('.top-block, .sidebar, .right-content, .index-footer').toggleClass('top-block-clicked');
+            $('.top-block, .right-content, .index-footer').toggleClass('top-block-clicked');
             $('.top-block svg').toggleClass('top-block-click-svg');
             $('body, html').toggleClass('overflow-hidden');
         });

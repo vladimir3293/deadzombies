@@ -19,6 +19,7 @@ $color3: #ccdde8;
 $color4: #edece8;
 $color5: #fffcf6;
 
+$section-bg1: #dff2fe;
 $body: $color5;
 $wrap: $color4;
 $right-content: darken($color4,5%);
@@ -34,7 +35,7 @@ $content-width: 1250px;
 
 @import "sidebar";
 @import "layout";
-@import "right-content";
+@import "content";
 @import "game-card";
 @import "pagination";
 @import "topBlock";
@@ -55,9 +56,9 @@ body {
 }
 
 .wrapper {
-  box-shadow: 0 0 8px darken($wrap, 40%);
-  background: $wrap;
-  border-radius: 2px;
+  //box-shadow: 0 0 8px darken($wrap, 40%);
+  //background: $wrap;
+  //border-radius: 2px;
   //margin-top: 20px;
   //margin-bottom: 15px;
 
@@ -98,7 +99,7 @@ body {
 .game-container {
   display: grid;
   grid-gap: 10px;
-  padding: 10px;
+  //padding: 10px;
   //overflow: auto;
   //grid-template-columns: minmax(30px 30px) minmax(30px 30px);
   grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
@@ -115,9 +116,7 @@ body {
   //height: 100%;
 }
 
-.header-article {
-  text-align: center;
-}
+
 
 .content p {
   font-size: 1.3em;

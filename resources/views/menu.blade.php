@@ -1,5 +1,5 @@
-<div class="sidebar-slider">
-    <div class="sidebar-slider-header">
+<div class="top-block-slider">
+    <div class="top-block-slider-header">
 
     </div>
     <ul>
@@ -8,7 +8,7 @@
             <li><a href="{!! $category->url !!}">{!! $category->cat_name !!}</a></li>
         @endforeach
     </ul>
-    <div class="sidebar-slider-footer">
+    <div class="top-block-slider-footer">
     </div>
 </div>
 

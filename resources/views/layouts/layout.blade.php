@@ -25,8 +25,8 @@
         @include('topBlock')
 
     </header>
-    <div class="right-content">
-        @yield('right_content')
+    <div class="content">
+        @yield('content')
         <div class="go-top">
             <a href="#">наверх</a>
         </div>
