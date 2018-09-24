@@ -146,6 +146,11 @@
   border-bottom-color: #009cff;
 }
 
+.game-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+}
+
 .popular-games {
   max-width: 1250px;
   margin: 0 auto;
@@ -153,7 +158,7 @@
 
 .popular-games-container {
   background: #dff2fe;
-  padding: 30px 0;
+  padding: 10px 0px 30px 0px;
 }
 
 .new-games {
@@ -163,7 +168,7 @@
 
 .new-games-container {
   background: #fffcf6;
-  padding: 30px 0;
+  padding: 10px 0px 30px 0px;
 }
 
 .best-games {
@@ -172,7 +177,7 @@
 }
 
 .best-games-container {
-  padding: 30px 0;
+  padding: 10px 0px 30px 0px;
   background: #dff2fe;
 }
 
@@ -258,24 +263,28 @@
   font-size: 1.2em;
 }
 
-.game-card:first-child {
-  grid-area: 1/ 1/ 3/ 3;
-}
-
-.game-card:first-child span {
-  font-size: 1.6rem;
-  position: relative;
-  top: 5px;
-}
-
 .game-card {
+  margin: 5px;
   background: #dddbd4;
   -webkit-box-shadow: 0 0 6px white;
           box-shadow: 0 0 6px white;
   -webkit-transition: color 0.5s ease-out, background-color 0.5s ease-out;
   transition: color 0.5s ease-out, background-color 0.5s ease-out;
   border-radius: 5px;
-  alight-self: stretch;
+  -ms-flex-item-align: stretch;
+      align-self: stretch;
+}
+
+@media (min-width: 360px) {
+  .game-card:first-child {
+    grid-area: 1/ 1/ 3/ 3;
+  }
+
+  .game-card:first-child span {
+    font-size: 1.6rem;
+    position: relative;
+    top: 5px;
+  }
 }
 
 .game-card span {
@@ -457,18 +466,12 @@
 }
 
 .top-block-slider {
+  display: none;
   background: #d7d4cb;
   -webkit-transition: -webkit-transform 0.5s 0s;
   transition: -webkit-transform 0.5s 0s;
   transition: transform 0.5s 0s;
   transition: transform 0.5s 0s, -webkit-transform 0.5s 0s;
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: column;
-          flex-direction: column;
 }
 
 @media (max-width: 480px) {
@@ -479,6 +482,13 @@
     top: 0px;
     height: 100vh;
     max-height: 100vh;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
   }
 }
 
@@ -801,12 +811,6 @@ body {
   border: 1px solid #fff4dd;
   -webkit-box-shadow: 0 0 8px #fff4dd;
           box-shadow: 0 0 8px #fff4dd;
-}
-
-.game-container {
-  display: grid;
-  grid-gap: 10px;
-  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
 }
 
 .overflow-hidden {

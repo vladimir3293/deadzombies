@@ -96,19 +96,7 @@ body {
 
 
 
-.game-container {
-  display: grid;
-  grid-gap: 10px;
-  //padding: 10px;
-  //overflow: auto;
-  //grid-template-columns: minmax(30px 30px) minmax(30px 30px);
-  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
 
-  //grid-template-columns: minmax(50px, 50%) minmax(50px, 50%);
-  //grid-template-rows: 1fr 1fr;
-  //justify-items: stretch;
-  //align-items: stretch;
-}
 
 .overflow-hidden {
   overflow: hidden;

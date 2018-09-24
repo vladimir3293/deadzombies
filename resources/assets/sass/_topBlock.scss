@@ -80,24 +80,26 @@
     justify-content: flex-start;
   }
   &-slider {
-    //display: none;
+    display: none;
     background: $sidebar;
     //margin: 10px;
     //box-shadow: 0 0 8px darken($sidebar, 20%);
     //grid-area: sidebar;
     transition: transform 0.5s 0s;
     @media (max-width: 480px) {
+    //display: inherit;
       position: fixed;
       width: 80vw;
       left: - 80vw;
       top: 0px;
       height: 100vh;
       max-height: 100vh;
+      display: flex;
+      flex-direction: column;
+
     }
     //margin-top: 52px;
     //background: lighten($sidebar, 10%);
-    display: flex;
-    flex-direction: column;
 
     & ul {
       @media (max-width: 480px) {
