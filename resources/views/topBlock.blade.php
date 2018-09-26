@@ -1,19 +1,4 @@
 <div class="top-block">
-    {{--<div class="top-block-slider">--}}
-        {{--<div class="top-block-slider-header">--}}
-
-        {{--</div>--}}
-        {{--<ul>--}}
-            {{--<li><a href="/">Главная</a></li>--}}
-            {{--@foreach($categories as $category)--}}
-                {{--<li><a href="{!! $category->url !!}">{!! $category->cat_name !!}</a></li>--}}
-            {{--@endforeach--}}
-        {{--</ul>--}}
-        {{--<div class="top-block-slider-footer">--}}
-
-        {{--</div>--}}
-
-    {{--</div>--}}
     <div class="top-block-content">
         <button id="top-block-button">
             <svg viewBox="0 0 30 30" data-reactid="14">
@@ -24,22 +9,31 @@
             </svg>
         </button>
         <a class="top-block-logo" href="/"></a>
+        <div class="top-block-top-categories">
+            <span>Лучшие категории</span>
+            <ul>
+                @foreach($topCategories as $category)
+                    <li><a href="{!! $category->url !!}">{!! $category->cat_name !!}</a></li>
+                @endforeach
+            </ul>
+        </div>
+        <div class="top-block-popular-categories">
+            <span>Популярные категори</span>
+        </div>
     </div>
-    @include('menu')
-    {{--<div class="sidebar">--}}
-        {{--<header class="sidebar-header">--}}
-            {{--<h1>Html5 игры на сайте</h1>--}}
-            {{--<a href="/"><img src="/img/site/logotype.png"></a>--}}
-        {{--</header>--}}
-        {{--<nav>--}}
-            {{--<header class="sidebat-nav-header">--}}
-                {{--<h1>навигация на сайте</h1>--}}
-            {{--</header>--}}
-            {{--@include('menu')--}}
-            {{--<footer class="sidebar-nav-footer">--}}
-                {{--<h1>удачной игры</h1>--}}
-            {{--</footer>--}}
-        {{--</nav>--}}
-    {{--</div>--}}
+
+    <div class="top-block-slider">
+        <div class="top-block-slider-header">
+
+        </div>
+        <ul>
+            <li><a href="/">Главная</a></li>
+            @foreach($categories as $category)
+                <li><a href="{!! $category->url !!}">{!! $category->cat_name !!}</a></li>
+            @endforeach
+        </ul>
+        <div class="top-block-slider-footer">
+        </div>
+    </div>
 </div>
 

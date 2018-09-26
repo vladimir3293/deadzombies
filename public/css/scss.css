@@ -184,10 +184,10 @@
 .description {
   max-width: 1250px;
   margin: 0 auto;
+  padding: 5px;
 }
 
 .description-container {
-  padding: 30px 0;
   background: #dff2fe;
 }
 
@@ -320,6 +320,10 @@
   width: 100%;
 }
 
+.new-games .game-card a {
+  background: #dff2fe;
+}
+
 .index-pagination {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -384,7 +388,7 @@
   margin: 0 auto;
 }
 
-@media (max-width: 480px) {
+@media (max-width: 768px) {
   .top-block {
     position: fixed;
     width: 100%;
@@ -434,10 +438,15 @@
   background-image: url("/img/site/brend.png");
   background-size: 180px 50px;
   background-repeat: no-repeat;
-  margin-right: auto;
-  margin-left: auto;
   width: 180px;
   height: 50px;
+}
+
+@media (max-width: 768px) {
+  .top-block-logo {
+    margin-right: auto;
+    margin-left: auto;
+  }
 }
 
 .top-block button {
@@ -465,6 +474,101 @@
           justify-content: flex-start;
 }
 
+.top-block-top-categories {
+  margin-left: auto;
+  background: #fff;
+  border-radius: 5px;
+  position: relative;
+}
+
+@media (max-width: 768px) {
+  .top-block-top-categories {
+    display: none;
+  }
+}
+
+.top-block-top-categories:last-child a {
+  border: 0px;
+}
+
+.top-block-top-categories ul {
+  position: absolute;
+  width: 173px;
+  top: 39px;
+  border-radius: 0 0 5px 5px;
+}
+
+.top-block-top-categories li {
+  list-style-type: none;
+}
+
+.top-block-top-categories li:last-child li {
+  background: red;
+  border: 0px;
+  border-radius: 5px;
+}
+
+.top-block-top-categories a {
+  color: #002b50;
+  background-color: white;
+  border-bottom: 1px solid #dfdfdf;
+  font-size: 1rem;
+  padding: 10px;
+  display: block;
+  text-decoration: none;
+  text-align: left;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  padding-left: 35px;
+}
+
+.top-block-top-categories span {
+  display: block;
+  color: #009cff;
+  font-size: 1rem;
+  margin: 9px;
+}
+
+.top-block-top-categories span:after {
+  content: "";
+  display: inline-block;
+  width: 0;
+  height: 0;
+  margin: 0 0 3px 10px;
+  border: 5px solid #b33d3d00;
+  border-bottom: 0;
+  border-top-color: #009cff;
+}
+
+.top-block-popular-categories {
+  margin-left: 6px;
+  background: #fff;
+  border-radius: 5px;
+}
+
+@media (max-width: 768px) {
+  .top-block-popular-categories {
+    display: none;
+  }
+}
+
+.top-block-popular-categories span {
+  display: block;
+  color: #009cff;
+  font-size: 1rem;
+}
+
+.top-block-popular-categories span:after {
+  content: "";
+  display: inline-block;
+  width: 0;
+  height: 0;
+  margin: 0 0 3px 10px;
+  border: 5px solid #b33d3d00;
+  border-bottom: 0;
+  border-top-color: #009cff;
+}
+
 .top-block-slider {
   display: none;
   background: #d7d4cb;
@@ -474,7 +578,7 @@
   transition: transform 0.5s 0s, -webkit-transform 0.5s 0s;
 }
 
-@media (max-width: 480px) {
+@media (max-width: 768px) {
   .top-block-slider {
     position: fixed;
     width: 80vw;
@@ -534,12 +638,6 @@
       flex-shrink: 0;
 }
 
-@media (min-width: 480px) {
-  .top-block-slider-header {
-    display: none;
-  }
-}
-
 .top-block-slider-footer {
   height: 52px;
   background: #009cff;
@@ -548,8 +646,8 @@
       flex-shrink: 0;
 }
 
-@media (min-width: 480px) {
-  .top-block-slider-footer {
+@media (min-width: 769px) {
+  #top-block-button {
     display: none;
   }
 }

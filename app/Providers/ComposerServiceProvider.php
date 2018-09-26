@@ -14,7 +14,7 @@ class ComposerServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        View::composer('menu', 'Deadzombies\Http\ViewComposers\MenuComposer');
+//        View::composer('menu', 'Deadzombies\Http\ViewComposers\MenuComposer');
         View::composer('topBlock', 'Deadzombies\Http\ViewComposers\TopBlockComposer');
 
         //View::composer('admin.menu', 'Deadzombies\Http\ViewComposers\AdminMenuComposer');
