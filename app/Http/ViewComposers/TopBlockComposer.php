@@ -5,6 +5,7 @@ namespace Deadzombies\Http\ViewComposers;
 
 
 use Deadzombies\Model\Category;
+use Illuminate\Database\Eloquent\Collection;
 use Illuminate\View\View;
 
 class TopBlockComposer
@@ -22,6 +23,18 @@ class TopBlockComposer
         $categories->each(function ($value) {
             $value->url = route('getCategory', ['cat' => $value->cat_url], false);
         });
-        $view->with('categories', $categories);
+        $topCategories = $this->category->limit(5)->get();
+        $topCategories->each(function ($value) {
+            $value->url = route('getCategory', ['cat' => $value->cat_url], false);
+        });
+        $popularCategories = $this->category->limit(5)->get();
+        $popularCategories->each(function ($value) {
+            $value->url = route('getCategory', ['cat' => $value->cat_url], false);
+        });
+        $view->with([
+            'categories'=> $categories,
+            'topCategories'=>$topCategories,
+            'popularCategories'=>$popularCategories,
+        ]);
     }
 }

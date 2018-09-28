@@ -3,14 +3,13 @@
 namespace Deadzombies\Http\Controllers;
 
 
-use Deadzombies\Model\Category;
 use Deadzombies\Model\Game;
 use Deadzombies\Model\Page;
 use Illuminate\Database\Eloquent\Collection;
 
 class IndexController extends Controller
 {
-    public function getIndex(Game $game, Page $page, Category $category)
+    public function getIndex(Game $game, Page $page)
     {
         //TODO transfer to model
         //TODO refactor img
@@ -53,14 +52,12 @@ class IndexController extends Controller
                 '/img/' . $game->game_url . '-large.jpg' :
                 '/img/site/empty.jpg';
         });
-        $topCategories = $category->limit(5)->get();
 
 
         return view('index', [
             'popularGames' => $popularGames,
             'newGames' => $newGames,
             'bestGames' => $bestGames,
-            'topCategories' => $topCategories,
         ]);
     }
 }

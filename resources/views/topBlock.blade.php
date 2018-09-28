@@ -19,6 +19,13 @@
         </div>
         <div class="top-block-popular-categories">
             <span>Популярные категори</span>
+            @if($popularCategories->isNotEmpty())
+                <ul>
+                    @foreach($popularCategories as $category)
+                        <li><a href="{!! $category->url !!}">{!! $category->cat_name !!}</a></li>
+                    @endforeach
+                </ul>
+            @endif
         </div>
     </div>
 

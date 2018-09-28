@@ -2,7 +2,7 @@
 @section('right_content')
     <h1><a href="{{ route('getCategory',[$category->cat_url]) }}" target="_blank">{{ $category->cat_name }}</a></h1>
     <div class="cat_edit_other">
-        <form class="cat_edit_form" method="POST" action="/admin/category/{{ $category->cat_url }}">
+        <form  class="cat_edit_form" enctype="multipart/form-data" method="POST" action="/admin/category/{{ $category->cat_url }}">
             {{ method_field('PUT') }}
             {{ csrf_field() }}
             <div class="form-group">
@@ -46,6 +46,11 @@
                 <label for="cat_desc">Описание</label>
                 <textarea id="cat_desc" class="form-control" rows="4" name="cat_desc"
                           class="cat_desc">{{ $category->cat_desc }}</textarea>
+            </div>
+            <div class="form-group">
+                <p>Изображение {{ $category->imgExist }}</p>
+                <img src="/img/categories/{{ $category->cat_url }}.jpg">
+                <input class="form-control" type="file" name="img">
             </div>
             <input class="btn btn-primary" type="submit" value="Изменить">
         </form>

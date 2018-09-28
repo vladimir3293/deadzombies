@@ -3,7 +3,6 @@
 @section('title',$game->game_name)
 
 @section('right_content')
-
     <h1><a href="{{ route('getGame',[$game->game_url])}}" target="_blank">{{$game->game_name }}</a></h1>
     <div class="game_edit">
         <div class="game_form">
@@ -85,6 +84,8 @@
                 </div>
                 <div class="form-group">
                     <p>Изображение {{ $game->imgExist }}</p>
+                    <img src="/img/{{ $game->game_url }}.jpg">
+
                     <input class="form-control" type="file" name="img">
                 </div>
                 <input class="btn btn-primary" type="submit" value="Применить">

@@ -9,6 +9,7 @@ use Deadzombies\Model\Tag;
 use Deadzombies\UrlGenerator\UrlGenerator;
 use Illuminate\Http\Request;
 use Deadzombies\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Storage;
 
 class CategoryController extends Controller
 {
@@ -84,6 +85,8 @@ class CategoryController extends Controller
     //todo only show games
     public function getCategory(Category $category, Game $game, Tag $tagModel)
     {
+        $category->imgExist = Storage::disk('pub')->exists("/img/categories/$category->cat_url.jpg") ? 'ЕСТЬ' : 'НЕТ';
+
         $tagsAll = $tagModel->orderBy('id', 'desc')->get();
         $tagsCategory = $category->tags()->orderBy('id', 'desc')->get();
         $tagsCount = $tagsCategory->count();
@@ -148,6 +151,10 @@ class CategoryController extends Controller
             $category->display = $request->display;
         }
         $category->save();
+
+        if (null !== $request->file('img')) {
+            $this->createImage($category->cat_url, $request->file('img'));
+        }
         //dd($request->only('cat_order', 'cat_desc', 'cat_rename', 'cat_title', 'cat_desc_meta',
         //    'cat_key_meta', 'cat_h1', 'cat_desc'));
         //dd($Category, $request);
@@ -165,5 +172,23 @@ class CategoryController extends Controller
         $category->delete();
         return redirect('admin');
 
+    }
+    public function createImage(string $url, $img, string $imgPrefix = '')
+    {
+        $old_size = getimagesize($img);
+
+        $small_size = imagecreatetruecolor(80, 56);
+        $medium_size = imagecreatetruecolor(220, 153);
+        $large_size = imagecreatetruecolor(385, 268);
+
+        $original = imagecreatefromjpeg($img);
+
+        imagecopyresampled($small_size, $original, 0, 0, 0, 0, 80, 56, $old_size[0], $old_size[1]);
+        imagecopyresampled($medium_size, $original, 0, 0, 0, 0, 220, 153, $old_size[0], $old_size[1]);
+        imagecopyresampled($large_size, $original, 0, 0, 0, 0, 385, 268, $old_size[0], $old_size[1]);
+
+        imagejpeg($small_size, public_path("/img/categories/$url$imgPrefix-small.jpg"));
+        imagejpeg($medium_size, public_path("/img/categories/$url$imgPrefix.jpg"));
+        imagejpeg($large_size, public_path("/img/categories/$url$imgPrefix-large.jpg"));
     }
 }
