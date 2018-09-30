@@ -27,21 +27,29 @@
   }
 
   & a {
+    & img {
+      width: 50px;
+      border-radius: 5px;
+    }
     color: $top-block;
     background-color: white;
     border-bottom: 1px solid #dfdfdf;
     font-size: 1rem;
     //margin: 5px;
     padding: 10px;
-    display: block;
+    display: flex;
+    align-items: center;
     text-decoration: none;
     text-align: left;
     text-overflow: ellipsis;
     overflow: hidden;
     //border-radius: 5px;
-    padding-left: 35px;
+    //padding-left: 35px;
+    & span{
+      margin-left: 10px;
+    }
   }
-  & span {
+  & > span {
     display: block;
     color: $top-block;
     font-size: 1rem;

@@ -84,8 +84,9 @@
                 </div>
                 <div class="form-group">
                     <p>Изображение {{ $game->imgExist }}</p>
-                    <img src="/img/{{ $game->game_url }}.jpg">
-
+                    @if($game->imgExist != 'НЕТ')
+                        <img src="/img/{{ $game->game_url }}.jpg">
+                    @endif
                     <input class="form-control" type="file" name="img">
                 </div>
                 <input class="btn btn-primary" type="submit" value="Применить">

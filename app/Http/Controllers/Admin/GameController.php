@@ -179,10 +179,10 @@ class GameController extends Controller
                 Storage::disk('pub')->move("/img/$Game->game_url.jpg", "/img/$newUrl.jpg");
             }
             if (Storage::disk('pub')->exists("/img/$Game->game_url-small.jpg")) {
-                Storage::disk('pub')->move("/img/$Game->game_url-small.jpg", "/img/$newUrl.jpg");
+                Storage::disk('pub')->move("/img/$Game->game_url-small.jpg", "/img/$newUrl-small.jpg");
             }
             if (Storage::disk('pub')->exists("/img/$Game->game_url-large.jpg")) {
-                Storage::disk('pub')->move("/img/$Game->game_url-large.jpg", "/img/$newUrl.jpg");
+                Storage::disk('pub')->move("/img/$Game->game_url-large.jpg", "/img/$newUrl-large.jpg");
             }
 
             $Game->game_url = $newUrl;

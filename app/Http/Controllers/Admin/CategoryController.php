@@ -137,10 +137,6 @@ class CategoryController extends Controller
             throw new CategoryUpdateException('Нельзя сделать категорию не отображаемой когда в ней есть отображаемые игры');
         }
 
-        if ($request->cat_rename) {
-            $category->cat_name = $request->cat_rename;
-            $category->cat_url = $urlGenerator->createUrl($category->cat_name);
-        }
         $category->cat_order = $request->cat_order;
         $category->cat_desc = $request->cat_desc;
         $category->cat_title = $request->cat_title;
@@ -150,14 +146,28 @@ class CategoryController extends Controller
         if ($category->display != $request->display) {
             $category->display = $request->display;
         }
-        $category->save();
+
 
         if (null !== $request->file('img')) {
             $this->createImage($category->cat_url, $request->file('img'));
         }
-        //dd($request->only('cat_order', 'cat_desc', 'cat_rename', 'cat_title', 'cat_desc_meta',
-        //    'cat_key_meta', 'cat_h1', 'cat_desc'));
-        //dd($Category, $request);
+
+        if ($request->cat_rename) {
+            $category->cat_name = $request->cat_rename;
+            $newUrl = $urlGenerator->createUrl($category->cat_name);
+
+            if (Storage::disk('pub')->exists("/img/categories/$category->cat_url.jpg")) {
+                Storage::disk('pub')->move("/img/categories/$category->cat_url.jpg", "/img/categories/$newUrl.jpg");
+            }
+            if (Storage::disk('pub')->exists("/img/categories/$category->cat_url-small.jpg")) {
+                Storage::disk('pub')->move("/img/categories/$category->cat_url-small.jpg", "/img/categories/$newUrl-small.jpg");
+            }
+            if (Storage::disk('pub')->exists("/img/categories/$category->cat_url-large.jpg")) {
+                Storage::disk('pub')->move("/img/categories/$category->cat_url-large.jpg", "/img/categories/$newUrl-large.jpg");
+            }
+            $category->cat_url = $newUrl;
+        }
+        $category->save();
         return redirect()->route('admin.getCategory', [$category]);
     }
 
@@ -173,6 +183,7 @@ class CategoryController extends Controller
         return redirect('admin');
 
     }
+
     public function createImage(string $url, $img, string $imgPrefix = '')
     {
         $old_size = getimagesize($img);

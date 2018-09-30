@@ -23,11 +23,14 @@ class TopBlockComposer
         $categories->each(function ($value) {
             $value->url = route('getCategory', ['cat' => $value->cat_url], false);
         });
-        $topCategories = $this->category->limit(5)->get();
-        $topCategories->each(function ($value) {
-            $value->url = route('getCategory', ['cat' => $value->cat_url], false);
+        $topCategories = $this->category->where('display',true)->limit(5)->get();
+        $topCategories->each(function ($category) {
+            $category->url = route('getCategory', ['cat' => $category->cat_url], false);
+            $category->img = file_exists(public_path() . '/img/categories/' . $category->cat_url . '.jpg') ?
+                '/img/categories/' . $category->cat_url . '.jpg' :
+                '/img/site/empty.jpg';
         });
-        $popularCategories = $this->category->limit(5)->get();
+        $popularCategories = $this->category->where('display',true)->limit(5)->get();
         $popularCategories->each(function ($value) {
             $value->url = route('getCategory', ['cat' => $value->cat_url], false);
         });
