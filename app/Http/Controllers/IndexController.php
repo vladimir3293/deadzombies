@@ -3,13 +3,14 @@
 namespace Deadzombies\Http\Controllers;
 
 
+use Deadzombies\Model\Category;
 use Deadzombies\Model\Game;
 use Deadzombies\Model\Page;
 use Illuminate\Database\Eloquent\Collection;
 
 class IndexController extends Controller
 {
-    public function getIndex(Game $game, Page $page)
+    public function getIndex(Game $game, Category $categoryModel)
     {
         //TODO transfer to model
         //TODO refactor img
@@ -52,12 +53,26 @@ class IndexController extends Controller
                 '/img/' . $game->game_url . '-large.jpg' :
                 '/img/site/empty.jpg';
         });
+        $categories = $categoryModel->where('display',true)->limit(1)->get();
+        $categories->each(function ($category) {
+            $category->url = route('getCategory', ['cat' => $category->cat_url], false);
+            $category->img = file_exists(public_path() . '/img/categories/' . $category->cat_url . '.jpg') ?
+                '/img/categories/' . $category->cat_url . '.jpg' :
+                '/img/site/empty.jpg';
+            $category->tags->each(function ($tag) {
+                $tag->fullUrl = route('getTag', ['tag' => $tag->url], false);
+                $tag->img = file_exists(public_path() . '/img/categories/' . $tag->url . '.jpg') ?
+                    '/img/categories/' . $tag->cat_url . '.jpg' :
+                    '/img/site/empty.jpg';
+            });
+        });
 
 
         return view('index', [
             'popularGames' => $popularGames,
             'newGames' => $newGames,
             'bestGames' => $bestGames,
+            'categories' => $categories,
         ]);
     }
 }

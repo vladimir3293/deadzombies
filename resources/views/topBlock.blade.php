@@ -13,7 +13,9 @@
             <span>Лучшие категории</span>
             <ul>
                 @foreach($topCategories as $category)
-                    <li><a href="{!! $category->url !!}"><img src="{{ $category->img }}"><span>{!! $category->cat_name !!}</span></a>
+                    <li>
+                        <a href="{!! $category->url !!}"><img
+                                    src="{{ $category->img }}"><span>{!! $category->cat_name !!}</span></a>
                     </li>
                 @endforeach
             </ul>
@@ -23,7 +25,10 @@
             @if($popularCategories->isNotEmpty())
                 <ul>
                     @foreach($popularCategories as $category)
-                        <li><a href="{!! $category->url !!}">{!! $category->cat_name !!}</a></li>
+                        <li>
+                            <a href="{!! $category->url !!}"><img
+                                        src="{{ $category->img }}"><span>{!! $category->cat_name !!}</span></a>
+                        </li>
                     @endforeach
                 </ul>
             @endif

@@ -31,8 +31,11 @@ class TopBlockComposer
                 '/img/site/empty.jpg';
         });
         $popularCategories = $this->category->where('display',true)->limit(5)->get();
-        $popularCategories->each(function ($value) {
-            $value->url = route('getCategory', ['cat' => $value->cat_url], false);
+        $popularCategories->each(function ($category) {
+            $category->url = route('getCategory', ['cat' => $category->cat_url], false);
+            $category->img = file_exists(public_path() . '/img/categories/' . $category->cat_url . '.jpg') ?
+                '/img/categories/' . $category->cat_url . '.jpg' :
+                '/img/site/empty.jpg';
         });
         $view->with([
             'categories'=> $categories,

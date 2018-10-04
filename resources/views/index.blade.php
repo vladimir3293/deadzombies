@@ -50,6 +50,32 @@
             </div>
         </div>
     @endif
+    @if($categories->isNotEmpty())
+        <div class="categories-container">
+            <div class="categories">
+                <div class="header-article">
+                    <h1>Категории</h1>
+                </div>
+                <ul class="categories-list">
+                    @foreach($categories as $category)
+                        <li>
+                            <a href="{!! $category->url !!}"><img
+                                        src="{{ $category->img }}"><span>{!! $category->cat_name !!}</span></a>
+
+                            <ul class="categories-list-subcategories">
+                                @foreach($category->tags as $tag)
+                                    <a href="{!! $tag->fullUrl !!}"><img
+                                                src="{{ $tag->img }}"><span>{!! $tag->name !!}</span></a>
+
+                                @endforeach
+                            </ul>
+                        </li>
+                    @endforeach
+                </ul>
+            </div>
+        </div>
+    @endif
+
     <div class="description-container">
         <div class="description">
             <h1>Free online games</h1>
