@@ -183,7 +183,7 @@ class CategoryController extends Controller
         return redirect('admin');
 
     }
-
+//WTFFFFFF
     public function createImage(string $url, $img, string $imgPrefix = '')
     {
         $old_size = getimagesize($img);

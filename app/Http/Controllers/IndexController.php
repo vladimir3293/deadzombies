@@ -61,8 +61,8 @@ class IndexController extends Controller
                 '/img/site/empty.jpg';
             $category->tags->each(function ($tag) {
                 $tag->fullUrl = route('getTag', ['tag' => $tag->url], false);
-                $tag->img = file_exists(public_path() . '/img/categories/' . $tag->url . '.jpg') ?
-                    '/img/categories/' . $tag->cat_url . '.jpg' :
+                $tag->img = file_exists(public_path() . '/img/tags/' . $tag->url . '.jpg') ?
+                    '/img/tags/' . $tag->url . '.jpg' :
                     '/img/site/empty.jpg';
             });
         });

@@ -8,6 +8,7 @@ use Deadzombies\UrlGenerator\UrlGenerator;
 use Illuminate\Http\Request;
 use Deadzombies\Http\Controllers\Controller;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Storage;
 
 class TagController extends Controller
 {
@@ -67,9 +68,21 @@ class TagController extends Controller
         $tag->meta_desc = $request->tagMetaDesc;
         $tag->meta_key = $request->tagMetaKey;
         $tag->description = $request->tagDesc;
+        if (null !== $request->file('img')) {
+            $this->createImage($tag->url, $request->file('img'));
+        }
         if ($request->tagRename) {
             $tag->name = $request->tagRename;
             $newUrl = $urlGenerator->createUrl($request->tagRename);
+            if (Storage::disk('pub')->exists("/img/tags/$tag->url.jpg")) {
+                Storage::disk('pub')->move("/img/tags/$tag->url.jpg", "/img/tags/$newUrl.jpg");
+            }
+            if (Storage::disk('pub')->exists("/img/tags/$tag->url-small.jpg")) {
+                Storage::disk('pub')->move("/img/tags/$tag->url-small.jpg", "/img/tags/$newUrl-small.jpg");
+            }
+            if (Storage::disk('pub')->exists("/img/tags/$tag->url-large.jpg")) {
+                Storage::disk('pub')->move("/img/tags/$tag->url-large.jpg", "/img/tags/$newUrl-large.jpg");
+            }
             $tag->url = $newUrl;
         }
         if ($tag->display != $request->display) {
@@ -87,6 +100,8 @@ class TagController extends Controller
         $games = $Tag->game()->orderBy('id', 'desc')->get();
         $belongTag = $Tag->belongTag()->orderBy('id', 'desc')->get();
         $tagsAll = $Tag->orderBy('id', 'desc')->get();
+        $Tag->imgExist = Storage::disk('pub')->exists("/img/tags/$Tag->url.jpg") ? 'ЕСТЬ' : 'НЕТ';
+
         //dd($Tag->belongTag);
         return view('admin.tag.tag', [
             'tag' => $Tag,
@@ -121,5 +136,25 @@ class TagController extends Controller
         $tagsAll = $tagModel->orderBy('id', 'desc')->simplePaginate(100);
         $tagsCount = $tagModel->get()->count();
         return view('admin.tag.all', ['tags' => $tagsAll, 'tagsCount' => $tagsCount]);
+    }
+
+    //WTFFFFFF
+    public function createImage(string $url, $img, string $imgPrefix = '')
+    {
+        $old_size = getimagesize($img);
+
+        $small_size = imagecreatetruecolor(80, 56);
+        $medium_size = imagecreatetruecolor(220, 153);
+        $large_size = imagecreatetruecolor(385, 268);
+
+        $original = imagecreatefromjpeg($img);
+
+        imagecopyresampled($small_size, $original, 0, 0, 0, 0, 80, 56, $old_size[0], $old_size[1]);
+        imagecopyresampled($medium_size, $original, 0, 0, 0, 0, 220, 153, $old_size[0], $old_size[1]);
+        imagecopyresampled($large_size, $original, 0, 0, 0, 0, 385, 268, $old_size[0], $old_size[1]);
+
+        imagejpeg($small_size, public_path("/img/tags/$url$imgPrefix-small.jpg"));
+        imagejpeg($medium_size, public_path("/img/tags/$url$imgPrefix.jpg"));
+        imagejpeg($large_size, public_path("/img/tags/$url$imgPrefix-large.jpg"));
     }
 }

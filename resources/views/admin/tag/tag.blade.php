@@ -53,6 +53,13 @@
                     <textarea class="form-control" id="game_desc" name="tagDesc" class="game_desc"
                               rows="4">{{ $tag->description }}</textarea>
                 </div>
+                <div class="form-group">
+                    <p>Изображение {{ $tag->imgExist }}</p>
+                    @if($tag->imgExist != 'НЕТ')
+                        <img src="/img/tags/{{ $tag->url }}.jpg">
+                    @endif
+                    <input class="form-control" type="file" name="img">
+                </div>
                 <input class="btn btn-primary" type="submit" value="Изменить">
             </form>
         </div>
