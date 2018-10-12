@@ -58,6 +58,7 @@
                 </div>
 
                 @foreach($categories as $category)
+                    <h1>{{ $category->cat_name }}</h1>
                     {{--<div class="category-list">--}}
                     <ul class="categories-list">
                         <li class="categories-list-category">

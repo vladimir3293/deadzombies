@@ -3,6 +3,7 @@
 namespace Deadzombies\Http\Controllers\Admin;
 
 use Deadzombies\Exceptions\CategoryUpdateException;
+use Deadzombies\Exceptions\TagDuplicateException;
 use Deadzombies\Model\Category;
 use Deadzombies\Model\Game;
 use Deadzombies\Model\Tag;
@@ -50,6 +51,9 @@ class CategoryController extends Controller
 
     public function postCategoryTag(Category $Category, Request $request, Tag $tagModel)
     {
+        if ($Category->tags()->where('tags.id', $request->tagId)->get()->isNotEmpty()) {
+            throw new TagDuplicateException('Такой тег уже присвоен игре');
+        }
         $tag = $tagModel->where('id', $request->tagId)->get()->first();
         //dd($Game, $request);
         $Category->tags()->save($tag);

@@ -53,7 +53,7 @@ class IndexController extends Controller
                 '/img/' . $game->game_url . '-large.jpg' :
                 '/img/site/empty.jpg';
         });
-        $categories = $categoryModel->where('display',true)->limit(1)->get();
+        $categories = $categoryModel->where('display',true)->get();
         $categories->each(function ($category) {
             $category->url = route('getCategory', ['cat' => $category->cat_url], false);
             $category->img = file_exists(public_path() . '/img/categories/' . $category->cat_url . '.jpg') ?

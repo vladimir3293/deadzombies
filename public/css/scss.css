@@ -148,7 +148,7 @@
 
 .game-container {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
   grid-column-gap: 10px;
   grid-row-gap: 10px;
 }
@@ -162,7 +162,7 @@
 
 @media (max-width: 480px) {
   .game-container {
-    grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+    grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
   }
 }
 
@@ -206,7 +206,7 @@
       -ms-flex-align: stretch;
           align-items: stretch;
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(150px, 200px));
+  grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
   grid-column-gap: 5px;
   grid-row-gap: 5px;
 }
@@ -228,7 +228,6 @@
 }
 
 .categories-list-category a {
-  height: 120px;
   color: #002b50;
   background-color: white;
   border-bottom: 1px solid #dfdfdf;
@@ -1021,6 +1020,12 @@
 .index-footer img {
   height: 80px;
   width: 80px;
+}
+
+.category {
+  display: grid;
+  grid-template-columns: auto 300px;
+  grid-template-rows: auto auto;
 }
 
 body,
