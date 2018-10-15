@@ -27,9 +27,9 @@
     </header>
     <div class="content">
         @yield('content')
-        <div class="go-top">
-            <a href="#">наверх</a>
-        </div>
+        {{--<div class="go-top">--}}
+            {{--<a href="#">наверх</a>--}}
+        {{--</div>--}}
     </div>
     <div class="footer-wrapper">
         <footer class="footer">

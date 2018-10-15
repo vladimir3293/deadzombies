@@ -1,5 +1,145 @@
 .category {
+  &-container {
+    background: $section-bg1;
+  }
+  max-width: $content-width;
+  margin: 0 auto;
   display: grid;
   grid-template-columns: auto 300px;
   grid-template-rows: auto auto;
+  grid-template-areas: "breadcrumbs breadcrumbs" "header header" "game-container sidebar" "description description";
+  grid-column-gap: 10px;
+  grid-row-gap: 10px;
+}
+
+.category-header {
+  grid-area: header;
+}
+
+.category-breadcrumbs {
+  grid-area: breadcrumbs;
+}
+
+.category-sidebar {
+  grid-area: sidebar;
+}
+
+//TODO mixin or placeholder
+.category-relation{
+  margin-bottom: 10px;
+  ul {
+    border-radius: 0 0 5px 5px;
+  }
+  & li {
+    list-style-type: none;
+    &:last-child a {
+      border-radius: 0px 0px 5px 5px;
+    }
+  }
+  & a {
+    & img {
+      width: 50px;
+      border-radius: 5px;
+    }
+    color: $top-block;
+    background-color: white;
+    border-bottom: 1px solid #dfdfdf;
+    font-size: 1rem;
+    //margin: 5px;
+    padding: 5px;
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+    text-align: left;
+    //text-overflow: ellipsis;
+    //overflow: hidden;
+    //border-radius: 5px;
+    //padding-left: 35px;
+    & span {
+      margin-left: 10px;
+      white-space: nowrap;
+      text-overflow: ellipsis;
+      overflow: hidden;
+    }
+  }
+  & > span {
+    display: block;
+    //font-weight: 600;
+    color: $section-bg1;
+    background-color: $top-block;
+    font-size: 1rem;
+    padding: 10px;
+    border-radius: 5px 5px 0 0;
+  }
+}
+.category-new-games {
+  ul {
+      border-radius: 0 0 5px 5px;
+  }
+  & li {
+    list-style-type: none;
+    &:last-child a {
+      border-radius: 0px 0px 5px 5px;
+    }
+  }
+  & a {
+    & img {
+      width: 50px;
+      border-radius: 5px;
+    }
+    color: $top-block;
+    background-color: white;
+    border-bottom: 1px solid #dfdfdf;
+    font-size: 1rem;
+    //margin: 5px;
+    padding: 5px;
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+    text-align: left;
+    //text-overflow: ellipsis;
+    //overflow: hidden;
+    //border-radius: 5px;
+    //padding-left: 35px;
+    & span {
+      margin-left: 10px;
+      white-space: nowrap;
+      text-overflow: ellipsis;
+      overflow: hidden;
+    }
+  }
+  & > span {
+    display: block;
+    //font-weight: 600;
+    color: $section-bg1;
+    background-color: $top-block;
+    font-size: 1rem;
+    padding: 10px;
+    border-radius: 5px 5px 0 0;
+  }
+}
+
+//todo mixin or placeholder with main game-container
+.category-games {
+  grid-area: game-container;
+
+}
+
+.category-game-container {
+  @media (max-width: 1250px) {
+    margin-left: 10px;
+    margin-right: 10px;
+  }
+  @media (max-width: 480px) {
+    grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+  }
+
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  grid-column-gap: 10px;
+  grid-row-gap: 10px;
+}
+
+.category-description {
+  grid-area: description;
 }

@@ -59,7 +59,8 @@ class IndexController extends Controller
             $category->img = file_exists(public_path() . '/img/categories/' . $category->cat_url . '.jpg') ?
                 '/img/categories/' . $category->cat_url . '.jpg' :
                 '/img/site/empty.jpg';
-            $category->tags->each(function ($tag) {
+            $category->tagsDisplayed = $category->tags()->where('display',true)->get();
+            $category->tagsDisplayed->each(function ($tag) {
                 $tag->fullUrl = route('getTag', ['tag' => $tag->url], false);
                 $tag->img = file_exists(public_path() . '/img/tags/' . $tag->url . '.jpg') ?
                     '/img/tags/' . $tag->url . '.jpg' :

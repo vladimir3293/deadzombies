@@ -56,6 +56,9 @@
 }
 
 .categories {
+  @media (max-width: 480px) {
+    grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+  }
   max-width: $content-width;
   margin: 0 auto;
   &-list {
@@ -70,7 +73,7 @@
     }
     align-items: stretch;
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
     grid-column-gap: 5px;
     grid-row-gap: 5px;
     //grid-auto-flow: column;
@@ -90,6 +93,11 @@
           width: 100%;
           height: 100px;
           border-radius: 5px;
+        }
+        & span{
+          white-space: nowrap;
+          text-overflow: ellipsis;
+          overflow: hidden;
         }
         color: $link-color;
         background-color: white;
@@ -115,6 +123,11 @@
           width: 70px;
           border-radius: 5px;
           height: 50px;
+        }
+        & span{
+          white-space: nowrap;
+          text-overflow: ellipsis;
+          overflow: hidden;
         }
         color: $link-color;
         background-color: $body;
@@ -176,8 +189,7 @@
 
 .header-article h1 {
   font-size: 24px;
-  //color: $nav-ul;
-
+  padding: 5px;
 }
 
 .box {

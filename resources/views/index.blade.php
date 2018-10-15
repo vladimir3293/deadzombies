@@ -65,7 +65,7 @@
                             <a href="{!! $category->url !!}"><img
                                         src="{{ $category->img }}"><span>{!! $category->cat_name !!}</span></a>
                         </li>
-                        @foreach($category->tags as $tag)
+                        @foreach($category->tagsDisplayed as $tag)
                             <li class="categories-list-subcategory">
                                 <a href="{!! $tag->fullUrl !!}"><img
                                             src="{{ $tag->img }}"><span>{!! $tag->name !!}</span></a>
