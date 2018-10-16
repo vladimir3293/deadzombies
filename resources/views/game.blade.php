@@ -2,12 +2,12 @@
 
 @section('title',$game->game_title)
 
-@section('description', $category->cat_desc_meta)
+@section('description', $game->game_desc_meta)
 
-@section('keywords',$category->cat_key_meta)
+@section('keywords',$game->game_key_meta)
 
-@section('right_content')
-    <article>
+@section('content')
+    <article class="game-wrap">
         <div class="game">
             <header class="header-article">
                 <h1>{{ $game->game_name }}</h1>

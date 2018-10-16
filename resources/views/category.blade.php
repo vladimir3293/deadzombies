@@ -10,20 +10,19 @@
     <div class="category-container">
         <article class="category">
             <div class="category-breadcrumbs">
-                <a href="#">Test</a>
-                <a href="#">Test</a>
-                <a href="#">Test</a>
+                <a href="/">Игры</a>
+                <span>{{ $category->cat_name }}</span>
             </div>
 
             <header class="category-header">
                 <h1>{{ $category->cat_name }}</h1>
             </header>
             <div class="category-games">
-                @if(isset($games))
+                @if($category->gamesDisplayed->isNotEmpty())
                     <div class="category-game-container">
-                        @include('gameCard')
+                        @include('gameCard',['games'=>$category->gamesDisplayed])
                     </div>
-                    {{ $games->links('vendor.pagination.simpleIndexPage') }}
+                    {{ $category->gamesDisplayed->links('vendor.pagination.simpleIndexPage') }}
                 @endif
             </div>
 
@@ -32,7 +31,7 @@
             </div>
             <div class="category-sidebar">
                 <div class="category-relation">
-                    <span>Подкатегории:</span>
+                    <span>Похожие категории:</span>
                     @if($category->tagsDisplayed->isNotEmpty())
                         <ul class="category-tags">
 
@@ -47,7 +46,7 @@
                 </div>
                 @if($category->newGames->isNotEmpty())
                     <div class="category-new-games">
-                        <span>Новые игры</span>
+                        <span>Новые игры:</span>
                         @if($category->newGames->isNotEmpty())
                             <ul>
                                 @foreach($category->newGames as $game)

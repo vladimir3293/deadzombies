@@ -4,6 +4,7 @@ namespace Deadzombies\Parser;
 
 use Sunra\PhpSimple\HtmlDomParser;
 
+//TODO parse one game
 class Parser
 {
     private $parseLib;

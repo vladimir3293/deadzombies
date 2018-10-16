@@ -10,71 +10,95 @@
   grid-template-areas: "breadcrumbs breadcrumbs" "header header" "game-container sidebar" "description description";
   grid-column-gap: 10px;
   grid-row-gap: 10px;
-}
-
-.category-header {
-  grid-area: header;
-}
-
-.category-breadcrumbs {
-  grid-area: breadcrumbs;
-}
-
-.category-sidebar {
-  grid-area: sidebar;
-}
-
-//TODO mixin or placeholder
-.category-relation{
-  margin-bottom: 10px;
-  ul {
-    border-radius: 0 0 5px 5px;
-  }
-  & li {
-    list-style-type: none;
-    &:last-child a {
-      border-radius: 0px 0px 5px 5px;
-    }
-  }
-  & a {
-    & img {
-      width: 50px;
-      border-radius: 5px;
-    }
-    color: $top-block;
-    background-color: white;
-    border-bottom: 1px solid #dfdfdf;
+  &-header {
+    grid-area: header;
     font-size: 1rem;
-    //margin: 5px;
-    padding: 5px;
-    display: flex;
-    align-items: center;
-    text-decoration: none;
-    text-align: left;
-    //text-overflow: ellipsis;
-    //overflow: hidden;
-    //border-radius: 5px;
-    //padding-left: 35px;
+  }
+  &-breadcrumbs {
+    & a {
+      color: $top-block;
+      text-decoration: none;
+
+    }
     & span {
-      margin-left: 10px;
-      white-space: nowrap;
-      text-overflow: ellipsis;
-      overflow: hidden;
+      &:before {
+        content: "\203A  ";
+      }
+    }
+    grid-area: breadcrumbs;
+    background: $body;
+    padding: 10px 10px 10px 20px;
+    font-size: 1rem;
+    border-radius: 5px;
+    margin-top: 10px;
+  }
+  &-sidebar {
+    grid-area: sidebar;
+  }
+  //TODO mixin or placeholder
+  &-relation {
+    margin-bottom: 10px;
+    ul {
+      border-radius: 0 0 5px 5px;
+    }
+    & li {
+      list-style-type: none;
+      &:last-child a {
+        border-radius: 0px 0px 5px 5px;
+      }
+    }
+    & a {
+      & img {
+        width: 50px;
+        border-radius: 5px;
+      }
+      color: $top-block;
+      background-color: white;
+      border-bottom: 1px solid #dfdfdf;
+      font-size: 1rem;
+      //margin: 5px;
+      padding: 5px;
+      display: flex;
+      align-items: center;
+      text-decoration: none;
+      text-align: left;
+      //text-overflow: ellipsis;
+      //overflow: hidden;
+      //border-radius: 5px;
+      //padding-left: 35px;
+      & span {
+        margin-left: 10px;
+        white-space: nowrap;
+        text-overflow: ellipsis;
+        overflow: hidden;
+      }
+    }
+    & > span {
+      display: block;
+      //font-weight: 600;
+      color: $section-bg1;
+      background-color: $top-block;
+      font-size: 1rem;
+      padding: 10px;
+      border-radius: 5px 5px 0 0;
     }
   }
-  & > span {
-    display: block;
-    //font-weight: 600;
-    color: $section-bg1;
-    background-color: $top-block;
-    font-size: 1rem;
-    padding: 10px;
-    border-radius: 5px 5px 0 0;
+  &-description {
+    grid-area: description;
+    color: $content-color;
+    margin: 30px 0px 30px 0px;
+    text-align: justify;
+    background: $body;
+    border-radius: 5px;
+    padding: 20px;
+    font-weight: 600;
+    font-size: 0.8rem;
   }
 }
+
 .category-new-games {
   ul {
-      border-radius: 0 0 5px 5px;
+    border-radius: 0 0 5px 5px;
   }
   & li {
     list-style-type: none;
@@ -138,8 +162,4 @@
   grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
   grid-column-gap: 10px;
   grid-row-gap: 10px;
-}
-
-.category-description {
-  grid-area: description;
 }
