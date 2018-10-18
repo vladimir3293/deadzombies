@@ -4,32 +4,16 @@
 }
 
 .game-img img {
-  width: 100%;
+  //width: 100%;
 }
 
 .game-img {
   padding: 10px;
 }
 
-.game-play-button{
-  margin: 0 auto 10px auto;
-  width: 50%;
-  text-align: center;
-}
-.game-play-button a {
-  //width: 70%;
-  display: block;
-  //width: 60px;
-  text-decoration: none;
-  padding: 10px;
-  color: white;
-  background: red;
-  border-radius: 5px;
-  font-weight: 600;
-  font-size: 1.2rem;
-}
 
-.breadcrumb {
+
+.game-breadcrumb {
   border-radius: 5px;
   background-color: $body;
   border: 1px solid darken($body, 5%);
@@ -59,7 +43,7 @@
   }
 }
 
-.like {
+.game-like {
   margin-left: 10px;
   & span {
     font-size: 14px;

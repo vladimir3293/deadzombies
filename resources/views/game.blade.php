@@ -9,32 +9,38 @@
 @section('content')
     <article class="game-wrap">
         <div class="game">
-            <header class="header-article">
+            <header class="game-header">
                 <h1>{{ $game->game_name }}</h1>
             </header>
-            <div class="like">
-                <img src="/img/site/like.png" alt="How many people like this game" title="like button">
-                <span id="like_value">{{ $game->game_like }}</span>
-                <button id="like" data-id="{{ $game->game_id }}">LIKE</button>
+            <div class="game-block">
+                @if($gamesSimilar->isNotEmpty())
+                    @include('gameCard',['games'=>$gamesSimilar])
+                @endif
+                <div class="game-box">
+                    <div class="game-box-img">
+                        <img src="/img/{{ $game->game_url }}.jpg">
+                    </div>
+                    <div class="game-box-play">
+                        <a href="#">ИГРАТЬ</a>
+                    </div>
+                </div>
             </div>
-            <div class="game-img">
-                <img src="/img/{{ $game->game_url }}.jpg">
-            </div>
-            <div class="game-play-button">
-                <a href="#">ИГРАТЬ</a>
-            </div>
-            <div class="text-block">
+            <div class="game-description">
                 {!! $game->descWithP !!}
             </div>
 
-            <div class="breadcrumb">
+            <div class="game-breadcrumb">
                 <span>ВЕРНУТЬСЯ:</span>
                 <a href="/">Главная</a>
                 @if(isset($game->categoryUrl))
                     <a href="{{ $game->categoryUrl }}">{{ $game->cat_name }}</a>
                 @endif
             </div>
-
+            <div class="game-like">
+                <img src="/img/site/like.png" alt="How many people like this game" title="like button">
+                <span id="like_value">{{ $game->game_like }}</span>
+                <button id="like" data-id="{{ $game->game_id }}">LIKE</button>
+            </div>
 
 
             {{--<div class="flash">--}}
