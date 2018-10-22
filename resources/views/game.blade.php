@@ -26,6 +26,7 @@
                 </div>
             </div>
             <div class="game-description">
+                <h2>Описание игры:</h2>
                 {!! $game->descWithP !!}
             </div>
 

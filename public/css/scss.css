@@ -400,7 +400,8 @@
 }
 
 .game-card span {
-  padding: 0 7px;
+  display: inline-block;
+  padding: 3px 7px 3px 7px;
   font-size: 0.9rem;
   white-space: nowrap;
 }
@@ -1222,6 +1223,10 @@
   grid-template-columns: repeat(7, minmax(100px, 200px));
   grid-column-gap: 10px;
   grid-row-gap: 10px;
+  justify-items: stretch;
+  -webkit-box-align: stretch;
+      -ms-flex-align: stretch;
+          align-items: stretch;
 }
 
 .game-box {
@@ -1233,7 +1238,7 @@
 .game-box-img img {
   display: block;
   width: 95%;
-  margin: 0px auto 0 auto;
+  margin: 0px auto 10px auto;
 }
 
 .game-box-play {

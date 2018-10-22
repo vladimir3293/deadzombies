@@ -19,6 +19,8 @@
     //grid-template-rows: auto auto;
     grid-column-gap: 10px;
     grid-row-gap: 10px;
+    justify-items: stretch;
+    align-items: stretch;
 
   }
   &-box {
@@ -29,7 +31,7 @@
     &-img img {
       display: block;
       width: 95%;
-      margin: 0px auto 0 auto;
+      margin: 0px auto 10px auto;
     }
     &-play {
       margin: 0 auto 0px auto;

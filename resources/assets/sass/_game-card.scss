@@ -6,7 +6,8 @@
   border-radius: 5px;
   align-self: stretch;
   & span {
-    padding: 0 7px;
+    display: inline-block;
+    padding: 3px 7px 3px 7px;
     font-size: 0.9rem;
     white-space: nowrap;
   }
