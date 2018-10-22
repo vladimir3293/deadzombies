@@ -1211,9 +1211,13 @@
 
 .game-header {
   font-size: 1rem;
+  margin-top: 10px;
+  margin-bottom: 10px;
 }
 
 .game-block {
+  max-width: 950px;
+  margin: 0 auto;
   display: grid;
   grid-template-columns: repeat(7, minmax(100px, 200px));
   grid-column-gap: 10px;
@@ -1224,11 +1228,12 @@
   grid-row: 1/5;
   grid-column: 2/7;
   width: 100%;
-  margin: 0 auto 0 auto;
 }
 
 .game-box-img img {
-  width: 100%;
+  display: block;
+  width: 95%;
+  margin: 0px auto 0 auto;
 }
 
 .game-box-play {

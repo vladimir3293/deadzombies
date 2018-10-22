@@ -26,7 +26,13 @@ class GameController
         $game->tagsDisplayed = $game->tags()->where('display', true)->get();
         $game->descWithP = '<p>' . str_replace(array("\r\n", "\r", "\n"), '</p><p>', $game->game_desc) . '</p>';
         $game->gameControlWithP = '<p>' . str_replace(array("\r\n", "\r", "\n"), '</p><p>', $game->game_control) . '</p>';
+        //TODO select logic
         $gamesSimilar = $game->where('game_show', true)->limit(15)->get();
+        $gamesSimilar->first(function ($game) {
+            $game->img = file_exists(public_path() . '/img/' . $game->game_url . '.jpg') ?
+                '/img/' . $game->game_url . '-large.jpg' :
+                '/img/site/empty.jpg';
+        });
         //dd($game->descWithP);
         //echo $game->descWithP;
         //$Game->categoryUrl = route('getCat', $Category->cat_url);

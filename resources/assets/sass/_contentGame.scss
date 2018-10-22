@@ -6,8 +6,12 @@
   margin: 0 auto;
   &-header {
     font-size: 1rem;
+    margin-top: 10px;
+    margin-bottom: 10px;
   }
   &-block {
+    max-width: $content-width - 300px;
+    margin: 0 auto;
     display: grid;
     //grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
 
@@ -21,9 +25,11 @@
     grid-row: 1/5;
     grid-column: 2/7;
     width: 100%;
-    margin: 0 auto 0 auto;
+    //margin: 0 auto 0 auto;
     &-img img {
-      width: 100%;
+      display: block;
+      width: 95%;
+      margin: 0px auto 0 auto;
     }
     &-play {
       margin: 0 auto 0px auto;
