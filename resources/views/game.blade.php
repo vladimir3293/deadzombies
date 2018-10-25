@@ -27,22 +27,26 @@
             </div>
             <div class="game-description">
                 <h2>Описание игры:</h2>
+                <div class="game-breadcrumb">
+                    <a href="/">Игры</a>
+                    <a href="{{ $game->categoryUrl }}">{{ $game->category->cat_name }}</a>
+                    <span>{{ $game->game_name }}</span>
+                </div>
+                @if($game->tagsDisplayed->isNotEmpty())
+                    <div class="game-tags">
+                        @foreach($game->tagsDisplayed as $tag)
+                            <a href="{{ route('getTag',[$tag->url],false) }}">{{ $tag->name }}</a>
+                        @endforeach
+                    </div>
+                @endif
                 {!! $game->descWithP !!}
             </div>
 
-            <div class="game-breadcrumb">
-                <span>ВЕРНУТЬСЯ:</span>
-                <a href="/">Главная</a>
-                @if(isset($game->categoryUrl))
-                    <a href="{{ $game->categoryUrl }}">{{ $game->cat_name }}</a>
-                @endif
-            </div>
-            <div class="game-like">
-                <img src="/img/site/like.png" alt="How many people like this game" title="like button">
-                <span id="like_value">{{ $game->game_like }}</span>
-                <button id="like" data-id="{{ $game->game_id }}">LIKE</button>
-            </div>
-
+            {{--<div class="game-like">--}}
+            {{--<img src="/img/site/like.png" alt="How many people like this game" title="like button">--}}
+            {{--<span id="like_value">{{ $game->game_like }}</span>--}}
+            {{--<button id="like" data-id="{{ $game->game_id }}">LIKE</button>--}}
+            {{--</div>--}}
 
             {{--<div class="flash">--}}
             {{--<div class="fucking_css" style="max-width: {{ $game->maxWidth }}vh;">--}}
@@ -67,23 +71,15 @@
             {{--</iframe>--}}
             {{--</div>--}}
             {{--</div>--}}
-            @if($game->tagsDisplayed->isNotEmpty())
-                {{--@php(dd(empty($game->tagsDisplayed)))--}}
-                <div class="tags">
-                    <span>ТЕГИ:</span>
-                    @foreach($game->tagsDisplayed as $tag)
-                        <a href="{{ route('getTag',[$tag->url],false) }}">{{ $tag->name }}</a>
-                    @endforeach
-                </div>
-            @endif
-            <div class="game-control">
-                <div class="game-control-img">
-                    <img src="/img/site/control.png" alt="Управление">
-                </div>
-                <div class="game-control-text">
-                    <p>{!! $game->gameControlWithP !!}</p>
-                </div>
-            </div>
+
+            {{--<div class="game-control">--}}
+            {{--<div class="game-control-img">--}}
+            {{--<img src="/img/site/control.png" alt="Управление">--}}
+            {{--</div>--}}
+            {{--<div class="game-control-text">--}}
+            {{--<p>{!! $game->gameControlWithP !!}</p>--}}
+            {{--</div>--}}
+            {{--</div>--}}
             {{--</div>--}}
 
         </div>

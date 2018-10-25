@@ -13,10 +13,11 @@ class GameController
     public function getGame(Game $game, Request $request)
     {
         abort_unless($game->game_show, 404, 'not displayed');
-        if (!empty($game->category->display)) {
-            $game->categoryUrl = route('getCategory', $game->category->cat_url, false);
-            $game->cat_name = $game->category->cat_name;
-        }
+        $game->categoryUrl = route('getCategory', $game->category->cat_url, false);
+//        if (!empty($game->category->display)) {
+//            $game->categoryUrl = route('getCategory', $game->category->cat_url, false);
+//            $game->cat_name = $game->category->cat_name;
+//        }
 
         //coefficient of relationship heght to width;
         $game->maxHeight = intval(100 * ($game->height / $game->width));
@@ -28,12 +29,13 @@ class GameController
         $game->gameControlWithP = '<p>' . str_replace(array("\r\n", "\r", "\n"), '</p><p>', $game->game_control) . '</p>';
         //TODO select logic
         $gamesSimilar = $game->where('game_show', true)->limit(15)->get();
-        $gamesSimilar->first(function ($game) {
+        $gamesSimilar->each(function ($game) {
+            $game->url = route('getGame', $game->game_url, false);
             $game->img = file_exists(public_path() . '/img/' . $game->game_url . '.jpg') ?
-                '/img/' . $game->game_url . '-large.jpg' :
+                '/img/' . $game->game_url . '.jpg' :
                 '/img/site/empty.jpg';
         });
-        //dd($game->descWithP);
+//        dd($gamesSimilar->first());
         //echo $game->descWithP;
         //$Game->categoryUrl = route('getCat', $Category->cat_url);
         return view('game', [

@@ -1,4 +1,5 @@
 .game {
+  padding-bottom: 30px;
   &-wrap {
     background: $section-bg1;
   }
@@ -6,8 +7,7 @@
   margin: 0 auto;
   &-header {
     font-size: 1rem;
-    margin-top: 10px;
-    margin-bottom: 10px;
+    padding: 10px 0 10px 0;
   }
   &-block {
     max-width: $content-width - 300px;
@@ -15,7 +15,7 @@
     display: grid;
     //grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
 
-    grid-template-columns: repeat(7, minmax(100px,200px));
+    grid-template-columns: repeat(7, minmax(100px, 200px));
     //grid-template-rows: auto auto;
     grid-column-gap: 10px;
     grid-row-gap: 10px;
@@ -51,11 +51,29 @@
       }
     }
   }
+  &-breadcrumb {
+    a {
+      color: $top-block;
+      text-decoration: none;
+      &:after {
+        content: " \203A  ";
+      }
+    }
+    & span {
+    }
+    grid-area: breadcrumbs;
+    background: $body;
+    padding: 10px 0px 10px 0px;
+    font-size: 1rem;
+    border-radius: 5px;
+    //margin-top: 10px;
+  }
+
   //TODO mixin or placeholder
   &-description {
     grid-area: description;
     color: $content-color;
-    margin: 30px 0px 30px 0px;
+    margin: 30px 0px 0px 0px;
     text-align: justify;
     background: $body;
     border-radius: 5px;
@@ -63,4 +81,37 @@
     font-weight: 600;
     font-size: 0.8rem;
   }
+  &-tags {
+    background-color: $body;
+    border-radius: 5px;
+    margin: 5px 10px 5px 10px;
+    padding-right: 10px;
+    padding-left: 10px;
+    display: inline-block;
+    border: 1px solid darken($body, 5%);
+    box-shadow: 0 0 8px darken($body, 5%);
+    & a {
+      display: inline-block;
+      text-decoration: none;
+      margin: 5px 0px 5px 5px;
+      padding: 5px 10px 5px 10px;
+      border-radius: 5px;
+      color: $content-color;
+      font-size: 14px;
+      font-weight: 600;
+      background-color: lighten($top-block, 10%);
+    }
+    & a:hover {
+      background-color: $link-hover;
+      border-radius: 5px;
+    }
+    & span {
+      color: $content-color;
+      padding: 5px 10px 5px 10px;
+      display: inline-block;
+      font-weight: 600;
+      font-size: 1.2em;
+    }
+  }
+
 }

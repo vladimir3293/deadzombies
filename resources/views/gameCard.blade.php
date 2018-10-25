@@ -1,8 +1,8 @@
-@foreach($games as $game)
+@foreach($games as $innerGame)
     <div class="game-card">
-        <a href="{{ $game->url }}" title="The flash game {{ $game->url }}">
-            <img alt="image of the game {{ $game->game_name }}" src="{{ $game->img }}">
-            <span>{{ $game->game_name }}</span>
+        <a href="{{ $innerGame->url }}" title="The flash game {{ $innerGame->url }}">
+            <img alt="image of the game {{ $innerGame->game_name }}" src="{{ $innerGame->img }}">
+            <span>{{ $innerGame->game_name }}</span>
         </a>
     </div>
 @endforeach
