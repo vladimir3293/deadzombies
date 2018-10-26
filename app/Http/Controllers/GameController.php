@@ -35,7 +35,14 @@ class GameController
                 '/img/' . $game->game_url . '.jpg' :
                 '/img/site/empty.jpg';
         });
-//        dd($gamesSimilar->first());
+        $newGames = $game->where('game_show', true)->limit(12)->orderBy('id', 'desc')->get();
+        $newGames->each(function ($game) {
+            $game->url = route('getGame', $game->game_url, false);
+            $game->img = file_exists(public_path() . '/img/' . $game->game_url . '.jpg') ?
+                '/img/' . $game->game_url . '.jpg' :
+                '/img/site/empty.jpg';
+        });
+        //dd($gamesSimilar->first());
         //echo $game->descWithP;
         //$Game->categoryUrl = route('getCat', $Category->cat_url);
         return view('game', [

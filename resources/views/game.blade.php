@@ -41,6 +41,9 @@
                 @endif
                 {!! $game->descWithP !!}
             </div>
+            <div class="game-new-games">
+
+            </div>
 
             {{--<div class="game-like">--}}
             {{--<img src="/img/site/like.png" alt="How many people like this game" title="like button">--}}
