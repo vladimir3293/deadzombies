@@ -13,12 +13,12 @@
                 <h1>{{ $game->game_name }}</h1>
             </header>
             <div class="game-block">
-                @if($gamesSimilar->isNotEmpty())
-                    @include('gameCard',['games'=>$gamesSimilar])
+                @if($similarGames->isNotEmpty())
+                    @include('gameCard',['games'=>$similarGames])
                 @endif
                 <div class="game-box">
                     <div class="game-box-img">
-                        <img src="/img/{{ $game->game_url }}.jpg">
+                        <img src="{{ $game->img }}">
                     </div>
                     <div class="game-box-play">
                         <a href="#">ИГРАТЬ</a>
@@ -26,7 +26,7 @@
                 </div>
             </div>
             <div class="game-description">
-                <h2>Описание игры:</h2>
+                <h2>Описание игры</h2>
                 <div class="game-breadcrumb">
                     <a href="/">Игры</a>
                     <a href="{{ $game->categoryUrl }}">{{ $game->category->cat_name }}</a>
@@ -35,14 +35,30 @@
                 @if($game->tagsDisplayed->isNotEmpty())
                     <div class="game-tags">
                         @foreach($game->tagsDisplayed as $tag)
-                            <a href="{{ route('getTag',[$tag->url],false) }}">{{ $tag->name }}</a>
+                            <a href="{{ $tag->fullUrl }}">{{ $tag->name }}</a>
                         @endforeach
                     </div>
                 @endif
                 {!! $game->descWithP !!}
             </div>
             <div class="game-new-games">
-
+                <h2>Новые игры:</h2>
+                <div class="game-new-games-container">
+                    @if($newGames->isNotEmpty())
+                        @include('gameCard',['games'=>$newGames])
+                    @endif
+                </div>
+            </div>
+            <div class="game-related-tags-container">
+                <h2>Похожие категории</h2>
+                <div class="game-related-tags">
+                    @foreach($game->tagsDisplayed as $tag)
+                        <div class="game-related-tags-item">
+                            <a href="{!! $tag->fullUrl !!}"><img
+                                        src="{{ $tag->img }}"><span>{!! $tag->name !!}</span></a>
+                        </div>
+                    @endforeach
+                </div>
             </div>
 
             {{--<div class="game-like">--}}

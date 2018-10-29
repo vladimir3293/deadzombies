@@ -1,4 +1,8 @@
 .game {
+  & h2 {
+    font-weight: 600;
+    font-size: 1.2rem;
+  }
   padding-bottom: 30px;
   &-wrap {
     background: $section-bg1;
@@ -56,7 +60,7 @@
     a {
       color: $top-block;
       text-decoration: none;
-      &:after {
+      &::after {
         content: " \203A  ";
       }
     }
@@ -109,6 +113,69 @@
     & a:hover {
       background-color: $link-hover;
       border-radius: 5px;
+    }
+  }
+  &-new-games {
+    background-color: $body;
+    border-radius: 5px;
+    padding: 20px;
+    margin-top: 30px;
+    &-container {
+      margin-top: 10px;
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(170px, 1fr));
+      grid-row-gap: 10px;
+      grid-column-gap: 10px;
+    }
+  }
+  &-related-tags {
+    &-container {
+      //background-color: $body;
+      margin-top: 30px;
+      padding: 20px;
+      border-radius: 5px;
+    }
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(170px, 1fr));
+    grid-row-gap: 10px;
+    grid-column-gap: 10px;
+    margin-top: 10px;
+    &-item {
+      //height: 50px;
+      & a {
+        & img {
+          width: 70px;
+          border-radius: 5px;
+          height: 56px;
+        }
+        & span {
+          white-space: nowrap;
+          text-overflow: ellipsis;
+          overflow: hidden;
+        }
+        color: $link-color;
+        background-color: $body;
+        //border-bottom: 1px solid #dfdfdf;
+        font-size: 1rem;
+        //margin: 5px;
+        padding: 2px;
+        display: flex;
+        //flex-direction: column;
+        align-items: center;
+        text-decoration: none;
+        text-align: left;
+        text-overflow: ellipsis;
+        overflow: hidden;
+        border-radius: 5px;
+        //padding-left: 35px;
+        &:hover {
+          background-color: #0f9af9;
+          color: #fff;
+        }
+      }
+      & span {
+        margin-left: 10px;
+      }
     }
   }
 }

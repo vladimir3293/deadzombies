@@ -217,13 +217,13 @@ class GameController extends Controller
 
         $small_size = imagecreatetruecolor(80, 56);
         $medium_size = imagecreatetruecolor(220, 153);
-        $large_size = imagecreatetruecolor(385, 268);
+        $large_size = imagecreatetruecolor(770, 536);
 
         $original = imagecreatefromjpeg($img);
 
         imagecopyresampled($small_size, $original, 0, 0, 0, 0, 80, 56, $old_size[0], $old_size[1]);
         imagecopyresampled($medium_size, $original, 0, 0, 0, 0, 220, 153, $old_size[0], $old_size[1]);
-        imagecopyresampled($large_size, $original, 0, 0, 0, 0, 385, 268, $old_size[0], $old_size[1]);
+        imagecopyresampled($large_size, $original, 0, 0, 0, 0, 770, 536, $old_size[0], $old_size[1]);
 
         imagejpeg($small_size, public_path("/img/$url$imgPrefix-small.jpg"));
         imagejpeg($medium_size, public_path("/img/$url$imgPrefix.jpg"));

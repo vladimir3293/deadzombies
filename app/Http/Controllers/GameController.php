@@ -20,16 +20,26 @@ class GameController
 //        }
 
         //coefficient of relationship heght to width;
-        $game->maxHeight = intval(100 * ($game->height / $game->width));
+//        $game->maxHeight = intval(100 * ($game->height / $game->width));
         //for max width from display height in vh
-        $game->maxWidth = intval(85 * ($game->width / $game->height));
+//        $game->maxWidth = intval(85 * ($game->width / $game->height));
 
         $game->tagsDisplayed = $game->tags()->where('display', true)->get();
+        $game->tagsDisplayed->each(function ($tag) {
+            $tag->fullUrl = route('getTag', ['tag' => $tag->url], false);
+            $tag->img = file_exists(public_path() . '/img/tags/' . $tag->url . '.jpg') ?
+                '/img/tags/' . $tag->url . '.jpg' :
+                '/img/site/empty.jpg';
+        });
+
         $game->descWithP = '<p>' . str_replace(array("\r\n", "\r", "\n"), '</p><p>', $game->game_desc) . '</p>';
         $game->gameControlWithP = '<p>' . str_replace(array("\r\n", "\r", "\n"), '</p><p>', $game->game_control) . '</p>';
+        $game->img = file_exists(public_path() . '/img/' . $game->game_url . '.jpg') ?
+            '/img/' . $game->game_url . '-large.jpg' :
+            '/img/site/empty.jpg';
         //TODO select logic
-        $gamesSimilar = $game->where('game_show', true)->limit(15)->get();
-        $gamesSimilar->each(function ($game) {
+        $similarGames = $game->where('game_show', true)->limit(15)->get();
+        $similarGames->each(function ($game) {
             $game->url = route('getGame', $game->game_url, false);
             $game->img = file_exists(public_path() . '/img/' . $game->game_url . '.jpg') ?
                 '/img/' . $game->game_url . '.jpg' :
@@ -42,12 +52,13 @@ class GameController
                 '/img/' . $game->game_url . '.jpg' :
                 '/img/site/empty.jpg';
         });
-        //dd($gamesSimilar->first());
+        //dd($similarGames->first());
         //echo $game->descWithP;
         //$Game->categoryUrl = route('getCat', $Category->cat_url);
         return view('game', [
             'game' => $game,
-            'gamesSimilar' => $gamesSimilar,
+            'similarGames' => $similarGames,
+            'newGames' => $newGames,
         ]);
     }
 }
