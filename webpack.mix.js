@@ -16,6 +16,8 @@ mix.js('resources/assets/js/app.js', 'public/js')
 */
 mix.sass('resources/assets/sass/scss.scss', 'public/css/').version();
 //mix.sass('resources/assets/sass/app.scss', 'public/admin/css');
+// mix.js('resources/assets/js/components/fullscreen.js', 'public/js').version();
+
 mix.js('resources/assets/js/deadzombies.js', 'public/js').version();
 mix.js('resources/assets/js/app.js', 'public/js/app.js').version();
 
