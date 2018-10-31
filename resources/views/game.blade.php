@@ -22,14 +22,13 @@
                     </div>
                     <div class="game-box-play">
                         <span id="game-play">ИГРАТЬ</span>
-                        <span class="test" onclick="toggleFull();"></span>
                     </div>
-                    <div class="game-block-source">
+                    <div class="game-box-source">
                         <iframe src="{{ $game->source }}"
                                 id="iplayer-game"
                                 frameborder="0"
                                 name="topFrame"
-                                scrolling="no"
+                                scrolling="yes"
                                 allowfullscreen="true"
                                 allowtransparency="true"
                                 {{--style="margin: 50px;"--}}
@@ -39,6 +38,10 @@
                                 {{--width="{{ $game->gameWidth }}"--}}
                         >
                         </iframe>
+
+                    </div>
+                    <div class="game-box-fullscreen">
+                        <span class="test" onclick="toggleFull();">На весь экран</span>
                     </div>
                 </div>
             </div>
@@ -78,23 +81,18 @@
                 @endforeach
             </div>
         </div>
-
         {{--<div class="game-like">--}}
         {{--<img src="/img/site/like.png" alt="How many people like this game" title="like button">--}}
         {{--<span id="like_value">{{ $game->game_like }}</span>--}}
         {{--<button id="like" data-id="{{ $game->game_id }}">LIKE</button>--}}
         {{--</div>--}}
-
         {{--<div class="flash">--}}
         {{--<div class="fucking_css" style="max-width: {{ $game->maxWidth }}vh;">--}}
         {{--<div class="video" style="padding-bottom: {{ $game->maxHeight }}%;">--}}
-
         {{--max-height: {{ $game->gameHeight }}px;--}}
         {{--max-width: {{ $game->gameWidth }}px;--}}
         {{--width: {{ $game->number }}vh;--}}
         {{--height: 100vh"--}}
-
-
         {{--<div class="game-control">--}}
         {{--<div class="game-control-img">--}}
         {{--<img src="/img/site/control.png" alt="Управление">--}}
@@ -104,6 +102,5 @@
         {{--</div>--}}
         {{--</div>--}}
         {{--</div>--}}
-<
     </article>
 @endsection
