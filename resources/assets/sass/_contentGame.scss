@@ -1,11 +1,11 @@
 .game {
-  & h2 {
-    font-weight: 600;
-    font-size: 1.2rem;
-  }
   padding-bottom: 30px;
   &-wrap {
     background: $section-bg1;
+    & h2 {
+      font-weight: 600;
+      font-size: 1.2rem;
+    }
   }
   max-width: $content-width;
   margin: 0 auto;
@@ -14,31 +14,47 @@
     padding: 10px 0 10px 0;
   }
   &-block {
-    max-width: $content-width - 300px;
+    @media (max-width: 480px) {
+      grid-template-columns: minmax(120px, 200px) minmax(120px, 200px);
+    }
+    max-width: 960px;
     margin: 0 auto;
     display: grid;
     //grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
-
-    grid-template-columns: repeat(7, minmax(100px, 200px));
+    grid-template-columns: repeat(7, minmax(120px, 200px));
     //grid-template-rows: auto auto;
     grid-column-gap: 10px;
     grid-row-gap: 10px;
     justify-items: stretch;
     align-items: stretch;
-
   }
 
   &-box {
+    @media (max-width: 480px) {
+      grid-template-columns: 1fr 1fr;
+      grid-row: 1/3;
+      grid-column: 1/3;
+    }
     grid-row: 1/5;
     grid-column: 2/7;
     width: 100%;
     //margin: 0 auto 0 auto;
     &-img {
-      //display: none;
+      margin-bottom: 10px;
       & img {
+        @media (max-width: 480px) {
+          width: 100%;
+          height: auto;
+        }
+
         display: block;
-        width: 95%;
-        margin: 0px auto 10px auto;
+        width: 646px;
+        height: 450px;
+        margin: 0px auto 0px auto;
+        &:hover {
+          background: darken(red, 20%);
+          cursor: pointer;
+        }
       }
     }
     &-play {
@@ -64,13 +80,18 @@
       }
     }
     &-source {
+      @media (max-width: 480px) {
+        width: 100%;
+        height: 300px;
+      }
+      width: 646px;
+      height: 450px;
       display: none;
+      margin: 0px auto 10px auto;
       & iframe {
         width: 100%;
         height: 100%;
       }
-      width: 650px;
-      height: 500px;
     }
     &-fullscreen {
       width: 50%;
@@ -118,7 +139,7 @@
     max-width: $content-width;
     grid-area: description;
     color: $content-color;
-    margin: 30px auto 0px auto;
+    margin: 0px auto 0px auto;
     text-align: justify;
     background: $body;
     border-radius: 5px;
@@ -162,6 +183,9 @@
     margin: 30px auto 0px auto;
     max-width: $content-width;
     &-container {
+      @media (max-width: 480px) {
+        grid-template-columns: minmax(120px, 200px) minmax(120px, 200px);
+      }
       margin-top: 10px;
       display: grid;
       grid-template-columns: repeat(auto-fill, minmax(170px, 1fr));

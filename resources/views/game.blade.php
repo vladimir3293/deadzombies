@@ -18,17 +18,17 @@
                 @endif
                 <div class="game-box">
                     <div class="game-box-img">
-                        <img src="{{ $game->img }}">
+                        <img class="game-play-click" src="{{ $game->img }}">
                     </div>
                     <div class="game-box-play">
-                        <span id="game-play">ИГРАТЬ</span>
+                        <span class="game-play-click">ИГРАТЬ</span>
                     </div>
                     <div class="game-box-source">
-                        <iframe src="{{ $game->source }}"
-                                id="iplayer-game"
+                        <iframe id="game-player"
+                                data-src="{{ $game->source }}"
                                 frameborder="0"
                                 name="topFrame"
-                                scrolling="yes"
+                                scrolling="no"
                                 allowfullscreen="true"
                                 allowtransparency="true"
                                 {{--style="margin: 50px;"--}}

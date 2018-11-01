@@ -1,4 +1,4 @@
-function requestFullScreen (el) {
+window.requestFullScreen = function (el) {
     // Supports most browsers and their versions.
     var requestMethod = el.requestFullScreen || el.webkitRequestFullScreen || el.mozRequestFullScreen || el.msRequestFullScreen;
 
@@ -13,9 +13,9 @@ function requestFullScreen (el) {
     return false;
 }
 
-window.toggleFull = function() {
+window.toggleFull = function () {
     // $(window).trigger("iPanel.fullscreen", true);
-    var iframe = document.getElementById('iplayer-game');
+    var iframe = document.getElementById('game-player');
     // if (iframe) {
     //     var elem = iframe;
     // } else {
@@ -34,9 +34,6 @@ window.toggleFull = function() {
 };
 
 
-
-
-
 (function ($, undefined) {
 
     $(document).ready(function () {
@@ -47,13 +44,12 @@ window.toggleFull = function() {
             $('body, html').toggleClass('overflow-hidden');
         });
 
-        $('#game-play').click(function () {
-            // this.css('display','none');
-            // console.log(test);
-            $('.game-box-play').css('display', 'none');
-            $('.game-box-img').css('display', 'none');
-            $('.game-box-source').css('display', 'block');
-            $('.game-box-fullscreen').css('display', 'block');
+        $('.game-play-click').click(function () {
+            $('.game-box-play, .game-box-img').css('display', 'none');
+            $('.game-box-source, .game-box-fullscreen').css('display', 'block');
+
+            var game = $('#game-player');
+            game.attr('src', game.attr('data-src'));
         });
     });
 })(jQuery);

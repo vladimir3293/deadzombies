@@ -9,10 +9,7 @@
 
     <link rel="icon" href="/favicon.ico" type="image/x-icon">
     <script src="/js/app.js"></script>
-
     <script src="/js/deadzombies.js"></script>
-    <script src="/js/123.js"></script>
-
 
     {{--<link rel="stylesheet" href="/css/bootstrap/css/bootstrap.css">--}}
     <link rel="stylesheet" href="/css/scss.css">
