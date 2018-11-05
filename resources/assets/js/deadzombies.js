@@ -1,3 +1,7 @@
+window.timeTest = function(){
+    var newDate = new Date();
+    console.log(newDate);
+};
 window.requestFullScreen = function (el) {
     // Supports most browsers and their versions.
     var requestMethod = el.requestFullScreen || el.webkitRequestFullScreen || el.mozRequestFullScreen || el.msRequestFullScreen;

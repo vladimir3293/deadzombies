@@ -31,12 +31,7 @@
             {{--<a href="#">наверх</a>--}}
         {{--</div>--}}
     </div>
-    <div class="footer-wrapper">
-        <footer class="footer">
-            <img src="/img/site/footer.png">
-            <p class="index-footer-desc">WE BRING AWESOME GAMES TO ALL SCREENS</p>
-        </footer>
-    </div>
+    @include('footer')
 </div>
 {{--<div id="message"><a href="#top">Scroll to top</a></div>--}}
 </body>

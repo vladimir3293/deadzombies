@@ -56,12 +56,18 @@
 }
 
 .categories {
-  @media (max-width: 480px) {
-    grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+  @media (max-width: 1250px) {
+    margin-left: 10px;
+    margin-right: 10px;
   }
+
   max-width: $content-width;
   margin: 0 auto;
   &-list {
+    @media (max-width: 480px) {
+      grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+
+    }
     //margin-bottom: 10px;
     //height: 600px;
     & li {
@@ -79,10 +85,6 @@
     //grid-auto-flow: column;
     //grid-row-gap: 10px;
     //grid-column-gap: 10px;
-    @media (max-width: 1250px) {
-      margin-left: 10px;
-      margin-right: 10px;
-    }
 
     &-category {
       grid-column: 1/2;
@@ -94,7 +96,7 @@
           height: 100px;
           border-radius: 5px;
         }
-        & span{
+        & span {
           white-space: nowrap;
           text-overflow: ellipsis;
           overflow: hidden;
@@ -124,7 +126,7 @@
           border-radius: 5px;
           height: 56px;
         }
-        & span{
+        & span {
           white-space: nowrap;
           text-overflow: ellipsis;
           overflow: hidden;
@@ -153,14 +155,31 @@
 
   &-container {
     background: $section-bg1;
+    padding-bottom: 30px;
   }
 }
 
 .description {
   max-width: $content-width;
   margin: 0 auto;
-  padding: 5px;
+  padding-bottom: 30px;
+  @media (max-width: 1250px) {
+    margin-left: 10px;
+    margin-right: 10px;
+  }
   &-container {
+    & p {
+      margin-bottom: 10px;
+      margin-top: 10px;
+      font-size: 1rem;
+      font-style: normal;
+      text-align: justify;
+      color: $content-color;
+      font-weight: 600;
+      line-height: 1.5;
+      text-indent: 1rem;
+
+    }
     //padding: 30px 0;
     background: $section-bg1;
   }

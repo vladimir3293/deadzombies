@@ -1,5 +1,9 @@
 .game {
   padding-bottom: 30px;
+  @media (max-width: 1250px) {
+    margin-left: 10px;
+    margin-right: 10px;
+  }
   &-wrap {
     background: $section-bg1;
     & h2 {
@@ -195,6 +199,10 @@
   }
   &-related-tags {
     &-container {
+      @media (max-width: 1250px) {
+        margin-left: 10px;
+        margin-right: 10px;
+      }
       //background-color: $body;
       margin: 30px auto 0px auto;
       max-width: $content-width;
