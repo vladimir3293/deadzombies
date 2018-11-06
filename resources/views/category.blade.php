@@ -13,7 +13,6 @@
                 <a href="/">Игры</a>
                 <span>{{ $category->cat_name }}</span>
             </div>
-
             <header class="category-header">
                 <h1>{{ $category->cat_name }}</h1>
             </header>
@@ -37,7 +36,7 @@
 
                             @foreach($category->tagsDisplayed as $tag)
                                 <li>
-                                    <a href="{!! $tag->url !!}"><img
+                                    <a href="{!! $tag->fullUrl !!}"><img
                                                 src="{{ $tag->img }}"><span>{!! $tag->name !!}</span></a>
                                 </li>
                             @endforeach
