@@ -64,7 +64,7 @@
   max-width: $content-width;
   margin: 0 auto;
   &-list {
-    @media (max-width: 480px) {
+    @media (max-width: 1250px) {
       grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
 
     }
@@ -79,7 +79,7 @@
     }
     align-items: stretch;
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    grid-template-columns: 150px 150px repeat(auto-fill, minmax(200px, 1fr));
     grid-column-gap: 5px;
     grid-row-gap: 5px;
     //grid-auto-flow: column;
@@ -196,7 +196,7 @@
   transition: transform 0.5s 0s;
   //grid-area: right-content;
   //min-height: 100vh;
-  @media (max-width: 480px) {
+  @media (max-width: 768px) {
     margin: 52px 0 0 0;
   }
 }

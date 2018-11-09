@@ -39,6 +39,9 @@
 .new-games .game-card a {
   background: $section-bg1;
 }
+.game-new-games .game-card a {
+  background: $section-bg1;
+}
 
 .game-container .game-card {
   @media (min-width: 480px) {
