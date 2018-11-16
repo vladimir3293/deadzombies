@@ -60,28 +60,22 @@
 /******/ 	__webpack_require__.p = "";
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 5);
+/******/ 	return __webpack_require__(__webpack_require__.s = 2);
 /******/ })
 /************************************************************************/
 /******/ ({
 
-/***/ 5:
-/***/ (function(module, exports, __webpack_require__) {
-
-module.exports = __webpack_require__(6);
-
-
-/***/ }),
-
-/***/ 6:
+/***/ "./resources/assets/js/admin.js":
 /***/ (function(module, exports) {
 
 (function ($, undefined) {
     $(function () {
-
-        $('.nav-categoriess > a').click(function (event) {
-            event.preventDefault();
-            $('.nav-categoriess ul').slideToggle("slow");
+        $('#show-game').click(function (event) {
+            var game = $('#game-player');
+            game.attr('src', game.attr('data-src'));
+            game.css('display', 'block');
+            // game.toogle();
+            // console.log(game);
         });
 
         $('.nav-categories-link').click(function (event) {
@@ -90,6 +84,14 @@ module.exports = __webpack_require__(6);
         });
     });
 })(jQuery);
+
+/***/ }),
+
+/***/ 2:
+/***/ (function(module, exports, __webpack_require__) {
+
+module.exports = __webpack_require__("./resources/assets/js/admin.js");
+
 
 /***/ })
 

@@ -1,5 +1,8 @@
 {
-    "/js/deadzombies.js": "/js/deadzombies.js?id=ffe4007f25221d14637a",
+    "/js/deadzombies.js": "/js/deadzombies.js?id=01cefa2b08d6e7cc3741",
     "/css/scss.css": "/css/scss.css?id=72cf091d82aeba5485c6",
-    "/js/app.js": "/js/app.js?id=4aa1c5c432c2b581018a"
+    "/admin/css/app.css": "/admin/css/app.css?id=4ae4440b1748dc67d1a8",
+    "/admin/css/admin.css": "/admin/css/admin.css?id=8c5308f86e16698b38db",
+    "/js/app.js": "/js/app.js?id=4aa1c5c432c2b581018a",
+    "/admin/js/admin.js": "/admin/js/admin.js?id=60e2ac975cbdccd3314a"
 }

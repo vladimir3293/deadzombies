@@ -73,6 +73,21 @@
                 <div class="form-group">
                     <label for="source">Ссылка на игру</label>
                     <input class="form-control" type="text" name="source" id="source" value="{{ $game->source }}">
+                    <iframe id="game-player"
+                            data-src="{{ $game->source }}"
+                            frameborder="0"
+                            name="topFrame"
+                            scrolling="no"
+                            allowfullscreen="true"
+                            allowtransparency="true"
+                            {{--style="margin: 50px;"--}}
+                            {{--height="100vh" ;--}}
+                            {{--width="{{ $game->number }}vh"--}}
+                            {{--height="{{ $game->gameHeight }}"--}}
+                            {{--width="{{ $game->gameWidth }}"--}}
+                    >
+                    </iframe>
+                    <span id="show-game" class="btn btn-primary">Показать игру</span>
                 </div>
                 <div class="form-group">
                     <label for="source">Высота:</label>

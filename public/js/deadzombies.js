@@ -131,6 +131,20 @@ window.toggleFull = function () {
 
 /***/ }),
 
+/***/ "./resources/assets/sass/admin.scss":
+/***/ (function(module, exports) {
+
+// removed by extract-text-webpack-plugin
+
+/***/ }),
+
+/***/ "./resources/assets/sass/app.scss":
+/***/ (function(module, exports) {
+
+// removed by extract-text-webpack-plugin
+
+/***/ }),
+
 /***/ "./resources/assets/sass/scss.scss":
 /***/ (function(module, exports) {
 
@@ -142,7 +156,9 @@ window.toggleFull = function () {
 /***/ (function(module, exports, __webpack_require__) {
 
 __webpack_require__("./resources/assets/js/deadzombies.js");
-module.exports = __webpack_require__("./resources/assets/sass/scss.scss");
+__webpack_require__("./resources/assets/sass/scss.scss");
+__webpack_require__("./resources/assets/sass/app.scss");
+module.exports = __webpack_require__("./resources/assets/sass/admin.scss");
 
 
 /***/ })

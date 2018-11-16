@@ -10,7 +10,8 @@
     <link rel="icon" href="/favicon.ico" type="image/x-icon">
     <link rel="stylesheet" href="/admin/css/app.css">
     <link rel="stylesheet" href="/admin/css/admin.css">
-    {{--<script src="/admin/js/app.js"></script>--}}
+    <script src="/admin/js/app.js"></script>
+    <script src="/admin/js/admin.js"></script>
 </head>
 <body>
 <nav class="navbar navbar-default navbar-static-top">
