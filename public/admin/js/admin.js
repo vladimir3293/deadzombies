@@ -73,15 +73,12 @@
         $('#show-game').click(function (event) {
             var game = $('#game-player');
             game.attr('src', game.attr('data-src'));
-            game.css('display', 'block');
-            // game.toogle();
+            // game.css('display', 'block');
+            $('#game-wrap').toggle();
             // console.log(game);
         });
 
-        $('.nav-categories-link').click(function (event) {
-            event.preventDefault();
-            $('.nav-categories ul').slideToggle("slow");
-        });
+        // 222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222
     });
 })(jQuery);
 

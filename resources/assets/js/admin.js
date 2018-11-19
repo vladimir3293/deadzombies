@@ -3,8 +3,8 @@
         $('#show-game').click(function (event) {
             var game = $('#game-player');
             game.attr('src', game.attr('data-src'));
-            game.css('display', 'block');
-            // game.toogle();
+            // game.css('display', 'block');
+            game.toggle();
         // console.log(game);
         });
 

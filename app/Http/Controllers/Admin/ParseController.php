@@ -18,6 +18,53 @@ class ParseController extends Controller
     //TODO another parser
     public function getParser()
     {
+        $client = new \AlgoliaSearch\Client('TQARMJGO8A', '3690a3214c8934d794287d2d4c28d37f');
+
+
+
+        $queries = [
+            [
+                'indexName' => 'prod_GAMEDISTRIBUTION',
+                'query' => "",
+                'hitsPerPage' => 10,
+                'page'=> 1,
+            ],
+
+        ];
+
+        $results = $client->multipleQueries($queries);
+        $index = $client->initIndex('prod_GAMEDISTRIBUTION');
+
+        $results = $index->browse('');
+        dd($results);
+//        $index->quer();
+        dd($index);
+        $curl = curl_init(); //инициализация сеанса
+        curl_setopt($curl, CURLOPT_URL, 'https://tqarmjgo8a-dsn.algolia.net/1/indexes/*/queries?x-algolia-agent=Algolia%20for%20vanilla%20JavaScript%20(lite)%203.29.0%3BJS%20Helper%202.26.1%3Bvue-instantsearch%201.7.0&x-algolia-application-id=TQARMJGO8A&x-algolia-api-key=3690a3214c8934d794287d2d4c28d37f'); //урл сайта к которому обращаемся
+        curl_setopt($curl, CURLOPT_HEADER, 1); //выводим заголовки
+        curl_setopt($curl, CURLOPT_POST, 1); //передача данных методом POST
+        curl_setopt($curl, CURLOPT_RETURNTRANSFER, 1); //теперь curl вернет нам ответ, а не выведет
+        curl_setopt($curl, CURLOPT_POSTFIELDS, //тут переменные которые будут переданы методом POST
+
+            array(
+                "indexName" => "prod_GAMEDISTRIBUTION",
+//                "params" => "query=&hitsPerPage=20&page=10",
+
+//                "params" => "query=&hitsPerPage=20&page=10&highlightPreTag=__ais-highlight__&highlightPostTag=__%2Fais-highlight__&filters=visible%3A1&facets=%5B%22tags%22%2C%22categories%22%2C%22company%22%2C%22type%22%5D&tagFilters=&facetFilters=%5B%5B%22type%3Ahtml5%22%5D%5D",
+//                ["indexName"=>"prod_GAMEDISTRIBUTION","params"=>"query=&hitsPerPage=1&page=0&highlightPreTag=__ais-highlight__&highlightPostTag=__%2Fais-highlight__&filters=visible%3A1&attributesToRetrieve=%5B%5D&attributesToHighlight=%5B%5D&attributesToSnippet=%5B%5D&tagFilters=&analytics=false&clickAnalytics=false&facets=type"]
+//            array (
+//                'lastName'=>$_POST['lastName'],
+//                'firstName'=>$_POST['firstName'],
+//                'searchButton'=>'get' //это на случай если на сайте, к которому обращаемся проверяется была ли нажата кнопка submit, а не была ли оправлена форма
+//            )
+            ));
+        curl_setopt($curl, CURLOPT_USERAGENT, 'MSIE 5'); //эта строчка как-бы говорит: "я не скрипт, я IE5" :)
+        curl_setopt($curl, CURLOPT_REFERER, "http://ya.ru"); //а вдруг там проверяют наличие рефера
+        $res = curl_exec($curl);
+        dd($res);
+
+        curl_close($curl);
+
         return view('admin.parser.gamedistribution');
     }
 
