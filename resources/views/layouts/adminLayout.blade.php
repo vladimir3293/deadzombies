@@ -12,6 +12,7 @@
     <link rel="stylesheet" href="/admin/css/admin.css">
     <script src="/admin/js/app.js"></script>
     <script src="/admin/js/admin.js"></script>
+    <script src="https://cdn.jsdelivr.net/algoliasearch/3/algoliasearch.min.js"></script>
 </head>
 <body>
 <nav class="navbar navbar-default navbar-static-top">

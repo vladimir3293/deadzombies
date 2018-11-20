@@ -15,7 +15,7 @@ window.requestFullScreen = function (el) {
         }
     }
     return false;
-}
+};
 
 window.toggleFull = function () {
     // $(window).trigger("iPanel.fullscreen", true);
