@@ -22,9 +22,9 @@ class Game extends Model
         return $this->belongsToMany(Tag::class);
     }
 
-    public function getRouteKeyName()
-    {
-        return 'game_url';
-    }
+//    public function getRouteKeyName()
+//    {
+//        return 'game_url';
+//    }
 
 }

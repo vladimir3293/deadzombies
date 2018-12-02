@@ -17,7 +17,9 @@ class CategoryController extends Controller
     public function getAll(Category $categoryModel)
     {
         $categoriesCount = $categoryModel->get()->count();
-        $categories = $categoryModel->orderBy('id', 'desc')->simplePaginate(100);
+//        $categories = $categoryModel->simplePaginate(100);
+        $categories = $categoryModel->withCount('game')->orderBy('game_count', 'desc')->simplePaginate(100);
+
         $categories->each(function ($category) {
             $category->url = route('admin.getCategory', $category->cat_url);
             $category->gamesCount = $category->game()->count();
@@ -103,13 +105,13 @@ class CategoryController extends Controller
         $gamesPublish = $category->game()->where('game_show', true)->orderBy('id', 'desc')->paginate(20);
         $gamesUnpublish = $category->game()->where('game_show', false)->orderBy('id', 'desc')->paginate(20);
         foreach ($gamesPublish as $game) {
-            $game->url = route('admin.getGame', $game->game_url, false);
+            $game->url = route('admin.getGame', $game->id, false);
             $game->img = file_exists(public_path() . '/img/' . $game->game_url . '.jpg') ?
                 '/img/' . $game->game_url . '.jpg' :
                 '/img/site/empty.jpg';
         }
         foreach ($gamesUnpublish as $game) {
-            $game->url = route('admin.getGame', $game->game_url, false);
+            $game->url = route('admin.getGame', $game->id, false);
             $game->img = file_exists(public_path() . '/img/' . $game->game_url . '.jpg') ?
                 '/img/' . $game->game_url . '.jpg' :
                 '/img/site/empty.jpg';

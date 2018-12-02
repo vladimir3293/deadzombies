@@ -23,6 +23,10 @@
                     </div>
                 </div>
                 <div class="form-group">
+                    <a href="http://gamedistribution.com/games/{{ $game->original_url }}">Оригинальная игра</a>
+                </div>
+
+                <div class="form-group">
                     <label for="game_rename">Переименовать</label>
                     <input class="form-control" name="game_rename" id="game_rename" type="text">
                 </div>

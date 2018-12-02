@@ -22,7 +22,7 @@ class GameController extends Controller
         $games = $gameModel->orderBy('id', 'desc')->paginate(24);
         //dd($games);
         $games->each(function ($games) {
-            $games->url = route('admin.getGame', $games->game_url);
+            $games->url = route('admin.getGame', $games->id);
             $games->img = file_exists(public_path() . '/img/' . $games->game_url . '.jpg') ?
                 '/img/' . $games->game_url . '.jpg' :
                 '/img/site/empty.jpg';
@@ -53,7 +53,7 @@ class GameController extends Controller
         $games = $gameModel->where('game_show', 0)->orderBy('id', 'desc')->simplePaginate(12);
         //dd($games);
         $games->each(function ($games) {
-            $games->url = route('admin.getGame', $games->game_url);
+            $games->url = route('admin.getGame', $games->id);
             $games->img = file_exists(public_path() . '/img/' . $games->game_url . '.jpg') ?
                 '/img/' . $games->game_url . '.jpg' :
                 '/img/site/empty.jpg';
@@ -67,7 +67,7 @@ class GameController extends Controller
         $games = $gameModel->where('game_show', 1)->orderBy('id', 'desc')->simplePaginate(48);
         //dd($games);
         $games->each(function ($games) {
-            $games->url = route('admin.getGame', $games->game_url);
+            $games->url = route('admin.getGame', $games->id);
             $games->img = file_exists(public_path() . '/img/' . $games->game_url . '.jpg') ?
                 '/img/' . $games->game_url . '.jpg' :
                 '/img/site/empty.jpg';

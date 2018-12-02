@@ -31,9 +31,9 @@
         // console.log(game);
         });
 
-        $('.nav-categories-link').click(function (event) {
-            event.preventDefault();
-            $('.nav-categories ul').slideToggle("slow");
-        });
+        // $('.nav-categories-link').click(function (event) {
+        //     event.preventDefault();
+        //     $('.nav-categories ul').slideToggle("slow");
+        // });
     });
 })(jQuery);

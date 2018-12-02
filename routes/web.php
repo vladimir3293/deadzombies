@@ -8,7 +8,7 @@ Route::get('/', ['uses' => 'IndexController@getIndex', 'as' => 'index']);
 //index category
 Route::get('/category/{category}', 'CategoryController@getCategory')->name('getCategory');
 //index game
-Route::get('/game/{game}', 'GameController@getGame')->name('getGame');
+Route::get('/game/{gameIndex}', 'GameController@getGame')->name('getGame');
 //index tag
 Route::get('/tag/{tag}', 'TagController@getTag')->name('getTag');
 
