@@ -190,6 +190,7 @@ class GameController extends Controller
         }
 
         $Game->save();
+
         return redirect()->route('admin.getGame', [$Game]);
     }
 

@@ -49,6 +49,8 @@ class ParseController extends Controller
 //            }
 //            $i++;
         }
+        dd($results);
+//        var_dump($results);
 //        $trust = $forTest->pluck('url')->search('100', true);
 //
 //        dd($results);

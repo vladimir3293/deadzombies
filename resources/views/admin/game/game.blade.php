@@ -6,7 +6,7 @@
     <h1><a href="{{ route('getGame',[$game->game_url])}}" target="_blank">{{$game->game_name }}</a></h1>
     <div class="game_edit">
         <div class="game_form">
-            <form method="post" action="/admin/game/{{ $game->game_url }}" enctype="multipart/form-data" role="form">
+            <form method="post" action="/admin/game/{{ $game->id }}" enctype="multipart/form-data" role="form">
                 {{ method_field('PUT') }}
                 {{ csrf_field() }}
                 <div class="form-group">
@@ -117,7 +117,7 @@
         <h4>Теги:</h4>
 
         @foreach($tagsGame as $tagGame)
-            <form method="post" action="/admin/game/tag/{{ $game->game_url }}">
+            <form method="post" action="/admin/game/tag/{{ $game->id }}">
                 <div class="form-group">
                     {{ method_field('DELETE') }}
                     {{ csrf_field() }}
@@ -129,7 +129,7 @@
                 </div>
             </form>
         @endforeach
-        <form method="post" action="/admin/game/tag/{{ $game->game_url }}">
+        <form method="post" action="/admin/game/tag/{{ $game->id }}">
             {{ method_field('POST') }}
             {{ csrf_field() }}
 
@@ -156,7 +156,7 @@
 
     </div>
 
-    <form method="post" action="/admin/game/{{ $game->game_url }}">
+    <form method="post" action="/admin/game/{{ $game->id }}">
         {{ method_field('DELETE') }}
         {{ csrf_field() }}
         <input class="btn btn-danger" type="submit" value="Удалить игру">
