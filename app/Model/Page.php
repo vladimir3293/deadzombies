@@ -9,4 +9,9 @@ class Page extends Model
     public $timestamps = false;
 
     public $guarded = [];
+
+    public function getRouteKeyName()
+    {
+        return 'url';
+    }
 }

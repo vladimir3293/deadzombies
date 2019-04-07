@@ -1,6 +1,9 @@
 <ul class="nav nav-pills nav-stacked">
     <li><a href="/" data-toggle="tab" target="_blank">На главную</a></li>
     <li><a href="{{ route('admin') }}" data-toggle="tab">Админка</a></li>
+    <li class="nav-categoriess"><a class="nav-categories-link" href="{{ route('admin.pages.getAll') }}">Страницы</a>
+
+    </li>
     <li class="nav-categoriess"><a class="nav-categories-link" href="{{ route('admin.game.getAll') }}">Игры</a>
         <ul>
             <li><a href="{{ route('admin.game.create') }}">Создать игру</a></li>
