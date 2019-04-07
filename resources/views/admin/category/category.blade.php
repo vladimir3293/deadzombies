@@ -1,6 +1,41 @@
 @extends('layouts.adminLayout')
 @section('right_content')
     <h1><a href="{{ route('getCategory',[$category->cat_url]) }}" target="_blank">{{ $category->cat_name }}</a></h1>
+    <div class="form-group">
+        <p>Доступные изображения:</p>
+        @if(!empty($category->imgExist))
+            <div class="page-image-container">
+                @foreach($category->imgExist as $img)
+                    <div class="page-image">
+                        <a href="{{ route('admin.images.getImage',['image'=>$img->name]) }}">
+                            <img src="/img/{{ $img->name }}-large.jpg"></a>
+                        <span>/img/{{ $img->name }}-small.jpg</span>
+                        <span>/img/{{ $img->name }}.jpg</span>
+                        <span>/img/{{ $img->name }}-large.jpg</span>
+                        <form method="POST" action="/admin/images/{{ $img->name }}">
+                            {{ method_field('DELETE') }}
+                            {{ csrf_field() }}
+                            <input type="hidden" name="categoryId" value="{{$category->id}}">
+                            <input class="btn btn-danger btn-sm" type="submit" value="Удалить">
+                            @if($img->main_img)
+                                <span>Главное</span>
+                            @endif
+                        </form>
+
+                    </div>
+                @endforeach
+            </div>
+        @endif
+
+        <form class="cat_edit_form" enctype="multipart/form-data" method="POST"
+              action="/admin/images/">
+            {{ method_field('POST') }}
+            {{ csrf_field() }}
+            <input type="hidden" name="categoryId" value="{{$category->id}}">
+            <input type="file" name="img">
+            <input class="btn btn-primary btn-sm" type="submit" value="Добавить">
+        </form>
+    </div>
     <div class="cat_edit_other">
         <form class="cat_edit_form" enctype="multipart/form-data" method="POST"
               action="/admin/category/{{ $category->cat_url }}">
@@ -48,13 +83,16 @@
                 <textarea id="cat_desc" class="form-control" rows="4" name="cat_desc"
                           class="cat_desc">{{ $category->cat_desc }}</textarea>
             </div>
+
             <div class="form-group">
-                <p>Изображение {{ $category->imgExist }}</p>
-                @if($category->imgExist != 'НЕТ')
-                    <img src="/img/categories/{{ $category->cat_url }}.jpg">
+                <p>Главное изображение:</p>
+                @if(!empty($category->mainImg))
+                    <img src="/img/{{ $category->mainImg->name }}.jpg">
+                @else
+                    <span>НЕТ</span>
                 @endif
-                <input class="form-control" type="file" name="img">
             </div>
+
             <input class="btn btn-primary" type="submit" value="Изменить">
         </form>
         <form class="delete-form" method="POST" action="/admin/category/{{ $category->cat_url }}">

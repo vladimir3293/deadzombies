@@ -18,6 +18,17 @@ Route::middleware(['auth', 'can:isAdmin'])->group(function () {
 //admin index
     Route::get('/admin/', ['uses' => 'Admin\IndexController@getIndex', 'as' => 'admin']);
 
+//admin pages
+    Route::get('/admin/pages/all', 'Admin\PagesController@getAll')->name('admin.pages.getAll');
+    Route::get('/admin/pages/{page}', 'Admin\PagesController@getPage')->name('admin.pages.getPage');
+
+//admin images
+    Route::put('/admin/images/{image}', 'Admin\ImagesController@putImage');
+    Route::delete('/admin/images/{image}', 'Admin\ImagesController@deleteImage');
+    Route::get('/admin/images/{image}', 'Admin\ImagesController@getImage')->name('admin.images.getImage');
+    Route::post('/admin/images/', 'Admin\ImagesController@addImage')->name('admin.images.addImage');
+    Route::post('/admin/images/page/{page}', 'Admin\ImagesController@addImageToPage')->name('admin.images.addImgToPage');
+
 //admin category pages
 //page get all categories
     Route::get('/admin/category/all', 'Admin\CategoryController@getAll')->name('admin.category.getAll');

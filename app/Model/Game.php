@@ -22,6 +22,11 @@ class Game extends Model
         return $this->belongsToMany(Tag::class);
     }
 
+    public function image()
+    {
+        return $this->belongsToMany(Image::class);
+    }
+
 //    public function getRouteKeyName()
 //    {
 //        return 'game_url';

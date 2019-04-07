@@ -4,6 +4,41 @@
 
 @section('right_content')
     <h1><a href="{{ route('getGame',[$game->game_url])}}" target="_blank">{{$game->game_name }}</a></h1>
+    <div class="form-group">
+        <p>Доступные изображения:</p>
+        @if(!empty( $game->imgExist))
+            <div class="page-image-container">
+                @foreach( $game->imgExist as $img)
+                    <div class="page-image">
+                        <a href="{{ route('admin.images.getImage',['image'=>$img->name]) }}">
+                            <img src="/img/{{ $img->name }}-large.jpg"></a>
+                        <span>/img/{{ $img->name }}-small.jpg</span>
+                        <span>/img/{{ $img->name }}.jpg</span>
+                        <span>/img/{{ $img->name }}-large.jpg</span>
+                        <form method="POST" action="/admin/images/{{ $img->name }}">
+                            {{ method_field('DELETE') }}
+                            {{ csrf_field() }}
+                            <input type="hidden" name="gameId" value="{{ $game->id}}">
+                            <input class="btn btn-danger btn-sm" type="submit" value="Удалить">
+                            @if($img->main_img)
+                                <span>Главное</span>
+                            @endif
+                        </form>
+
+                    </div>
+                @endforeach
+            </div>
+        @endif
+
+        <form class="cat_edit_form" enctype="multipart/form-data" method="POST"
+              action="/admin/images/">
+            {{ method_field('POST') }}
+            {{ csrf_field() }}
+            <input type="hidden" name="gameId" value="{{ $game->id}}">
+            <input type="file" name="img">
+            <input class="btn btn-primary btn-sm" type="submit" value="Добавить">
+        </form>
+    </div>
     <div class="game_edit">
         <div class="game_form">
             <form method="post" action="/admin/game/{{ $game->id }}" enctype="multipart/form-data" role="form">
@@ -104,11 +139,12 @@
                     <input class="form-control" type="text" name="width" id="source" value="{{ $game->width }}">
                 </div>
                 <div class="form-group">
-                    <p>Изображение {{ $game->imgExist }}</p>
-                    @if($game->imgExist != 'НЕТ')
-                        <img src="/img/{{ $game->game_url }}.jpg">
+                    <p>Главное изображение:</p>
+                    @if(!empty($category->mainImg))
+                        <img src="/img/{{ $category->mainImg->name }}.jpg">
+                    @else
+                        <span>НЕТ</span>
                     @endif
-                    <input class="form-control" type="file" name="img">
                 </div>
                 <input class="btn btn-primary" type="submit" value="Применить">
             </form>

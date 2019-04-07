@@ -26,7 +26,7 @@
             </div>
 
             <div class="category-description">
-                <p>{!! $category->descWithP !!}</p>
+                {!! $category->descWithP !!}
             </div>
             <div class="category-sidebar">
                 <div class="category-relation">

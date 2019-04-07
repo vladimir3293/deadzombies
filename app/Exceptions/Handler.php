@@ -59,6 +59,9 @@ class Handler extends ExceptionHandler
         if ($exception instanceof GameUpdateException) {
             return back()->with(['error'=>$exception->getMessage()]);
         }
+        if ($exception instanceof ImageUploadException) {
+            return back()->with(['error'=>$exception->getMessage()]);
+        }
 
 
         return parent::render($request, $exception);

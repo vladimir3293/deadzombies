@@ -82,8 +82,8 @@ class GameController extends Controller
         $categories = $category->orderBy('id', 'desc')->get();
 
         $Game->cat = $Game->category ? '<a href="' . route('admin.getCategory', [$Game->category->cat_url]) . '">' . $Game->category->cat_name . '</a>' : 'НЕТ';
-        //$Game->flash = Storage::disk('pub')->exists("/games/$Game->game_url.swf") ? 'ЕСТЬ' : 'НЕТ';
-        $Game->imgExist = Storage::disk('pub')->exists("/img/$Game->game_url.jpg") ? 'ЕСТЬ' : 'НЕТ';
+        $Game->imgExist = $Game->image()->get();
+        $Game->mainImg = $Game->image()->where('main_img', true)->get()->first();
 
         if ($Game->height) {
             $Game->gameHeight = 868 * $Game->height / $Game->width;

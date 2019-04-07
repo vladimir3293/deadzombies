@@ -89,6 +89,7 @@ class CategoryController extends Controller
     }
 
     //todo only show games
+
     public function getCategory(Category $category, Game $game, Tag $tagModel)
     {
         $category->imgExist = Storage::disk('pub')->exists("/img/categories/$category->cat_url.jpg") ? 'ЕСТЬ' : 'НЕТ';
@@ -99,6 +100,9 @@ class CategoryController extends Controller
         $gamesCount = $category->game()->count();
         $gamesUnpublishCount = $category->game()->where('game_show', false)->count();
         $gamesPublishCount = $category->game()->where('game_show', true)->count();
+        $category->imgExist = $category->image()->get();
+        $category->mainImg = $category->image()->where('main_img', true)->get()->first();
+
         //dd($gamesCount);
         //$games = $game->where('category_id', $category->id)->paginate(12);
 
@@ -116,6 +120,7 @@ class CategoryController extends Controller
                 '/img/' . $game->game_url . '.jpg' :
                 '/img/site/empty.jpg';
         }
+        //todo refactoring
         return view('admin.category.category', [
             'gamesPublish' => $gamesPublish,
             'gamesUnpublish' => $gamesUnpublish,
@@ -153,11 +158,6 @@ class CategoryController extends Controller
             $category->display = $request->display;
         }
 
-
-        if (null !== $request->file('img')) {
-            $this->createImage($category->cat_url, $request->file('img'));
-        }
-
         if ($request->cat_rename) {
             $category->cat_name = $request->cat_rename;
             $newUrl = $urlGenerator->createUrl($category->cat_name);
@@ -189,6 +189,7 @@ class CategoryController extends Controller
         return redirect('admin');
 
     }
+
 //WTFFFFFF
     public function createImage(string $url, $img, string $imgPrefix = '')
     {

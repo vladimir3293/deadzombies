@@ -24,4 +24,8 @@ public $guarded = [];
     {
         return $this->belongsToMany(Tag::class);
     }
+    public function image()
+    {
+        return $this->belongsToMany(Image::class);
+    }
 }
