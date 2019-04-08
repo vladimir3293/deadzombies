@@ -161,15 +161,16 @@ class CategoryController extends Controller
         if ($request->cat_rename) {
             $category->cat_name = $request->cat_rename;
             $newUrl = $urlGenerator->createUrl($category->cat_name);
-
-            if (Storage::disk('pub')->exists("/img/categories/$category->cat_url.jpg")) {
-                Storage::disk('pub')->move("/img/categories/$category->cat_url.jpg", "/img/categories/$newUrl.jpg");
-            }
-            if (Storage::disk('pub')->exists("/img/categories/$category->cat_url-small.jpg")) {
-                Storage::disk('pub')->move("/img/categories/$category->cat_url-small.jpg", "/img/categories/$newUrl-small.jpg");
-            }
-            if (Storage::disk('pub')->exists("/img/categories/$category->cat_url-large.jpg")) {
-                Storage::disk('pub')->move("/img/categories/$category->cat_url-large.jpg", "/img/categories/$newUrl-large.jpg");
+            if ($category->cat_url != $newUrl) {
+                if (Storage::disk('pub')->exists("/img/categories/$category->cat_url.jpg")) {
+                    Storage::disk('pub')->move("/img/categories/$category->cat_url.jpg", "/img/categories/$newUrl.jpg");
+                }
+                if (Storage::disk('pub')->exists("/img/categories/$category->cat_url-small.jpg")) {
+                    Storage::disk('pub')->move("/img/categories/$category->cat_url-small.jpg", "/img/categories/$newUrl-small.jpg");
+                }
+                if (Storage::disk('pub')->exists("/img/categories/$category->cat_url-large.jpg")) {
+                    Storage::disk('pub')->move("/img/categories/$category->cat_url-large.jpg", "/img/categories/$newUrl-large.jpg");
+                }
             }
             $category->cat_url = $newUrl;
         }
@@ -189,6 +190,7 @@ class CategoryController extends Controller
         return redirect('admin');
 
     }
+
 //WTFFFFFF
     public function createImage(string $url, $img, string $imgPrefix = '')
     {
