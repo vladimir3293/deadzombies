@@ -21,6 +21,7 @@ Route::middleware(['auth', 'can:isAdmin'])->group(function () {
 //admin pages
     Route::get('/admin/pages/all', 'Admin\PagesController@getAll')->name('admin.pages.getAll');
     Route::get('/admin/pages/{page}', 'Admin\PagesController@getPage')->name('admin.pages.getPage');
+    Route::put('/admin/pages/{page}', 'Admin\PagesController@putPage');
 
 //admin images
     Route::post('/admin/images/', 'Admin\ImagesController@addImage')->name('admin.images.addImg');

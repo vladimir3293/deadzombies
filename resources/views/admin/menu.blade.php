@@ -1,5 +1,5 @@
 <ul class="nav nav-pills nav-stacked">
-    <li><a href="/" data-toggle="tab" target="_blank">На главную</a></li>
+    <li><a href="/" target="_blank">На главную</a></li>
     <li><a href="{{ route('admin') }}" data-toggle="tab">Админка</a></li>
     <li class="nav-categoriess"><a class="nav-categories-link" href="{{ route('admin.pages.getAll') }}">Страницы</a>
 

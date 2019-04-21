@@ -70,6 +70,7 @@
 
 (function ($, undefined) {
     $(document).ready(function () {
+        $('#summernote').summernote();
         console.log('start');
 
         // var client = algoliasearch('TQARMJGO8A', '3690a3214c8934d794287d2d4c28d37f');

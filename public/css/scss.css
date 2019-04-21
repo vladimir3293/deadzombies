@@ -320,10 +320,40 @@
 }
 
 .description-container {
+  padding: 10px;
   background: #dff2fe;
 }
 
 .description-container p {
+  margin-bottom: 10px;
+  margin-top: 10px;
+  font-size: 1rem;
+  font-style: normal;
+  text-align: justify;
+  color: black;
+  font-weight: 600;
+  line-height: 1.5;
+  text-indent: 1rem;
+}
+
+.header {
+  max-width: 1250px;
+  margin: 0 auto;
+}
+
+@media (max-width: 1250px) {
+  .header {
+    margin-left: 10px;
+    margin-right: 10px;
+  }
+}
+
+.header-container {
+  padding: 10px;
+  background: #dff2fe;
+}
+
+.header-container p {
   margin-bottom: 10px;
   margin-top: 10px;
   font-size: 1rem;
@@ -1517,6 +1547,14 @@ body {
   font-family: Verdana, Arial, Tahoma, sans-serif;
   font-size: 10px;
   line-height: 1.5;
+}
+
+h2 {
+  font-size: 1.4rem;
+}
+
+h1 {
+  font-size: 1.6rem;
 }
 
 .wrapper {

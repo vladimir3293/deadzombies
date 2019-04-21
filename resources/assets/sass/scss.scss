@@ -7,7 +7,7 @@ $content-color: black;
 $right-content: rgb(101, 30, 42);
 $top-block: #009cff;
 
-$link-hover: darken($top-block,10%);
+$link-hover: darken($top-block, 10%);
 $link-color: #002b50;
 $color-primary-2: rgba(178, 190, 111, 1);
 $color-primary-3: rgba(244, 249, 219, 1);
@@ -23,8 +23,8 @@ $color5: #fffcf6;
 $section-bg1: #dff2fe;
 $body: $color5;
 $wrap: $color4;
-$right-content: darken($color4,5%);
-$sidebar: darken($color4,10%);
+$right-content: darken($color4, 5%);
+$sidebar: darken($color4, 10%);
 
 $nav-ul: #009cff;
 
@@ -55,6 +55,14 @@ body {
   font-size: 10px;
   line-height: 1.5;
   //position: relative;
+}
+
+h2 {
+  font-size: 1.4rem;
+}
+
+h1 {
+  font-size: 1.6rem;
 }
 
 .wrapper {
@@ -93,7 +101,6 @@ body {
   //  display: none;
   //}
 }
-
 
 
 #message a {

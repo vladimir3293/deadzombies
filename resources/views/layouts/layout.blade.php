@@ -31,7 +31,6 @@
 <div class="wrapper">
     <header class="top-block-wrapper">
         @include('topBlock')
-
     </header>
     <div class="content">
         @yield('content')

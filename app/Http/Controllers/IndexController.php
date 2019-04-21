@@ -6,11 +6,12 @@ namespace Deadzombies\Http\Controllers;
 use Deadzombies\Model\Category;
 use Deadzombies\Model\Game;
 use Deadzombies\Model\Page;
+use Deadzombies\Model\Tag;
 use Illuminate\Database\Eloquent\Collection;
 
 class IndexController extends Controller
 {
-    public function getIndex(Game $game, Category $categoryModel)
+    public function getIndex(Game $game, Category $categoryModel, Page $pageModel, Tag $tagModel)
     {
         //TODO transfer to model
         //TODO refactor img
@@ -53,27 +54,32 @@ class IndexController extends Controller
                 '/img/' . $game->game_url . '-large.jpg' :
                 '/img/site/empty.jpg';
         });
-        $categories = $categoryModel->where('display',true)->get();
+        $categories = $categoryModel->where('display', true)->get();
         $categories->each(function ($category) {
             $category->url = route('getCategory', ['cat' => $category->cat_url], false);
             $category->img = file_exists(public_path() . '/img/categories/' . $category->cat_url . '.jpg') ?
                 '/img/categories/' . $category->cat_url . '.jpg' :
                 '/img/site/empty.jpg';
-            $category->tagsDisplayed = $category->tags()->where('display',true)->get();
-            $category->tagsDisplayed->each(function ($tag) {
-                $tag->fullUrl = route('getTag', ['tag' => $tag->url], false);
-                $tag->img = file_exists(public_path() . '/img/tags/' . $tag->url . '.jpg') ?
-                    '/img/tags/' . $tag->url . '.jpg' :
-                    '/img/site/empty.jpg';
-            });
         });
+        $tags = $tagModel->where('display', true)->get();
+        $tags->each(function ($tag) {
+            $tag->fullUrl = route('getTag', ['tag' => $tag->url], false);
+            $tag->img = file_exists(public_path() . '/img/tags/' . $tag->url . '.jpg') ?
+                '/img/tags/' . $tag->url . '.jpg' :
+                '/img/site/empty.jpg';
+        });
+        $indexPage = $pageModel->where('name', 'index')->get()->first();
+        //TODO redactor
 
+        //$indexPage->descWithP = '<p>' . str_replace(array("\r\n", "\r", "\n"), '</p><p>', $indexPage->description) . '</p>';
 
         return view('index', [
             'popularGames' => $popularGames,
             'newGames' => $newGames,
             'bestGames' => $bestGames,
             'categories' => $categories,
+            'indexPage' => $indexPage,
+            'tags' => $tags,
         ]);
     }
 }
