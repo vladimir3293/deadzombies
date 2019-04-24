@@ -1,4 +1,3 @@
-
 /**
  * First we will load all of this project's JavaScript dependencies which
  * includes Vue and other libraries. It is a great starting point when
@@ -11,7 +10,9 @@ try {
     //require('bootstrap-sass');
 } catch (e) {
 }
-// require('./bootstrap');
+// import './node_modules/bootstrap-sass/assets/javascripts/bootstrap.min.js';
+//require('./bootstrap');
+// require("bootstrap-sass/assets/javascripts/bootstrap.min.js");
 
 //window.Vue = require('vue');
 

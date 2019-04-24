@@ -57,16 +57,22 @@ class IndexController extends Controller
         $categories = $categoryModel->where('display', true)->get();
         $categories->each(function ($category) {
             $category->url = route('getCategory', ['cat' => $category->cat_url], false);
-            $category->img = file_exists(public_path() . '/img/categories/' . $category->cat_url . '.jpg') ?
-                '/img/categories/' . $category->cat_url . '.jpg' :
-                '/img/site/empty.jpg';
+            $mainImg = $category->image()->where('main_img', true)->get()->first();
+            if (!empty($mainImg)) {
+                $category->img = "/img/$mainImg->name.jpg";
+            } else {
+                $category->img = '/img/site/empty.jpg';
+            }
         });
         $tags = $tagModel->where('display', true)->get();
         $tags->each(function ($tag) {
             $tag->fullUrl = route('getTag', ['tag' => $tag->url], false);
-            $tag->img = file_exists(public_path() . '/img/tags/' . $tag->url . '.jpg') ?
-                '/img/tags/' . $tag->url . '.jpg' :
-                '/img/site/empty.jpg';
+            $mainImg = $tag->image()->where('main_img', true)->get()->first();
+            if (!empty($mainImg)) {
+                $tag->img = "/img/$mainImg->name.jpg";
+            } else {
+                $tag->img = '/img/site/empty.jpg';
+            }
         });
         $indexPage = $pageModel->where('name', 'index')->get()->first();
         //TODO redactor

@@ -68,13 +68,14 @@
                             <a href="{!! $category->url !!}"><img
                                         src="{{ $category->img }}"><span>{!! $category->cat_name !!}</span></a>
                         </li>
-                        @foreach($tags as $tag)
-                            <li class="categories-list-subcategory">
-                                <a href="{!! $tag->fullUrl !!}"><img
-                                            src="{{ $tag->img }}"><span>{!! $tag->name !!}</span></a>
-                            </li>
-                        @endforeach
+
                         {{--</div>--}}
+                    @endforeach
+                    @foreach($tags as $tag)
+                        <li class="categories-list-category">
+                            <a href="{!! $tag->fullUrl !!}"><img
+                                        src="{{ $tag->img }}"><span>{!! $tag->name !!}</span></a>
+                        </li>
                     @endforeach
                 </ul>
 
@@ -85,6 +86,7 @@
     <div class="description-container">
         <div class="description">
             {!! $indexPage->description !!}
+            <div class="clearfix"></div>
         </div>
     </div>
 @endsection

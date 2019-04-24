@@ -14,4 +14,8 @@ class Page extends Model
     {
         return 'url';
     }
+    public function image()
+    {
+        return $this->belongsToMany(Image::class);
+    }
 }

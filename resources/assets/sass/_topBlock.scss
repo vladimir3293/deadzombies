@@ -21,6 +21,7 @@
   }
   & li {
     list-style-type: none;
+
     &:last-child a {
       border-radius: 0px 0px 5px 5px;
     }
@@ -31,6 +32,7 @@
       width: 50px;
       border-radius: 5px;
     }
+
     color: $top-block;
     background-color: white;
     border-bottom: 1px solid #dfdfdf;
@@ -45,8 +47,11 @@
     overflow: hidden;
     //border-radius: 5px;
     //padding-left: 35px;
-    & span{
+    & span {
       margin-left: 10px;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
     }
   }
   & > span {
@@ -54,6 +59,7 @@
     color: $top-block;
     font-size: 1rem;
     margin: 9px;
+
     &:after {
       content: "";
       display: inline-block;
@@ -83,41 +89,49 @@
     position: fixed;
     width: 100%;
   }
+
   &-clicked {
     transform: translateX(80vw);
   }
+
   &-click-svg {
     & rect {
       transition: transform 0.5s 0s;
     }
+
     & rect:first-child {
       opacity: 0;
     }
+
     & rect:nth-child(2) {
       transform: rotate(45deg);
     }
+
     & rect:nth-child(3) {
       transform: rotate(-45deg);
     }
+
     & rect:nth-child(4) {
       opacity: 0;
     }
   }
+
   & svg {
     display: block;
     width: 30px;
     height: 30px;
     fill: #fff;
   }
+
   &-logo {
     display: block;
     text-align: center;
     //flex-grow: 1;
     background-image: url("/img/site/brend.png");
-    background-size: 325px 50px;
+    background-size: 325px 40px;
     background-repeat: no-repeat;
     //background-position-x: 50px;
-    //background-position-y: 10px;
+    background-position-y: center;
     @media(max-width: 768px) {
       margin-right: auto;
       margin-left: auto;
@@ -125,12 +139,14 @@
     width: 325px;
     height: 50px;
   }
+
   & button {
     height: 52px;
     border: 0;
     background: 0;
     padding: 0 15px;
     z-index: 200;
+
     &:focus {
       outline: none;
     }
@@ -142,15 +158,18 @@
     width: 100%;
     justify-content: flex-start;
   }
+
   &-top-categories {
     margin-left: auto;
     @include top-block-categories(173px);
   }
+
   &-popular-categories {
     margin-left: 10px;
     @include top-block-categories(200px);
 
   }
+
   &-slider {
     display: none;
     background: $sidebar;
@@ -183,38 +202,75 @@
       margin-bottom: auto;
 
     }
+
     &:last-child a {
       border: 0px;
     }
+
     & li {
       list-style-type: none;
 
     }
+
     & a {
-      color: #002b50;
+      & img {
+        width: 50px;
+        border-radius: 5px;
+      }
+
+      color: $top-block;
       background-color: white;
       border-bottom: 1px solid #dfdfdf;
       font-size: 1rem;
       //margin: 5px;
       padding: 10px;
-      display: block;
+      display: flex;
+      align-items: center;
       text-decoration: none;
       text-align: left;
       text-overflow: ellipsis;
       overflow: hidden;
       //border-radius: 5px;
-
-      padding-left: 35px;
+      //padding-left: 35px;
+      & span {
+        margin-left: 10px;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+      }
     }
+
+    //& a {
+    //  color: #002b50;
+    //  background-color: white;
+    //  border-bottom: 1px solid #dfdfdf;
+    //  font-size: 1rem;
+    //  //margin: 5px;
+    //  padding: 10px;
+    //  display: block;
+    //  text-decoration: none;
+    //  text-align: left;
+    //  text-overflow: ellipsis;
+    //  overflow: hidden;
+    //  //border-radius: 5px;
+    //
+    //  padding-left: 35px;
+    //}
 
     &-header {
       height: 52px;
       background: $top-block;
       width: 80vw;
+      background-image: url("/img/site/brend.png");
+      background-size: 250px 35px;
+      background-repeat: no-repeat;
+      background-position-x: center;
+      background-position-y: center;
       //position: fixed;
       //top: 0px;
       flex-shrink: 0;
     }
+
     &-footer {
       height: 52px;
       background: $top-block;

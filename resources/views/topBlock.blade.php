@@ -42,7 +42,8 @@
         <ul>
             <li><a href="/">Главная</a></li>
             @foreach($categories as $category)
-                <li><a href="{!! $category->url !!}">{!! $category->cat_name !!}</a></li>
+                <li><a href="{!! $category->url !!}"><img
+                                src="{{ $category->img }}"><span>{!! $category->cat_name !!}</span></a></li>
             @endforeach
         </ul>
         <div class="top-block-slider-footer">

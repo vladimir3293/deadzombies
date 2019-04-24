@@ -65,6 +65,10 @@ h1 {
   font-size: 1.6rem;
 }
 
+.clearfix {
+  clear: both;
+}
+
 .wrapper {
   transition: transform 1s 0s;
   @media (min-width: 480px) {

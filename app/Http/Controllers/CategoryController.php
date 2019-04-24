@@ -23,9 +23,12 @@ class CategoryController extends Controller
         $category->tagsDisplayed = $category->tags()->where('display', true)->get();
         $category->tagsDisplayed->each(function ($tag) {
             $tag->fullUrl = route('getTag', ['tag' => $tag->url], false);
-            $tag->img = file_exists(public_path() . '/img/tags/' . $tag->url . '.jpg') ?
-                '/img/tags/' . $tag->url . '.jpg' :
-                '/img/site/empty.jpg';
+            $mainImg = $tag->image()->where('main_img', true)->get()->first();
+            if (!empty($mainImg)) {
+                $tag->img = "/img/$mainImg->name.jpg";
+            } else {
+                $tag->img = '/img/site/empty.jpg';
+            }
         });
         $category->newGames = $category->game()->where('game_show', true)->orderBy('id')->limit(10)->get();
         $category->newGames->each(function ($games) {
@@ -34,7 +37,6 @@ class CategoryController extends Controller
                 '/img/' . $games->game_url . '.jpg' :
                 '/img/site/empty.jpg';
         });
-        $category->descWithP = '<p>' . str_replace(array("\r\n", "\r", "\n"), '</p><p>', $category->cat_desc) . '</p>';
 
         return view('category', ['category' => $category]);
     }

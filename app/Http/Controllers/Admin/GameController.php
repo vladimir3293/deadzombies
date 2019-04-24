@@ -40,8 +40,7 @@ class GameController extends Controller
     {
         $Game->game_name = $request->create_game;
         $Game->game_url = $urlGenerator->createUrl($request->create_game);
-        //dd($Game);
-        //dd($Game->game_url);
+        $Game->h1 = $request->create_game;
         $Game->save();
 
         return redirect()->route('admin.getGame', [$Game]);
@@ -82,8 +81,8 @@ class GameController extends Controller
         $categories = $category->orderBy('id', 'desc')->get();
 
         $Game->cat = $Game->category ? '<a href="' . route('admin.getCategory', [$Game->category->cat_url]) . '">' . $Game->category->cat_name . '</a>' : 'НЕТ';
-        //$Game->flash = Storage::disk('pub')->exists("/games/$Game->game_url.swf") ? 'ЕСТЬ' : 'НЕТ';
-        $Game->imgExist = Storage::disk('pub')->exists("/img/$Game->game_url.jpg") ? 'ЕСТЬ' : 'НЕТ';
+        $Game->imgExist = $Game->image()->get();
+        $Game->mainImg = $Game->image()->where('main_img', true)->get()->first();
 
         if ($Game->height) {
             $Game->gameHeight = 868 * $Game->height / $Game->width;
@@ -128,6 +127,7 @@ class GameController extends Controller
         $Game->source = $request->source;
         $Game->height = $request->height;
         $Game->width = $request->width;
+        $Game->h1 = $request->h1;
         $Game->save();
         //TODO exception
 

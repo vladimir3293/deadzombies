@@ -14,7 +14,7 @@
                 <span>{{ $tag->name }}</span>
             </div>
             <header class="category-header">
-                <h1>{{ $tag->name }}</h1>
+                <h1>{{ $tag->h1 }}</h1>
             </header>
             <div class="category-games">
                 @if($tag->gamesDisplayed->isNotEmpty())
@@ -26,7 +26,7 @@
             </div>
 
             <div class="category-description">
-                <p>{!! $tag->descWithP !!}</p>
+                <p>{!! $tag->description !!}</p>
             </div>
             <div class="category-sidebar">
                 <div class="category-relation">

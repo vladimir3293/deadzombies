@@ -25,6 +25,11 @@ class Tag extends Model
         return $this->belongsToMany(Tag::class,'tag_tag','tag_id','tag_id2');
     }
 
+    public function image()
+    {
+        return $this->belongsToMany(Image::class);
+    }
+
     public function belongTag()
     {
         return $this->belongsToMany(Tag::class,'tag_tag','tag_id2','tag_id');

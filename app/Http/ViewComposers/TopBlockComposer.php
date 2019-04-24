@@ -19,28 +19,40 @@ class TopBlockComposer
 
     public function compose(View $view)
     {
-        $categories = $this->category->where('display',true)->orderBy('cat_order')->get();
-        $categories->each(function ($value) {
-            $value->url = route('getCategory', ['cat' => $value->cat_url], false);
+        $categories = $this->category->where('display', true)->orderBy('cat_order')->get();
+        $categories->each(function ($category) {
+            $category->url = route('getCategory', ['cat' => $category->cat_url], false);
+            $mainImg = $category->image()->where('main_img', true)->get()->first();
+            if (!empty($mainImg)) {
+                $category->img = "/img/$mainImg->name.jpg";
+            } else {
+                $category->img = '/img/site/empty.jpg';
+            }
         });
-        $topCategories = $this->category->where('display',true)->limit(5)->get();
+        $topCategories = $this->category->where('display', true)->limit(5)->get();
         $topCategories->each(function ($category) {
             $category->url = route('getCategory', ['cat' => $category->cat_url], false);
-            $category->img = file_exists(public_path() . '/img/categories/' . $category->cat_url . '.jpg') ?
-                '/img/categories/' . $category->cat_url . '.jpg' :
-                '/img/site/empty.jpg';
+            $mainImg = $category->image()->where('main_img', true)->get()->first();
+            if (!empty($mainImg)) {
+                $category->img = "/img/$mainImg->name-small.jpg";
+            } else {
+                $category->img = '/img/site/empty.jpg';
+            }
         });
-        $popularCategories = $this->category->where('display',true)->limit(5)->get();
+        $popularCategories = $this->category->where('display', true)->limit(5)->get();
         $popularCategories->each(function ($category) {
             $category->url = route('getCategory', ['cat' => $category->cat_url], false);
-            $category->img = file_exists(public_path() . '/img/categories/' . $category->cat_url . '.jpg') ?
-                '/img/categories/' . $category->cat_url . '.jpg' :
-                '/img/site/empty.jpg';
+            $mainImg = $category->image()->where('main_img', true)->get()->first();
+            if (!empty($mainImg)) {
+                $category->img = "/img/$mainImg->name-small.jpg";
+            } else {
+                $category->img = '/img/site/empty.jpg';
+            }
         });
         $view->with([
-            'categories'=> $categories,
-            'topCategories'=>$topCategories,
-            'popularCategories'=>$popularCategories,
+            'categories' => $categories,
+            'topCategories' => $topCategories,
+            'popularCategories' => $popularCategories,
         ]);
     }
 }

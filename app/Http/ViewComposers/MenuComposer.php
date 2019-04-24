@@ -18,8 +18,14 @@ class MenuComposer
     public function compose(View $view)
     {
         $categories = $this->category->where('display', 1)->orderBy('cat_order')->get();
-        $categories->each(function ($value) {
-            $value->url = route('getCategory', ['cat' => $value->cat_url], false);
+        $categories->each(function ($category) {
+            $value->url = route('getCategory', ['cat' => $category->cat_url], false);
+            $mainImg = $category->image()->where('main_img', true)->get()->first();
+            if (!empty($mainImg)) {
+                $category->img = "/img/$mainImg->name.jpg";
+            } else {
+                $category->img = '/img/site/empty.jpg';
+            }
         });
         $view->with('menu', $categories);
     }

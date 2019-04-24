@@ -26,6 +26,13 @@ Route::middleware(['auth', 'can:isAdmin'])->group(function () {
 //admin images
     Route::post('/admin/images/', 'Admin\ImagesController@addImage')->name('admin.images.addImg');
 
+//admin images
+    Route::put('/admin/images/{image}', 'Admin\ImagesController@putImage');
+    Route::delete('/admin/images/{image}', 'Admin\ImagesController@deleteImage');
+    Route::get('/admin/images/{image}', 'Admin\ImagesController@getImage')->name('admin.images.getImage');
+    Route::post('/admin/images/', 'Admin\ImagesController@addImage')->name('admin.images.addImage');
+    Route::post('/admin/images/page/{page}', 'Admin\ImagesController@addImageToPage')->name('admin.images.addImgToPage');
+
 //admin category pages
 //page get all categories
     Route::get('/admin/category/all', 'Admin\CategoryController@getAll')->name('admin.category.getAll');
@@ -83,7 +90,7 @@ Route::middleware(['auth', 'can:isAdmin'])->group(function () {
     Route::get('/admin/tag/published', 'Admin\TagController@getPublished')->name('admin.tag.getPublished');
 
 //get one tag page
-    Route::get('/admin/tag/{Tag}', 'Admin\TagController@getTag')->name('admin.getTag');
+    Route::get('/admin/tag/{tag}', 'Admin\TagController@getTag')->name('admin.getTag');
 //put tag
     Route::put('/admin/tag/{tag}', 'Admin\TagController@putTag');
 //delete tag

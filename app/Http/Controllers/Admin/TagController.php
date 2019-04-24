@@ -16,6 +16,7 @@ class TagController extends Controller
     {
         return view('admin.tag.create');
     }
+
     public function getUnpublished(Tag $tagModel)
     {
         $tagsCount = $tagModel->where('display', 0)->get()->count();
@@ -40,7 +41,7 @@ class TagController extends Controller
 
     public function removeTag(Tag $Tag, Request $request)
     {
-       //dd($Tag);
+        //dd($Tag);
         $tag = $Tag->where('id', $request->tagId)->get()->first();
         //dd($tag);
         $Tag->Tag()->detach($tag);
@@ -50,7 +51,7 @@ class TagController extends Controller
     public function addTag(Tag $Tag, Request $request)
     {
         //dd($Tag, $request);
-        if($Tag->id == $request->tagId){
+        if ($Tag->id == $request->tagId) {
             throw new TagDuplicateException('Нельзя привязать тег сам себе');
         }
         $tagAdd = $Tag->where('id', $request->tagId)->get()->first();
@@ -68,6 +69,7 @@ class TagController extends Controller
         $tag->meta_desc = $request->tagMetaDesc;
         $tag->meta_key = $request->tagMetaKey;
         $tag->description = $request->tagDesc;
+        $tag->h1 = $request->tagH1;
         if (null !== $request->file('img')) {
             $this->createImage($tag->url, $request->file('img'));
         }
@@ -93,18 +95,18 @@ class TagController extends Controller
         return redirect()->route('admin.getTag', [$tag]);
     }
 
-    public function getTag(Tag $Tag)
+    public function getTag(Tag $tag)
     {
-        $categories = $Tag->category()->orderBy('id', 'desc')->get();
-        $tags = $Tag->tag()->orderBy('id', 'desc')->get();
-        $games = $Tag->game()->orderBy('id', 'desc')->get();
-        $belongTag = $Tag->belongTag()->orderBy('id', 'desc')->get();
-        $tagsAll = $Tag->orderBy('id', 'desc')->get();
-        $Tag->imgExist = Storage::disk('pub')->exists("/img/tags/$Tag->url.jpg") ? 'ЕСТЬ' : 'НЕТ';
+        $categories = $tag->category()->orderBy('id', 'desc')->get();
+        $tags = $tag->tag()->orderBy('id', 'desc')->get();
+        $games = $tag->game()->orderBy('id', 'desc')->get();
+        $belongTag = $tag->belongTag()->orderBy('id', 'desc')->get();
+        $tagsAll = $tag->orderBy('id', 'desc')->get();
+        $tag->imgExist = $tag->image()->get();
+        $tag->mainImg = $tag->image()->where('main_img', true)->get()->first();
 
-        //dd($Tag->belongTag);
         return view('admin.tag.tag', [
-            'tag' => $Tag,
+            'tag' => $tag,
             'subTags' => $tags,
             'games' => $games,
             'categories' => $categories,
@@ -116,6 +118,14 @@ class TagController extends Controller
 
     public function deleteTag(Tag $Tag)
     {
+        $images = $Tag->image()->get();
+        foreach ($images as $image) {
+            $Tag->image()->detach($image);
+            $image->delete();
+            Storage::disk('pub')->delete("/img/$image->name.jpg");
+            Storage::disk('pub')->delete("/img/$image->name-large.jpg");
+            Storage::disk('pub')->delete("/img/$image->name-small.jpg");
+        }
         $Tag->delete();
         return redirect('/admin/tag/all');
     }
@@ -127,7 +137,7 @@ class TagController extends Controller
             $tag->url = $urlGenerator->createUrl($request->tagName);
             $tag->save();
         }
-        return redirect(route('admin.getTag',[$tag]));
+        return redirect(route('admin.getTag', [$tag]));
     }
 
     public function getAll(Tag $tagModel)

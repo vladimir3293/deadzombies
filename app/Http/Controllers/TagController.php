@@ -23,8 +23,8 @@ class TagController extends Controller
         }
         $tag->tagsDisplayed = $tag->tag()->where('display', true)->get();
         //dd($tag);
-        $tag->descWithP = '<p>'.str_replace(array("\r\n", "\r", "\n"), '</p><p>', $tag->description).'</p>';
-$tag->newGames = $tag->game()->where('game_show', true)->orderBy('game_id')->limit(10)->get();
+//        $tag->descWithP = '<p>' . str_replace(array("\r\n", "\r", "\n"), '</p><p>', $tag->description) . '</p>';
+        $tag->newGames = $tag->game()->where('game_show', true)->orderBy('game_id')->limit(10)->get();
         //dd($tag);
         return view('tag', ['tag' => $tag]);
     }
