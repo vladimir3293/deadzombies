@@ -11,11 +11,14 @@
                 @endif</h1>
         </header>
         @if(isset($tags))
-            @foreach($tags as $tag)
-                <div class="row">
-                    <a href="{{ $tag->url }}">{{ $tag->name }}</a>
-                </div>
-            @endforeach
+            <div class="row">
+                <ul>
+                    @foreach($tags as $tag)
+                        <li><a href="{{ $tag->url }}">{{ $tag->name }}</a></li>
+                    @endforeach
+                </ul>
+            </div>
+
         @endif
         <div class="row">
             <div class="col-md-12">

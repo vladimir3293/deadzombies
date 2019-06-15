@@ -27,6 +27,7 @@
 
             <div class="category-description">
                 {!! $category->descWithP !!}
+                <div class="clearfix"></div>
             </div>
             <div class="category-sidebar">
                 <div class="category-relation">

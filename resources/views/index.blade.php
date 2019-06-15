@@ -65,16 +65,18 @@
 
                     @foreach($categories as $category)
                         <li class="categories-list-category">
-                            <a href="{!! $category->url !!}"><img
-                                        src="{{ $category->img }}"><span>{!! $category->cat_name !!}</span></a>
+                            <a href="{!! $category->url !!}"><img alt="{{ $category->imgAlt }}"
+                                                                  title="{{ $category->imgTitle }}"
+                                                                  src="{{ $category->img }}"><span>{!! $category->cat_name !!}</span></a>
                         </li>
 
                         {{--</div>--}}
                     @endforeach
                     @foreach($tags as $tag)
                         <li class="categories-list-category">
-                            <a href="{!! $tag->fullUrl !!}"><img
-                                        src="{{ $tag->img }}"><span>{!! $tag->name !!}</span></a>
+                            <a href="{!! $tag->fullUrl !!}"><img alt="{{ $tag->imgAlt }}"
+                                                                 title="{{ $tag->imgTitle }}"
+                                                                 src="{{ $tag->img }}"><span>{!! $tag->name !!}</span></a>
                         </li>
                     @endforeach
                 </ul>

@@ -1,42 +1,7 @@
 @extends('layouts.adminLayout')
+@section('title',$category->cat_name)
 @section('right_content')
     <h1><a href="{{ route('getCategory',[$category->cat_url]) }}" target="_blank">{{ $category->cat_name }}</a></h1>
-    <div class="form-group">
-        <p>Доступные изображения:</p>
-        @if(!empty($category->imgExist))
-            <div class="page-image-container">
-                @foreach($category->imgExist as $img)
-                    <div class="page-image">
-                        <a href="{{ route('admin.images.getImage',['image'=>$img->name]) }}">
-                            <img src="/img/{{ $img->name }}-large.jpg"></a>
-                        <span>title="{{$img->title}}" alt="{{$img->alt}}"</span>
-                        <span>/img/{{ $img->name }}-small.jpg</span>
-                        <span>/img/{{ $img->name }}.jpg</span>
-                        <span>/img/{{ $img->name }}-large.jpg</span>
-                        <form method="POST" action="/admin/images/{{ $img->name }}">
-                            {{ method_field('DELETE') }}
-                            {{ csrf_field() }}
-                            <input type="hidden" name="categoryId" value="{{$category->id}}">
-                            <input class="btn btn-danger btn-sm" type="submit" value="Удалить">
-                            @if($img->main_img)
-                                <span>Главное</span>
-                            @endif
-                        </form>
-
-                    </div>
-                @endforeach
-            </div>
-        @endif
-
-        <form class="cat_edit_form" enctype="multipart/form-data" method="POST"
-              action="/admin/images/">
-            {{ method_field('POST') }}
-            {{ csrf_field() }}
-            <input type="hidden" name="categoryId" value="{{$category->id}}">
-            <input type="file" name="img">
-            <input class="btn btn-primary btn-sm" type="submit" value="Добавить">
-        </form>
-    </div>
     <div class="cat_edit_other">
         <form class="cat_edit_form" enctype="multipart/form-data" method="POST"
               action="/admin/category/{{ $category->cat_url }}">
@@ -100,16 +65,52 @@
                 @endif
             </div>
 
-            <input class="btn btn-primary" type="submit" value="Изменить">
+            <input class="btn btn-primary" type="submit" value="Изменить категорию">
         </form>
-        <form class="delete-form" method="POST" action="/admin/category/{{ $category->cat_url }}">
-            {{ method_field('DELETE') }}
-            {{ csrf_field() }}
-            <input class="btn btn-danger" type="submit" value="Удалить">
-        </form>
+
+        <div class="form-group">
+            <h1>Доступные изображения:</h1>
+            @if(!empty($category->imgExist))
+                <div class="page-image-container">
+                    @foreach($category->imgExist as $img)
+                        <div class="page-image">
+                            <div class="page-image-leftside">
+                                <a href="{{ route('admin.images.getImage',['image'=>$img->name]) }}">
+                                    <img src="/img/{{ $img->name }}-large.jpg"></a>
+                            </div>
+                            <div class="page-image-rightside">
+                                <span>title="{{$img->title}}" alt="{{$img->alt}}"</span>
+                                <p><strong>SMALL</strong> /img/{{ $img->name }}-small.jpg</p>
+                                <p><strong>MEDIUM</strong> /img/{{ $img->name }}.jpg</p>
+                                <p><strong>LARGE</strong> /img/{{ $img->name }}-large.jpg</p>
+                            </div>
+                            <form method="POST" action="/admin/images/{{ $img->name }}">
+                                {{ method_field('DELETE') }}
+                                {{ csrf_field() }}
+                                <input type="hidden" name="categoryId" value="{{$category->id}}">
+                                <input class="btn btn-danger btn-sm" type="submit" value="Удалить">
+                                @if($img->main_img)
+                                    <span>Главное</span>
+                                @endif
+                            </form>
+
+                        </div>
+                    @endforeach
+                </div>
+            @endif
+            <form class="cat_edit_form" enctype="multipart/form-data" method="POST"
+                  action="/admin/images/">
+                {{ method_field('POST') }}
+                {{ csrf_field() }}
+                <input type="hidden" name="categoryId" value="{{$category->id}}">
+                <input type="file" name="img">
+                <input class="btn btn-primary btn-sm" type="submit" value="Добавить">
+            </form>
+        </div>
+
     </div>
 
-    <h4>Теги: {{ $tagsCount }}</h4>
+    <h1>Теги: {{ $tagsCount }}</h1>
 
     @foreach($tagsCategory as $tagCategory)
         <form method="post" action="/admin/category/tag/{{ $category->cat_url }}">
@@ -170,4 +171,9 @@
             </div>
         @endif
     </article>
+    <form class="delete-form" method="POST" action="/admin/category/{{ $category->cat_url }}">
+        {{ method_field('DELETE') }}
+        {{ csrf_field() }}
+        <input class="btn btn-danger" type="submit" value="Удалить категорию">
+    </form>
 @endsection

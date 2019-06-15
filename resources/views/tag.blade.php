@@ -26,7 +26,8 @@
             </div>
 
             <div class="category-description">
-                <p>{!! $tag->description !!}</p>
+                {!! $tag->description !!}
+                <div class="clearfix"></div>
             </div>
             <div class="category-sidebar">
                 <div class="category-relation">

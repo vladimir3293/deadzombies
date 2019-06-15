@@ -1,3 +1,37 @@
+.game-delete {
+  margin-top: 40px;
+}
+
+li {
+  list-style-type: none;
+}
+
+@media (min-width: 768px) {
+  #navbar-main {
+    display: none !important;
+  }
+
+  .top-block-button {
+    display: none;
+  }
+}
+
+@media (max-width: 768px) {
+  .top-block-button-widthscreen {
+    display: none;
+  }
+
+  .menu {
+    display: none;
+  }
+
+  .top-block-button {
+    display: inline-block;
+    margin-top: 8px;
+    margin-left: 8px;
+  }
+}
+
 .img-desc-left {
   float: right;
   width: 150px;
@@ -8,26 +42,22 @@
 }
 
 .page-image {
-  display: -webkit-inline-box;
-  display: -ms-inline-flexbox;
-  display: inline-flex;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: column;
-          flex-direction: column;
-  width: 220px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
   padding: 9px;
   margin: 5px;
   background: #e4ecf2;
-}
-
-.page-image > span {
   overflow: hidden;
-  white-space: nowrap;
 }
 
+.page-image p {
+  overflow: hidden;
+  margin: 0px;
+}
+
+.page-image a,
 .page-image img {
-  width: 200px;
+  width: 100px;
 }
 
 .page-image form span {
@@ -67,17 +97,6 @@ h4 a {
   white-space: nowrap;
   overflow: hidden;
   display: block;
-}
-
-.delete-form {
-  display: inline;
-  position: relative;
-  bottom: 35px;
-  left: 350px;
-}
-
-.sidebar {
-  margin-top: 20px;
 }
 
 .footer-bottom {

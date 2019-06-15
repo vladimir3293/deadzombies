@@ -169,6 +169,9 @@
     padding: 20px;
     font-weight: 600;
     font-size: 0.8rem;
+    & img {
+      margin: 10px;
+    }
   }
   &-tags {
     //margin: 10px 0 10px 0;

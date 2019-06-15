@@ -12,6 +12,14 @@ class Game extends Model
     //public $primaryKey = 'gameid';
     public $guarded = [];
 
+    public static function boot() {
+        parent::boot();
+
+        static::deleting(function($game) { // before delete() method call this
+            $game->tags()->detach();
+        });
+    }
+
     public function category()
     {
         return $this->belongsTo(Category::class);

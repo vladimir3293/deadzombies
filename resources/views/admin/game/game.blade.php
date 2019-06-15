@@ -4,41 +4,7 @@
 
 @section('right_content')
     <h1><a href="{{ route('getGame',[$game->game_url])}}" target="_blank">{{$game->game_name }}</a></h1>
-    <div class="form-group">
-        <p>Доступные изображения:</p>
-        @if(!empty( $game->imgExist))
-            <div class="page-image-container">
-                @foreach( $game->imgExist as $img)
-                    <div class="page-image">
-                        <a href="{{ route('admin.images.getImage',['image'=>$img->name]) }}">
-                            <img src="/img/{{ $img->name }}-large.jpg"></a>
-                        <span>/img/{{ $img->name }}-small.jpg</span>
-                        <span>/img/{{ $img->name }}.jpg</span>
-                        <span>/img/{{ $img->name }}-large.jpg</span>
-                        <form method="POST" action="/admin/images/{{ $img->name }}">
-                            {{ method_field('DELETE') }}
-                            {{ csrf_field() }}
-                            <input type="hidden" name="gameId" value="{{ $game->id}}">
-                            <input class="btn btn-danger btn-sm" type="submit" value="Удалить">
-                            @if($img->main_img)
-                                <span>Главное</span>
-                            @endif
-                        </form>
 
-                    </div>
-                @endforeach
-            </div>
-        @endif
-
-        <form class="cat_edit_form" enctype="multipart/form-data" method="POST"
-              action="/admin/images/">
-            {{ method_field('POST') }}
-            {{ csrf_field() }}
-            <input type="hidden" name="gameId" value="{{ $game->id}}">
-            <input type="file" name="img">
-            <input class="btn btn-primary btn-sm" type="submit" value="Добавить">
-        </form>
-    </div>
     <div class="game_edit">
         <div class="game_form">
             <form method="post" action="/admin/game/{{ $game->id }}" enctype="multipart/form-data" role="form">
@@ -106,7 +72,7 @@
 
                 <div class="form-group">
                     <label for="game_desc"> Описание: </label>
-                    <textarea class="form-control" id="game_desc" name="game_desc" class="game_desc"
+                    <textarea class="form-control" id="summernote" name="game_desc" class="game_desc"
                               rows="4">{{ $game->game_desc }}</textarea>
                 </div>
                 <div class="form-group">
@@ -118,22 +84,22 @@
                     <label for="source">Ссылка на игру</label>
                     <input class="form-control" type="text" name="source" id="source" value="{{ $game->source }}">
                     <div id="game-wrap">
-                        <iframe id="game-player"
-                                data-src="{{ $game->source }}"
-                                frameborder="0"
-                                name="topFrame"
-                                scrolling="no"
-                                allowfullscreen="true"
-                                allowtransparency="true"
-                                {{--style="margin: 50px;"--}}
-                                {{--height="100vh" ;--}}
-                                {{--width="{{ $game->number }}vh"--}}
-                                {{--height="{{ $game->gameHeight }}"--}}
-                                {{--width="{{ $game->gameWidth }}"--}}
-                        >
-                        </iframe>
+                        {{--                        <iframe id="game-player"--}}
+                        {{--                                data-src="{{ $game->source }}"--}}
+                        {{--                                frameborder="0"--}}
+                        {{--                                name="topFrame"--}}
+                        {{--                                scrolling="no"--}}
+                        {{--                                allowfullscreen="true"--}}
+                        {{--                                allowtransparency="true"--}}
+                        {{--                                --}}{{--style="margin: 50px;"--}}
+                        {{--                                --}}{{--height="100vh" ;--}}
+                        {{--                                --}}{{--width="{{ $game->number }}vh"--}}
+                        {{--                                --}}{{--height="{{ $game->gameHeight }}"--}}
+                        {{--                                --}}{{--width="{{ $game->gameWidth }}"--}}
+                        {{--                        >--}}
+                        {{--                        </iframe>--}}
                     </div>
-                    <span id="show-game" class="btn btn-primary">Показать игру</span>
+                    <a target="_blank" href="{{ $game->source }}" class="btn btn-primary">link</a>
                 </div>
                 <div class="form-group">
                     <label for="source">Высота:</label>
@@ -145,46 +111,83 @@
                 </div>
                 <div class="form-group">
                     <p>Главное изображение:</p>
-                    @if(!empty($category->mainImg))
-                        <img src="/img/{{ $category->mainImg->name }}.jpg">
+                    @if(!empty($game->mainImg))
+                        <img src="/img/{{ $game->mainImg->name }}.jpg">
                     @else
                         <span>НЕТ</span>
                     @endif
                 </div>
                 <input class="btn btn-primary" type="submit" value="Применить">
             </form>
-
-        </div>
-        <h4>Теги:</h4>
-
-        @foreach($tagsGame as $tagGame)
-            <form method="post" action="/admin/game/tag/{{ $game->id }}">
-                <div class="form-group">
-                    {{ method_field('DELETE') }}
-                    {{ csrf_field() }}
-
-                    <input name="tagId" type="hidden" value="{{ $tagGame->id }}">
-                    <input class="btn btn-danger" type="submit" value="Удалить тег">
-                    <label><a href="{{ route('admin.getTag',[$tagGame->url]) }}">{{ $tagGame->name }}</a></label>
-                    <span>@if($tagGame->display)Отображается@elseНЕ отображается@endif</span>
-                </div>
-            </form>
-        @endforeach
-        <form method="post" action="/admin/game/tag/{{ $game->id }}">
-            {{ method_field('POST') }}
-            {{ csrf_field() }}
-
-            <div class="form-group">
-                <label for="game_cat">Добавить тег</label>
-                <select class="form-control" name="tagId">
-                    @foreach($tagsAll as $tagAll)
-                        <option value="{{ $tagAll->id }}">{{ $tagAll->name }}</option>
+            <h1>Доступные изображения:</h1>
+            @if(!empty( $game->imgExist))
+                <div class="page-image-container">
+                    @foreach( $game->imgExist as $img)
+                        <div class="page-image">
+                            <div class="page-image-leftside">
+                                <a href="{{ route('admin.images.getImage',['image'=>$img->name]) }}">
+                                    <img src="/img/{{ $img->name }}-large.jpg"></a>
+                            </div>
+                            <div class="page-image-rightside">
+                                <p>title="{{$img->title}}" alt="{{$img->alt}}"</p>
+                                <p><strong>SMALL</strong> /img/{{ $img->name }}-small.jpg</p>
+                                <p><strong>MEDIUM</strong> /img/{{ $img->name }}.jpg</p>
+                                <p><strong>LARGE</strong> /img/{{ $img->name }}-large.jpg</p>
+                            </div>
+                            <form method="POST" action="/admin/images/{{ $img->name }}">
+                                {{ method_field('DELETE') }}
+                                {{ csrf_field() }}
+                                <input type="hidden" name="gameId" value="{{ $game->id}}">
+                                <input class="btn btn-danger btn-sm" type="submit" value="Удалить">
+                                @if($img->main_img)
+                                    <span>Главное</span>
+                                @endif
+                            </form>
+                        </div>
                     @endforeach
-                </select>
-            </div>
-            <input class="btn btn-primary" type="submit" value="Добвать тег">
-        </form>
+                </div>
+            @endif
+
+            <form class="cat_edit_form" enctype="multipart/form-data" method="POST"
+                  action="/admin/images/">
+                {{ method_field('POST') }}
+                {{ csrf_field() }}
+                <input type="hidden" name="gameId" value="{{ $game->id}}">
+                <input type="file" name="img">
+                <input class="btn btn-primary btn-sm" type="submit" value="Добавить">
+            </form>
+        </div>
+
     </div>
+    <h4>Теги:</h4>
+
+    @foreach($tagsGame as $tagGame)
+        <form method="post" action="/admin/game/tag/{{ $game->id }}">
+            <div class="form-group">
+                {{ method_field('DELETE') }}
+                {{ csrf_field() }}
+
+                <input name="tagId" type="hidden" value="{{ $tagGame->id }}">
+                <input class="btn btn-danger" type="submit" value="Удалить тег">
+                <label><a href="{{ route('admin.getTag',[$tagGame->url]) }}">{{ $tagGame->name }}</a></label>
+                <span>@if($tagGame->display)Отображается@elseНЕ отображается@endif</span>
+            </div>
+        </form>
+    @endforeach
+    <form method="post" action="/admin/game/tag/{{ $game->id }}">
+        {{ method_field('POST') }}
+        {{ csrf_field() }}
+
+        <div class="form-group">
+            <label for="game_cat">Добавить тег</label>
+            <select class="form-control" name="tagId">
+                @foreach($tagsAll as $tagAll)
+                    <option value="{{ $tagAll->id }}">{{ $tagAll->name }}</option>
+                @endforeach
+            </select>
+        </div>
+        <input class="btn btn-primary" type="submit" value="Добвать тег">
+    </form>
 
     <div class="flash">
 
@@ -197,7 +200,7 @@
 
     </div>
 
-    <form method="post" action="/admin/game/{{ $game->id }}">
+    <form class="game-delete" method="post" action="/admin/game/{{ $game->id }}">
         {{ method_field('DELETE') }}
         {{ csrf_field() }}
         <input class="btn btn-danger" type="submit" value="Удалить игру">

@@ -11,11 +11,15 @@
                 @endif</h1>
         </header>
         @if(isset($categories))
-            @foreach($categories as $category)
-                <div class="row">
-                    <a href="{{ $category->url }}">{{ $category->cat_name }}</a><span>({{ $category->gamesCount }})</span>
-                </div>
-            @endforeach
+            <div class="row">
+                <ul>
+                    @foreach($categories as $category)
+                        <li><a href="{{ $category->url }}">{{ $category->cat_name }}</a>
+                            <span>({{ $category->gamesCount }})</span>
+                        </li>
+                    @endforeach
+                </ul>
+            </div>
         @endif
         <div class="row">
             <div class="col-md-12">

@@ -18,7 +18,8 @@
                 @endif
                 <div class="game-box">
                     <div class="game-box-img">
-                        <img class="game-play-click" src="{{ $game->img }}">
+                        <img class="game-play-click" alt="Игра {{ $game->game_name }}"
+                             title="Изображение "{{ $game->game_name }}" src="{{ $game->img }}">
                     </div>
                     <div class="game-box-play">
                         <span class="game-play-click">ИГРАТЬ</span>
@@ -60,7 +61,8 @@
                     @endforeach
                 </div>
             @endif
-            {!! $game->descWithP !!}
+            {!! $game->game_desc !!}
+            <div class="clearfix"></div>
         </div>
         <div class="game-new-games">
             <h2>Новые игры:</h2>
@@ -70,17 +72,19 @@
                 @endif
             </div>
         </div>
-        <div class="game-related-tags-container">
-            <h2>Похожие категории</h2>
-            <div class="game-related-tags">
-                @foreach($game->tagsDisplayed as $tag)
-                    <div class="game-related-tags-item">
-                        <a href="{!! $tag->fullUrl !!}"><img
-                                    src="{{ $tag->img }}"><span>{!! $tag->name !!}</span></a>
-                    </div>
-                @endforeach
+        @if($game->tagsDisplayed->isNotEmpty())
+            <div class="game-related-tags-container">
+                <h2>Похожие категории</h2>
+                <div class="game-related-tags">
+                    @foreach($game->tagsDisplayed as $tag)
+                        <div class="game-related-tags-item">
+                            <a href="{!! $tag->fullUrl !!}"><img
+                                        src="{{ $tag->img }}"><span>{!! $tag->name !!}</span></a>
+                        </div>
+                    @endforeach
+                </div>
             </div>
-        </div>
+        @endif
         {{--<div class="game-like">--}}
         {{--<img src="/img/site/like.png" alt="How many people like this game" title="like button">--}}
         {{--<span id="like_value">{{ $game->game_like }}</span>--}}

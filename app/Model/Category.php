@@ -8,7 +8,16 @@ class Category extends Model
 {
     public $timestamps = false;
     //public $primaryKey = 'cat_id';
-public $guarded = [];
+    public $guarded = [];
+
+    public static function boot()
+    {
+        parent::boot();
+
+        static::deleting(function ($category) { // before delete() method call this
+            $category->tags()->detach();
+        });
+    }
 
     public function game()
     {
@@ -24,6 +33,7 @@ public $guarded = [];
     {
         return $this->belongsToMany(Tag::class);
     }
+
     public function image()
     {
         return $this->belongsToMany(Image::class);

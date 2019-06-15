@@ -1,3 +1,34 @@
+.game-delete{
+  margin-top: 40px;
+}
+li {
+  list-style-type: none;
+}
+
+@media(min-width: 768px) {
+  #navbar-main {
+    display: none !important;
+  }
+  .top-block-button {
+    display: none;
+  }
+
+}
+
+@media (max-width: 768px) {
+  .top-block-button-widthscreen {
+    display: none;
+  }
+  .menu {
+    display: none;
+  }
+  .top-block-button {
+    display: inline-block;
+    margin-top: 8px;
+    margin-left: 8px;
+  }
+}
+
 .img-desc {
   &-left {
     float: right;
@@ -13,20 +44,28 @@
 }
 
 .page-image {
-  display: inline-flex;
-  flex-direction: column;
-  width: 220px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  //width: 220px;
   padding: 9px;
   margin: 5px;
   background: darken(#f5f8fa, 5%);
+  overflow: hidden;
 
-  & > span {
-    overflow: hidden;
-    white-space: nowrap;
+  &-rightside {
+    //float: none;
   }
 
-  & img {
-    width: 200px;
+  & p {
+    overflow: hidden;
+    //word-break: break-word;
+    //white-space: nowrap;
+    margin: 0px;
+  }
+
+  & a, img {
+    width: 100px;
+    //float: left;
   }
 
   &-container {
@@ -72,15 +111,18 @@ h4 a {
   display: block;
 }
 
-.delete-form {
-  display: inline;
-  position: relative;
-  bottom: 35px;
-  left: 350px
-}
+//.delete-form {
+//  @media (max-width: 768px) {
+//    left: 180px;
+//  }
+//  display: inline;
+//  position: relative;
+//  bottom: 37px;
+//  left: 350px
+//}
 
 .sidebar {
-  margin-top: 20px;
+  //margin-top: 20px;
 }
 
 .footer-bottom {

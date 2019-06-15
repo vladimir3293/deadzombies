@@ -136,6 +136,7 @@ class TagController extends Controller
             $tag->name = $request->tagName;
             $tag->url = $urlGenerator->createUrl($request->tagName);
             $tag->save();
+//            dd($tag);
         }
         return redirect(route('admin.getTag', [$tag]));
     }
