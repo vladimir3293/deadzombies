@@ -5,16 +5,19 @@ namespace Deadzombies\Http\Controllers;
 
 use Deadzombies\Model\Category;
 use Deadzombies\Model\Game;
+use Deadzombies\Model\Image;
 use Illuminate\Http\Request;
 
 class GameController
 {
     //TODO create helper to add <p>
-    public function getGame(Game $game, Request $request)
+    public function getGame(Game $game, Request $request, Image $imageModel)
     {
         abort_unless($game->game_show, 404, 'not displayed');
-        $game->categoryUrl = route('getCategory', $game->category->cat_url, false);
-//        if (!empty($game->category->display)) {
+        if ($game->category) {
+            $game->categoryUrl = route('getCategory', $game->category->cat_url, false);
+        }
+        //        if (!empty($game->category->display)) {
 //            $game->categoryUrl = route('getCategory', $game->category->cat_url, false);
 //            $game->cat_name = $game->category->cat_name;
 //        }
@@ -24,34 +27,47 @@ class GameController
         //for max width from display height in vh
 //        $game->maxWidth = intval(85 * ($game->width / $game->height));
 
-        $game->tagsDisplayed = $game->tags()->where('display', true)->get();
-        $game->tagsDisplayed->each(function ($tag) {
-            $tag->fullUrl = route('getTag', ['tag' => $tag->url], false);
-            $tag->img = file_exists(public_path() . '/img/tags/' . $tag->url . '.jpg') ?
-                '/img/tags/' . $tag->url . '.jpg' :
-                '/img/site/empty.jpg';
-        });
+        $game->tagsDisplayed = $imageModel->makeTagImgUrl(
+            $game->tags()
+                ->with(['image'
+                => function ($query) {
+                        $query->where('main_img', true)->first();
+                    }])
+                ->where('display', true)
+                ->get()
+        );
 
 //        $game->descWithP = '<p>' . str_replace(array("\r\n", "\r", "\n"), '</p><p>', $game->game_desc) . '</p>';
         $game->gameControlWithP = '<p>' . str_replace(array("\r\n", "\r", "\n"), '</p><p>', $game->game_control) . '</p>';
-        $game->img = file_exists(public_path() . '/img/' . $game->game_url . '.jpg') ?
-            '/img/' . $game->game_url . '-large.jpg' :
-            '/img/site/empty.jpg';
+        $game->image = collect($game->image()->where('main_img', true)->first());
+        $game = $imageModel->makeGameImgUrl(collect([$game]), true)->first();
+
         //TODO select logic
-        $similarGames = $game->where('game_show', true)->limit(15)->get();
-        $similarGames->each(function ($game) {
-            $game->url = route('getGame', $game->game_url, false);
-            $game->img = file_exists(public_path() . '/img/' . $game->game_url . '.jpg') ?
-                '/img/' . $game->game_url . '.jpg' :
-                '/img/site/empty.jpg';
-        });
-        $newGames = $game->where('game_show', true)->limit(12)->orderBy('id', 'desc')->get();
-        $newGames->each(function ($game) {
-            $game->url = route('getGame', $game->game_url, false);
-            $game->img = file_exists(public_path() . '/img/' . $game->game_url . '.jpg') ?
-                '/img/' . $game->game_url . '.jpg' :
-                '/img/site/empty.jpg';
-        });
+        //random games
+        $countRows = $game->where('game_show', true)->count();
+
+        $similarGames = $imageModel->makeGameImgUrl(
+            $game->where('game_show', true)
+                ->with(['image'
+                => function ($query) {
+                        $query->where('main_img', true)->first();
+                    }])
+                ->offset(mt_rand(0, $countRows - 15))
+                ->limit(15)
+                ->get()
+        );
+        //random Games for block New Games
+        $newGames = $imageModel->makeGameImgUrl(
+            $game->where('game_show', true)
+                ->with(['image'
+                => function ($query) {
+                        $query->where('main_img', true)->first();
+                    }])
+                ->offset(mt_rand(0, $countRows - 12))
+                ->limit(12)
+                ->get()
+        );
+
         //dd($similarGames->first());
         //echo $game->descWithP;
         //$Game->categoryUrl = route('getCat', $Category->cat_url);

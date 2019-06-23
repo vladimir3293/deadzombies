@@ -72,13 +72,15 @@
 
                         {{--</div>--}}
                     @endforeach
-                    @foreach($tags as $tag)
-                        <li class="categories-list-category">
-                            <a href="{!! $tag->fullUrl !!}"><img alt="{{ $tag->imgAlt }}"
-                                                                 title="{{ $tag->imgTitle }}"
-                                                                 src="{{ $tag->img }}"><span>{!! $tag->name !!}</span></a>
-                        </li>
-                    @endforeach
+                    @if($tags->isNotEmpty())
+                        @foreach($tags as $tag)
+                            <li class="categories-list-category">
+                                <a href="{!! $tag->fullUrl !!}"><img alt="{{ $tag->imgAlt }}"
+                                                                     title="{{ $tag->imgTitle }}"
+                                                                     src="{{ $tag->img }}"><span>{!! $tag->name !!}</span></a>
+                            </li>
+                        @endforeach
+                    @endif
                 </ul>
 
             </div>

@@ -26,19 +26,32 @@
             </div>
 
             <div class="category-description">
+                <h2>Описание подкатегории</h2>
                 {!! $tag->description !!}
                 <div class="clearfix"></div>
+                @if($tag->tagsDisplayed->isNotEmpty())
+                    <div class="game-related-tags-container">
+                        <h2>Похожие категории</h2>
+                        <div class="game-related-tags">
+                            @foreach($tag->tagsDisplayed as $tag)
+                                <div class="game-related-tags-item">
+                                    <a href="{!! $tag->fullUrl !!}"><img
+                                                src="{{ $tag->img }}"><span>{!! $tag->name !!}</span></a>
+                                </div>
+                            @endforeach
+                        </div>
+                    </div>
+                @endif
             </div>
             <div class="category-sidebar">
                 <div class="category-relation">
-                    <span>Похожие категории:</span>
-                    @if($tag->tagsDisplayed->isNotEmpty())
+                    <span>Лучшие игры:</span>
+                    @if($tag->bestGames->isNotEmpty())
                         <ul class="category-tags">
-
-                            @foreach($tag->tagsDisplayed as $tag)
+                            @foreach($tag->bestGames as $game)
                                 <li>
-                                    <a href="{!! $tag->fullUrl !!}"><img
-                                                src="{{ $tag->img }}"><span>{!! $tag->name !!}</span></a>
+                                    <a href="{!! $game->url !!}"><img
+                                                src="{{ $game->img }}"><span>{!! $game->game_name !!}</span></a>
                                 </li>
                             @endforeach
                         </ul>

@@ -6,6 +6,7 @@ use Deadzombies\Exceptions\GameUpdateException;
 use Deadzombies\Exceptions\TagDuplicateException;
 use Deadzombies\Model\Category;
 use Deadzombies\Model\Game;
+use Deadzombies\Model\Image;
 use Deadzombies\Model\Tag;
 use Deadzombies\UrlGenerator\UrlGenerator;
 use Illuminate\Http\Request;
@@ -63,7 +64,11 @@ class GameController extends Controller
     public function getPublished(Game $gameModel)
     {
         $gamesCount = $gameModel->where('game_show', 1)->get()->count();
-        $games = $gameModel->where('game_show', 1)->orderBy('id', 'desc')->simplePaginate(48);
+        $games = $gameModel->where('game_show', 1)
+            ->orderBy('game_played')
+
+//            ->orderBy('id', 'desc')
+            ->simplePaginate(48);
         //dd($games);
         $games->each(function ($games) {
             $games->url = route('admin.getGame', $games->id);
@@ -74,15 +79,20 @@ class GameController extends Controller
         return view('admin.game.published', ['games' => $games]);
     }
 
-    public function getGame(Game $Game, Category $category, Tag $tagModel)
+    public function getGame(Game $Game, Category $category, Tag $tagModel, Image $imageModel)
     {
         $tagsAll = $tagModel->orderBy('id', 'desc')->get();
         $tagsGame = $Game->tags()->orderBy('id', 'desc')->get();
         $categories = $category->orderBy('id', 'desc')->get();
 
         $Game->cat = $Game->category ? '<a href="' . route('admin.getCategory', [$Game->category->cat_url]) . '">' . $Game->category->cat_name . '</a>' : 'НЕТ';
+        //TODO refactoring
         $Game->imgExist = $Game->image()->get();
-        $Game->mainImg = $Game->image()->where('main_img', true)->get()->first();
+        $Game->load((['image'
+        => function ($query) {
+                $query->where('main_img', true)->first();
+            }]));
+        $Game->mainImg = $imageModel->makeGameImgUrl(collect([$Game]));
 
         if ($Game->height) {
             $Game->gameHeight = 868 * $Game->height / $Game->width;
@@ -205,6 +215,9 @@ class GameController extends Controller
         }
         if (Storage::disk('pub')->exists("/img/$Game->game_url-large.jpg")) {
             Storage::disk('pub')->delete(["/img/$Game->game_url-large.jpg"]);
+        }
+        foreach ($Game->image()->get() as $image) {
+            $image->delete();
         }
 
         $Game->delete();

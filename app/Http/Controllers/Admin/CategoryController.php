@@ -188,6 +188,9 @@ class CategoryController extends Controller
             throw new CategoryUpdateException('Нельзя удалить категорию когда в ней есть отображаемые игры');
         }
         $category->game()->update(['category_id' => false]);
+        foreach ($category->image()->get() as $image) {
+            $image->delete();
+        }
         $category->delete();
         return redirect('admin');
 

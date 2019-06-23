@@ -17,14 +17,25 @@ class IndexController extends Controller
         //TODO transfer to model
         //TODO refactor img
         //TODO googleof googleoff
-        $popularGames = $imageModel->makeGameImgUrl($game->where('game_show', true)
-            ->orderBy('game_played')
-            ->limit(21)
-            ->get(),
+        $popularGames = $imageModel->makeGameImgUrl(
+            $game
+                ->with(['image'
+                => function ($query) {
+                        $query->where('main_img', true)->first();
+                    }])
+                ->where('game_show', true)
+                ->orderBy('game_played')
+                ->limit(21)
+                ->get(),
             true
         );
 
-        $newGames = $imageModel->makeGameImgUrl($game->where('game_show', true)
+        $newGames = $imageModel->makeGameImgUrl($game
+            ->with(['image'
+            => function ($query) {
+                    $query->where('main_img', true)->first();
+                }])
+            ->where('game_show', true)
             ->orderBy('id', 'desc')
             ->limit(9)
             ->get(),
@@ -32,7 +43,11 @@ class IndexController extends Controller
         );
 
         $bestGames = $imageModel->makeGameImgUrl(
-            $game->where('game_show', true)
+            $game
+                ->with(['image'
+                => function ($query) {
+                        $query->where('main_img', true)->first();
+                    }])->where('game_show', true)
                 ->orderBy('game_like')
                 ->limit(9)
                 ->get(),
@@ -41,15 +56,25 @@ class IndexController extends Controller
 
         $categories = $imageModel->makeCategoryImgUrl(
             $categoryModel
+                ->with(['image'
+                => function ($query) {
+                        $query->where('main_img', true)->first();
+                    }])
                 ->where('display', true)
+                ->limit(50)
                 ->get()
         );
-
-        $tags = $imageModel->makeTagImgUrl(
-            $tagModel
-                ->where('display', true)
-                ->get()
-        );
+        $tags = collect();
+//        $tags = $imageModel->makeTagImgUrl(
+//            $tagModel
+//                ->with(['image'
+//                => function ($query) {
+//                        $query->where('main_img', true)->first();
+//                    }])
+//                ->where('display', true)
+//                ->limit(50)
+//                ->get()
+//        );
 
         $indexPage = $pageModel->where('name', 'index')->get()->first();
         //TODO redactor

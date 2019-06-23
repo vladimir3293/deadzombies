@@ -112,7 +112,7 @@
                 <div class="form-group">
                     <p>Главное изображение:</p>
                     @if(!empty($game->mainImg))
-                        <img src="/img/{{ $game->mainImg->name }}.jpg">
+                        <img src="{{ $game->img }}">
                     @else
                         <span>НЕТ</span>
                     @endif

@@ -51,7 +51,7 @@
             <h2>Описание игры</h2>
             <div class="game-breadcrumb">
                 <a href="/">Игры</a>
-                <a href="{{ $game->categoryUrl }}">{{ $game->category->cat_name }}</a>
+                @if($game->categoryUrl)<a href="{{ $game->categoryUrl }}">{{ $game->category->cat_name }}</a>@endif
                 <span>{{ $game->game_name }}</span>
             </div>
             @if($game->tagsDisplayed->isNotEmpty())

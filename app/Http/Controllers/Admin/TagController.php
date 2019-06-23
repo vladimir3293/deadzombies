@@ -118,13 +118,8 @@ class TagController extends Controller
 
     public function deleteTag(Tag $Tag)
     {
-        $images = $Tag->image()->get();
-        foreach ($images as $image) {
-            $Tag->image()->detach($image);
+        foreach ($Tag->image()->get() as $image) {
             $image->delete();
-            Storage::disk('pub')->delete("/img/$image->name.jpg");
-            Storage::disk('pub')->delete("/img/$image->name-large.jpg");
-            Storage::disk('pub')->delete("/img/$image->name-small.jpg");
         }
         $Tag->delete();
         return redirect('/admin/tag/all');
