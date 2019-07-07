@@ -14,7 +14,7 @@
             <ul>
                 @foreach($topCategories as $category)
                     <li>
-                        <a href="{!! $category->url !!}"><img alt="{{ $category->imgAlt }}"
+                        <a href="{!! $category->url !!}" title="Категория игр {{ $category->cat_name }}"><img alt="{{ $category->imgAlt }}"
                                                               title="{{ $category->imgTitle }}"
                                                               src="{{ $category->img }}"><span>{!! $category->cat_name !!}</span></a>
                     </li>
@@ -27,7 +27,7 @@
                 <ul>
                     @foreach($popularCategories as $category)
                         <li>
-                            <a href="{!! $category->url !!}"><img alt="{{ $category->imgAlt }}"
+                            <a href="{!! $category->url !!}" title="Категория игр {{ $category->cat_name }}><img alt="{{ $category->imgAlt }}"
                                                                   title="{{ $category->imgTitle }}"
                                                                   src="{{ $category->img }}"><span>{!! $category->cat_name !!}</span></a>
                         </li>
@@ -41,7 +41,7 @@
         </div>
         <ul>
             @foreach($categories as $category)
-                <li><a href="{!! $category->url !!}"><img alt="{{ $category->imgAlt }}"
+                <li><a href="{!! $category->url !!}" title="Категория игр {{ $category->cat_name }}><img alt="{{ $category->imgAlt }}"
                                                           title="{{ $category->imgTitle }}"
                                                           src="{{ $category->img }}"><span>{!! $category->cat_name !!}</span></a>
                 </li>

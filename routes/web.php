@@ -11,6 +11,8 @@ Route::get('/category/{category}', 'CategoryController@getCategory')->name('getC
 Route::get('/game/{gameIndex}', 'GameController@getGame')->name('getGame');
 //index tag
 Route::get('/tag/{tag}', 'TagController@getTag')->name('getTag');
+//sitemap.xml
+Route::get('sitemap.xml','sitemapController@getSitemap');
 
 /***** ADMIN PAGES *****/
 

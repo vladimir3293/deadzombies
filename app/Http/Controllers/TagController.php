@@ -14,14 +14,14 @@ class TagController extends Controller
         //dd($tag);
 
         abort_unless($tag->display, 404);
-
+        $tag->urlCanonical = route('getTag', $tag->url, false);
         $tag->gamesDisplayed = $imageModel->makeGameImgUrl(
             $tag->game()->with(['image'
             => function ($query) {
                     $query->where('main_img', true)->first();
                 }])
                 ->where('game_show', true)
-                ->simplePaginate(12)
+                ->paginate(24)
         );
 
         $tag->tagsDisplayed = $imageModel->makeTagImgUrl(

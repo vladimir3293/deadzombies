@@ -5,12 +5,16 @@
 @section('description', $tag->meta_desc)
 
 @section('keywords', $tag->meta_key)
+@section('canonical')
+<link rel="canonical" href="{{ $tag->urlCanonical }}"/>
+@endsection
+
 
 @section('content')
     <div class="category-container">
         <article class="category">
             <div class="category-breadcrumbs">
-                <a href="/">Игры</a>
+                <a href="/" title="игры онлайн бесплатно">Игры</a>
                 <span>{{ $tag->name }}</span>
             </div>
             <header class="category-header">
@@ -21,7 +25,7 @@
                     <div class="category-game-container">
                         @include('gameCard',['games'=>$tag->gamesDisplayed])
                     </div>
-                    {{ $tag->gamesDisplayed->links('vendor.pagination.simpleIndexPage') }}
+                    {{ $tag->gamesDisplayed->links('vendor.pagination.default') }}
                 @endif
             </div>
 
@@ -35,7 +39,8 @@
                         <div class="game-related-tags">
                             @foreach($tag->tagsDisplayed as $tag)
                                 <div class="game-related-tags-item">
-                                    <a href="{!! $tag->fullUrl !!}"><img
+                                    <a href="{!! $tag->fullUrl !!}">
+                                        <img alt="{{ $tag->imgAlt }}" title="{{ $tag->imgTitle }}
                                                 src="{{ $tag->img }}"><span>{!! $tag->name !!}</span></a>
                                 </div>
                             @endforeach
@@ -50,7 +55,8 @@
                         <ul class="category-tags">
                             @foreach($tag->bestGames as $game)
                                 <li>
-                                    <a href="{!! $game->url !!}"><img
+                                    <a href="{!! $game->url !!}">
+                                        <img alt="{{ $game->imgAlt }}" title="{{ $game->imgTitle }}"
                                                 src="{{ $game->img }}"><span>{!! $game->game_name !!}</span></a>
                                 </li>
                             @endforeach
@@ -64,8 +70,8 @@
                             <ul>
                                 @foreach($tag->newGames as $game)
                                     <li>
-                                        <a href="{!! $game->url !!}"><img
-                                                    src="{{ $game->img }}"><span>{!! $game->game_name !!}</span></a>
+                                        <a href="{!! $game->url !!}">
+                                            <img alt="{{ $game->imgAlt }}" title="{{ $game->imgTitle }}" src="{{ $game->img }}"><span>{!! $game->game_name !!}</span></a>
                                     </li>
                                 @endforeach
                             </ul>

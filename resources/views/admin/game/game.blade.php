@@ -110,6 +110,14 @@
                     <input class="form-control" type="text" name="width" id="source" value="{{ $game->width }}">
                 </div>
                 <div class="form-group">
+                    <label for="source">Сыграно:</label>
+                    <input class="form-control" type="text" name="width" id="source" value="{{ $game->game_played }}">
+                </div>
+                <div class="form-group">
+                    <label for="source">Лайков:</label>
+                    <input class="form-control" type="text" name="width" id="source" value="{{ $game->game_like }}">
+                </div>
+                <div class="form-group">
                     <p>Главное изображение:</p>
                     @if(!empty($game->mainImg))
                         <img src="{{ $game->img }}">

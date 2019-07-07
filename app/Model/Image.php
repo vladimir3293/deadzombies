@@ -68,8 +68,8 @@ class Image extends Model
                 $games->imgTitle = $mainImg[0]->title;
             } elseif (file_exists(public_path() . '/img/' . $games->game_url . '.jpg')) {
                 $games->img = '/img/' . $games->game_url . '.jpg';
-                $games->imgAlt = $games->game_name;
-                $games->imgTitle = $games->game_title;
+                $games->imgAlt = 'Картинка игры '.$games->game_name;
+                $games->imgTitle = 'Бесплатная игра '.$games->game_title;
             } else {
                 $games->img = '/img/site/empty.jpg';
                 $games->imgAlt = 'пустое изображение';

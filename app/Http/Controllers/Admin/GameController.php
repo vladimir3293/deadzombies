@@ -17,17 +17,18 @@ use Illuminate\Support\Facades\Storage;
 
 class GameController extends Controller
 {
-    public function getAll(Game $gameModel)
+    public function getAll(Game $gameModel, Image $imageModel)
     {
         $gamesCount = $gameModel->get()->count();
         $games = $gameModel->orderBy('id', 'desc')->paginate(24);
         //dd($games);
-        $games->each(function ($games) {
-            $games->url = route('admin.getGame', $games->id);
-            $games->img = file_exists(public_path() . '/img/' . $games->game_url . '.jpg') ?
-                '/img/' . $games->game_url . '.jpg' :
-                '/img/site/empty.jpg';
-        });
+        $games = $imageModel->makeGameImgUrl($games);
+//        $games->each(function ($games) {
+//            $games->url = route('admin.getGame', $games->id);
+//            $games->img = file_exists(public_path() . '/img/' . $games->game_url . '.jpg') ?
+//                '/img/' . $games->game_url . '.jpg' :
+//                '/img/site/empty.jpg';
+//        });
         return view('admin.game.gameAll', ['games' => $games, 'gamesCount' => $gamesCount]);
     }
 
@@ -47,35 +48,29 @@ class GameController extends Controller
         return redirect()->route('admin.getGame', [$Game]);
     }
 
-    public function getUnpublished(Game $gameModel)
+    public function getUnpublished(Game $gameModel, Image $imageModel)
     {
         $gamesCount = $gameModel->where('game_show', 0)->get()->count();
-        $games = $gameModel->where('game_show', 0)->orderBy('id', 'desc')->simplePaginate(12);
+        $games = $gameModel
+            ->where('game_show', 0)
+            ->orderBy('id', 'desc')
+            ->paginate(12);
         //dd($games);
-        $games->each(function ($games) {
-            $games->url = route('admin.getGame', $games->id);
-            $games->img = file_exists(public_path() . '/img/' . $games->game_url . '.jpg') ?
-                '/img/' . $games->game_url . '.jpg' :
-                '/img/site/empty.jpg';
-        });
+        $games = $imageModel->makeGameImgUrl($games);
         return view('admin.game.unpublished', ['games' => $games, 'gamesCount' => $gamesCount]);
     }
 
-    public function getPublished(Game $gameModel)
+    public function getPublished(Game $gameModel, Image $imageModel)
     {
         $gamesCount = $gameModel->where('game_show', 1)->get()->count();
         $games = $gameModel->where('game_show', 1)
             ->orderBy('game_played')
 
 //            ->orderBy('id', 'desc')
-            ->simplePaginate(48);
+            ->paginate(48);
         //dd($games);
-        $games->each(function ($games) {
-            $games->url = route('admin.getGame', $games->id);
-            $games->img = file_exists(public_path() . '/img/' . $games->game_url . '.jpg') ?
-                '/img/' . $games->game_url . '.jpg' :
-                '/img/site/empty.jpg';
-        });
+        $games = $imageModel->makeGameImgUrl($games);
+
         return view('admin.game.published', ['games' => $games]);
     }
 

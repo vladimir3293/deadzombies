@@ -13,7 +13,7 @@ class CategoryController extends Controller
     {
         //TODO pagination
         abort_unless($category->display, 404);
-
+        $category->url = route('getCategory', $category->cat_url, false);
         $category->gamesDisplayed = $imageModel->makeGameImgUrl(
             $category->game()
                 ->with(['image'
@@ -21,8 +21,9 @@ class CategoryController extends Controller
                         $query->where('main_img', true)->first();
                     }])
                 ->where('game_show', true)
-                ->simplePaginate(100)
+                ->paginate(60)
         );
+//        dd($category);
 
         $category->tagsDisplayed = $imageModel->makeTagImgUrl(
             $category->tags()

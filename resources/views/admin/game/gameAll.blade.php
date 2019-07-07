@@ -14,7 +14,7 @@
             </div>
             <div class="row">
                 <div class="col-md-12">
-                {{ $games->links() }}
+                {{ $games->links('vendor.pagination.default') }}
             </div>
         @endif
     </article>

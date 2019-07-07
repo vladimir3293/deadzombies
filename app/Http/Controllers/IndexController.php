@@ -61,7 +61,8 @@ class IndexController extends Controller
                         $query->where('main_img', true)->first();
                     }])
                 ->where('display', true)
-                ->limit(50)
+                ->withCount('game')
+                ->orderBy('game_count','desc')
                 ->get()
         );
         $tags = collect();

@@ -39,7 +39,6 @@
                                 {{--width="{{ $game->gameWidth }}"--}}
                         >
                         </iframe>
-
                     </div>
                     <div class="game-box-fullscreen">
                         <span class="test" onclick="toggleFull();">На весь экран</span>
@@ -50,14 +49,15 @@
         <div class="game-description">
             <h2>Описание игры</h2>
             <div class="game-breadcrumb">
-                <a href="/">Игры</a>
-                @if($game->categoryUrl)<a href="{{ $game->categoryUrl }}">{{ $game->category->cat_name }}</a>@endif
+                <a href="/" title="игры онлайн бесплатно">Игры</a>
+                @if($game->categoryUrl)<a href="{{ $game->categoryUrl }}"  title="Категория игр {{ $game->category->cat_name }}">
+                    {{ $game->category->cat_name }}</a>@endif
                 <span>{{ $game->game_name }}</span>
             </div>
             @if($game->tagsDisplayed->isNotEmpty())
                 <div class="game-tags">
                     @foreach($game->tagsDisplayed as $tag)
-                        <a href="{{ $tag->fullUrl }}">{{ $tag->name }}</a>
+                        <a href="{{ $tag->fullUrl }}" title="Подкатегория игр {{ $tag->name }}">{{ $tag->name }}</a>
                     @endforeach
                 </div>
             @endif
@@ -78,8 +78,8 @@
                 <div class="game-related-tags">
                     @foreach($game->tagsDisplayed as $tag)
                         <div class="game-related-tags-item">
-                            <a href="{!! $tag->fullUrl !!}"><img
-                                        src="{{ $tag->img }}"><span>{!! $tag->name !!}</span></a>
+                            <a href="{!! $tag->fullUrl !!}" title="Подкатегория игр {{ $tag->name }}">
+                                <img alt="{{ $tag->imgAlt }}" title="{{ $tag->imgTitle }}" src="{{ $tag->img }}"><span>{!! $tag->name !!}</span></a>
                         </div>
                     @endforeach
                 </div>

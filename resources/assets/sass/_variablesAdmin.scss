@@ -1,0 +1,34 @@
+$body: rgb(60, 38, 42);
+$wrap: rgb(70, 26, 33);
+$sidebar: rgb(168, 0, 28);
+$nav-a: rgb(124, 0, 21);
+$nav-ul: rgb(252, 184, 32);
+$content-color: black;
+$right-content: rgb(101, 30, 42);
+$top-block: #009cff;
+
+$link-hover: darken($top-block, 10%);
+$link-color: #002b50;
+$color-primary-2: rgba(178, 190, 111, 1);
+$color-primary-3: rgba(244, 249, 219, 1);
+$color-primary-4: rgba(245, 249, 221, 1);
+$color-primary-1: rgba(178, 190, 111, 1);
+
+$color1: #034488;
+$color2: #178fd6;
+$color3: #ccdde8;
+$color4: #edece8;
+$color5: #fffcf6;
+
+$section-bg1: #dff2fe;
+$body: $color5;
+$wrap: $color4;
+$right-content: darken($color4, 5%);
+$sidebar: darken($color4, 10%);
+
+$nav-ul: #009cff;
+
+$nav-a: darken(#f1f2f6, 90%); //text link text
+
+$border: 1px solid #cccccc;
+$content-width: 1250px;

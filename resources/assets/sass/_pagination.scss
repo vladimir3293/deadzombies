@@ -1,5 +1,6 @@
 .index-pagination {
   display: flex;
+  flex-wrap: wrap;
   justify-content: center;
   //width: 10%;
   border-radius: 4px;
@@ -11,7 +12,7 @@
     //height: 30px;
     //min-width: 10%;
     border-radius: 4px;
-    background: lighten($top-block,10%);
+    //background: lighten($top-block,10%);
     text-align: center;
     color: $content-color;
     margin: 5px;
@@ -22,8 +23,8 @@
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
-    min-width: 100px;
-    max-width: 200px;
+    //min-width: 100px;
+    //max-width: 200px;
   }
   & a:hover, span:hover {
     background: $link-hover;
@@ -32,9 +33,12 @@
   & span {
     cursor: not-allowed;
   }
+  &-active span{
+    color: $top-block;
+  }
   &-disabled span {
-    color: $link-hover;
-    background: $body;
+    //color: $link-hover;
+    //background: $body;
 
     //width: 30px;
     //height: 30px;

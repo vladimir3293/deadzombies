@@ -14,6 +14,7 @@ class GameController
     public function getGame(Game $game, Request $request, Image $imageModel)
     {
         abort_unless($game->game_show, 404, 'not displayed');
+        $game->increment('game_played');
         if ($game->category) {
             $game->categoryUrl = route('getCategory', $game->category->cat_url, false);
         }
@@ -39,7 +40,13 @@ class GameController
 
 //        $game->descWithP = '<p>' . str_replace(array("\r\n", "\r", "\n"), '</p><p>', $game->game_desc) . '</p>';
         $game->gameControlWithP = '<p>' . str_replace(array("\r\n", "\r", "\n"), '</p><p>', $game->game_control) . '</p>';
-        $game->image = collect($game->image()->where('main_img', true)->first());
+        $mainImg = $game->image()->where('main_img', true)->first();
+        if ($mainImg) {
+            $game->image = collect([$mainImg]);
+        } else {
+            $game->image = collect();
+        }
+
         $game = $imageModel->makeGameImgUrl(collect([$game]), true)->first();
 
         //TODO select logic

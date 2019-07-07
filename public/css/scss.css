@@ -429,6 +429,8 @@
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
   -webkit-box-pack: center;
       -ms-flex-pack: center;
           justify-content: center;
@@ -443,7 +445,6 @@
 .index-pagination span {
   display: block;
   border-radius: 4px;
-  background: #33b0ff;
   text-align: center;
   color: black;
   margin: 5px;
@@ -454,8 +455,6 @@
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
-  min-width: 100px;
-  max-width: 200px;
 }
 
 .index-pagination a:hover,
@@ -468,9 +467,8 @@
   cursor: not-allowed;
 }
 
-.index-pagination-disabled span {
-  color: #007dcc;
-  background: #fffcf6;
+.index-pagination-active span {
+  color: #009cff;
 }
 
 .top-block-wrapper {
