@@ -6,7 +6,7 @@
 @section('right_content')
     <article>
         <header class="article-header">
-            <h1>Все игры: {{ $gamesCount }}</h1>
+            <h1>Все игры: {{ $games->gamesCount }}</h1>
         </header>
         @if(isset($games))
             <div class="row">

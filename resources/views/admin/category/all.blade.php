@@ -13,7 +13,7 @@
                 <ul>
                     @foreach($categories as $category)
                         <li><a href="{{ $category->url }}">{{ $category->cat_name }}</a>
-                            <span>({{ $category->gamesCount }})</span>
+                            <span>({{ $category->game_count }})</span>
                         </li>
                     @endforeach
                 </ul>

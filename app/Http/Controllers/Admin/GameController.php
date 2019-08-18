@@ -19,17 +19,27 @@ class GameController extends Controller
 {
     public function getAll(Game $gameModel, Image $imageModel)
     {
-        $gamesCount = $gameModel->get()->count();
-        $games = $gameModel->orderBy('id', 'desc')->paginate(24);
+        $games = $gameModel
+            ->with(['image'
+            => function ($query) {
+                    $query->where('main_img', true)->first();
+                }])
+            ->orderBy('id', 'desc')
+            ->paginate(24);
         //dd($games);
-        $games = $imageModel->makeGameImgUrl($games);
+        $imageModel->makeGameImgUrl($games);
 //        $games->each(function ($games) {
 //            $games->url = route('admin.getGame', $games->id);
 //            $games->img = file_exists(public_path() . '/img/' . $games->game_url . '.jpg') ?
 //                '/img/' . $games->game_url . '.jpg' :
 //                '/img/site/empty.jpg';
 //        });
-        return view('admin.game.gameAll', ['games' => $games, 'gamesCount' => $gamesCount]);
+        $games->each(function ($games) {
+            $games->url = route('admin.getGame', $games->id);
+        });
+        $games->gamesCount = $gameModel->get()->count();
+
+        return view('admin.game.gameAll', ['games' => $games]);
     }
 
     public function createGame()
@@ -50,26 +60,43 @@ class GameController extends Controller
 
     public function getUnpublished(Game $gameModel, Image $imageModel)
     {
-        $gamesCount = $gameModel->where('game_show', 0)->get()->count();
         $games = $gameModel
             ->where('game_show', 0)
+            ->with(['image'
+            => function ($query) {
+                    $query->where('main_img', true)->first();
+                }])
             ->orderBy('id', 'desc')
             ->paginate(12);
         //dd($games);
-        $games = $imageModel->makeGameImgUrl($games);
-        return view('admin.game.unpublished', ['games' => $games, 'gamesCount' => $gamesCount]);
+        $games->each(function ($games) {
+            $games->url = route('admin.getGame', $games->id);
+        });
+        $games->gamesCount = $gameModel->where('game_show', 0)->get()->count();
+
+        $imageModel->makeGameImgUrl($games);
+        return view('admin.game.unpublished', ['games' => $games]);
     }
 
     public function getPublished(Game $gameModel, Image $imageModel)
     {
-        $gamesCount = $gameModel->where('game_show', 1)->get()->count();
-        $games = $gameModel->where('game_show', 1)
+        $games = $gameModel
+            ->where('game_show', 1)
+            ->with(['image'
+            => function ($query) {
+                    $query->where('main_img', true)->first();
+                }])
             ->orderBy('game_played')
-
 //            ->orderBy('id', 'desc')
             ->paginate(48);
         //dd($games);
-        $games = $imageModel->makeGameImgUrl($games);
+        $games->each(function ($games) {
+            $games->url = route('admin.getGame', $games->id);
+        });
+        $games->gamesCount = $gameModel->where('game_show', 1)->get()->count();
+
+        $imageModel->makeGameImgUrl($games);
+//        dd($games);
 
         return view('admin.game.published', ['games' => $games]);
     }

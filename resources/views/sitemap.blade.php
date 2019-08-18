@@ -5,9 +5,9 @@
             <loc>{{ route('getGame',$game->game_url) }}</loc>
         </url>
     @endforeach
-    @foreach ($games as $game)
+    @foreach ($category as $category)
         <url>
-            <loc>{{ route('getGame',$game->game_url) }}</loc>
+            <loc>{{ route('getCategory',$category->cat_url) }}</loc>
         </url>
     @endforeach
 </urlset>

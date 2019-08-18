@@ -72,15 +72,15 @@
 
                         {{--</div>--}}
                     @endforeach
-                    @if($tags->isNotEmpty())
-                        @foreach($tags as $tag)
-                            <li class="categories-list-category">
-                                <a href="{!! $tag->fullUrl !!}"><img alt="{{ $tag->imgAlt }}"
-                                                                     title="{{ $tag->imgTitle }}"
-                                                                     src="{{ $tag->img }}"><span>{!! $tag->name !!}</span></a>
-                            </li>
-                        @endforeach
-                    @endif
+{{--                    @if($tags->isNotEmpty())--}}
+{{--                        @foreach($tags as $tag)--}}
+{{--                            <li class="categories-list-category">--}}
+{{--                                <a href="{!! $tag->fullUrl !!}"><img alt="{{ $tag->imgAlt }}"--}}
+{{--                                                                     title="{{ $tag->imgTitle }}"--}}
+{{--                                                                     src="{{ $tag->img }}"><span>{!! $tag->name !!}</span></a>--}}
+{{--                            </li>--}}
+{{--                        @endforeach--}}
+{{--                    @endif--}}
                 </ul>
 
             </div>
@@ -93,4 +93,28 @@
             <div class="clearfix"></div>
         </div>
     </div>
+@endsection
+@section('json-ld')
+    <script type="application/ld+json">
+{
+  "@context" : "http://schema.org",
+  "@type" : "WebPage",
+  "name" : "{{ $indexPage->title }}",
+  "description" : "{!! $indexPage->microdataDesc !!}",
+  "url" : "/",
+  "image" : "/img/site/igrobase.jpg",
+  "aggregateRating" : {
+    "@type" : "AggregateRating",
+    "ratingValue" : "4.9",
+    "bestRating" : "5",
+    "worstRating" : "0",
+    "ratingCount" : "3495"
+  },
+ "breadcrumb": {
+        "@type": "BreadcrumbList",
+        "itemListElement":
+  {!! $indexPage->microdataBreadcrumb !!}}
+  }
+  }
+    </script>
 @endsection

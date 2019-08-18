@@ -23,7 +23,9 @@ class CategoryController extends Controller
                 ->where('game_show', true)
                 ->paginate(60)
         );
-//        dd($category);
+        foreach ($category->gamesDisplayed as $item) {
+            $item->url = route('getGame', $item->game_url, false);
+        }
 
         $category->tagsDisplayed = $imageModel->makeTagImgUrl(
             $category->tags()
@@ -34,6 +36,9 @@ class CategoryController extends Controller
                 ->where('display', true)
                 ->get()
         );
+        foreach ($category->tagsDisplayed as $item) {
+            $item->fullUrl = route('getTag', $item->url, false);
+        }
 
         $category->newGames = $imageModel->makeGameImgUrl(
             $category->game()
@@ -46,6 +51,10 @@ class CategoryController extends Controller
                 ->limit(10)
                 ->get()
         );
+        foreach ($category->newGames as $item) {
+            $item->url = route('getGame', $item->game_url, false);
+        }
+
         $category->bestGames = $imageModel->makeGameImgUrl(
             $category->game()
                 ->with(['image'
@@ -57,6 +66,42 @@ class CategoryController extends Controller
                 ->limit(10)
                 ->get()
         );
+        foreach ($category->bestGames as $item) {
+            $item->url = route('getGame', $item->game_url, false);
+        }
+
+        $mainImg = $category->image()->where('main_img', true)->first();
+        if ($mainImg) {
+            $category->image = collect([$mainImg]);
+        } else {
+            $category->image = collect();
+        }
+
+        $category = $imageModel->makeGameImgUrl(collect([$category]), true)->first();
+        $breadCrumb[] = [
+            "@type" => "ListItem",
+            "position" => 1,
+            "item" => ["@id" => "/",
+                "name" => "На главную"]
+        ];
+        if ($category->bestGames->isNotEmpty()) {
+            $i = 2;
+            foreach ($category->bestGames as $game) {
+                if ($i == 6) {
+                    break;
+                }
+                $breadCrumb[] = [
+                    "@type" => "ListItem",
+                    "position" => $i,
+                    "item" => ["@id" => route('getCategory', $game->game_url, false),
+                        "name" => $game->game_name]
+                ];
+                $i++;
+            }
+        }
+        $category->microdataBreadcrumb = json_encode($breadCrumb);
+        $category->microdataDesc = substr(strip_tags($category->cat_desc), 0, 300);
+//        dd($category);
 
         return view('category', ['category' => $category]);
     }

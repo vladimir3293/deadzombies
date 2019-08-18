@@ -7,7 +7,7 @@
     <article>
         <header class="article-header">
             <h1>Не опубликованные игры
-                @if(isset($games)){{ $gamesCount }}@else()0
+                @if(isset($games)){{ $games->gamesCount }}@else()0
                 @endif</h1>
         </header>
         @if(isset($games))

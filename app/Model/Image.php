@@ -60,7 +60,7 @@ class Image extends Model
     public function makeGameImgUrl($gamesCollection, $firstImgLarge = false)
     {
         $gamesCollection->each(function ($games) {
-            $games->url = route('getGame', $games->game_url, false);
+//            $games->url = route('getGame', $games->game_url, false);
             $mainImg = $games->image;
             if ($mainImg->isNotEmpty()) {
                 $games->img = '/img/' . $mainImg[0]->name . '.jpg';
@@ -88,7 +88,7 @@ class Image extends Model
     public function makeCategoryImgUrl($categoryCollection)
     {
         $categoryCollection->each(function ($category) {
-            $category->url = route('getCategory', ['cat' => $category->cat_url], false);
+//            $category->url = route('getCategory', ['cat' => $category->cat_url], false);
             //TODO delete dublicate
             $mainImg = $category->image;
             if ($mainImg->isNotEmpty()) {
@@ -112,7 +112,7 @@ class Image extends Model
     public function makeTagImgUrl($tagsCollection)
     {
         $tagsCollection->each(function ($tag) {
-            $tag->fullUrl = route('getTag', ['tag' => $tag->url], false);
+//            $tag->fullUrl = route('getTag', ['tag' => $tag->url], false);
             $mainImg = $tag->image;
             if ($mainImg->isNotEmpty()) {
                 $tag->img = "/img/$mainImg->name.jpg";

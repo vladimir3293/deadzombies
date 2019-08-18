@@ -81,4 +81,28 @@
         </article>
     </div>
 @endsection
+@section('json-ld')
+<script type="application/ld+json">
+{
+  "@context" : "http://schema.org",
+  "@type" : "WebPage",
+  "name" : "{{ $category->cat_title }}",
+  "description" : "{!! $category->microdataDesc !!}",
+  "url" : "{{ route('getCategory',$category->cat_url,false) }}",
+  "image" : "{{ $category->img }}",
+  "aggregateRating" : {
+    "@type" : "AggregateRating",
+    "ratingValue" : "4.7",
+    "bestRating" : "5",
+    "worstRating" : "0",
+    "ratingCount" : "1675"
+  },
+ "breadcrumb": {
+        "@type": "BreadcrumbList",
+        "itemListElement":
+  {!! $category->microdataBreadcrumb !!}}
+  }
+  }
+    </script>
+@endsection
 

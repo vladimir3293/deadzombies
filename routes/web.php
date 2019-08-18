@@ -13,6 +13,8 @@ Route::get('/game/{gameIndex}', 'GameController@getGame')->name('getGame');
 Route::get('/tag/{tag}', 'TagController@getTag')->name('getTag');
 //sitemap.xml
 Route::get('sitemap.xml','sitemapController@getSitemap');
+//search
+Route::post('/admin/search', 'Admin\SearchController@SearchGame');
 
 /***** ADMIN PAGES *****/
 

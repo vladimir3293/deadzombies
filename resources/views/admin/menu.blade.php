@@ -85,3 +85,12 @@
     </li>
     <li><a href="{{ route('admin.getParser') }}">Парсер</a></li>
 </ul>
+<form method="post" action="/admin/search" enctype="multipart/form-data" role="form">
+{{ method_field('POST') }}
+{{ csrf_field() }}
+    <div class="form-group">
+        <label for="game_name">Поиск</label>
+        <input class="form-control" name="game_name" id="game_name" type="text">
+        <input class="btn btn-primary btn-sm" type="submit" value="Найти">
+    </div>
+</form>

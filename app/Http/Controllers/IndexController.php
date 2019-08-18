@@ -29,6 +29,9 @@ class IndexController extends Controller
                 ->get(),
             true
         );
+        foreach ($popularGames as $item) {
+            $item->url = route('getGame', $item->game_url, false);
+        }
 
         $newGames = $imageModel->makeGameImgUrl($game
             ->with(['image'
@@ -41,6 +44,9 @@ class IndexController extends Controller
             ->get(),
             true
         );
+        foreach ($newGames as $item) {
+            $item->url = route('getGame', $item->game_url, false);
+        }
 
         $bestGames = $imageModel->makeGameImgUrl(
             $game
@@ -53,6 +59,9 @@ class IndexController extends Controller
                 ->get(),
             true
         );
+        foreach ($bestGames as $item) {
+            $item->url = route('getGame', $item->game_url, false);
+        }
 
         $categories = $imageModel->makeCategoryImgUrl(
             $categoryModel
@@ -65,7 +74,33 @@ class IndexController extends Controller
                 ->orderBy('game_count','desc')
                 ->get()
         );
-        $tags = collect();
+        foreach ($categories as $item) {
+            $item->url = route('getCategory', $item->cat_url, false);
+        }
+        $indexPage = $pageModel->where('name', 'index')->get()->first();
+
+        //microdata
+        $indexPage->microdataDesc = substr(strip_tags($indexPage->description), 0, 300);
+        $breadCrumb = [];
+
+        if ($categories->isNotEmpty()) {
+            $i = 1;
+            foreach ($categories as $category) {
+                if ($i == 6) {
+                    break;
+                }
+                $breadCrumb[] = [
+                    "@type" => "ListItem",
+                    "position" => $i,
+                    "item" => ["@id" => route('getCategory', $category->cat_url, false),
+                        "name" => $category->cat_name]
+                ];
+                $i++;
+            }
+        }
+        $indexPage->microdataBreadcrumb = json_encode($breadCrumb);
+
+        //        $tags = collect();
 //        $tags = $imageModel->makeTagImgUrl(
 //            $tagModel
 //                ->with(['image'
@@ -77,7 +112,6 @@ class IndexController extends Controller
 //                ->get()
 //        );
 
-        $indexPage = $pageModel->where('name', 'index')->get()->first();
         //TODO redactor
 
         //$indexPage->descWithP = '<p>' . str_replace(array("\r\n", "\r", "\n"), '</p><p>', $indexPage->description) . '</p>';
@@ -87,32 +121,7 @@ class IndexController extends Controller
             'bestGames' => $bestGames,
             'categories' => $categories,
             'indexPage' => $indexPage,
-            'tags' => $tags,]);
+//            'tags' => $tags,
+            ]);
     }
-
-    public function makeImgUrl($gamesCollection)
-    {
-        $gamesCollection->each(function ($games) {
-            $games->url = route('getGame', $games->game_url, false);
-            $mainImg = $games->image()->where('main_img', true)->get()->first();
-            if (!empty($mainImg)) {
-                $games->img = "/img/$mainImg->name.jpg";
-                $games->imgAlt = $mainImg->alt;
-                $games->imgTitle = $mainImg->title;
-            } elseif (file_exists(public_path() . '/img/' . $games->game_url . '.jpg')) {
-                $games->img = '/img/' . $games->game_url . '.jpg';
-                $games->imgAlt = $games->game_name;
-                $games->imgTitle = $games->game_title;
-            } else {
-                $games->img = '/img/site/empty.jpg';
-                $games->imgAlt = 'пустое изображение';
-                $games->imgTitle = 'пустое изображение';
-            }
-        });
-        if ($gamesCollection[0]->img != '/img/site/empty.jpg') {
-            $imgUrl = explode('.', $gamesCollection[0]->img);
-            $gamesCollection[0]->img = $imgUrl[0] . '-large.jpg';
-        }
-        return $gamesCollection;
-    }
-}
+ }

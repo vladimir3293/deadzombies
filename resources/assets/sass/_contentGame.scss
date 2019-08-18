@@ -4,21 +4,26 @@
     margin-left: 10px;
     margin-right: 10px;
   }
+
   &-wrap {
     background: $section-bg1;
+
     & h2 {
       font-weight: 600;
       font-size: 1.2rem;
     }
   }
+
   max-width: $content-width;
   margin: 0 auto;
+
   &-header {
     font-size: 1rem;
     padding: 10px 0 10px 0;
   }
+
   &-block {
-    @media (min-width: 767px) and (max-width: 1000px){
+    @media (min-width: 767px) and (max-width: 1000px) {
       grid-template-columns: repeat(5, minmax(120px, 200px));
     }
     @media (max-width: 768px) {
@@ -41,7 +46,7 @@
   }
 
   &-box {
-    @media (min-width: 767px) and (max-width: 1000px){
+    @media (min-width: 767px) and (max-width: 1000px) {
       grid-row: 1/4;
       grid-column: 2/5;
     }
@@ -64,6 +69,7 @@
     //margin: 0 auto 0 auto;
     &-img {
       margin-bottom: 10px;
+
       & img {
         @media (max-width: 1250px) {
           width: 100%;
@@ -74,17 +80,20 @@
         width: 646px;
         height: 450px;
         margin: 0px auto 0px auto;
+
         &:hover {
           background: darken(red, 20%);
           cursor: pointer;
         }
       }
     }
+
     &-play {
       //display: none;
       margin: 0 auto 0px auto;
       width: 50%;
       text-align: center;
+
       & span {
         //width: 70%;
         display: block;
@@ -96,12 +105,14 @@
         border-radius: 5px;
         font-weight: 600;
         font-size: 1.2rem;
+
         &:hover {
           background: darken(red, 20%);
           cursor: pointer;
         }
       }
     }
+
     &-source {
       @media (max-width: 480px) {
         width: 100%;
@@ -111,15 +122,18 @@
       height: 450px;
       display: none;
       margin: 0px auto 10px auto;
+
       & iframe {
         width: 100%;
         height: 100%;
       }
     }
+
     &-fullscreen {
       width: 50%;
       display: none;
       margin: 0px auto 0px auto;
+
       & span {
         text-align: center;
         //width: 70%;
@@ -132,6 +146,7 @@
         border-radius: 5px;
         font-weight: 600;
         font-size: 1.2rem;
+
         &:hover {
           background: darken(red, 20%);
           cursor: pointer;
@@ -139,16 +154,22 @@
       }
     }
   }
+
   &-breadcrumb {
-    a {
-      color: $top-block;
-      text-decoration: none;
+    &-next {
       &::after {
         content: " \203A  ";
       }
     }
+
+    a {
+      color: $top-block;
+      text-decoration: none;
+    }
+
     & span {
     }
+
     grid-area: breadcrumbs;
     background: $body;
     padding: 10px 0px 10px 0px;
@@ -169,10 +190,12 @@
     padding: 20px;
     font-weight: 600;
     font-size: 0.8rem;
+
     & img {
       margin: 10px;
     }
   }
+
   &-tags {
     //margin: 10px 0 10px 0;
     //background-color: $body;
@@ -197,17 +220,20 @@
       background-color: lighten($top-block, 43%);
       white-space: nowrap;
     }
+
     & a:hover {
       background-color: $link-hover;
       border-radius: 5px;
     }
   }
+
   &-new-games {
     background-color: $body;
     border-radius: 5px;
     padding: 20px;
     margin: 30px auto 0px auto;
     max-width: $content-width;
+
     &-container {
       @media (max-width: 480px) {
         grid-template-columns: minmax(120px, 200px) minmax(120px, 200px);
@@ -220,6 +246,7 @@
       justify-content: center;
     }
   }
+
   &-related-tags {
     @media (max-width: 480px) {
       grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
@@ -231,6 +258,7 @@
     grid-column-gap: 10px;
     margin-top: 10px;
     justify-content: center;
+
     &-container {
       @media (max-width: 1250px) {
         margin-left: 10px;
@@ -242,6 +270,7 @@
       padding-bottom: 20px;
       border-radius: 5px;
     }
+
     &-item {
       //height: 50px;
       & a {
@@ -250,11 +279,13 @@
           border-radius: 5px;
           height: 56px;
         }
+
         & span {
           white-space: nowrap;
           text-overflow: ellipsis;
           overflow: hidden;
         }
+
         color: $link-color;
         background-color: $body;
         //border-bottom: 1px solid #dfdfdf;
@@ -275,6 +306,7 @@
           color: #fff;
         }
       }
+
       & span {
         margin-left: 10px;
       }

@@ -7,6 +7,7 @@
     <meta name="keywords" content="@yield('keywords')">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     @yield('canonical')
+    <meta name="yandex-verification" content="70b00bbc1e3306c4" />
     <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
     <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
     <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
@@ -16,8 +17,6 @@
     <meta name="theme-color" content="#ffffff">
 {{--    <link rel="icon" href="/favicon.ico" type="image/x-icon">--}}
 
-    <script src="/js/app.js"></script>
-    <script src="/js/deadzombies.js"></script>
 
     {{--<link rel="stylesheet" href="/css/bootstrap/css/bootstrap.css">--}}
     <link rel="stylesheet" href="/css/scss.css">
@@ -41,5 +40,8 @@
     @include('footer')
 </div>
 {{--<div id="message"><a href="#top">Scroll to top</a></div>--}}
+<script src="/js/app.js"></script>
+<script src="/js/deadzombies.js"></script>
+@yield('json-ld')
 </body>
 </html>

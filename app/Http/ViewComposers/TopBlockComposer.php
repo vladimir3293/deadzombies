@@ -33,6 +33,9 @@ class TopBlockComposer
                 ->orderBy('cat_order')
                 ->get()
         );
+        foreach ($categories as $item) {
+            $item->url = route('getCategory', $item->cat_url, false);
+        }
 
         $topCategories = $this->imageModel->makeCategoryImgUrl(
             $this->category
@@ -45,6 +48,9 @@ class TopBlockComposer
                 ->limit(10)
                 ->get()
         );
+        foreach ($topCategories as $item) {
+            $item->url = route('getCategory', $item->cat_url, false);
+        }
 
         $popularCategories = $this->imageModel->makeCategoryImgUrl(
             $this->category->with(['image'
@@ -54,6 +60,9 @@ class TopBlockComposer
                 ->limit(10)
                 ->get()
         );
+        foreach ($popularCategories as $item) {
+            $item->url = route('getCategory', $item->cat_url, false);
+        }
 
         $view->with([
             'categories' => $categories,

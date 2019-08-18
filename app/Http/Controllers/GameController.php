@@ -15,7 +15,7 @@ class GameController
     {
         abort_unless($game->game_show, 404, 'not displayed');
         $game->increment('game_played');
-        if ($game->category) {
+        if ($game->category->where('display', true)->get()->isNotEmpty()) {
             $game->categoryUrl = route('getCategory', $game->category->cat_url, false);
         }
         //        if (!empty($game->category->display)) {
@@ -37,6 +37,9 @@ class GameController
                 ->where('display', true)
                 ->get()
         );
+        foreach ($game->tagsDisplayed as $item) {
+            $item->fullUrl = route('getTag', $item->url, false);;
+        }
 
 //        $game->descWithP = '<p>' . str_replace(array("\r\n", "\r", "\n"), '</p><p>', $game->game_desc) . '</p>';
         $game->gameControlWithP = '<p>' . str_replace(array("\r\n", "\r", "\n"), '</p><p>', $game->game_control) . '</p>';
@@ -46,7 +49,7 @@ class GameController
         } else {
             $game->image = collect();
         }
-
+        $game->url = route('getGame', $game->game_url, false);
         $game = $imageModel->makeGameImgUrl(collect([$game]), true)->first();
 
         //TODO select logic
@@ -63,6 +66,9 @@ class GameController
                 ->limit(15)
                 ->get()
         );
+        foreach ($similarGames as $item) {
+            $item->url = route('getGame', $item->game_url, false);;
+        }
         //random Games for block New Games
         $newGames = $imageModel->makeGameImgUrl(
             $game->where('game_show', true)
@@ -74,7 +80,42 @@ class GameController
                 ->limit(12)
                 ->get()
         );
+        foreach ($newGames as $item) {
+            $item->url = route('getGame', $item->game_url, false);;
+        }
+        //TODO database
+        //TODO refactoring
+        $game->rating = mt_rand(30, 50) / 10;
 
+        $breadCrumb = [];
+        if ($game->categoryUrl) {
+            $breadCrumb[] = [
+                "@type" => "ListItem",
+                "position" => 1,
+                "item" => ["@id" => route('getCategory', $game->category->cat_url, false),
+                    "name" => $game->category->cat_name]
+            ];
+        }
+        if ($game->tagsDisplayed->isNotEmpty()) {
+            $i = 2;
+            foreach ($game->tagsDisplayed as $tag) {
+                if ($i == 6) {
+                    break;
+                }
+                $breadCrumb[] = [
+                    "@type" => "ListItem",
+                    "position" => $i,
+                    "item" => ["@id" => route('getTag', $tag->url, false),
+                        "name" => $tag->name]
+                ];
+                $i++;
+            }
+        }
+        $game->microdataBreadcrumb = json_encode($breadCrumb);
+        $game->microdataDesc = substr(strip_tags($game->game_desc), 0, 300);
+
+
+//        dd($game->rating);
         //dd($similarGames->first());
         //echo $game->descWithP;
         //$Game->categoryUrl = route('getCat', $Category->cat_url);

@@ -5,6 +5,9 @@ namespace Deadzombies\Http\ViewComposers;
 
 use Deadzombies\Model\Category;
 use Illuminate\View\View;
+/*
+ * del
+ */
 
 class AdminMenuComposer
 {

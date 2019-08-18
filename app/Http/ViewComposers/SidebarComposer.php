@@ -7,7 +7,9 @@ use Deadzombies\Model\Category;
 use Deadzombies\Model\Game;
 use Illuminate\Http\Request;
 use Illuminate\View\View;
-
+/*
+ * del
+ */
 class SidebarComposer
 {
     public $category;

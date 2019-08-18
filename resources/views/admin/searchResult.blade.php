@@ -1,14 +1,12 @@
 @extends('layouts.adminLayout')
 
-@section('title','Админка')
+@section('title','Результат поиска')
 
 
 @section('right_content')
     <article>
         <header class="article-header">
-            <h1>Опубликованные игры
-                @if(isset($games)){{ $games->gamesCount }}@else()0
-                @endif</h1>
+            <h1>Результат поиска:</h1>
         </header>
         @if(isset($games))
             <div class="row">
@@ -16,8 +14,7 @@
             </div>
             <div class="row">
                 <div class="col-md-12">
-                    {{ $games->links('vendor.pagination.default') }}
-                </div>
+                {{ $games->links() }}
             </div>
         @endif
     </article>

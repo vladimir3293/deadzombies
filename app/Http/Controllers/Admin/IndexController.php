@@ -32,7 +32,7 @@ class IndexController extends Controller
         //TODO validation
         //TODO migration
         //TODO refactoring routes
-//TODO compact helper
+        //TODO compact helper
 
         //$pageIndex = $page->where('name', 'index')->get()->first();
         $games = $game->paginate(24);

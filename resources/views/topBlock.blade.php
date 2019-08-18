@@ -14,9 +14,10 @@
             <ul>
                 @foreach($topCategories as $category)
                     <li>
-                        <a href="{!! $category->url !!}" title="Категория игр {{ $category->cat_name }}"><img alt="{{ $category->imgAlt }}"
-                                                              title="{{ $category->imgTitle }}"
-                                                              src="{{ $category->img }}"><span>{!! $category->cat_name !!}</span></a>
+                        <a href="{!! $category->url !!}" title="Категория игр {{ $category->cat_name }}"><img
+                                    alt="{{ $category->imgAlt }}"
+                                    title="{{ $category->imgTitle }}"
+                                    src="{{ $category->img }}"><span>{!! $category->cat_name !!}</span></a>
                     </li>
                 @endforeach
             </ul>
@@ -27,9 +28,12 @@
                 <ul>
                     @foreach($popularCategories as $category)
                         <li>
-                            <a href="{!! $category->url !!}" title="Категория игр {{ $category->cat_name }}><img alt="{{ $category->imgAlt }}"
-                                                                  title="{{ $category->imgTitle }}"
-                                                                  src="{{ $category->img }}"><span>{!! $category->cat_name !!}</span></a>
+                            <a href="{!! $category->url !!}" title="Категория игр {{ $category->cat_name }}">
+                                <img alt="{{ $category->imgAlt }}"
+                                     title="{{ $category->imgTitle }}"
+                                     src="{{ $category->img }}">
+                                <span>{!! $category->cat_name !!}</span>
+                            </a>
                         </li>
                     @endforeach
                 </ul>
@@ -41,9 +45,10 @@
         </div>
         <ul>
             @foreach($categories as $category)
-                <li><a href="{!! $category->url !!}" title="Категория игр {{ $category->cat_name }}><img alt="{{ $category->imgAlt }}"
-                                                          title="{{ $category->imgTitle }}"
-                                                          src="{{ $category->img }}"><span>{!! $category->cat_name !!}</span></a>
+                <li><a href="{!! $category->url !!}" title="Категория игр {{ $category->cat_name }}"><img
+                                alt="{{ $category->imgAlt }}"
+                                title="{{ $category->imgTitle }}"
+                                src="{{ $category->img }}"><span>{!! $category->cat_name !!}</span></a>
                 </li>
             @endforeach
         </ul>

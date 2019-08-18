@@ -18,8 +18,8 @@
                 @endif
                 <div class="game-box">
                     <div class="game-box-img">
-                        <img class="game-play-click" alt="Игра {{ $game->game_name }}"
-                             title="Изображение "{{ $game->game_name }}" src="{{ $game->img }}">
+                        <img class="game-play-click" alt="{{ $game->imgAlt }}"
+                             title="{{ $game->imgTitle }}" src="{{ $game->img }}">
                     </div>
                     <div class="game-box-play">
                         <span class="game-play-click">ИГРАТЬ</span>
@@ -49,10 +49,11 @@
         <div class="game-description">
             <h2>Описание игры</h2>
             <div class="game-breadcrumb">
-                <a href="/" title="игры онлайн бесплатно">Игры</a>
-                @if($game->categoryUrl)<a href="{{ $game->categoryUrl }}"  title="Категория игр {{ $game->category->cat_name }}">
+                <a class="game-breadcrumb-next" href="/" title="игры онлайн бесплатно">Игры</a>
+                @if($game->categoryUrl)<a class="game-breadcrumb-next" href="{{ $game->categoryUrl }}"
+                                          title="Категория игр {{ $game->category->cat_name }}">
                     {{ $game->category->cat_name }}</a>@endif
-                <span>{{ $game->game_name }}</span>
+                <a title="Игра {{ $game->game_name }}" href="{{ $game->url }}">{{ $game->game_name }}</a>
             </div>
             @if($game->tagsDisplayed->isNotEmpty())
                 <div class="game-tags">
@@ -61,7 +62,9 @@
                     @endforeach
                 </div>
             @endif
-            {!! $game->game_desc !!}
+            <div>
+                {!! $game->game_desc !!}
+            </div>
             <div class="clearfix"></div>
         </div>
         <div class="game-new-games">
@@ -79,7 +82,8 @@
                     @foreach($game->tagsDisplayed as $tag)
                         <div class="game-related-tags-item">
                             <a href="{!! $tag->fullUrl !!}" title="Подкатегория игр {{ $tag->name }}">
-                                <img alt="{{ $tag->imgAlt }}" title="{{ $tag->imgTitle }}" src="{{ $tag->img }}"><span>{!! $tag->name !!}</span></a>
+                                <img alt="{{ $tag->imgAlt }}" title="{{ $tag->imgTitle }}"
+                                     src="{{ $tag->img }}"><span>{!! $tag->name !!}</span></a>
                         </div>
                     @endforeach
                 </div>
@@ -107,4 +111,28 @@
         {{--</div>--}}
         {{--</div>--}}
     </article>
+@endsection
+@section('json-ld')
+    <script type="application/ld+json">
+{
+  "@context" : "http://schema.org",
+  "@type" : "WebPage",
+  "name" : "{{ $game->game_title }}",
+  "description" : "{!! $game->microdataDesc !!}",
+  "url" : "{{ route('getGame',$game->game_url,false) }}",
+  "image" : "{{ $game->img }}",
+  "aggregateRating" : {
+    "@type" : "AggregateRating",
+    "ratingValue" : "{{ $game->rating }}",
+    "bestRating" : "5",
+    "worstRating" : "0",
+    "ratingCount" : "{{ $game->game_played }}"
+  },
+ "breadcrumb": {
+        "@type": "BreadcrumbList",
+        "itemListElement":
+  {!! $game->microdataBreadcrumb !!}}
+  }
+  }
+    </script>
 @endsection
