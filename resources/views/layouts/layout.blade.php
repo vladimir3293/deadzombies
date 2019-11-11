@@ -6,6 +6,7 @@
     <meta name="description" content="@yield('description')">
     <meta name="keywords" content="@yield('keywords')">
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="theme-color" content="#009cff">
     @yield('canonical')
     <meta name="yandex-verification" content="70b00bbc1e3306c4" />
     <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">

@@ -9,6 +9,14 @@
             </svg>
         </button>
         <a class="top-block-logo" href="/"></a>
+        <div class="top-block-search">
+            <form method="post" action="/search" enctype="multipart/form-data" role="form">
+                {{ method_field('GET') }}
+                {{ csrf_field() }}
+                <input name="q" type="search" placeholder="   Поиск игр...">
+                <input type="submit" value="Найти">
+            </form>
+        </div>
         <div class="top-block-top-categories">
             <span>Лучшие категории</span>
             <ul>

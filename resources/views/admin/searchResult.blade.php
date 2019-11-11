@@ -14,7 +14,7 @@
             </div>
             <div class="row">
                 <div class="col-md-12">
-                {{ $games->links() }}
+                {{ $games->appends($params)->links() }}
             </div>
         @endif
     </article>

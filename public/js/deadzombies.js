@@ -1,1 +1,166 @@
-!function(e){var t={};function n(o){if(t[o])return t[o].exports;var l=t[o]={i:o,l:!1,exports:{}};return e[o].call(l.exports,l,l.exports,n),l.l=!0,l.exports}n.m=e,n.c=t,n.d=function(e,t,o){n.o(e,t)||Object.defineProperty(e,t,{configurable:!1,enumerable:!0,get:o})},n.n=function(e){var t=e&&e.__esModule?function(){return e.default}:function(){return e};return n.d(t,"a",t),t},n.o=function(e,t){return Object.prototype.hasOwnProperty.call(e,t)},n.p="",n(n.s=0)}({0:function(e,t,n){n("Flhv"),n("TWN+"),n("xZZD"),e.exports=n("Iqxr")},Flhv:function(e,t){var n;window.timeTest=function(){var e=new Date;console.log(e)},window.requestFullScreen=function(e){var t=e.requestFullScreen||e.webkitRequestFullScreen||e.mozRequestFullScreen||e.msRequestFullScreen;if(t)t.call(e);else if(void 0!==window.ActiveXObject){var n=new ActiveXObject("WScript.Shell");null!==n&&n.SendKeys("{F11}")}return!1},window.toggleFull=function(){var e=document.getElementById("game-player");return requestFullScreen(e),!1},(n=jQuery)(document).ready(function(){n("#top-block-button").click(function(e){n(".top-block, .right-content, .index-footer").toggleClass("top-block-clicked"),n(".top-block svg").toggleClass("top-block-click-svg"),n("body, html").toggleClass("overflow-hidden")}),n(".game-play-click").click(function(){n(".game-box-play, .game-box-img").css("display","none"),n(".game-box-source, .game-box-fullscreen").css("display","block");var e=n("#game-player");e.attr("src",e.attr("data-src"))})})},Iqxr:function(e,t){},"TWN+":function(e,t){},xZZD:function(e,t){}});
+/******/ (function(modules) { // webpackBootstrap
+/******/ 	// The module cache
+/******/ 	var installedModules = {};
+/******/
+/******/ 	// The require function
+/******/ 	function __webpack_require__(moduleId) {
+/******/
+/******/ 		// Check if module is in cache
+/******/ 		if(installedModules[moduleId]) {
+/******/ 			return installedModules[moduleId].exports;
+/******/ 		}
+/******/ 		// Create a new module (and put it into the cache)
+/******/ 		var module = installedModules[moduleId] = {
+/******/ 			i: moduleId,
+/******/ 			l: false,
+/******/ 			exports: {}
+/******/ 		};
+/******/
+/******/ 		// Execute the module function
+/******/ 		modules[moduleId].call(module.exports, module, module.exports, __webpack_require__);
+/******/
+/******/ 		// Flag the module as loaded
+/******/ 		module.l = true;
+/******/
+/******/ 		// Return the exports of the module
+/******/ 		return module.exports;
+/******/ 	}
+/******/
+/******/
+/******/ 	// expose the modules object (__webpack_modules__)
+/******/ 	__webpack_require__.m = modules;
+/******/
+/******/ 	// expose the module cache
+/******/ 	__webpack_require__.c = installedModules;
+/******/
+/******/ 	// define getter function for harmony exports
+/******/ 	__webpack_require__.d = function(exports, name, getter) {
+/******/ 		if(!__webpack_require__.o(exports, name)) {
+/******/ 			Object.defineProperty(exports, name, {
+/******/ 				configurable: false,
+/******/ 				enumerable: true,
+/******/ 				get: getter
+/******/ 			});
+/******/ 		}
+/******/ 	};
+/******/
+/******/ 	// getDefaultExport function for compatibility with non-harmony modules
+/******/ 	__webpack_require__.n = function(module) {
+/******/ 		var getter = module && module.__esModule ?
+/******/ 			function getDefault() { return module['default']; } :
+/******/ 			function getModuleExports() { return module; };
+/******/ 		__webpack_require__.d(getter, 'a', getter);
+/******/ 		return getter;
+/******/ 	};
+/******/
+/******/ 	// Object.prototype.hasOwnProperty.call
+/******/ 	__webpack_require__.o = function(object, property) { return Object.prototype.hasOwnProperty.call(object, property); };
+/******/
+/******/ 	// __webpack_public_path__
+/******/ 	__webpack_require__.p = "";
+/******/
+/******/ 	// Load entry module and return exports
+/******/ 	return __webpack_require__(__webpack_require__.s = 0);
+/******/ })
+/************************************************************************/
+/******/ ({
+
+/***/ "./resources/assets/js/deadzombies.js":
+/***/ (function(module, exports) {
+
+window.timeTest = function () {
+    var newDate = new Date();
+    console.log(newDate);
+};
+window.requestFullScreen = function (el) {
+    // Supports most browsers and their versions.
+    var requestMethod = el.requestFullScreen || el.webkitRequestFullScreen || el.mozRequestFullScreen || el.msRequestFullScreen;
+
+    if (requestMethod) {
+        // Native full screen.
+        requestMethod.call(el);
+    } else if (typeof window.ActiveXObject !== "undefined") {
+        // Older IE.
+        var wscript = new ActiveXObject("WScript.Shell");
+        if (wscript !== null) {
+            wscript.SendKeys("{F11}");
+        }
+    }
+    return false;
+};
+
+window.toggleFull = function () {
+    // $(window).trigger("iPanel.fullscreen", true);
+    var iframe = document.getElementById('game-player');
+    // if (iframe) {
+    //     var elem = iframe;
+    // } else {
+    //     var elem = document.body; // Make the body go full screen.
+    // }
+    var elem = iframe;
+    // var isInFullScreen = (elem.fullScreenElement && elem.fullScreenElement !== null) || (elem.mozFullScreen || elem.webkitIsFullScreen);
+    requestFullScreen(elem);
+
+    // if (isInFullScreen) {
+    //     iPanel.cancelFullScreen(document);
+    // } else {
+    //     iPanel.requestFullScreen(elem);
+    // }
+    return false;
+};
+
+(function ($, undefined) {
+
+    $(document).ready(function () {
+        // console.debug($('#top-block-button'));
+        $('#top-block-button').click(function (event) {
+            $('.top-block, .right-content, .index-footer').toggleClass('top-block-clicked');
+            $('.top-block svg').toggleClass('top-block-click-svg');
+            $('body, html').toggleClass('overflow-hidden');
+        });
+
+        $('.game-play-click').click(function () {
+            $('.game-box-play, .game-box-img').css('display', 'none');
+            $('.game-box-source, .game-box-fullscreen').css('display', 'block');
+
+            var game = $('#game-player');
+            game.attr('src', game.attr('data-src'));
+        });
+    });
+})(jQuery);
+
+/***/ }),
+
+/***/ "./resources/assets/sass/admin.scss":
+/***/ (function(module, exports) {
+
+// removed by extract-text-webpack-plugin
+
+/***/ }),
+
+/***/ "./resources/assets/sass/app.scss":
+/***/ (function(module, exports) {
+
+// removed by extract-text-webpack-plugin
+
+/***/ }),
+
+/***/ "./resources/assets/sass/scss.scss":
+/***/ (function(module, exports) {
+
+// removed by extract-text-webpack-plugin
+
+/***/ }),
+
+/***/ 0:
+/***/ (function(module, exports, __webpack_require__) {
+
+__webpack_require__("./resources/assets/js/deadzombies.js");
+__webpack_require__("./resources/assets/sass/scss.scss");
+__webpack_require__("./resources/assets/sass/app.scss");
+module.exports = __webpack_require__("./resources/assets/sass/admin.scss");
+
+
+/***/ })
+
+/******/ });

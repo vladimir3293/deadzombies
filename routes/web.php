@@ -13,8 +13,8 @@ Route::get('/game/{gameIndex}', 'GameController@getGame')->name('getGame');
 Route::get('/tag/{tag}', 'TagController@getTag')->name('getTag');
 //sitemap.xml
 Route::get('sitemap.xml','sitemapController@getSitemap');
-//search
-Route::post('/admin/search', 'Admin\SearchController@SearchGame');
+//index search
+Route::get('/search', 'SearchController@SearchGame');
 
 /***** ADMIN PAGES *****/
 
@@ -105,6 +105,9 @@ Route::middleware(['auth', 'can:isAdmin'])->group(function () {
     Route::post('/admin/tag/subtag/{Tag}', 'Admin\TagController@addTag');
 //delete sub tag from tag
     Route::delete('/admin/tag/subtag/{Tag}', 'Admin\TagController@removeTag');
+
+//search
+    Route::get('/admin/search', 'Admin\SearchController@SearchGame');
 
 
 //parser pages

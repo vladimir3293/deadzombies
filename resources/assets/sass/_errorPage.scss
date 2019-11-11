@@ -1,0 +1,10 @@
+.error {
+  &-container {
+    background: $section-bg1;
+    min-height: 500px;
+    padding-bottom: 10px;
+  }
+  max-width: $content-width;
+  margin: 0 auto;
+  padding: 0px 5px 0px 5px;
+}
